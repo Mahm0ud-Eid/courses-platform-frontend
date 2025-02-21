@@ -152,8 +152,22 @@ label {
   float: left;
   width: 20%;
 }
-.wed-logo a img {
+.logo-div {
+  display: flex;
   width: 230px;
+  justify-content: space-evenly;
+  align-items: center;
+  p {
+    padding-top: 10px;
+    font-weight: bolder;
+    font-size: x-large;
+    color: #ffd400;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #000;
+  }
+}
+.wed-logo a img {
+  width: 50px;
   padding: 7px 0px;
 }
 .wed-menu {
