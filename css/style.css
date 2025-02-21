@@ -153,7 +153,7 @@ label {
   width: 20%;
 }
 .wed-logo a img {
-  width: 75px;
+  width: 230px;
   padding: 7px 0px;
 }
 .wed-menu {
@@ -882,7 +882,7 @@ label {
 /*-------------------------------------------------*/
 .main-menu {
   float: right;
-  width: 70%;
+  width: 80%;
 }
 .main-menu ul {
   float: right;
@@ -894,9 +894,11 @@ label {
 .main-menu ul li a {
   color: #000000;
   padding: 20px 10px;
-  line-height: 100px;
+  line-height: 60px;
   font-size: 16px;
   font-weight: 600;
+  /* text-transform: uppercase;
+     */
   position: relative;
 }
 .main-menu ul li a:hover {
