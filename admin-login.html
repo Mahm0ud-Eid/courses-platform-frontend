@@ -1,94 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>UCCD - Login</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
 
-<head>
-  <title>UCCD Center</title> <!-- META TAGS -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" />
-  <meta name="keyword" />
-  <!-- FAV ICON(BROWSER TAB ICON) -->
-  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
-  <!-- GOOGLE FONT -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
-    rel="stylesheet" />
-  <!-- FONTAWESOME ICONS -->
-  <link rel="stylesheet" href="css/font-awesome.min.css" />
-  <!-- ALL CSS FILES -->
-  <link href="css/materialize.css" rel="stylesheet" />
-  <link href="css/bootstrap.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
-  <link href="css/style-mob.css" rel="stylesheet" />
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-</head>
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+      rel="stylesheet"
+    />
 
-<body>
-  <section>
-    <div class="ad-log-main">
-      <div class="ad-log-in">
-        <div class="ad-log-in-logo">
-          <a href="index-2.html">
-            <div class="logo-div">
-              <img src="images/uccd-logo.png" />
-              <p>UCCD</p>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <!-- ALL CSS FILES -->
+    <!-- <link href="css/materialize.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style-mob.css" rel="stylesheet" /> -->
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+
+  <body>
+    <section class="vh-100">
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="side col-md-9 col-lg-6 col-xl-5">
+            <img
+              src="assets/img/login side image.png"
+              class="img-fluid"
+              alt="login side image"
+            />
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <img src="images/uccd-logo.png" class="logo" alt="UCCD logo" />
             </div>
-          </a>
-        </div>
-        <div class="ad-log-in-con">
-          <div class="log-in-pop-right">
-            <h4>Login</h4>
 
-            <form class="s12">
-              <div>
-                <div class="input-field s12">
-                  <input type="text" data-ng-model="name" class="validate" />
-                  <label class="">User name</label>
-                </div>
+            <form id="loginForm">
+              <div
+                class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
+              ></div>
+
+              <div class="divider d-flex align-items-center my-4">
+                <p class="text-center fw-bold mx-3 mb-0">Log In</p>
               </div>
-              <div>
-                <div class="input-field s12">
-                  <input type="password" class="validate" />
-                  <label>Password</label>
-                </div>
+
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="email">Email address </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control form-control-lg"
+                  placeholder="Enter a valid email address"
+                  required
+                />
+                <span class="error" id="emailError"></span>
               </div>
-              <div>
-                <div class="s12 log-ch-bx">
-                  <p>
-                    <input type="checkbox" id="test5" />
-                    <label for="test5">Remember me</label>
-                  </p>
-                </div>
+
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control form-control-lg"
+                  placeholder="Enter password"
+                />
+                <span class="error" id="passwordError"></span>
               </div>
-              <div>
-                <div class="input-field s4">
-                  <i class="waves-effect waves-light log-in-btn waves-input-wrapper"><input type="submit" value="Login"
-                      class="waves-button-input" /></i>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- Checkbox -->
+                <div class="form-check mb-0">
+                  <input
+                    class="form-check-input me-2"
+                    type="checkbox"
+                    value=""
+                    id="remember"
+                  />
+                  <label class="form-check-label" for="remember">
+                    Remember me
+                  </label>
                 </div>
+                <!-- <a href="#!" class="text-body">Forgot password?</a> -->
               </div>
-              <div>
-                <div class="input-field s12">
-                  <a href="admin-forgot.html">Forgot password</a> |
-                </div>
+
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button
+                  type="submit"
+                  data-mdb-button-init
+                  data-mdb-ripple-init
+                  class="btn btn-warning btn-lg"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem"
+                >
+                  Sign In
+                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!--Import jQuery before materialize.js-->
-  <script src="js/main.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/custom.js"></script>
-</body>
-
+    <!--Import jQuery before materialize.js-->
+    <script src="js/main.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/login.js"></script>
+  </body>
 </html>

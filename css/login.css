@@ -1,0 +1,26 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+.logo {
+  width: 150px;
+}
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+@media (max-width: 1000px) {
+  .h-custom {
+    height: 100%;
+  }
+  .side {
+    display: none;
+  }
+}

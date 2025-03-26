@@ -263,6 +263,9 @@ label {
   border: 1px solid #6b6a6a;
   border-radius: 50px;
 }
+.account {
+  float: right;
+}
 /*--================= BOX ===================--*/
 .wed-hom-title {
   text-align: center;
@@ -592,15 +595,14 @@ label {
 .wed-foot-link ul li {
   width: 50%;
   float: left;
-  
 }
 .wed-foot-link ul li a {
   color: #838384;
   font-size: 13px;
 }
 .wed-foot-link ul li a i {
-  font-size: 16px; 
-  }
+  font-size: 16px;
+}
 .wed-foot-link div {
   border-right: 1px groove #6a83a0;
 }
@@ -4175,13 +4177,14 @@ textarea {
   border-radius: 0px;
 }
 .sb2 {
-  background: #002147;
-  margin-top: 59px;
+  /* background: #002147; */
+  /* margin-top: 59px; */
 }
 .sb2-1 {
   float: left;
   width: 20%;
-  background: #263238;
+
+  background-color: #263238;
   color: #fff;
   height: 100%;
   position: absolute;
@@ -4261,12 +4264,16 @@ textarea {
   /* padding: 3px 20px; */
 }
 .sb2-13 ul li a {
+  color: #203245;
   display: block;
   font-size: 13.5px;
   padding: 10px 0px;
-  border-bottom: 1px solid #002958;
+  border-bottom: 1px solid #e3e8ea;
   padding: 12px 20px;
-  background: #002147;
+  background-color: white;
+}
+.sb2-13 ul li:first-child {
+  /* border-radius: 11px; */
 }
 .sb2-13 ul li a:after {
   font-family: FontAwesome;
@@ -4301,10 +4308,10 @@ textarea {
   transform: rotate(90deg);
 }
 .sb2-13 ul li a:hover {
-  background: #022c5d;
+  background-color: #ffd400;
 }
 .sb2-13 ul li a:focus {
-  background: #022c5d;
+  background-color: #022c5d;
 }
 .menu-act {
   background: #57666d;
@@ -4323,6 +4330,8 @@ textarea {
 .sb2-2-1 {
   background: #fff;
   padding: 25px;
+  position: relative;
+  border-radius: 11px;
 }
 .sb2-2-1 h2 {
   margin-top: 0px;
@@ -5671,10 +5680,6 @@ input:not(:focus):valid ~ .floating-label {
   padding-right: 80px;
   box-sizing: border-box;
 }
-.ed-pho-gal {
-}
-.ed-pho-gal ul {
-}
 .ed-pho-gal ul li {
   float: left;
   width: 20%;
@@ -5708,17 +5713,9 @@ input:not(:focus):valid ~ .floating-label {
   margin-top: 50px;
   border-radius: 4px;
 }
-.ad-log-in-logo {
-}
-.ad-log-in-logo a {
-}
-.ad-log-in-logo a img {
-}
 .ad-log-in-con {
   position: relative;
   overflow: hidden;
-}
-.log-in-pop-right {
 }
 .ad-log-in-con h4 {
   margin-bottom: 15px;
@@ -5726,10 +5723,4 @@ input:not(:focus):valid ~ .floating-label {
   text-transform: uppercase;
   font-weight: 700;
   color: #e66030;
-}
-.ad-log-in-con p {
-}
-.ad-log-in-con form {
-}
-.ad-log-in-con form input {
 }
