@@ -1,1413 +1,826 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>UCCD</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
 
-<head>
-  <title>UCCD Center</title> <!-- META TAGS -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" />
-  <meta name="keyword" />
-  <!-- FAV ICON(BROWSER TAB ICON) -->
-  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
-  <!-- GOOGLE FONT -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
-    rel="stylesheet" />
-  <!-- FONTAWESOME ICONS -->
-  <link rel="stylesheet" href="css/font-awesome.min.css" />
-  <!-- ALL CSS FILES -->
-  <link href="css/materialize.css" rel="stylesheet" />
-  <link href="css/bootstrap.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
-  <link href="css/style-mob.css" rel="stylesheet" />
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-</head>
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+      rel="stylesheet"
+    />
 
-<body>
-  <!-- MOBILE MENU -->
-  <section>
-    <div class="ed-mob-menu">
-      <div class="ed-mob-menu-con">
-        <div class="ed-mm-left">
-          <div class="wed-logo">
-            <a href="index-2.html">
-              <div class="logo-div">
-                <img src="images/uccd-logo.png" />
-                <p>UCCD</p>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="ed-mm-right">
-          <div class="ed-mm-menu">
-            <a href="#!" class="ed-micon"><i class="fa fa-bars"></i></a>
-            <div class="ed-mm-inn">
-              <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
-              <h4>All Courses</h4>
-              <ul>
-                <li><a href="course-details.html">Accounting/Finance</a></li>
-                <li><a href="course-details.html">civil engineering</a></li>
-                <li><a href="course-details.html">Art/Design</a></li>
-                <li><a href="course-details.html">Marine Engineering</a></li>
-                <li><a href="course-details.html">Business Management</a></li>
-                <li><a href="course-details.html">Journalism/Writing</a></li>
-                <li><a href="course-details.html">Physical Education</a></li>
-                <li><a href="course-details.html">Political Science</a></li>
-                <li><a href="course-details.html">Sciences</a></li>
-                <li><a href="course-details.html">Statistics</a></li>
-                <li>
-                  <a href="course-details.html">Web Design/Development</a>
-                </li>
-                <li><a href="course-details.html">SEO</a></li>
-                <li><a href="course-details.html">Google Business</a></li>
-                <li><a href="course-details.html">Graphics Design</a></li>
-                <li><a href="course-details.html">Networking Courses</a></li>
-                <li>
-                  <a href="course-details.html">Information technology</a>
-                </li>
-              </ul>
-              <h4>User Account</h4>
-              <ul>
-                <li>
-                  <a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a>
-                </li>
-              </ul>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <!-- ALL CSS FILES -->
+    <!-- <link href="css/materialize.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style-mob.css" rel="stylesheet" /> -->
 
-              <h4>User Profile</h4>
-              <ul>
-                <li><a href="dashboard.html">User profile</a></li>
-                <li><a href="db-courses.html">Courses</a></li>
-                <li><a href="db-exams.html">Exams</a></li>
-                <li><a href="db-profile.html">Prfile</a></li>
-                <li><a href="db-time-line.html">Time line</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-  <!--HEADER SECTION-->
-  <section>
-    <!-- TOP BAR -->
-    <div class="ed-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="ed-com-t1-left">
-              <ul></ul>
-            </div>
-            <div class="ed-com-t1-right">
-              <ul>
-                <li>
-                  <a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+  </head>
 
-    <!-- LOGO AND MENU SECTION -->
-    <div class="top-logo" data-spy="affix" data-offset-top="250">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="wed-logo">
-              <a href="index-2.html">
-                <div class="logo-div">
-                  <img src="images/uccd-logo.png" />
-                  <p>UCCD</p>
-                </div>
-              </a>
-            </div>
-            <div class="main-menu">
-              <ul>
-                <li><a href="index-2.html">Home</a></li>
-                <li class="about-menu">
-                  <a href="about.html" class="mm-arr">About us</a>
-                  <!-- MEGA MENU 1 -->
-                  <div class="mm-pos">
-                    <div class="about-mm m-menu">
-                      <div class="m-menu-inn">
-                        <div class="mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay menu-about" href="admission.html">
-                              <img src="images/h-about.jpg" alt="" />
-                              <span>Academics</span>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="mm1-com mm1-s2">
-                          <p>
-                            Want to change the world? At Berkeley we’re doing
-                            just that. When you join the Golden Bear
-                            community, you’re part of an institution that
-                            shifts the global conversation every single day.
-                          </p>
-                          <a href="about.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm1-com mm1-s3">
-                          <ul>
-                            <li>
-                              <a href="all-courses.html">All Courses</a>
-                            </li>
-                            <li>
-                              <a href="course-details.html">Course details</a>
-                            </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="admission.html">Admission</a></li>
-                            <li><a href="awards.html">Awards</a></li>
-                          </ul>
-                        </div>
-                        <div class="mm1-com mm1-s4">
-                          <ul>
-                            <li>
-                              <a href="dashboard.html">Student profile</a>
-                            </li>
-                            <li>
-                              <a href="db-courses.html">Dashboard courses</a>
-                            </li>
-                            <li>
-                              <a href="db-exams.html">Dashboard exams</a>
-                            </li>
-                            <li>
-                              <a href="db-profile.html">Dashboard profile</a>
-                            </li>
-                            <li>
-                              <a href="db-time-line.html">Dashboard timeline</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="admi-menu">
-                  <!-- MEGA MENU 1 -->
-                  <div class="mm-pos">
-                    <div class="admi-mm m-menu">
-                      <div class="m-menu-inn">
-                        <div class="mm2-com mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="about.html">
-                              <img src="images/h-about1.jpg" alt="" />
-                              <span>Academics</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="about.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm2-com mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="admission.html">
-                              <img src="images/h-adm1.jpg" alt="" />
-                              <span>Admission</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="admission.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm2-com mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="awards.html">
-                              <img src="images/h-cam1.jpg" alt="" />
-                              <span>History & awards</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="awards.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm2-com mm1-com mm1-s4">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="seminar.html">
-                              <img src="images/h-res1.jpg" alt="" />
-                              <span>Seminar 2018</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="seminar.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li><a href="all-courses.html">All Courses</a></li>
-                <!--<li><a class='dropdown-button ed-sub-menu' href='#' data-activates='dropdown1'>Courses</a></li>-->
+  <body class="index-page">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center"
+      >
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+          <!-- <img src="assets/img/logo.png" alt="" /> -->
+          <!-- <img src="images/uccd-logo.png" /> -->
+          <h1 class="sitename">UCCD</h1>
+        </a>
 
-                <li><a href="events.html">Events</a></li>
-                <li><a href="dashboard.html">Student</a></li>
-                <li><a href="contact-us.html">Contact us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="all-drop-down-menu"></div>
-        </div>
-      </div>
-    </div>
-    <div class="search-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="search-form">
-              <form>
-                <div class="sf-type">
-                  <div class="sf-input">
-                    <input type="text" id="sf-box" placeholder="Search course and discount courses" />
-                  </div>
-                  <div class="sf-list">
-                    <ul>
-                      <li>
-                        <a href="course-details.html">Accounting/Finance</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">civil engineering</a>
-                      </li>
-                      <li><a href="course-details.html">Art/Design</a></li>
-                      <li>
-                        <a href="course-details.html">Marine Engineering</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Business Management</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Journalism/Writing</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Physical Education</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Political Science</a>
-                      </li>
-                      <li><a href="course-details.html">Sciences</a></li>
-                      <li><a href="course-details.html">Statistics</a></li>
-                      <li>
-                        <a href="course-details.html">Web Design/Development</a>
-                      </li>
-                      <li><a href="course-details.html">SEO</a></li>
-                      <li>
-                        <a href="course-details.html">Google Business</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Graphics Design</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Networking Courses</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Information technology</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="sf-submit">
-                  <input type="submit" value="Search Course" />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--END HEADER SECTION-->
-
-  <!-- SLIDER -->
-  <section>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-        <div class="item slider1 active">
-          <img src="images/slider/1.jpg" alt="" />
-          <div class="carousel-caption slider-con">
-            <h2>Welcome to <span>University</span></h2>
-            <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form
-            </p>
-            <a href="#" class="bann-btn-1">All Courses</a><a href="#" class="bann-btn-2">Read More</a>
-          </div>
-        </div>
-        <div class="item">
-          <img src="images/slider/2.jpg" alt="" />
-          <div class="carousel-caption slider-con">
-            <h2>Admission open <span>2018</span></h2>
-            <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form
-            </p>
-            <a href="#" class="bann-btn-1">Admission</a><a href="#" class="bann-btn-2">Read More</a>
-          </div>
-        </div>
-        <div class="item">
-          <img src="images/slider/3.jpg" alt="" />
-          <div class="carousel-caption slider-con">
-            <h2>Education <span>Master</span></h2>
-            <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form
-            </p>
-            <a href="#" class="bann-btn-1">All Courses</a><a href="#" class="bann-btn-2">Read More</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <i class="fa fa-chevron-left slider-arr"></i>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <i class="fa fa-chevron-right slider-arr"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- QUICK LINKS -->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="wed-hom-ser">
+        <nav id="navmenu" class="navmenu">
           <ul>
             <li>
-              <a href="awards.html" class="waves-effect waves-light btn-large wed-pop-ser-btn"><img
-                  src="images/icon/h-ic1.png" alt="" /> Academy</a>
+              <a href="index.html" class="active">Home<br /></a>
             </li>
-            <li>
-              <a href="admission.html" class="waves-effect waves-light btn-large wed-pop-ser-btn"><img
-                  src="images/icon/h-ic2.png" alt="" /> Admission</a>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="trainers.html">Trainers</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Dropdown</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="#">Dropdown 1</a></li>
+                <li class="dropdown">
+                  <a href="#"
+                    ><span>Deep Dropdown</span>
+                    <i class="bi bi-chevron-down toggle-dropdown"></i
+                  ></a>
+                  <ul>
+                    <li><a href="#">Deep Dropdown 1</a></li>
+                    <li><a href="#">Deep Dropdown 2</a></li>
+                    <li><a href="#">Deep Dropdown 3</a></li>
+                    <li><a href="#">Deep Dropdown 4</a></li>
+                    <li><a href="#">Deep Dropdown 5</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Dropdown 2</a></li>
+                <li><a href="#">Dropdown 3</a></li>
+                <li><a href="#">Dropdown 4</a></li>
+              </ul>
             </li>
-            <li>
-              <a href="all-courses.html" class="waves-effect waves-light btn-large wed-pop-ser-btn"><img
-                  src="images/icon/h-ic4.png" alt="" /> Courses</a>
-            </li>
-            <li>
-              <a href="seminar.html" class="waves-effect waves-light btn-large wed-pop-ser-btn"><img
-                  src="images/icon/h-ic3.png" alt="" /> Seminar</a>
-            </li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
 
-  <!-- DISCOVER MORE -->
-  <section>
-    <div class="container com-sp pad-bot-70">
-      <div class="row">
-        <div class="con-title">
-          <h2>Discover <span>More</span></h2>
-          <p>
-            Fusce id sem at ligula laoreet hendrerit venenatis sed purus. Ut
-            pellentesque maximus lacus, nec pharetra augue.
+        <a class="btn-getstarted" href="admin-login.html">Sign In</a>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Hero Section -->
+      <section id="hero" class="hero section dark-background">
+        <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" />
+
+        <div class="container">
+          <h2 data-aos="fade-up" data-aos-delay="100">
+            Learning Today,<br />Leading Tomorrow
+          </h2>
+          <p data-aos="fade-up" data-aos-delay="200">
+            We are team of talented designers making websites with Bootstrap
           </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="ed-course">
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="ed-course-in">
-              <a class="course-overlay" href="about.html">
-                <img src="images/h-about.jpg" alt="" />
-                <span>Academics</span>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="ed-course-in">
-              <a class="course-overlay" href="admission.html">
-                <img src="images/h-adm1.jpg" alt="" />
-                <span>Admission</span>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="ed-course-in">
-              <a class="course-overlay" href="dashboard.html">
-                <img src="images/h-cam.jpg" alt="" />
-                <span>Students profile</span>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="ed-course-in">
-              <a class="course-overlay" href="research.html">
-                <img src="images/h-res.jpg" alt="" />
-                <span>Research & Education</span>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="ed-course-in">
-              <a class="course-overlay" href="all-courses.html">
-                <img src="images/h-about1.jpg" alt="" />
-                <span>Couse</span>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="ed-course-in">
-              <a class="course-overlay" href="db-time-line.html">
-                <img src="images/h-adm.jpg" alt="" />
-                <span>Exam Time Line</span>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="ed-course-in">
-              <a class="course-overlay" href="seminar.html">
-                <img src="images/h-cam1.jpg" alt="" />
-                <span>Seminar 2018</span>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-4 col-xs-12">
-            <div class="ed-course-in">
-              <a class="course-overlay" href="events.html">
-                <img src="images/h-res1.jpg" alt="" />
-                <span>Research & Education</span>
-              </a>
-            </div>
+          <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+            <a href="courses.html" class="btn-get-started">Get Started</a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+      <!-- /Hero Section -->
 
-  <!-- POPULAR COURSES -->
-  <section class="pop-cour">
-    <div class="container com-sp pad-bot-70">
-      <div class="row">
-        <div class="con-title">
-          <h2>Popular <span>Courses</span></h2>
-          <p>
-            Fusce id sem at ligula laoreet hendrerit venenatis sed purus. Ut
-            pellentesque maximus lacus, nec pharetra augue.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div>
-            <!--POPULAR COURSES-->
-            <div class="home-top-cour" id="courses-content">
-              <!--POPULAR COURSES IMAGE-->
-              <div class="col-md-3">
-                <img src="images/course/sm-1.jpg" alt="" />
-              </div>
-              <!--POPULAR COURSES: CONTENT-->
-              <div class="col-md-9 home-top-cour-desc">
-                <a href="course-details.html">
-                  <h3>Aerospace Engineering</h3>
-                </a>
-                <h4>Technology / Space / Aerospace</h4>
-                <p>
-                  Classes started from coming friday(21 jun 2017),total seats
-                  72 and available seats 10
-                </p>
-                <span class="home-top-cour-rat">4.2</span>
-                <div class="hom-list-share">
-                  <ul>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
-                        Book Now</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-eye" aria-hidden="true"></i>10
-                        Aavailable</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-share-alt" aria-hidden="true"></i>
-                        570</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+      <!-- About Section -->
+      <section id="about" class="about section">
+        <div class="container">
+          <div class="row gy-4">
+            <div
+              class="col-lg-6 order-1 order-lg-2"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <img src="assets/img/about.jpg" class="img-fluid" alt="" />
             </div>
-            <!--POPULAR COURSES-->
-            <div class="home-top-cour" id="courses-content">
-              <!--POPULAR COURSES IMAGE-->
-              <div class="col-md-3">
-                <img src="images/course/sm-2.jpg" alt="" />
-              </div>
-              <!--POPULAR COURSES: CONTENT-->
-              <div class="col-md-9 home-top-cour-desc">
-                <a href="course-details.html">
-                  <h3>Agriculture Courses</h3>
-                </a>
-                <h4>Technology / Space / Aerospace</h4>
-                <p>
-                  Classes started from coming friday(21 jun 2017),total seats
-                  72 and available seats 10
-                </p>
-                <span class="home-top-cour-rat">4.2</span>
-                <div class="hom-list-share">
-                  <ul>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
-                        Book Now</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-eye" aria-hidden="true"></i>40
-                        Aavailable</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-share-alt" aria-hidden="true"></i>
-                        320</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!--POPULAR COURSES-->
-            <div class="home-top-cour" id="courses-content">
-              <!--POPULAR COURSES IMAGE-->
-              <div class="col-md-3">
-                <img src="images/course/sm-3.jpg" alt="" />
-              </div>
-              <!--POPULAR COURSES: CONTENT-->
-              <div class="col-md-9 home-top-cour-desc">
-                <a href="course-details.html">
-                  <h3>Marine Engineering</h3>
-                </a>
-                <h4>Technology / Ocean / Marine</h4>
-                <p>
-                  Classes started from coming friday(21 jun 2017),total seats
-                  72 and available seats 10
-                </p>
-                <span class="home-top-cour-rat">4.2</span>
-                <div class="hom-list-share">
-                  <ul>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
-                        Book Now</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-eye" aria-hidden="true"></i>04
-                        Aavailable</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-share-alt" aria-hidden="true"></i>
-                        1020</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!--POPULAR COURSES-->
-            <div class="home-top-cour" id="courses-content">
-              <!--POPULAR COURSES IMAGE-->
-              <div class="col-md-3">
-                <img src="images/course/sm-4.jpg" alt="" />
-              </div>
-              <!--POPULAR COURSES: CONTENT-->
-              <div class="col-md-9 home-top-cour-desc">
-                <a href="course-details.html">
-                  <h3>Building, Construction Management</h3>
-                </a>
-                <h4>Technology / Construction / Building</h4>
-                <p>
-                  Classes started from coming friday(21 jun 2017),total seats
-                  72 and available seats 10
-                </p>
-                <span class="home-top-cour-rat">4.2</span>
-                <div class="hom-list-share">
-                  <ul>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
-                        Book Now</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-eye" aria-hidden="true"></i>32
-                        Aavailable</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-share-alt" aria-hidden="true"></i>
-                        124</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div>
-            <!--POPULAR COURSES-->
-            <div class="home-top-cour" id="courses-content">
-              <!--POPULAR COURSES IMAGE-->
-              <div class="col-md-3">
-                <img src="images/course/sm-5.jpg" alt="" />
-              </div>
-              <!--POPULAR COURSES: CONTENT-->
-              <div class="col-md-9 home-top-cour-desc">
-                <a href="course-details.html">
-                  <h3>Fashion Technology</h3>
-                </a>
-                <h4>Technology / Trends / Fashion</h4>
-                <p>
-                  Classes started from coming friday(21 jun 2017),total seats
-                  72 and available seats 10
-                </p>
-                <span class="home-top-cour-rat">4.2</span>
-                <div class="hom-list-share">
-                  <ul>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
-                        Book Now</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-eye" aria-hidden="true"></i>10
-                        Aavailable</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-share-alt" aria-hidden="true"></i>
-                        570</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!--POPULAR COURSES-->
-            <div class="home-top-cour" id="courses-content">
-              <!--POPULAR COURSES IMAGE-->
-              <div class="col-md-3">
-                <img src="images/course/sm-6.jpg" alt="" />
-              </div>
-              <!--POPULAR COURSES: CONTENT-->
-              <div class="col-md-9 home-top-cour-desc">
-                <a href="course-details.html">
-                  <h3>Agriculture Courses</h3>
-                </a>
-                <h4>Technology / Space / Aerospace</h4>
-                <p>
-                  Classes started from coming friday(21 jun 2017),total seats
-                  72 and available seats 10
-                </p>
-                <span class="home-top-cour-rat">4.2</span>
-                <div class="hom-list-share">
-                  <ul>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
-                        Book Now</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-eye" aria-hidden="true"></i>40
-                        Aavailable</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-share-alt" aria-hidden="true"></i>
-                        320</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!--POPULAR COURSES-->
-            <div class="home-top-cour" id="courses-content">
-              <!--POPULAR COURSES IMAGE-->
-              <div class="col-md-3">
-                <img src="images/course/sm-7.jpg" alt="" />
-              </div>
-              <!--POPULAR COURSES: CONTENT-->
-              <div class="col-md-9 home-top-cour-desc">
-                <a href="course-details.html">
-                  <h3>Marine Engineering</h3>
-                </a>
-                <h4>Technology / Ocean / Marine</h4>
-                <p>
-                  Classes started from coming friday(21 jun 2017),total seats
-                  72 and available seats 10
-                </p>
-                <span class="home-top-cour-rat">4.2</span>
-                <div class="hom-list-share">
-                  <ul>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
-                        Book Now</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-eye" aria-hidden="true"></i>04
-                        Aavailable</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-share-alt" aria-hidden="true"></i>
-                        1020</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!--POPULAR COURSES-->
-            <div class="home-top-cour" id="courses-content">
-              <!--POPULAR COURSES IMAGE-->
-              <div class="col-md-3">
-                <img src="images/course/sm-8.jpg" alt="" />
-              </div>
-              <!--POPULAR COURSES: CONTENT-->
-              <div class="col-md-9 home-top-cour-desc">
-                <a href="course-details.html">
-                  <h3>Building, Construction Management</h3>
-                </a>
-                <h4>Technology / Construction / Building</h4>
-                <p>
-                  Classes started from coming friday(21 jun 2017),total seats
-                  72 and available seats 10
-                </p>
-                <span class="home-top-cour-rat">4.2</span>
-                <div class="hom-list-share">
-                  <ul>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
-                        Book Now</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-eye" aria-hidden="true"></i>32
-                        Aavailable</a>
-                    </li>
-                    <li>
-                      <a href="course-details.html"><i class="fa fa-share-alt" aria-hidden="true"></i>
-                        124</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- UPCOMING EVENTS -->
-  <section>
-    <div class="container com-sp pad-bot-0">
-      <div class="row">
-        <div class="col-md-4">
-          <!--<div class="ho-ex-title">
-							<h4>Upcoming Event</h4>
-						</div>-->
-          <div class="ho-ev-latest ho-ev-latest-bg-1">
-            <div class="ho-lat-ev">
-              <h4>Upcoming Event</h4>
-              <p>
-                Nulla at velit convallis, venenatis lacus quis, efficitur
-                lectus.
+            <div
+              class="col-lg-6 order-2 order-lg-1 content"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <h3>Voluptatem dignissimos provident quasi corporis</h3>
+              <p class="fst-italic">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
+              <ul>
+                <li>
+                  <i class="bi bi-check-circle"></i>
+                  <span
+                    >Ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.</span
+                  >
+                </li>
+                <li>
+                  <i class="bi bi-check-circle"></i>
+                  <span
+                    >Duis aute irure dolor in reprehenderit in voluptate
+                    velit.</span
+                  >
+                </li>
+                <li>
+                  <i class="bi bi-check-circle"></i>
+                  <span
+                    >Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate trideta
+                    storacalaperda mastiro dolore eu fugiat nulla
+                    pariatur.</span
+                  >
+                </li>
+              </ul>
+              <a href="#" class="read-more"
+                ><span>Read More</span><i class="bi bi-arrow-right"></i
+              ></a>
             </div>
-          </div>
-          <div class="ho-event ho-event-mob-bot-sp">
-            <ul>
-              <li>
-                <div class="ho-ev-date">
-                  <span>07</span><span>jan,2018</span>
-                </div>
-                <div class="ho-ev-link">
-                  <a href="events.html">
-                    <h4>Latinoo College Expo 2018</h4>
-                  </a>
-                  <p>
-                    Nulla at velit convallis, venenatis lacus quis, efficitur
-                    lectus.
-                  </p>
-                  <span>9:15 am – 5:00 pm</span>
-                </div>
-              </li>
-              <li>
-                <div class="ho-ev-date">
-                  <span>12</span><span>jan,2018</span>
-                </div>
-                <div class="ho-ev-link">
-                  <a href="events.html">
-                    <h4>Training at Team Fabio Clemente</h4>
-                  </a>
-                  <p>Nulla at velit convallis venenatis.</p>
-                  <span>9:15 am – 5:00 pm</span>
-                </div>
-              </li>
-              <li>
-                <div class="ho-ev-date">
-                  <span>26</span><span>jan,2018</span>
-                </div>
-                <div class="ho-ev-link">
-                  <a href="events.html">
-                    <h4>Nulla at velit convallis</h4>
-                  </a>
-                  <p>
-                    Nulla at velit convallis, venenatis lacus quis, efficitur
-                    lectus.
-                  </p>
-                  <span>9:15 am – 5:00 pm</span>
-                </div>
-              </li>
-              <li>
-                <div class="ho-ev-date">
-                  <span>18</span><span>jan,2018</span>
-                </div>
-                <div class="ho-ev-link">
-                  <a href="events.html">
-                    <h4>Admissions Information Session and Tour</h4>
-                  </a>
-                  <p>
-                    Nulla at velit convallis, venenatis lacus quis, efficitur
-                    lectus.
-                  </p>
-                  <span>9:15 am – 5:00 pm</span>
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
-        <div class="col-md-4">
-          <!--<div class="ho-ex-title">
-							<h4>Upcoming Event</h4>
-						</div>-->
-          <div class="ho-ev-latest ho-ev-latest-bg-2">
-            <div class="ho-lat-ev">
-              <h4>Job Vacants</h4>
-              <p>
-                Nulla at velit convallis, venenatis lacus quis, efficitur
-                lectus.
-              </p>
+      </section>
+      <!-- /About Section -->
+
+      <!-- Counts Section -->
+      <section id="counts" class="section counts light-background">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row gy-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="1232"
+                  data-purecounter-duration="1"
+                  class="purecounter"
+                ></span>
+                <p>Students</p>
+              </div>
             </div>
-          </div>
-          <div class="ho-event ho-event-mob-bot-sp">
-            <ul>
-              <li>
-                <div class="ho-ev-img">
-                  <img src="images/event/1.jpg" alt="" />
-                </div>
-                <div class="ho-ev-link">
-                  <a href="#">
-                    <h4>Almost before we knew it, we had left the ground</h4>
-                  </a>
-                  <p>Etiam ornare lacus nec lectus vestibulum aliquam.</p>
-                  <span>Location: New York</span>
-                </div>
-              </li>
-              <li>
-                <div class="ho-ev-img">
-                  <img src="images/event/2.jpg" alt="" />
-                </div>
-                <div class="ho-ev-link">
-                  <a href="#">
-                    <h4>Then came the night of the first falling star.</h4>
-                  </a>
-                  <p>Vestibulum sollicitudin sem arcu</p>
-                  <span>Location: Los Angeles</span>
-                </div>
-              </li>
-              <li>
-                <div class="ho-ev-img">
-                  <img src="images/event/3.jpg" alt="" />
-                </div>
-                <div class="ho-ev-link">
-                  <a href="#">
-                    <h4>Educate to Empower NYE Party</h4>
-                  </a>
-                  <p>
-                    Vestibulum sollicitudin sem arcu, eget ullamcorper purus
-                    hendrerit
-                  </p>
-                  <span>Location: Chennai</span>
-                </div>
-              </li>
-              <li>
-                <div class="ho-ev-img">
-                  <img src="images/event/4.jpg" alt="" />
-                </div>
-                <div class="ho-ev-link">
-                  <a href="#">
-                    <h4>Then came the night of the first falling star.</h4>
-                  </a>
-                  <p>Venenatis lacus lectus.</p>
-                  <span>Location: Chicago</span>
-                </div>
-              </li>
-            </ul>
+            <!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="64"
+                  data-purecounter-duration="1"
+                  class="purecounter"
+                ></span>
+                <p>Courses</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="42"
+                  data-purecounter-duration="1"
+                  class="purecounter"
+                ></span>
+                <p>Events</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span
+                  data-purecounter-start="0"
+                  data-purecounter-end="24"
+                  data-purecounter-duration="1"
+                  class="purecounter"
+                ></span>
+                <p>Trainers</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
           </div>
         </div>
-        <div class="col-md-4">
-          <!--<div class="ho-ex-title">
-							<h4>Upcoming Event</h4>
-						</div>-->
-          <div class="ho-ev-latest ho-ev-latest-bg-3">
-            <div class="ho-lat-ev">
-              <h4>Register & Login</h4>
-              <p>
-                Student area velit convallis venenatis lacus quis, efficitur
-                lectus.
-              </p>
+      </section>
+      <!-- /Counts Section -->
+
+      <!-- Why Us Section -->
+      <section id="why-us" class="section why-us">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="why-box">
+                <h3>Why Choose Our Products?</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Duis aute irure dolor in reprehenderit Asperiores dolores sed
+                  et. Tenetur quia eos. Autem tempore quibusdam vel
+                  necessitatibus optio ad corporis.
+                </p>
+                <div class="text-center">
+                  <a href="#" class="more-btn"
+                    ><span>Learn More</span> <i class="bi bi-chevron-right"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <!-- End Why Box -->
+
+            <div class="col-lg-8 d-flex align-items-stretch">
+              <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-xl-4">
+                  <div
+                    class="icon-box d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <i class="bi bi-clipboard-data"></i>
+                    <h4>Corporis voluptates officia eiusmod</h4>
+                    <p>
+                      Consequuntur sunt aut quasi enim aliquam quae harum
+                      pariatur laboris nisi ut aliquip
+                    </p>
+                  </div>
+                </div>
+                <!-- End Icon Box -->
+
+                <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+                  <div
+                    class="icon-box d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <i class="bi bi-gem"></i>
+                    <h4>Ullamco laboris ladore pan</h4>
+                    <p>
+                      Excepteur sint occaecat cupidatat non proident, sunt in
+                      culpa qui officia deserunt
+                    </p>
+                  </div>
+                </div>
+                <!-- End Icon Box -->
+
+                <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+                  <div
+                    class="icon-box d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <i class="bi bi-inboxes"></i>
+                    <h4>Labore consequatur incidid dolore</h4>
+                    <p>
+                      Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut
+                      maiores omnis facere
+                    </p>
+                  </div>
+                </div>
+                <!-- End Icon Box -->
+              </div>
             </div>
           </div>
-          <div class="ho-st-login">
-            <ul class="tabs tabs-hom-reg">
-              <!--                 <li class="tab col s6"><a href="#hom-vijay">Register</a></li>
- -->
-              <li class="tab col s6"><a href="#hom_log">Login</a></li>
-            </ul>
-            <!--                  <div id="hom-vijay" class="col s12">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input type="text" class="validate" />
-                      <label>User name</label>
-                    </div>
+        </div>
+      </section>
+      <!-- /Why Us Section -->
+
+      <!-- Features Section -->
+      <section id="features" class="features section">
+        <div class="container">
+          <div class="row gy-4">
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="features-item">
+                <i class="bi bi-eye" style="color: #ffbb2c"></i>
+                <h3><a href="" class="stretched-link">Lorem Ipsum</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="features-item">
+                <i class="bi bi-infinity" style="color: #5578ff"></i>
+                <h3><a href="" class="stretched-link">Dolor Sitema</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="features-item">
+                <i class="bi bi-mortarboard" style="color: #e80368"></i>
+                <h3><a href="" class="stretched-link">Sed perspiciatis</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="features-item">
+                <i class="bi bi-nut" style="color: #e361ff"></i>
+                <h3><a href="" class="stretched-link">Magni Dolores</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <div class="features-item">
+                <i class="bi bi-shuffle" style="color: #47aeff"></i>
+                <h3><a href="" class="stretched-link">Nemo Enim</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <div class="features-item">
+                <i class="bi bi-star" style="color: #ffa76e"></i>
+                <h3><a href="" class="stretched-link">Eiusmod Tempor</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="700"
+            >
+              <div class="features-item">
+                <i class="bi bi-x-diamond" style="color: #11dbcf"></i>
+                <h3><a href="" class="stretched-link">Midela Teren</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="800"
+            >
+              <div class="features-item">
+                <i class="bi bi-camera-video" style="color: #4233ff"></i>
+                <h3><a href="" class="stretched-link">Pira Neve</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="900"
+            >
+              <div class="features-item">
+                <i class="bi bi-command" style="color: #b2904f"></i>
+                <h3><a href="" class="stretched-link">Dirada Pack</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="1000"
+            >
+              <div class="features-item">
+                <i class="bi bi-dribbble" style="color: #b20969"></i>
+                <h3><a href="" class="stretched-link">Moton Ideal</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="1100"
+            >
+              <div class="features-item">
+                <i class="bi bi-activity" style="color: #ff5828"></i>
+                <h3><a href="" class="stretched-link">Verdo Park</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+
+            <div
+              class="col-lg-3 col-md-4"
+              data-aos="fade-up"
+              data-aos-delay="1200"
+            >
+              <div class="features-item">
+                <i class="bi bi-brightness-high" style="color: #29cc61"></i>
+                <h3><a href="" class="stretched-link">Flavor Nivelanda</a></h3>
+              </div>
+            </div>
+            <!-- End Feature Item -->
+          </div>
+        </div>
+      </section>
+      <!-- /Features Section -->
+
+      <!-- Courses Section -->
+      <section id="courses" class="courses section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Courses</h2>
+          <p>Popular Courses</p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              <div class="course-item">
+                <img
+                  src="assets/img/course-1.jpg"
+                  class="img-fluid"
+                  alt="..."
+                />
+                <div class="course-content">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <p class="category">Web Development</p>
+                    <p class="price">$169</p>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input type="text" class="validate" />
-                      <label>Email id</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input type="password" class="validate" />
-                      <label>Password</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input type="password" class="validate" />
-                      <label>Confirm password</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input
-                        type="submit"
-                        value="Register"
-                        class="waves-effect waves-light light-btn"
+
+                  <h3><a href="course-details.html">Website Design</a></h3>
+                  <p class="description">
+                    Et architecto provident deleniti facere repellat nobis iste.
+                    Id facere quia quae dolores dolorem tempore.
+                  </p>
+                  <div
+                    class="trainer d-flex justify-content-between align-items-center"
+                  >
+                    <div class="trainer-profile d-flex align-items-center">
+                      <img
+                        src="assets/img/trainers/trainer-1-2.jpg"
+                        class="img-fluid"
+                        alt=""
                       />
+                      <a href="" class="trainer-link">Antonio</a>
+                    </div>
+                    <div class="trainer-rank d-flex align-items-center">
+                      <i class="bi bi-person user-icon"></i>&nbsp;50
+                      &nbsp;&nbsp;
+                      <i class="bi bi-heart heart-icon"></i>&nbsp;65
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
-  -->
-            <div id="hom_log" class="col s12">
-              <form class="col s12">
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" class="validate" />
-                    <label>Student user name</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" class="validate" />
-                    <label>Password</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input type="submit" value="Login" class="waves-effect waves-light light-btn" />
-                  </div>
-                </div>
-              </form>
             </div>
+            <!-- End Course Item-->
+
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
+              data-aos="zoom-in"
+              data-aos-delay="200"
+            >
+              <div class="course-item">
+                <img
+                  src="assets/img/course-2.jpg"
+                  class="img-fluid"
+                  alt="..."
+                />
+                <div class="course-content">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <p class="category">Marketing</p>
+                    <p class="price">$250</p>
+                  </div>
+
+                  <h3>
+                    <a href="course-details.html">Search Engine Optimization</a>
+                  </h3>
+                  <p class="description">
+                    Et architecto provident deleniti facere repellat nobis iste.
+                    Id facere quia quae dolores dolorem tempore.
+                  </p>
+                  <div
+                    class="trainer d-flex justify-content-between align-items-center"
+                  >
+                    <div class="trainer-profile d-flex align-items-center">
+                      <img
+                        src="assets/img/trainers/trainer-2-2.jpg"
+                        class="img-fluid"
+                        alt=""
+                      />
+                      <a href="" class="trainer-link">Lana</a>
+                    </div>
+                    <div class="trainer-rank d-flex align-items-center">
+                      <i class="bi bi-person user-icon"></i>&nbsp;35
+                      &nbsp;&nbsp;
+                      <i class="bi bi-heart heart-icon"></i>&nbsp;42
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Course Item-->
+
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
+              data-aos="zoom-in"
+              data-aos-delay="300"
+            >
+              <div class="course-item">
+                <img
+                  src="assets/img/course-3.jpg"
+                  class="img-fluid"
+                  alt="..."
+                />
+                <div class="course-content">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <p class="category">Content</p>
+                    <p class="price">$180</p>
+                  </div>
+
+                  <h3><a href="course-details.html">Copywriting</a></h3>
+                  <p class="description">
+                    Et architecto provident deleniti facere repellat nobis iste.
+                    Id facere quia quae dolores dolorem tempore.
+                  </p>
+                  <div
+                    class="trainer d-flex justify-content-between align-items-center"
+                  >
+                    <div class="trainer-profile d-flex align-items-center">
+                      <img
+                        src="assets/img/trainers/trainer-3-2.jpg"
+                        class="img-fluid"
+                        alt=""
+                      />
+                      <a href="" class="trainer-link">Brandon</a>
+                    </div>
+                    <div class="trainer-rank d-flex align-items-center">
+                      <i class="bi bi-person user-icon"></i>&nbsp;20
+                      &nbsp;&nbsp;
+                      <i class="bi bi-heart heart-icon"></i>&nbsp;85
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Course Item-->
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+      <!-- /Courses Section -->
 
-  <!-- NEWS AND EVENTS -->
-  <section>
-    <div class="container com-sp">
-      <div class="row">
-        <div class="con-title">
-          <h2>News and <span>Events</span></h2>
-          <p>
-            Fusce id sem at ligula laoreet hendrerit venenatis sed purus. Ut
-            pellentesque maximus lacus, nec pharetra augue.
-          </p>
+      <!-- Trainers Index Section -->
+      <section id="trainers-index" class="section trainers-index">
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-lg-4 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="member">
+                <img
+                  src="assets/img/trainers/trainer-1.jpg"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="member-content">
+                  <h4>Walter White</h4>
+                  <span>Web Development</span>
+                  <p>
+                    Magni qui quod omnis unde et eos fuga et exercitationem.
+                    Odio veritatis perspiciatis quaerat qui aut aut aut
+                  </p>
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Team Member -->
+
+            <div
+              class="col-lg-4 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="member">
+                <img
+                  src="assets/img/trainers/trainer-2.jpg"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="member-content">
+                  <h4>Sarah Jhinson</h4>
+                  <span>Marketing</span>
+                  <p>
+                    Repellat fugiat adipisci nemo illum nesciunt voluptas
+                    repellendus. In architecto rerum rerum temporibus
+                  </p>
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Team Member -->
+
+            <div
+              class="col-lg-4 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="member">
+                <img
+                  src="assets/img/trainers/trainer-3.jpg"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="member-content">
+                  <h4>William Anderson</h4>
+                  <span>Content</span>
+                  <p>
+                    Voluptas necessitatibus occaecati quia. Earum totam
+                    consequuntur qui porro et laborum toro des clara
+                  </p>
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Team Member -->
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="bot-gal h-gal ho-event-mob-bot-sp">
-            <h4>Photo Gallery</h4>
+      </section>
+      <!-- /Trainers Index Section -->
+    </main>
+
+    <footer id="footer" class="footer position-relative light-background">
+      <div class="container footer-top">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <span class="sitename">Mentor</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>A108 Adam Street</p>
+              <p>New York, NY 535022</p>
+              <p class="mt-3">
+                <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+              </p>
+              <p><strong>Email:</strong> <span>info@example.com</span></p>
+            </div>
+            <div class="social-links d-flex mt-4">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Useful Links</h4>
             <ul>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/8.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/9.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/10.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/11.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/1.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/2.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/3.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/4.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/5.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/6.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/7.jpg"
-                  alt="" />
-              </li>
-              <li>
-                <img class="materialboxed" data-caption="Education master image captions" src="images/ami/8.jpg"
-                  alt="" />
-              </li>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Privacy policy</a></li>
             </ul>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="bot-gal h-vid ho-event-mob-bot-sp">
-            <h4>Video Gallery</h4>
-            <iframe src="https://www.youtube.com/embed/2WqFtiR4-F4?autoplay=0&amp;showinfo=0&amp;controls=0"
-              allowfullscreen></iframe>
-            <h5>Maecenas sollicitudin lacinia</h5>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">Product Management</a></li>
+              <li><a href="#">Marketing</a></li>
+              <li><a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-newsletter">
+            <h4>Our Newsletter</h4>
             <p>
-              Maecenas finibus neque a tellus auctor mattis. Aliquam tempor
-              varius ornare. Maecenas dignissim leo leo, nec posuere purus
-              finibus vitae.
+              Subscribe to our newsletter and receive the latest news about our
+              products and services!
             </p>
-            <p>
-              Quisque vitae neque at tellus malesuada convallis. Phasellus in
-              lectus vitae ex euismod interdum non a lorem. Nulla bibendum.
-              Curabitur mi odio, tempus quis risus cursus.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="bot-gal h-blog ho-event">
-            <h4>News & Event</h4>
-            <div class="ho-event">
-              <ul>
-                <li>
-                  <div class="ho-ev-date">
-                    <span>07</span><span>jan,2018</span>
-                  </div>
-                  <div class="ho-ev-link">
-                    <a href="events.html">
-                      <h4>Latinoo College Expo 2018</h4>
-                    </a>
-                    <p>
-                      Nulla at velit convallis, venenatis lacus quis,
-                      efficitur lectus.
-                    </p>
-                    <span>9:15 am – 5:00 pm</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="ho-ev-date">
-                    <span>12</span><span>jan,2018</span>
-                  </div>
-                  <div class="ho-ev-link">
-                    <a href="events.html">
-                      <h4>Training at Team Fabio Clemente</h4>
-                    </a>
-                    <p>Nulla at velit convallis venenatis.</p>
-                    <span>9:15 am – 5:00 pm</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="ho-ev-date">
-                    <span>26</span><span>jan,2018</span>
-                  </div>
-                  <div class="ho-ev-link">
-                    <a href="events.html">
-                      <h4>Nulla at velit convallis</h4>
-                    </a>
-                    <p>
-                      Nulla at velit convallis, venenatis lacus quis,
-                      efficitur lectus.
-                    </p>
-                    <span>9:15 am – 5:00 pm</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="ho-ev-date">
-                    <span>18</span><span>jan,2018</span>
-                  </div>
-                  <div class="ho-ev-link">
-                    <a href="events.html">
-                      <h4>Admissions Information Session and Tour</h4>
-                    </a>
-                    <p>
-                      Nulla at velit convallis, venenatis lacus quis,
-                      efficitur lectus.
-                    </p>
-                    <span>9:15 am – 5:00 pm</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <form
+              action="forms/newsletter.php"
+              method="post"
+              class="php-email-form"
+            >
+              <div class="newsletter-form">
+                <input type="email" name="email" /><input
+                  type="submit"
+                  value="Subscribe"
+                />
+              </div>
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">
+                Your subscription request has been sent. Thank you!
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- FOOTER COURSE BOOKING -->
-  <section>
-    <div class="full-bot-book">
-      <div class="container">
-        <div class="row">
-          <div class="bot-book">
-            <div class="col-md-2 bb-img">
-              <img src="images/3.png" alt="" />
-            </div>
-            <div class="col-md-7 bb-text">
-              <h4>therefore always free from repetition</h4>
-              <p>
-                There are many variations of passages of Lorem Ipsum
-                available, but the majority have suffered alteration in some
-                form, by injected humour
-              </p>
-            </div>
-            <div class="col-md-3 bb-link">
-              <a href="course-details.html">Book This Course</a>
-            </div>
-          </div>
+      <div class="container copyright text-center mt-4">
+        <p>
+          © <span>Copyright</span>
+          <strong class="px-1 sitename">UCCD</strong>
+          <span>All Rights Reserved</span>
+        </p>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you've purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         </div>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- FOOTER -->
-  <section class="wed-hom-footer">
-    <div class="container">
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
-      <div class="row wed-foot-link">
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
-        <div class="col-md-4">
-          <h4>New Courses</h4>
-          <ul>
-            <li><a href="course-details.html">Sciences</a></li>
-            <li><a href="course-details.html">Statistics</a></li>
-            <li><a href="course-details.html">Web Design/Development</a></li>
-            <li><a href="course-details.html">SEO</a></li>
-            <li><a href="course-details.html">Google Business</a></li>
-            <li><a href="course-details.html">Graphics Design</a></li>
-            <li><a href="course-details.html">Networking Courses</a></li>
-            <li><a href="course-details.html">Information technology</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h4>HELP & SUPPORT</h4>
-          <ul>
-            <li><a href="#">24x7 Live help</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">Feedback</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Safety Tips</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h4>SOCIAL MEDIA</h4>
-          <ul>
-            <li>
-              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-    </div>
-  </section>
-
-  <title>UCCD Center</title>
-  <!--SECTION LOGIN, REGISTER AND FORGOT PASSWORD-->
-  <section>
-    <!-- LOGIN SECTION -->
-    <div id="modal1" class="modal fade" role="dialog">
-      <div class="log-in-pop">
-        <div class="log-in-pop-left">
-          <h1>Hello...</h1>
-        </div>
-        <div class="log-in-pop-right">
-          <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
-          </a>
-          <h4>Login</h4>
-
-          <form class="s12">
-            <div>
-              <div class="input-field s12">
-                <input type="text" data-ng-model="name" class="validate" />
-                <label>User name</label>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <input type="password" class="validate" />
-                <label>Password</label>
-              </div>
-            </div>
-            <div>
-              <div class="s12 log-ch-bx">
-                <p>
-                  <input type="checkbox" id="test5" />
-                  <label for="test5">Remember me</label>
-                </p>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s4">
-                <input type="submit" value="Login" class="waves-effect waves-light log-in-btn" />
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal3">Forgot password</a>
-                | >
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- REGISTER SECTION -->
-    <div id="modal2" class="modal fade" role="dialog">
-      <div class="log-in-pop">
-        <div class="log-in-pop-left">
-          <h1>Hello...</h1>
-        </div>
-        <div class="log-in-pop-right">
-          <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
-          </a>
-          <h4>Create an Account</h4>
-
-          <form class="s12">
-            <div>
-              <div class="input-field s12">
-                <input type="text" data-ng-model="name1" class="validate" />
-                <label>User name</label>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <input type="email" class="validate" />
-                <label>Email id</label>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <input type="password" class="validate" />
-                <label>Password</label>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <input type="password" class="validate" />
-                <label>Confirm password</label>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s4">
-                <input type="submit" value="Register" class="waves-effect waves-light log-in-btn" />
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1">Are you a already member ?
-                  Login</a>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- FORGOT SECTION -->
-    <div id="modal3" class="modal fade" role="dialog">
-      <div class="log-in-pop">
-        <div class="log-in-pop-left">
-          <h1>Hello...</h1>
-        </div>
-        <div class="log-in-pop-right">
-          <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
-          </a>
-          <h4>Forgot password</h4>
-
-          <form class="s12">
-            <div>
-              <div class="input-field s12">
-                <input type="text" data-ng-model="name3" class="validate" />
-                <label>User name or email id</label>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s4">
-                <input type="submit" value="Submit" class="waves-effect waves-light log-in-btn" />
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1">Are you a already member ?
-                  Login</a>
-                | >
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--Import jQuery before materialize.js-->
-  <script src="js/main.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/custom.js"></script>
-</body>
-
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
