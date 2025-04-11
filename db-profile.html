@@ -2,625 +2,586 @@
 <html lang="en">
 
 <head>
-  <title>UCCD Center</title> <!-- META TAGS -->
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" />
-  <meta name="keyword" />
-  <!-- FAV ICON(BROWSER TAB ICON) -->
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>My Profile - UCCD</title>
+  <meta name="description" content="UCCD Student Profile - Manage your account and personal information" />
+  <meta name="keywords" content="UCCD, student, profile, account" />
+
+  <!-- Favicons -->
   <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
-  <!-- GOOGLE FONT -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
-  <!-- FONTAWESOME ICONS -->
-  <link rel="stylesheet" href="css/font-awesome.min.css" />
-  <!-- ALL CSS FILES -->
-  <link href="css/materialize.css" rel="stylesheet" />
-  <link href="css/bootstrap.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
-  <link href="css/style-mob.css" rel="stylesheet" />
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-light: #eef2ff;
+      --secondary: #3f37c9;
+      --accent: #ffd400;
+      --dark: #2a3546;
+      --gray: #6a6a6a;
+      --light-gray: #f8f9fa;
+      --success: #28a745;
+      --danger: #dc3545;
+      --warning: #fd7e14;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f7fb;
+    }
+
+    .profile-container {
+      padding: 2rem 0;
+    }
+
+    /* Profile Header */
+    .profile-header {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-avatar {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-right: 2rem;
+    }
+
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--primary-light);
+    }
+
+    .avatar-edit {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 3px solid white;
+    }
+
+    .profile-info h2 {
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-info p {
+      color: var(--gray);
+      margin-bottom: 0.75rem;
+    }
+
+    .profile-stats {
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    .stat-item {
+      margin-right: 1.5rem;
+    }
+
+    .stat-item h4 {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-item p {
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    /* Profile Navigation */
+    .profile-nav {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .profile-nav .nav-link {
+      color: var(--gray);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .profile-nav .nav-link i {
+      margin-right: 0.75rem;
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    .profile-nav .nav-link.active {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .profile-nav .nav-link:hover:not(.active) {
+      background: var(--light-gray);
+      color: var(--dark);
+    }
+
+    /* Profile Content */
+    .profile-section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header h4 {
+      color: var(--dark);
+      font-weight: 600;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-header h4 i {
+      margin-right: 0.75rem;
+      color: var(--primary);
+    }
+
+    /* Profile Details */
+    .profile-details {
+      width: 100%;
+    }
+
+    .profile-details tr {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .profile-details tr:last-child {
+      border-bottom: none;
+    }
+
+    .profile-details td {
+      padding: 1rem 0;
+      vertical-align: top;
+    }
+
+    .profile-details td:first-child {
+      width: 30%;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .profile-details td:last-child {
+      color: var(--gray);
+    }
+
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .status-active {
+      background: rgba(40, 167, 69, 0.1);
+      color: var(--success);
+    }
+
+    /* Edit Button */
+    .edit-profile-btn {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .edit-profile-btn:hover {
+      background: var(--secondary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .edit-profile-btn i {
+      margin-right: 0.5rem;
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-avatar {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+      }
+
+      .profile-stats {
+        justify-content: center;
+      }
+
+      .profile-details td:first-child {
+        width: 40%;
+      }
+    }
+  </style>
 </head>
 
-<body>
-  <!-- MOBILE MENU -->
-  <section>
-    <div class="ed-mob-menu">
-      <div class="ed-mob-menu-con">
-        <div class="ed-mm-left">
-          <div class="wed-logo">
-            <a href=" index.html">
-              <div class="logo-div">
-                <img src="images/uccd-logo.png" />
-                <p>UCCD</p>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="ed-mm-right">
-          <div class="ed-mm-menu">
-            <a href="#!" class="ed-micon"><i class="fa fa-bars"></i></a>
-            <div class="ed-mm-inn">
-              <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
-              <h4>All Courses</h4>
-              <ul>
-                <li><a href="course-details.html">Accounting/Finance</a></li>
-                <li><a href="course-details.html">civil engineering</a></li>
-                <li><a href="course-details.html">Art/Design</a></li>
-                <li><a href="course-details.html">Marine Engineering</a></li>
-                <li><a href="course-details.html">Business Management</a></li>
-                <li><a href="course-details.html">Journalism/Writing</a></li>
-                <li><a href="course-details.html">Physical Education</a></li>
-                <li><a href="course-details.html">Political Science</a></li>
-                <li><a href="course-details.html">Sciences</a></li>
-                <li><a href="course-details.html">Statistics</a></li>
-                <li>
-                  <a href="course-details.html">Web Design/Development</a>
-                </li>
-                <li><a href="course-details.html">SEO</a></li>
-                <li><a href="course-details.html">Google Business</a></li>
-                <li><a href="course-details.html">Graphics Design</a></li>
-                <li><a href="course-details.html">Networking Courses</a></li>
-                <li>
-                  <a href="course-details.html">Information technology</a>
-                </li>
-              </ul>
-              <h4>User Account</h4>
-              <ul>
-                <li>
-                  <a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a>
-                </li>
-              </ul>
+<body class="index-page">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <img src="images/uccd-logo.png" alt="UCCD Logo" class="img-fluid">
+        <h1 class="sitename">UCCD</h1>
+      </a>
 
-              <h4>User Profile</h4>
-              <ul>
-                <li><a href="dashboard.html">User profile</a></li>
-                <li><a href="db-courses.html">Courses</a></li>
-                <li><a href="db-exams.html">Exams</a></li>
-                <li><a href="db-profile.html">Prfile</a></li>
-                <li><a href="db-time-line.html">Time line</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="trainers.html">Trainers</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-actions d-flex align-items-center">
+        <a class="btn-getstarted" href="#!" data-bs-toggle="modal" data-bs-target="#modal1">
+          <i class="bi bi-box-arrow-in-right me-1"></i> Sign out
+        </a>
       </div>
     </div>
-  </section>
+  </header><!-- End Header -->
 
-  <!--HEADER SECTION-->
-  <section>
-    <!-- TOP BAR -->
-    <div class="ed-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="ed-com-t1-left">
-              <ul></ul>
-            </div>
-            <div class="ed-com-t1-right">
-              <ul>
-                <li>
-                  <a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- LOGO AND MENU SECTION -->
-    <div class="top-logo" data-spy="affix" data-offset-top="250">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="wed-logo">
-              <a href=" index.html">
-                <div class="logo-div">
-                  <img src="images/uccd-logo.png" />
-                  <p>UCCD</p>
-                </div>
-              </a>
-            </div>
-            <div class="main-menu">
-              <ul>
-                <li><a href=" index.html">Home</a></li>
-                <li class="about-menu">
-                  <a href="about.html" class="mm-arr">About us</a>
-                  <!-- MEGA MENU 1 -->
-                  <div class="mm-pos">
-                    <div class="about-mm m-menu">
-                      <div class="m-menu-inn">
-                        <div class="mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay menu-about" href="admission.html">
-                              <img src="images/h-about.jpg" alt="" />
-                              <span>Academics</span>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="mm1-com mm1-s2">
-                          <p>
-                            Want to change the world? At Berkeley we’re doing
-                            just that. When you join the Golden Bear
-                            community, you’re part of an institution that
-                            shifts the global conversation every single day.
-                          </p>
-                          <a href="about.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm1-com mm1-s3">
-                          <ul>
-                            <li>
-                              <a href="all-courses.html">All Courses</a>
-                            </li>
-                            <li>
-                              <a href="course-details.html">Course details</a>
-                            </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="admission.html">Admission</a></li>
-                            <li><a href="awards.html">Awards</a></li>
-                          </ul>
-                        </div>
-                        <div class="mm1-com mm1-s4">
-                          <ul>
-                            <li>
-                              <a href="dashboard.html">Student profile</a>
-                            </li>
-                            <li>
-                              <a href="db-courses.html">Dashboard courses</a>
-                            </li>
-                            <li>
-                              <a href="db-exams.html">Dashboard exams</a>
-                            </li>
-                            <li>
-                              <a href="db-profile.html">Dashboard profile</a>
-                            </li>
-                            <li>
-                              <a href="db-time-line.html">Dashboard timeline</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="admi-menu">
-                  <!-- MEGA MENU 1 -->
-                  <div class="mm-pos">
-                    <div class="admi-mm m-menu">
-                      <div class="m-menu-inn">
-                        <div class="mm2-com mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="about.html">
-                              <img src="images/h-about1.jpg" alt="" />
-                              <span>Academics</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="about.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm2-com mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="admission.html">
-                              <img src="images/h-adm1.jpg" alt="" />
-                              <span>Admission</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="admission.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm2-com mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="awards.html">
-                              <img src="images/h-cam1.jpg" alt="" />
-                              <span>History & awards</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="awards.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm2-com mm1-com mm1-s4">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="seminar.html">
-                              <img src="images/h-res1.jpg" alt="" />
-                              <span>Seminar 2018</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="seminar.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li><a href="all-courses.html">All Courses</a></li>
-                <!--<li><a class='dropdown-button ed-sub-menu' href='#' data-activates='dropdown1'>Courses</a></li>-->
 
-                <li><a href="events.html">Events</a></li>
-                <li><a href="dashboard.html">Student</a></li>
-                <li><a href="contact-us.html">Contact us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="all-drop-down-menu"></div>
-        </div>
-      </div>
-    </div>
-    <div class="search-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="search-form">
-              <form>
-                <div class="sf-type">
-                  <div class="sf-input">
-                    <input type="text" id="sf-box" placeholder="Search course and discount courses" />
-                  </div>
-                  <div class="sf-list">
-                    <ul>
-                      <li>
-                        <a href="course-details.html">Accounting/Finance</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">civil engineering</a>
-                      </li>
-                      <li><a href="course-details.html">Art/Design</a></li>
-                      <li>
-                        <a href="course-details.html">Marine Engineering</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Business Management</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Journalism/Writing</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Physical Education</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Political Science</a>
-                      </li>
-                      <li><a href="course-details.html">Sciences</a></li>
-                      <li><a href="course-details.html">Statistics</a></li>
-                      <li>
-                        <a href="course-details.html">Web Design/Development</a>
-                      </li>
-                      <li><a href="course-details.html">SEO</a></li>
-                      <li>
-                        <a href="course-details.html">Google Business</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Graphics Design</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Networking Courses</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Information technology</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="sf-submit">
-                  <input type="submit" value="Search Course" />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--END HEADER SECTION-->
-
-  <!--SECTION START-->
-  <section>
-    <div class="pro-cover"></div>
-    <div class="pro-menu">
-      <div class="container">
-        <div class="col-md-9 col-md-offset-3">
-          <ul>
-            <li><a href="dashboard.html">My Dashboard</a></li>
-            <li><a href="db-profile.html" class="pro-act">Profile</a></li>
-            <li><a href="db-courses.html">Courses</a></li>
-            <li><a href="db-exams.html">Exams</a></li>
-            <li><a href="db-time-line.html">Time Line</a></li>
-            <li><a href="#">Entry</a></li>
-            <li><a href="#">Notifications</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="stu-db">
-      <div class="container pg-inn">
-        <div class="col-md-3">
-          <div class="pro-user">
-            <img src="images/user.jpg" alt="user" />
-          </div>
-          <div class="pro-user-bio">
-            <ul>
-              <li>
-                <h4>Emily Jessica</h4>
+  <!-- ======= Profile Section ======= -->
+  <section id="profile" class="profile">
+    <div class="container profile-container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-4">
+          <!-- Profile Navigation -->
+          <div class="profile-nav">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
               </li>
-              <li>Student Id: ST17241</li>
-              <li>
-                <a href="#!"><i class="fa fa-facebook"></i> Facebook: my sample</a>
+              <li class="nav-item">
+                <a class="nav-link active" href="db-profile.html"><i class="bi bi-person"></i> Profile</a>
               </li>
-              <li>
-                <a href="#!"><i class="fa fa-google-plus"></i> Google: my sample</a>
+              <li class="nav-item">
+                <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> My Courses</a>
               </li>
-              <li>
-                <a href="#!"><i class="fa fa-twitter"></i> Twitter: my sample</a>
+              <li class="nav-item">
+                <a class="nav-link" href="db-exams.html"><i class="bi bi-file-earmark-text"></i> Exams & Results</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="db-time-line.html"><i class="bi bi-calendar-event"></i> Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-md-9">
-          <div class="udb">
-            <div class="udb-sec udb-prof">
-              <h4><img src="images/icon/db1.png" alt="" /> My Profile</h4>
-              <p>
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters, as opposed to using 'Content
-                here, content here', making it look like readable English.
-              </p>
-              <div class="sdb-tabl-com sdb-pro-table">
-                <table class="responsive-table bordered">
-                  <tbody>
-                    <tr>
-                      <td>Student Name</td>
-                      <td>:</td>
-                      <td>Sam Anderson</td>
-                    </tr>
-                    <tr>
-                      <td>Student Id</td>
-                      <td>:</td>
-                      <td>ST17241</td>
-                    </tr>
-                    <tr>
-                      <td>Eamil</td>
-                      <td>:</td>
-                      <td>sam_anderson@gmail.com</td>
-                    </tr>
-                    <tr>
-                      <td>Phone</td>
-                      <td>:</td>
-                      <td>+01 4561 3214</td>
-                    </tr>
-                    <tr>
-                      <td>Date of birth</td>
-                      <td>:</td>
-                      <td>03 Jun 1990</td>
-                    </tr>
-                    <tr>
-                      <td>Address</td>
-                      <td>:</td>
-                      <td>
-                        8800 Orchard Lake Road, Suite 180 Farmington Hills,
-                        U.S.A.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Status</td>
-                      <td>:</td>
-                      <td><span class="db-done">Active</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="sdb-bot-edit">
-                  <p>
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it
-                    has a more-or-less normal distribution of letters
-                  </p>
-                  <a href="#" class="waves-effect waves-light btn-large sdb-btn sdb-btn-edit"><i
-                      class="fa fa-pencil"></i> Edit my profile</a>
+
+        <div class="col-lg-8">
+          <!-- Profile Header -->
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <img src="images/user.jpg" alt="Emily Jessica">
+              <div class="avatar-edit" data-bs-toggle="tooltip" title="Change photo">
+                <i class="bi bi-camera"></i>
+              </div>
+            </div>
+            <div class="profile-info">
+              <h2>Emily Jessica</h2>
+              <p>Student ID: ST17241</p>
+              <div class="profile-stats">
+                <div class="stat-item">
+                  <h4>12</h4>
+                  <p>Courses</p>
+                </div>
+                <div class="stat-item">
+                  <h4>3</h4>
+                  <p>Certificates</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--SECTION END-->
 
-  <!--SECTION START-->
-  <section>
-    <div class="full-bot-book">
-      <div class="container">
-        <div class="row">
-          <div class="bot-book">
-            <div class="col-md-2 bb-img">
-              <img src="images/3.png" alt="" />
+          <!-- Personal Information Section -->
+          <div class="profile-section">
+            <div class="section-header">
+              <h4><i class="bi bi-person-badge"></i> Personal Information</h4>
+              <button class="edit-profile-btn">
+                <i class="bi bi-pencil"></i> Edit Profile
+              </button>
             </div>
-            <div class="col-md-7 bb-text">
-              <h4>therefore always free from repetition</h4>
-              <p>
-                There are many variations of passages of Lorem Ipsum
-                available, but the majority have suffered alteration in some
-                form, by injected humour
-              </p>
+
+            <table class="profile-details">
+              <tbody>
+                <tr>
+                  <td>Full Name</td>
+                  <td>Emily Jessica</td>
+                </tr>
+                <tr>
+                  <td>Student ID</td>
+                  <td>ST17241</td>
+                </tr>
+                <tr>
+                  <td>Email Address</td>
+                  <td>emily.jessica@example.com</td>
+                </tr>
+                <tr>
+                  <td>Phone Number</td>
+                  <td>+1 234 567 8901</td>
+                </tr>
+                <tr>
+                  <td>Date of Birth</td>
+                  <td>June 3, 1995</td>
+                </tr>
+                <tr>
+                  <td>Gender</td>
+                  <td>Female</td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td>
+                    8800 Orchard Lake Road, Suite 180<br>
+                    Farmington Hills, MI 48334<br>
+                    United States
+                  </td>
+                </tr>
+                <tr>
+                  <td>Account Status</td>
+                  <td><span class="status-badge status-active">Active</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <!-- Account Security Section -->
+          <div class="profile-section">
+            <div class="section-header">
+              <h4><i class="bi bi-shield-lock"></i> Account Security</h4>
             </div>
-            <div class="col-md-3 bb-link">
-              <a href="course-details.html">Book This Course</a>
+
+            <div class="alert alert-warning" role="alert">
+              <i class="bi bi-exclamation-triangle me-2"></i> Your password hasn't been changed in 120 days. Consider
+              updating it for better security.
+            </div>
+
+            <table class="profile-details">
+              <tbody>
+                <tr>
+                  <td>Last Login</td>
+                  <td>Today at 10:45 AM from Chrome, Windows</td>
+                </tr>
+                <tr>
+                  <td>Password</td>
+                  <td>Last changed 4 months ago</td>
+                </tr>
+                <tr>
+                  <td>Two-Factor Auth</td>
+                  <td>Not enabled</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="mt-3">
+              <button class="btn btn-sm btn-outline-primary me-2">Change Password</button>
+              <button class="btn btn-sm btn-outline-primary">Enable 2FA</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!--SECTION END-->
+  </section><!-- End Profile Section -->
 
-  <!--HEADER SECTION-->
-  <section class="wed-hom-footer">
-    <div class="container">
 
-      <div class="row wed-foot-link">
-
-        <div class="col-md-4">
-          <h4>New Courses</h4>
-          <ul>
-            <li><a href="course-details.html">Sciences</a></li>
-            <li><a href="course-details.html">Statistics</a></li>
-            <li><a href="course-details.html">Web Design/Development</a></li>
-            <li><a href="course-details.html">SEO</a></li>
-            <li><a href="course-details.html">Google Business</a></li>
-            <li><a href="course-details.html">Graphics Design</a></li>
-            <li><a href="course-details.html">Networking Courses</a></li>
-            <li><a href="course-details.html">Information technology</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h4>HELP & SUPPORT</h4>
-          <ul>
-            <li><a href="#">24x7 Live help</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">Feedback</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Safety Tips</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h4>SOCIAL MEDIA</h4>
-          <ul>
-            <li>
-              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    </div>
-  </section>
-  <!--END HEADER SECTION-->
-
-  <!--HEADER SECTION-->
-
-  <!--END HEADER SECTION-->
-
-  <!--SECTION LOGIN, REGISTER AND FORGOT PASSWORD-->
-  <section>
-    <!-- LOGIN SECTION -->
-    <div id="modal1" class="modal fade" role="dialog">
-      <div class="log-in-pop">
-        <div class="log-in-pop-left">
-          <h1>Hello...</h1>
-        </div>
-        <div class="log-in-pop-right">
-          <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
+  </main><!-- End #main -->
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">UCCD</span>
           </a>
-          <h4>Login</h4>
-          <form class="s12">
-            <div>
-              <div class="input-field s12">
-                <input type="text" data-ng-model="name" class="validate" />
-                <label>User name</label>
-              </div>
+          <div class="footer-contact pt-3">
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p class="mt-3">
+              <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+            </p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+          <h4>Our Newsletter</h4>
+          <p>
+            Subscribe to our newsletter and receive the latest news about our
+            products and services!
+          </p>
+          <form action="forms/newsletter.php" method="post" class="php-email-form">
+            <div class="newsletter-form">
+              <input type="email" name="email" /><input type="submit" value="Subscribe" />
             </div>
-            <div>
-              <div class="input-field s12">
-                <input type="password" class="validate" />
-                <label>Password</label>
-              </div>
-            </div>
-            <div>
-              <div class="s12 log-ch-bx">
-                <p>
-                  <input type="checkbox" id="test5" />
-                  <label for="test5">Remember me</label>
-                </p>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s4">
-                <input type="submit" value="Login" class="waves-effect waves-light log-in-btn" />
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal3">Forgot password</a>
-                | >
-              </div>
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">
+              Your subscription request has been sent. Thank you!
             </div>
           </form>
         </div>
       </div>
     </div>
-    <!-- FORGOT SECTION -->
-    <div id="modal3" class="modal fade" role="dialog">
-      <div class="log-in-pop">
-        <div class="log-in-pop-left">
-          <h1>Hello...</h1>
-        </div>
-        <div class="log-in-pop-right">
-          <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
-          </a>
-          <h4>Forgot password</h4>
-          <form class="s12">
-            <div>
-              <div class="input-field s12">
-                <input type="text" data-ng-model="name3" class="validate" />
-                <label>User name or email id</label>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s4">
-                <input type="submit" value="Submit" class="waves-effect waves-light log-in-btn" />
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1">Are you a already member ?
-                  Login</a>
-                | >
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!--Import jQuery before materialize.js-->
-  <script src="js/main.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/custom.js"></script>
+    <div class="container copyright text-center mt-4">
+      <p>
+        © <span>Copyright</span> <strong class="px-1 sitename">UCCD</strong>
+        <span>All Rights Reserved</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
 </body>
 
 </html>

@@ -8,8 +8,7 @@
     <meta name="keywords" content="" />
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -37,6 +36,45 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
+
+    <style>
+      .about-features {
+        padding: 60px 0;
+      }
+
+      .feature-card {
+        height: 100%;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        background: white;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #ffd400;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        color: #2a3546;
+      }
+
+      .section-title p {
+        margin-bottom: 30px;
+        color: #6a6a6a;
+      }
+    </style>
   </head>
 
   <body class="about-page">
@@ -52,39 +90,12 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li>
-              <a href="index.html">Home<br /></a>
-            </li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html" class="active">About</a></li>
             <li><a href="courses.html">Courses</a></li>
             <li><a href="trainers.html">Trainers</a></li>
             <li><a href="events.html">Events</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li class="dropdown">
-              <a href="#"
-                ><span>Dropdown</span>
-                <i class="bi bi-chevron-down toggle-dropdown"></i
-              ></a>
-              <ul>
-                <li><a href="#">Dropdown 1</a></li>
-                <li class="dropdown">
-                  <a href="#"
-                    ><span>Deep Dropdown</span>
-                    <i class="bi bi-chevron-down toggle-dropdown"></i
-                  ></a>
-                  <ul>
-                    <li><a href="#">Deep Dropdown 1</a></li>
-                    <li><a href="#">Deep Dropdown 2</a></li>
-                    <li><a href="#">Deep Dropdown 3</a></li>
-                    <li><a href="#">Deep Dropdown 4</a></li>
-                    <li><a href="#">Deep Dropdown 5</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Dropdown 2</a></li>
-                <li><a href="#">Dropdown 3</a></li>
-                <li><a href="#">Dropdown 4</a></li>
-              </ul>
-            </li>
+            <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -235,6 +246,161 @@
         </div>
       </section>
       <!-- /Counts Section -->
+
+      <!-- ======= About Features Section ======= -->
+      <section id="about-features" class="about-features">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>Our Academy</h2>
+            <p>Discover what makes us unique</p>
+          </div>
+
+          <div class="row gy-4">
+            <!-- Awards -->
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-trophy"></i>
+                </div>
+                <h3>Awards</h3>
+                <p>
+                  Class aptent taciti sociosqu ad litora torquent per conubia
+                  nostra, per inceptos himenaeos. Morbi bibendum imperdiet
+                  bibendum.
+                </p>
+                <p><strong>Recognition:</strong> National Excellence Award</p>
+                <p><strong>Since:</strong> 2015</p>
+                <a href="awards.html" class="read-more"
+                  >Read more <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Research -->
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-search"></i>
+                </div>
+                <h3>Research</h3>
+                <p>
+                  Etiam eget enim non magna vestibulum malesuada ut et lectus.
+                  Curabitur egestas risus massa, a malesuada erat ultrices non.
+                </p>
+                <p><strong>Projects:</strong> 50+ annually</p>
+                <p><strong>Funding:</strong> $2M+ grants</p>
+                <a href="research.html" class="read-more"
+                  >Read more <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Educations -->
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-mortarboard"></i>
+                </div>
+                <h3>Educations</h3>
+                <p>
+                  Maecenas venenatis, turpis ac tincidunt convallis, leo enim
+                  ultrices tortor, at faucibus neque sapien ac elit. Curabitur
+                  ut ipsum odio.
+                </p>
+                <p><strong>Programs:</strong> 30+ degrees</p>
+                <p><strong>Students:</strong> 5000+ annually</p>
+                <a href="all-courses.html" class="read-more"
+                  >Read more <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Alumni -->
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-people"></i>
+                </div>
+                <h3>Alumni</h3>
+                <p>
+                  Aliquam malesuada commodo lectus, at fermentum ligula finibus
+                  eu. Morbi nisi neque, suscipit non pulvinar vitae.
+                </p>
+                <p><strong>Network:</strong> 10,000+ graduates</p>
+                <p><strong>Success Rate:</strong> 95% employed</p>
+                <a href="awards.html" class="read-more"
+                  >Read more <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Facilities -->
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-building"></i>
+                </div>
+                <h3>Facilities</h3>
+                <p>
+                  Maecenas venenatis, turpis ac tincidunt convallis, leo enim
+                  ultrices tortor, at faucibus neque sapien ac elit. Curabitur
+                  ut ipsum odio.
+                </p>
+                <p><strong>Campus:</strong> 50 acres</p>
+                <p><strong>Labs:</strong> 20+ specialized</p>
+                <a href="facilities.html" class="read-more"
+                  >Read more <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Departments -->
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-diagram-3"></i>
+                </div>
+                <h3>Departments</h3>
+                <p>
+                  Maecenas venenatis, turpis ac tincidunt convallis, leo enim
+                  ultrices tortor, at faucibus neque sapien ac elit. Curabitur
+                  ut ipsum odio.
+                </p>
+                <p><strong>Departments:</strong> 12 academic</p>
+                <p><strong>Faculty:</strong> 200+ experts</p>
+                <a href="departments.html" class="read-more"
+                  >Read more <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End About Features Section -->
 
       <!-- Testimonials Section -->
       <section id="testimonials" class="testimonials section">

@@ -2,726 +2,800 @@
 <html lang="en">
 
 <head>
-  <title>UCCD Center</title> <!-- META TAGS -->
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" />
-  <meta name="keyword" />
-  <!-- FAV ICON(BROWSER TAB ICON) -->
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>My Courses - UCCD</title>
+  <meta name="description" content="UCCD Student Courses - View and manage your enrolled courses" />
+  <meta name="keywords" content="UCCD, student, courses, dashboard, education" />
+
+  <!-- Favicons -->
   <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
-  <!-- GOOGLE FONT -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
-  <!-- FONTAWESOME ICONS -->
-  <link rel="stylesheet" href="css/font-awesome.min.css" />
-  <!-- ALL CSS FILES -->
-  <link href="css/materialize.css" rel="stylesheet" />
-  <link href="css/bootstrap.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
-  <link href="css/style-mob.css" rel="stylesheet" />
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-light: #eef2ff;
+      --secondary: #3f37c9;
+      --accent: #ffd400;
+      --dark: #2a3546;
+      --gray: #6a6a6a;
+      --light-gray: #f8f9fa;
+      --success: #28a745;
+      --danger: #dc3545;
+      --warning: #fd7e14;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f7fb;
+    }
+
+    .dashboard-container {
+      padding: 2rem 0;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .profile-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 4px solid var(--primary-light);
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.15);
+    }
+
+    .profile-card h4 {
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-card p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: var(--gray);
+      background: var(--light-gray);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Dashboard Navigation */
+    .dashboard-nav {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .dashboard-nav .nav-link {
+      color: var(--gray);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .dashboard-nav .nav-link i {
+      margin-right: 0.75rem;
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    .dashboard-nav .nav-link.active {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .dashboard-nav .nav-link:hover:not(.active) {
+      background: var(--light-gray);
+      color: var(--dark);
+    }
+
+    /* Dashboard Sections */
+    .dashboard-section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header h4 {
+      color: var(--dark);
+      font-weight: 600;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-header h4 i {
+      margin-right: 0.75rem;
+      color: var(--primary);
+    }
+
+    /* Course Cards */
+    .course-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: white;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .course-card-img {
+      position: relative;
+      height: 140px;
+      overflow: hidden;
+    }
+
+    .course-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .course-card:hover .course-card-img img {
+      transform: scale(1.05);
+    }
+
+    .course-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .course-card-body {
+      padding: 1.25rem;
+    }
+
+    .course-card-body h5 {
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .course-card-body p {
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .course-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .course-duration {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Status Table */
+    .status-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .status-table th {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1rem;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .status-table th:first-child {
+      border-top-left-radius: 8px;
+    }
+
+    .status-table th:last-child {
+      border-top-right-radius: 8px;
+    }
+
+    .status-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      vertical-align: middle;
+    }
+
+    .status-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .status-table tr:hover td {
+      background: var(--primary-light);
+    }
+
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .status-active {
+      background: rgba(40, 167, 69, 0.1);
+      color: var(--success);
+    }
+
+    .status-inactive {
+      background: rgba(220, 53, 69, 0.1);
+      color: var(--danger);
+    }
+
+    .action-link {
+      color: var(--primary);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .action-link:hover {
+      color: var(--secondary);
+      text-decoration: underline;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .profile-card img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .course-card-img {
+        height: 120px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-container {
+        padding: 1rem 0;
+      }
+
+      .profile-card,
+      .dashboard-nav,
+      .dashboard-section {
+        padding: 1.25rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 
-<body>
-  <!-- MOBILE MENU -->
-  <section>
-    <div class="ed-mob-menu">
-      <div class="ed-mob-menu-con">
-        <div class="ed-mm-left">
-          <div class="wed-logo">
-            <a href=" index.html">
-              <div class="logo-div">
-                <img src="images/uccd-logo.png" />
-                <p>UCCD</p>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="ed-mm-right">
-          <div class="ed-mm-menu">
-            <a href="#!" class="ed-micon"><i class="fa fa-bars"></i></a>
-            <div class="ed-mm-inn">
-              <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
-              <h4>All Courses</h4>
-              <ul>
-                <li><a href="course-details.html">Accounting/Finance</a></li>
-                <li><a href="course-details.html">civil engineering</a></li>
-                <li><a href="course-details.html">Art/Design</a></li>
-                <li><a href="course-details.html">Marine Engineering</a></li>
-                <li><a href="course-details.html">Business Management</a></li>
-                <li><a href="course-details.html">Journalism/Writing</a></li>
-                <li><a href="course-details.html">Physical Education</a></li>
-                <li><a href="course-details.html">Political Science</a></li>
-                <li><a href="course-details.html">Sciences</a></li>
-                <li><a href="course-details.html">Statistics</a></li>
-                <li>
-                  <a href="course-details.html">Web Design/Development</a>
-                </li>
-                <li><a href="course-details.html">SEO</a></li>
-                <li><a href="course-details.html">Google Business</a></li>
-                <li><a href="course-details.html">Graphics Design</a></li>
-                <li><a href="course-details.html">Networking Courses</a></li>
-                <li>
-                  <a href="course-details.html">Information technology</a>
-                </li>
-              </ul>
-              <h4>User Account</h4>
-              <ul>
-                <li>
-                  <a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a>
-                </li>
-              </ul>
+<body class="index-page">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <img src="images/uccd-logo.png" alt="UCCD Logo" class="img-fluid">
+        <h1 class="sitename">UCCD</h1>
+      </a>
 
-              <h4>User Profile</h4>
-              <ul>
-                <li><a href="dashboard.html">User profile</a></li>
-                <li><a href="db-courses.html">Courses</a></li>
-                <li><a href="db-exams.html">Exams</a></li>
-                <li><a href="db-profile.html">Prfile</a></li>
-                <li><a href="db-time-line.html">Time line</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="trainers.html">Trainers</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-actions d-flex align-items-center">
+        <a class="btn-getstarted" href="#!" data-bs-toggle="modal" data-bs-target="#modal1">
+          <i class="bi bi-box-arrow-in-right me-1"></i> Sign out
+        </a>
       </div>
     </div>
-  </section>
+  </header><!-- End Header -->
 
-  <!--HEADER SECTION-->
-  <section>
-    <!-- TOP BAR -->
-    <div class="ed-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="ed-com-t1-left">
-              <ul></ul>
-            </div>
-            <div class="ed-com-t1-right">
-              <ul>
-                <li>
-                  <a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- LOGO AND MENU SECTION -->
-    <div class="top-logo" data-spy="affix" data-offset-top="250">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="wed-logo">
-              <a href=" index.html">
-                <div class="logo-div">
-                  <img src="images/uccd-logo.png" />
-                  <p>UCCD</p>
-                </div>
-              </a>
-            </div>
-            <div class="main-menu">
-              <ul>
-                <li><a href=" index.html">Home</a></li>
-                <li class="about-menu">
-                  <a href="about.html" class="mm-arr">About us</a>
-                  <!-- MEGA MENU 1 -->
-                  <div class="mm-pos">
-                    <div class="about-mm m-menu">
-                      <div class="m-menu-inn">
-                        <div class="mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay menu-about" href="admission.html">
-                              <img src="images/h-about.jpg" alt="" />
-                              <span>Academics</span>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="mm1-com mm1-s2">
-                          <p>
-                            Want to change the world? At Berkeley we’re doing
-                            just that. When you join the Golden Bear
-                            community, you’re part of an institution that
-                            shifts the global conversation every single day.
-                          </p>
-                          <a href="about.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm1-com mm1-s3">
-                          <ul>
-                            <li>
-                              <a href="all-courses.html">All Courses</a>
-                            </li>
-                            <li>
-                              <a href="course-details.html">Course details</a>
-                            </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="admission.html">Admission</a></li>
-                            <li><a href="awards.html">Awards</a></li>
-                          </ul>
-                        </div>
-                        <div class="mm1-com mm1-s4">
-                          <ul>
-                            <li>
-                              <a href="dashboard.html">Student profile</a>
-                            </li>
-                            <li>
-                              <a href="db-courses.html">Dashboard courses</a>
-                            </li>
-                            <li>
-                              <a href="db-exams.html">Dashboard exams</a>
-                            </li>
-                            <li>
-                              <a href="db-profile.html">Dashboard profile</a>
-                            </li>
-                            <li>
-                              <a href="db-time-line.html">Dashboard timeline</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="admi-menu">
-                  <!-- MEGA MENU 1 -->
-                  <div class="mm-pos">
-                    <div class="admi-mm m-menu">
-                      <div class="m-menu-inn">
-                        <div class="mm2-com mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="about.html">
-                              <img src="images/h-about1.jpg" alt="" />
-                              <span>Academics</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="about.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm2-com mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="admission.html">
-                              <img src="images/h-adm1.jpg" alt="" />
-                              <span>Admission</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="admission.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm2-com mm1-com mm1-s1">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="awards.html">
-                              <img src="images/h-cam1.jpg" alt="" />
-                              <span>History & awards</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="awards.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                        <div class="mm2-com mm1-com mm1-s4">
-                          <div class="ed-course-in">
-                            <a class="course-overlay" href="seminar.html">
-                              <img src="images/h-res1.jpg" alt="" />
-                              <span>Seminar 2018</span>
-                            </a>
-                          </div>
-                          <p>
-                            Donec lacus libero, rutrum ac sollicitudin sed,
-                            mattis non eros. Vestibulum congue nec eros quis
-                            lacinia. Mauris non tincidunt lectus. Nulla
-                            mollis, orci vitae accumsan rhoncus.
-                          </p>
-                          <a href="seminar.html" class="mm-r-m-btn">Read more</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li><a href="all-courses.html">All Courses</a></li>
-                <!--<li><a class='dropdown-button ed-sub-menu' href='#' data-activates='dropdown1'>Courses</a></li>-->
 
-                <li><a href="events.html">Events</a></li>
-                <li><a href="dashboard.html">Student</a></li>
-                <li><a href="contact-us.html">Contact us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="all-drop-down-menu"></div>
-        </div>
-      </div>
-    </div>
-    <div class="search-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="search-form">
-              <form>
-                <div class="sf-type">
-                  <div class="sf-input">
-                    <input type="text" id="sf-box" placeholder="Search course and discount courses" />
-                  </div>
-                  <div class="sf-list">
-                    <ul>
-                      <li>
-                        <a href="course-details.html">Accounting/Finance</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">civil engineering</a>
-                      </li>
-                      <li><a href="course-details.html">Art/Design</a></li>
-                      <li>
-                        <a href="course-details.html">Marine Engineering</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Business Management</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Journalism/Writing</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Physical Education</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Political Science</a>
-                      </li>
-                      <li><a href="course-details.html">Sciences</a></li>
-                      <li><a href="course-details.html">Statistics</a></li>
-                      <li>
-                        <a href="course-details.html">Web Design/Development</a>
-                      </li>
-                      <li><a href="course-details.html">SEO</a></li>
-                      <li>
-                        <a href="course-details.html">Google Business</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Graphics Design</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Networking Courses</a>
-                      </li>
-                      <li>
-                        <a href="course-details.html">Information technology</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="sf-submit">
-                  <input type="submit" value="Search Course" />
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--END HEADER SECTION-->
+  <!-- ======= Courses Section ======= -->
+  <section id="courses" class="courses">
+    <div class="container dashboard-container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-4">
+          <!-- Profile Card -->
+          <div class="profile-card">
+            <img src="images/user.jpg" alt="Student" class="img-fluid">
+            <h4>Emily Jessica</h4>
+            <p>Student ID: ST17241</p>
 
-  <!--SECTION START-->
-  <section>
-    <div class="pro-cover"></div>
-    <div class="pro-menu">
-      <div class="container">
-        <div class="col-md-9 col-md-offset-3">
-          <ul>
-            <li><a href="dashboard.html">My Dashboard</a></li>
-            <li><a href="db-profile.html">Profile</a></li>
-            <li><a href="db-courses.html" class="pro-act">Courses</a></li>
-            <li><a href="db-exams.html">Exams</a></li>
-            <li><a href="db-time-line.html">Time Line</a></li>
-            <li><a href="#">Entry</a></li>
-            <li><a href="#">Notifications</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="stu-db">
-      <div class="container pg-inn">
-        <div class="col-md-3">
-          <div class="pro-user">
-            <img src="images/user.jpg" alt="user" />
           </div>
-          <div class="pro-user-bio">
-            <ul>
-              <li>
-                <h4>Emily Jessica</h4>
+
+          <!-- Dashboard Navigation -->
+          <div class="dashboard-nav">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
               </li>
-              <li>Student Id: ST17241</li>
-              <li>
-                <a href="#!"><i class="fa fa-facebook"></i> Facebook: my sample</a>
+              <li class="nav-item">
+                <a class="nav-link" href="db-profile.html"><i class="bi bi-person"></i> My Profile</a>
               </li>
-              <li>
-                <a href="#!"><i class="fa fa-google-plus"></i> Google: my sample</a>
+              <li class="nav-item">
+                <a class="nav-link active" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> My
+                  Courses</a>
               </li>
-              <li>
-                <a href="#!"><i class="fa fa-twitter"></i> Twitter: my sample</a>
+              <li class="nav-item">
+                <a class="nav-link" href="db-exams.html"><i class="bi bi-file-earmark-text"></i> Exams & Results</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="db-time-line.html"><i class="bi bi-calendar-event"></i> Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-bell"></i> Notifications</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-md-9">
-          <div class="udb">
-            <div class="udb-sec udb-cour">
-              <h4>
-                <img src="images/icon/db2.png" alt="" /> Booking Courses
-              </h4>
-              <p>
-                Many desktop publishing packages and web page editors now use
-                Lorem Ipsum as their default model text.The point of using
-                Lorem Ipsummaking it look like readable English.
-              </p>
-              <div class="sdb-cours">
-                <ul>
-                  <li>
-                    <a href="#">
-                      <div class="list-mig-like-com com-mar-bot-30">
-                        <div class="list-mig-lc-img">
-                          <img src="images/course/3.jpg" alt="" />
-                          <span class="home-list-pop-rat list-mi-pr">Duration:150 Days</span>
-                        </div>
-                        <div class="list-mig-lc-con">
-                          <h5>Master of Science</h5>
-                          <p>Illinois City,</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="list-mig-like-com com-mar-bot-30">
-                        <div class="list-mig-lc-img">
-                          <img src="images/course/4.jpg" alt="" />
-                          <span class="home-list-pop-rat list-mi-pr">Duration:60 Days</span>
-                        </div>
-                        <div class="list-mig-lc-con">
-                          <h5>Java Programming</h5>
-                          <p>Illinois City,</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="list-mig-like-com com-mar-bot-30">
-                        <div class="list-mig-lc-img">
-                          <img src="images/course/5.jpg" alt="" />
-                          <span class="home-list-pop-rat list-mi-pr">Duration:30 Days</span>
-                        </div>
-                        <div class="list-mig-lc-con">
-                          <h5>Aeronautical Engineering</h5>
-                          <p>Illinois City,</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="list-mig-like-com com-mar-bot-30">
-                        <div class="list-mig-lc-img">
-                          <img src="images/course/3.jpg" alt="" />
-                          <span class="home-list-pop-rat list-mi-pr">Duration:20 Days</span>
-                        </div>
-                        <div class="list-mig-lc-con">
-                          <h5>Master of Science</h5>
-                          <p>Illinois City,</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="udb-sec udb-cour-stat">
-              <h4><img src="images/icon/db3.png" alt="" /> Course Status</h4>
-              <p>
-                Many desktop publishing packages and web page editors now use
-                Lorem Ipsum as their default model text.The point of using
-                Lorem Ipsummaking it look like readable English.
-              </p>
-              <div class="pro-con-table">
-                <table class="bordered responsive-table">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Course Name</th>
-                      <th>Start Date</th>
-                      <th>End Date</th>
-                      <th>Status</th>
-                      <th>Edit</th>
-                      <th>View</th>
-                    </tr>
-                  </thead>
 
-                  <tbody>
-                    <tr>
-                      <td>01</td>
-                      <td>Software Testing</td>
-                      <td>12May 2018</td>
-                      <td>18Aug 2018</td>
-                      <td><span class="pro-user-act">active</span></td>
-                      <td>
-                        <a href="sdb-course-edit.html" class="pro-edit">edit</a>
-                      </td>
-                      <td>
-                        <a href="sdb-course-view.html" class="pro-edit">view</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>02</td>
-                      <td>Mechanical Design</td>
-                      <td>05Jan 2019</td>
-                      <td>10Feb 2019</td>
-                      <td><span class="pro-user-act">active</span></td>
-                      <td>
-                        <a href="sdb-course-edit.html" class="pro-edit">edit</a>
-                      </td>
-                      <td>
-                        <a href="sdb-course-view.html" class="pro-edit">view</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>03</td>
-                      <td>Architecture & Planning</td>
-                      <td>21Jun 2020</td>
-                      <td>08Dec 2020</td>
-                      <td><span class="pro-user-act">active</span></td>
-                      <td>
-                        <a href="sdb-course-edit.html" class="pro-edit">edit</a>
-                      </td>
-                      <td>
-                        <a href="sdb-course-view.html" class="pro-edit">view</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>04</td>
-                      <td>Board Exam Training</td>
-                      <td>08Jun 2018</td>
-                      <td>21Sep 2018</td>
-                      <td>
-                        <span class="pro-user-act pro-user-de-act">de-active</span>
-                      </td>
-                      <td>
-                        <a href="sdb-course-edit.html" class="pro-edit">edit</a>
-                      </td>
-                      <td>
-                        <a href="sdb-course-view.html" class="pro-edit">view</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>05</td>
-                      <td>Yoga Training Classes</td>
-                      <td>16JFeb 2018</td>
-                      <td>26Mar 2018</td>
-                      <td>
-                        <span class="pro-user-act pro-user-de-act">de-active</span>
-                      </td>
-                      <td>
-                        <a href="sdb-course-edit.html" class="pro-edit">edit</a>
-                      </td>
-                      <td>
-                        <a href="sdb-course-view.html" class="pro-edit">view</a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+        <div class="col-lg-8">
+          <!-- Enrolled Courses Section -->
+          <div class="dashboard-section">
+            <div class="section-header">
+              <h4><i class="bi bi-book"></i> Enrolled Courses</h4>
+              <a href="courses.html" class="btn btn-sm btn-outline-primary">Browse Courses</a>
+            </div>
+
+            <div class="row mt-3" id="courses-list">
+              <!-- First 4 Courses (visible initially) -->
+              <div class="col-md-6">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/3.jpg" alt="Master of Science">
+                    <span class="course-badge">In Progress</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Master of Science</h5>
+                    <p>Illinois City - Advanced degree program focusing on scientific research</p>
+                    <div class="course-meta">
+                      <span class="course-duration">150 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/4.jpg" alt="Java Programming">
+                    <span class="course-badge">Active</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Java Programming</h5>
+                    <p>Comprehensive course covering Java fundamentals to advanced concepts</p>
+                    <div class="course-meta">
+                      <span class="course-duration">60 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/5.jpg" alt="Aeronautical Engineering">
+                    <span class="course-badge">Active</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Aeronautical Engineering</h5>
+                    <p>Fundamentals of aircraft design and aerospace technology</p>
+                    <div class="course-meta">
+                      <span class="course-duration">30 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/3.jpg" alt="Master of Science">
+                    <span class="course-badge">Completed</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Master of Science</h5>
+                    <p>Previous completed program in scientific research methods</p>
+                    <div class="course-meta">
+                      <span class="course-duration">20 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hidden Courses (initially hidden) -->
+              <div class="col-md-6 more-courses hidden">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/3.jpg" alt="Master of Science">
+                    <span class="course-badge">In Progress</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Master of Science</h5>
+                    <p>Illinois City - Advanced degree program focusing on scientific research</p>
+                    <div class="course-meta">
+                      <span class="course-duration">150 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 more-courses hidden">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/4.jpg" alt="Java Programming">
+                    <span class="course-badge">Active</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Java Programming</h5>
+                    <p>Comprehensive course covering Java fundamentals to advanced concepts</p>
+                    <div class="course-meta">
+                      <span class="course-duration">60 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 more-courses hidden">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/5.jpg" alt="Aeronautical Engineering">
+                    <span class="course-badge">Active</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Aeronautical Engineering</h5>
+                    <p>Fundamentals of aircraft design and aerospace technology</p>
+                    <div class="course-meta">
+                      <span class="course-duration">30 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 more-courses hidden">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/3.jpg" alt="Master of Science">
+                    <span class="course-badge">Completed</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Master of Science</h5>
+                    <p>Previous completed program in scientific research methods</p>
+                    <div class="course-meta">
+                      <span class="course-duration">20 Days</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-3">
+              <a href="javascript:void(0)" class="btn btn-primary" id="view-all-courses">View All Courses</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Status Section -->
+        <div class="dashboard-section">
+          <div class="section-header">
+            <h4><i class="bi bi-list-check"></i> Course Status</h4>
+            <div class="btn-group">
+              <button class="btn btn-sm btn-outline-primary active" id="all-btn">All</button>
+              <button class="btn btn-sm btn-outline-primary" id="active-btn">Active</button>
+              <button class="btn btn-sm btn-outline-primary" id="completed-btn">Completed</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="status-table">
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Instructor</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-status="active">
+                  <td>Software Testing</td>
+                  <td>Dr. Mohamed</td>
+                  <td>12 May 2018</td>
+                  <td>18 Aug 2018</td>
+                  <td><span class="status-badge status-active">active</span></td>
+                </tr>
+                <tr data-status="active">
+                  <td>Mechanical Design</td>
+                  <td>Dr. Mohamed</td>
+                  <td>05 Jan 2019</td>
+                  <td>10 Feb 2019</td>
+                  <td><span class="status-badge status-active">active</span></td>
+                </tr>
+                <tr data-status="active">
+                  <td>Architecture & Planning</td>
+                  <td>Dr. Mohamed</td>
+                  <td>21 Jun 2020</td>
+                  <td>08 Dec 2020</td>
+                  <td><span class="status-badge status-active">active</span></td>
+                </tr>
+                <tr data-status="completed">
+                  <td>Board Exam Training</td>
+                  <td>Dr. Mohamed</td>
+                  <td>08 Jun 2018</td>
+                  <td>21 Sep 2018</td>
+                  <td><span class="status-badge status-inactive">completed</span></td>
+                </tr>
+                <tr data-status="completed">
+                  <td>Yoga Training Classes</td>
+                  <td>Dr. Mohamed</td>
+                  <td>16 Feb 2018</td>
+                  <td>26 Mar 2018</td>
+                  <td><span class="status-badge status-inactive">completed</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!--SECTION END-->
-
-  <!--SECTION START-->
-  <section>
-    <div class="full-bot-book">
-      <div class="container">
-        <div class="row">
-          <div class="bot-book">
-            <div class="col-md-2 bb-img">
-              <img src="images/3.png" alt="" />
-            </div>
-            <div class="col-md-7 bb-text">
-              <h4>therefore always free from repetition</h4>
-              <p>
-                There are many variations of passages of Lorem Ipsum
-                available, but the majority have suffered alteration in some
-                form, by injected humour
-              </p>
-            </div>
-            <div class="col-md-3 bb-link">
-              <a href="course-details.html">Book This Course</a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
-  <!--SECTION END-->
+  </section><!-- End Courses Section -->
+  </main><!-- End #main -->
 
-  <!--HEADER SECTION-->
-  <section class="wed-hom-footer">
-    <div class="container">
-
-      <div class="row wed-foot-link">
-
-        <div class="col-md-4">
-          <h4>New Courses</h4>
-          <ul>
-            <li><a href="course-details.html">Sciences</a></li>
-            <li><a href="course-details.html">Statistics</a></li>
-            <li><a href="course-details.html">Web Design/Development</a></li>
-            <li><a href="course-details.html">SEO</a></li>
-            <li><a href="course-details.html">Google Business</a></li>
-            <li><a href="course-details.html">Graphics Design</a></li>
-            <li><a href="course-details.html">Networking Courses</a></li>
-            <li><a href="course-details.html">Information technology</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h4>HELP & SUPPORT</h4>
-          <ul>
-            <li><a href="#">24x7 Live help</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">Feedback</a></li>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Safety Tips</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h4>SOCIAL MEDIA</h4>
-          <ul>
-            <li>
-              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    </div>
-  </section>
-  <!--END HEADER SECTION-->
-
-  <!--HEADER SECTION-->
-
-  <!--END HEADER SECTION-->
-
-  <!--SECTION LOGIN, REGISTER AND FORGOT PASSWORD-->
-  <section>
-    <!-- LOGIN SECTION -->
-    <div id="modal1" class="modal fade" role="dialog">
-      <div class="log-in-pop">
-        <div class="log-in-pop-left">
-          <h1>Hello...</h1>
-        </div>
-        <div class="log-in-pop-right">
-          <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">UCCD</span>
           </a>
-          <h4>Login</h4>
-          <form class="s12">
-            <div>
-              <div class="input-field s12">
-                <input type="text" data-ng-model="name" class="validate" />
-                <label>User name</label>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <input type="password" class="validate" />
-                <label>Password</label>
-              </div>
-            </div>
-            <div>
-              <div class="s12 log-ch-bx">
-                <p>
-                  <input type="checkbox" id="test5" />
-                  <label for="test5">Remember me</label>
-                </p>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s4">
-                <input type="submit" value="Login" class="waves-effect waves-light log-in-btn" />
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal3">Forgot password</a>
-                | >
-              </div>
+          <div class="footer-contact pt-3">
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p class="mt-3">
+              <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+            </p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="courses.html">Online Courses</a></li>
+            <li><a href="trainers.html">Expert Training</a></li>
+            <li><a href="events.html">Workshops</a></li>
+            <li><a href="#">Certification</a></li>
+            <li><a href="#">Career Support</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+          <h4>Our Newsletter</h4>
+          <p>
+            Subscribe to our newsletter and receive the latest news about our
+            courses and events!
+          </p>
+          <form action="forms/newsletter.php" method="post" class="php-email-form">
+            <div class="newsletter-form">
+              <input type="email" name="email" placeholder="Your Email" />
+              <input type="submit" value="Subscribe" />
             </div>
           </form>
         </div>
       </div>
     </div>
-    <!-- FORGOT SECTION -->
-    <div id="modal3" class="modal fade" role="dialog">
-      <div class="log-in-pop">
-        <div class="log-in-pop-left">
-          <h1>Hello...</h1>
-        </div>
-        <div class="log-in-pop-right">
-          <a href="#" class="pop-close" data-dismiss="modal"><img src="images/cancel.png" alt="" />
-          </a>
-          <h4>Forgot password</h4>
-          <form class="s12">
-            <div>
-              <div class="input-field s12">
-                <input type="text" data-ng-model="name3" class="validate" />
-                <label>User name or email id</label>
-              </div>
-            </div>
-            <div>
-              <div class="input-field s4">
-                <input type="submit" value="Submit" class="waves-effect waves-light log-in-btn" />
-              </div>
-            </div>
-            <div>
-              <div class="input-field s12">
-                <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1">Are you a already member ?
-                  Login</a>
-                | >
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!--Import jQuery before materialize.js-->
-  <script src="js/main.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/custom.js"></script>
+    <div class="container copyright text-center mt-4">
+      <p>
+        © <span>Copyright</span> <strong class="px-1 sitename">UCCD</strong>
+        <span>All Rights Reserved</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    const allBtn = document.getElementById("all-btn");
+    const activeBtn = document.getElementById("active-btn");
+    const completedBtn = document.getElementById("completed-btn");
+
+    const rows = document.querySelectorAll(".status-table tbody tr");
+
+    function filterCourses(status) {
+      rows.forEach(row => {
+        if (status === "all") {
+          row.style.display = "";
+        } else if (row.getAttribute("data-status") === status) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
+
+    allBtn.addEventListener("click", () => {
+      filterCourses("all");
+      allBtn.classList.add("active");
+      activeBtn.classList.remove("active");
+      completedBtn.classList.remove("active");
+    });
+
+    activeBtn.addEventListener("click", () => {
+      filterCourses("active");
+      allBtn.classList.remove("active");
+      activeBtn.classList.add("active");
+      completedBtn.classList.remove("active");
+    });
+
+    completedBtn.addEventListener("click", () => {
+      filterCourses("completed");
+      allBtn.classList.remove("active");
+      activeBtn.classList.remove("active");
+      completedBtn.classList.add("active");
+    });
+
+    filterCourses("all");
+
+    document.getElementById("view-all-courses").addEventListener("click", function () {
+      // Toggle visibility of the hidden courses
+      var moreCourses = document.querySelectorAll(".more-courses");
+      moreCourses.forEach(function (course) {
+        course.classList.toggle("hidden");
+      });
+
+      // Change the text of the button depending on visibility
+      var button = document.getElementById("view-all-courses");
+      if (button.textContent === "View All Courses") {
+        button.textContent = "View Fewer Courses";
+      } else {
+        button.textContent = "View All Courses";
+      }
+    });
+  </script>
 </body>
 
 </html>
