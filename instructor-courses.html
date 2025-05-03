@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Courses - Instructor Dashboard</title>
+    <!-- META TAGS -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- FAV ICON(BROWSER TAB ICON) -->
+    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+    <!-- GOOGLE FONT -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+      rel="stylesheet"
+    />
+    <!-- FONTAWESOME ICONS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- ALL CSS FILES -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+    <link href="css/style-mob.css" rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!--== MAIN CONTRAINER ==-->
+    <header
+      id="header"
+      style="border-bottom: 2px solid #e3e8ea"
+      class="header d d-flex align-items-center sticky-top"
+    >
+      <img
+        src="assets/img/side-bar.png"
+        style="margin: 0 15px; width: 29px"
+        alt=""
+      />
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center"
+      >
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+          <h1 class="sitename">UCCD</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu navmenu-user">
+          <ul>
+            <li>
+              <a href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Log Out</span>
+              </a>
+            </li>
+          </ul>
+          <i class="mobile-nav-toggle bi bi-person-circle"></i>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container-fluid sb2">
+      <div class="row">
+        <div
+          class="sb2-1"
+          style="background-color: white; float: left; width: 19.5%"
+        >
+          <div class="sb2-13">
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <a href="instructor.html" class="menu-active"
+                  ><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                  Dashboard</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="collapsible-header"
+                  ><i class="fa fa-book" aria-hidden="true"></i> My Courses</a
+                >
+                <div class="collapsible-body left-sub-menu">
+                  <ul>
+                    <li><a href="instructor-courses.html">View Courses</a></li>
+                    <li>
+                      <a href="instructor-add-material.html">Add Material</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="collapsible-header"
+                  ><i class="fa fa-tasks" aria-hidden="true"></i> Tasks</a
+                >
+                <div class="collapsible-body left-sub-menu">
+                  <ul>
+                    <li><a href="instructor-view-tasks.html">View Tasks</a></li>
+                    <li>
+                      <a href="instructor-create-task.html">Create Task</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="instructor-students.html"
+                  ><i class="fa fa-users" aria-hidden="true"></i> Students</a
+                >
+              </li>
+              <li>
+                <a href="instructor-ratings.html"
+                  ><i class="fa fa-star" aria-hidden="true"></i> Rate
+                  Students</a
+                >
+              </li>
+              <li>
+                <a href="instructor-schedule.html"
+                  ><i class="fa fa-calendar" aria-hidden="true"></i> Schedule</a
+                >
+              </li>
+              <li>
+                <a href="instruc    tor-messages.html"
+                  ><i class="fa fa-envelope" aria-hidden="true"></i> Messages</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="sb2-2" style="padding: 40px; width: 80%">
+          <div class="sb2-2-2">
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><i class="fa fa-home" aria-hidden="true"></i> Home</a
+                >
+              </li>
+              <li class="active-bre">
+                <a href="instructor.html"> Instructor Dashboard</a>
+              </li>
+              <li class="active-bre"><a href="#"> My Courses</a></li>
+            </ul>
+          </div>
+
+          <div class="sb2-2-3">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="box-inn-sp">
+                  <div class="inn-title">
+                    <h4>My Courses</h4>
+                    <p>
+                      All courses you are currently teaching or have taught
+                      previously
+                    </p>
+                  </div>
+                  <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Semester</th>
+                            <th>Students</th>
+                            <th>Materials</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>CS401</td>
+                            <td>
+                              <a href="instructor-course-detail.html"
+                                >Web Development</a
+                              >
+                            </td>
+                            <td>Fall 2023</td>
+                            <td>24</td>
+                            <td>12</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="instructor-course-detail.html"
+                                class="btn btn-danger text-white"
+                                >View</a
+                              >
+                              <!-- Red background with white text -->
+                              <a
+                                href="instructor-add-material.html"
+                                class="btn btn-warning text-dark"
+                                >Add Material</a
+                              >
+                              <!-- Yellow background with dark text -->
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>CS402</td>
+                            <td>
+                              <a href="instructor-course-detail.html"
+                                >Database Systems</a
+                              >
+                            </td>
+                            <td>Fall 2023</td>
+                            <td>18</td>
+                            <td>8</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="instructor-course-detail.html"
+                                class="btn btn-danger text-white"
+                                >View</a
+                              >
+                              <!-- Red background with white text -->
+                              <a
+                                href="instructor-add-material.html"
+                                class="btn btn-warning text-dark"
+                                >Add Material</a
+                              >
+                              <!-- Yellow background with dark text -->
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>CS403</td>
+                            <td>
+                              <a href="instructor-course-detail.html"
+                                >Algorithms</a
+                              >
+                            </td>
+                            <td>Spring 2023</td>
+                            <td>22</td>
+                            <td>15</td>
+                            <td>
+                              <span class="label label-default">Completed</span>
+                            </td>
+                            <td>
+                              <a
+                                href="instructor-course-detail.html"
+                                class="btn btn-success text-white"
+                                >View</a
+                              >
+                              <!-- Green background with white text -->
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of sb2-2 -->
+        </div>
+        <!-- End of Main Row -->
+      </div>
+      <!-- End of Container -->
+    </div>
+
+    <!--Import jQuery before materialize.js-->
+    <script src="js/main.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
