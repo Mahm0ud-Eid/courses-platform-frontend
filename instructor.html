@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Instructor Dashboard</title>
     <!-- META TAGS -->
     <meta charset="utf-8" />
@@ -10,11 +9,16 @@
     <!-- FAV ICON(BROWSER TAB ICON) -->
     <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
     <!-- GOOGLE FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
-        rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+      rel="stylesheet"
+    />
     <!-- FONTAWESOME ICONS -->
     <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
     <!-- ALL CSS FILES -->
     <link href="css/bootstrap.css" rel="stylesheet" />
@@ -23,388 +27,462 @@
     <link href="css/style-mob.css" rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
-</head>
+  </head>
 
-<body>
+  <body>
     <!--== MAIN CONTRAINER ==-->
-    <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
-        <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
-        <div class="container-fluid container-xl position-relative d-flex align-items-center">
-            <a href="index.html" class="logo d-flex align-items-center me-auto">
-                <h1 class="sitename">UCCD</h1>
-            </a>
+    <header
+      id="header"
+      style="border-bottom: 2px solid #e3e8ea"
+      class="header d d-flex align-items-center sticky-top"
+    >
+      <img
+        src="assets/img/side-bar.png"
+        style="margin: 0 15px; width: 29px"
+        alt=""
+      />
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center"
+      >
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+          <h1 class="sitename">UCCD</h1>
+        </a>
 
-            <nav id="navmenu" class="navmenu navmenu-user">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Log Out</span>
-                        </a>
-                    </li>
-                </ul>
-                <i class="mobile-nav-toggle bi bi-person-circle"></i>
-            </nav>
-        </div>
+        <nav id="navmenu" class="navmenu navmenu-user">
+          <ul>
+            <li>
+              <a href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Log Out</span>
+              </a>
+            </li>
+          </ul>
+          <i class="mobile-nav-toggle bi bi-person-circle"></i>
+        </nav>
+      </div>
     </header>
 
     <!--== BODY CONTNAINER ==-->
     <div class="container-fluid sb2">
-        <div class="row">
-            <div class="sb2-1" style="background-color: white; float: left; width: 19.5%">
-                <!--== LEFT MENU ==-->
-                <div class="sb2-13">
-                    <ul class="collapsible" data-collapsible="accordion">
-                        <li>
-                            <a href="instructor.html" class="menu-active"><i class="fa fa-bar-chart"
-                                    aria-hidden="true"></i>
-                                Dashboard</a>
-                        </li>
+      <div class="row">
+        <div
+          class="sb2-1"
+          style="background-color: white; float: left; width: 19.5%"
+        >
+          <!--== LEFT MENU ==-->
+          <div class="sb2-13">
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <a href="instructor.html" class="menu-active"
+                  ><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                  Dashboard</a
+                >
+              </li>
 
-                        <li>
-                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book"
-                                    aria-hidden="true"></i> My Courses</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="instructor-courses.html">View Courses</a></li>
-                                    <li><a href="instructor-add-material.html">Add Material</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-tasks"
-                                    aria-hidden="true"></i> Tasks</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li><a href="instructor-view-tasks.html">View Tasks</a></li>
-                                    <li><a href="instructor-create-task.html">Create Task</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <a href="instructor-students.html"><i class="fa fa-users" aria-hidden="true"></i>
-                                Students</a>
-                        </li>
-
-                        <li>
-                            <a href="instructor-ratings.html"><i class="fa fa-star" aria-hidden="true"></i> Rate
-                                Students</a>
-                        </li>
-
-                        <li>
-                            <a href="instructor-schedule.html"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                Schedule</a>
-                        </li>
-
-                        <li>
-                            <a href="instructor-messages.html"><i class="fa fa-envelope" aria-hidden="true"></i>
-                                Messages</a>
-                        </li>
-                    </ul>
+              <li>
+                <a href="javascript:void(0)" class="collapsible-header"
+                  ><i class="fa fa-book" aria-hidden="true"></i> My Courses</a
+                >
+                <div class="collapsible-body left-sub-menu">
+                  <ul>
+                    <li><a href="instructor-courses.html">View Courses</a></li>
+                    <li>
+                      <a href="instructor-add-material.html">Add Material</a>
+                    </li>
+                  </ul>
                 </div>
-            </div>
+              </li>
 
-            <!--== BODY INNER CONTAINER ==-->
-            <div class="sb2-2" style="padding: 40px; width: 80%">
-                <!--== breadcrumbs ==-->
-                <div class="sb2-2-2">
-                    <ul>
-                        <li>
-                            <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-                        </li>
-                        <li class="active-bre"><a href="#"> Instructor Dashboard</a></li>
-                    </ul>
+              <li>
+                <a href="javascript:void(0)" class="collapsible-header"
+                  ><i class="fa fa-tasks" aria-hidden="true"></i> Tasks</a
+                >
+                <div class="collapsible-body left-sub-menu">
+                  <ul>
+                    <li><a href="instructor-view-tasks.html">View Tasks</a></li>
+                    <li>
+                      <a href="instructor-create-task.html">Create Task</a>
+                    </li>
+                  </ul>
                 </div>
+              </li>
 
-                <!--== DASHBOARD INFO ==-->
-                <div class="sb2-2-1">
-                    <h2>Instructor Dashboard</h2>
-                    <p>
-                        Welcome to your instructor dashboard. Here you can manage your courses, materials, and students.
-                    </p>
-                    <div class="db-2">
-                        <ul>
-                            <li>
-                                <div class="dash-book dash-b-1">
-                                    <h5>My Courses</h5>
-                                    <h4>5</h4>
-                                    <a href="instructor-courses.html">View courses</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dash-book dash-b-2">
-                                    <h5>Active Students</h5>
-                                    <h4>42</h4>
-                                    <a href="instructor-students.html">View students</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dash-book dash-b-3">
-                                    <h5>Pending Tasks</h5>
-                                    <h4>8</h4>
-                                    <a href="instructor-view-tasks.html">View tasks</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dash-book dash-b-4">
-                                    <h5>New Messages</h5>
-                                    <h4>3</h4>
-                                    <a href="instructor-messages.html">View messages</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+              <li>
+                <a href="instructor-students.html"
+                  ><i class="fa fa-users" aria-hidden="true"></i> Students</a
+                >
+              </li>
 
-                <!--== My Courses ==-->
-                <div class="sb2-2-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box-inn-sp">
-                                <div class="inn-title">
-                                    <h4>My Courses</h4>
-                                    <p>
-                                        Courses you are currently teaching
-                                    </p>
-                                </div>
-                                <div class="tab-inn">
-                                    <div class="table-responsive table-desi">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Image</th>
-                                                    <th>Course Name</th>
-                                                    <th>Students</th>
-                                                    <th>Materials</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <span class="list-img"><img src="images/course/sm-1.jpg"
-                                                                alt="" /></span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#"><span class="list-enq-name">Web
-                                                                Development</span><span class="list-enq-city">CS401 -
-                                                                Fall 2023</span></a>
-                                                    </td>
-                                                    <td>24</td>
-                                                    <td>12</td>
-                                                    <td>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="instructor-course-detail.html"
-                                                            class="ad-st-view">Manage</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="list-img"><img src="images/course/sm-2.jpg"
-                                                                alt="" /></span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#"><span class="list-enq-name">Database
-                                                                Systems</span><span class="list-enq-city">CS402 - Fall
-                                                                2023</span></a>
-                                                    </td>
-                                                    <td>18</td>
-                                                    <td>8</td>
-                                                    <td>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="instructor-course-detail.html"
-                                                            class="ad-st-view">Manage</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="list-img"><img src="images/course/sm-3.jpg"
-                                                                alt="" /></span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#"><span class="list-enq-name">Algorithms</span><span
-                                                                class="list-enq-city">CS403 - Spring 2023</span></a>
-                                                    </td>
-                                                    <td>22</td>
-                                                    <td>15</td>
-                                                    <td>
-                                                        <span class="label label-default">Completed</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="instructor-course-detail.html"
-                                                            class="ad-st-view">View</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <li>
+                <a href="instructor-ratings.html"
+                  ><i class="fa fa-star" aria-hidden="true"></i> Rate
+                  Students</a
+                >
+              </li>
 
-                <!--== Pending Tasks ==-->
-                <div class="sb2-2-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box-inn-sp">
-                                <div class="inn-title">
-                                    <h4>Pending Tasks to Grade</h4>
-                                    <p>
-                                        Student submissions that need your evaluation
-                                    </p>
-                                </div>
-                                <div class="tab-inn">
-                                    <div class="table-responsive table-desi">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Task</th>
-                                                    <th>Course</th>
-                                                    <th>Due Date</th>
-                                                    <th>Submissions</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <a href="#"><span class="list-enq-name">Assignment 3</span><span
-                                                                class="list-enq-city">Web Development Project</span></a>
-                                                    </td>
-                                                    <td>Web Development</td>
-                                                    <td>Nov 15, 2023</td>
-                                                    <td>22/24</td>
-                                                    <td>
-                                                        <span class="label label-warning">Pending</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="instructor-grade-task.html"
-                                                            class="ad-st-view">Grade</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <a href="#"><span class="list-enq-name">Midterm Exam</span><span
-                                                                class="list-enq-city">Database Concepts</span></a>
-                                                    </td>
-                                                    <td>Database Systems</td>
-                                                    <td>Oct 30, 2023</td>
-                                                    <td>18/18</td>
-                                                    <td>
-                                                        <span class="label label-warning">Pending</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="instructor-grade-task.html"
-                                                            class="ad-st-view">Grade</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <a href="#"><span class="list-enq-name">Lab 5</span><span
-                                                                class="list-enq-city">SQL Queries</span></a>
-                                                    </td>
-                                                    <td>Database Systems</td>
-                                                    <td>Nov 5, 2023</td>
-                                                    <td>15/18</td>
-                                                    <td>
-                                                        <span class="label label-warning">Pending</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="instructor-grade-task.html"
-                                                            class="ad-st-view">Grade</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <li>
+                <a href="instructor-schedule.html"
+                  ><i class="fa fa-calendar" aria-hidden="true"></i> Schedule</a
+                >
+              </li>
 
-
-
-                <!--== Upcoming Schedule ==-->
-                <div class="sb2-2-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box-inn-sp">
-                                <div class="inn-title">
-                                    <h4>Upcoming Schedule</h4>
-                                    <p>
-                                        Your upcoming classes and events
-                                    </p>
-                                </div>
-                                <div class="tab-inn">
-                                    <div class="table-responsive table-desi">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Date</th>
-                                                    <th>Time</th>
-                                                    <th>Course</th>
-                                                    <th>Topic</th>
-                                                    <th>Location</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Nov 20, 2023</td>
-                                                    <td>9:00 AM</td>
-                                                    <td>Web Development</td>
-                                                    <td>React.js Fundamentals</td>
-                                                    <td>302</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 20, 2023</td>
-                                                    <td>2:00 PM</td>
-                                                    <td>Database Systems</td>
-                                                    <td>Normalization</td>
-                                                    <td>305</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 22, 2023</td>
-                                                    <td>9:00 AM</td>
-                                                    <td>Web Development</td>
-                                                    <td>State Management</td>
-                                                    <td>302</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nov 22, 2023</td>
-                                                    <td>2:00 PM</td>
-                                                    <td>Database Systems</td>
-                                                    <td>Transactions</td>
-                                                    <td>305</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              <li>
+                <a href="instructor-messages.html"
+                  ><i class="fa fa-envelope" aria-hidden="true"></i> Messages</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <!--== BODY INNER CONTAINER ==-->
+        <div class="sb2-2" style="padding: 40px; width: 80%">
+          <!--== breadcrumbs ==-->
+          <div class="sb2-2-2">
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><i class="fa fa-home" aria-hidden="true"></i> Home</a
+                >
+              </li>
+              <li class="active-bre"><a href="#"> Instructor Dashboard</a></li>
+            </ul>
+          </div>
+
+          <!--== DASHBOARD INFO ==-->
+          <div class="sb2-2-1">
+            <h2>Instructor Dashboard</h2>
+            <p>
+              Welcome to your instructor dashboard. Here you can manage your
+              courses, materials, and students.
+            </p>
+            <div class="db-2">
+              <ul>
+                <li>
+                  <div class="dash-book dash-b-1">
+                    <h5>My Courses</h5>
+                    <h4>5</h4>
+                    <a href="instructor-courses.html">View courses</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="dash-book dash-b-2">
+                    <h5>Active Students</h5>
+                    <h4>42</h4>
+                    <a href="instructor-students.html">View students</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="dash-book dash-b-3">
+                    <h5>Pending Tasks</h5>
+                    <h4>8</h4>
+                    <a href="instructor-view-tasks.html">View tasks</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="dash-book dash-b-4">
+                    <h5>New Messages</h5>
+                    <h4>3</h4>
+                    <a href="instructor-messages.html">View messages</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!--== My Courses ==-->
+          <div class="sb2-2-3">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="box-inn-sp">
+                  <div class="inn-title">
+                    <h4>My Courses</h4>
+                    <p>Courses you are currently teaching</p>
+                  </div>
+                  <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Image</th>
+                            <th>Course Name</th>
+                            <th>Students</th>
+                            <th>Materials</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-1.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="#"
+                                ><span class="list-enq-name"
+                                  >Web Development</span
+                                ><span class="list-enq-city"
+                                  >CS401 - Fall 2023</span
+                                ></a
+                              >
+                            </td>
+                            <td>24</td>
+                            <td>12</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="instructor-course-detail.html"
+                                class="ad-st-view"
+                                >Manage</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-2.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="#"
+                                ><span class="list-enq-name"
+                                  >Database Systems</span
+                                ><span class="list-enq-city"
+                                  >CS402 - Fall 2023</span
+                                ></a
+                              >
+                            </td>
+                            <td>18</td>
+                            <td>8</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="instructor-course-detail.html"
+                                class="ad-st-view"
+                                >Manage</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-3.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="#"
+                                ><span class="list-enq-name">Algorithms</span
+                                ><span class="list-enq-city"
+                                  >CS403 - Spring 2023</span
+                                ></a
+                              >
+                            </td>
+                            <td>22</td>
+                            <td>15</td>
+                            <td>
+                              <span class="label label-default">Completed</span>
+                            </td>
+                            <td>
+                              <a
+                                href="instructor-course-detail.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--== Pending Tasks ==-->
+          <div class="sb2-2-3">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="box-inn-sp">
+                  <div class="inn-title">
+                    <h4>Pending Tasks to Grade</h4>
+                    <p>Student submissions that need your evaluation</p>
+                  </div>
+                  <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Task</th>
+                            <th>Course</th>
+                            <th>Due Date</th>
+                            <th>Submissions</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <a href="#"
+                                ><span class="list-enq-name">Assignment 3</span
+                                ><span class="list-enq-city"
+                                  >Web Development Project</span
+                                ></a
+                              >
+                            </td>
+                            <td>Web Development</td>
+                            <td>Nov 15, 2023</td>
+                            <td>22/24</td>
+                            <td>
+                              <span class="label label-warning">Pending</span>
+                            </td>
+                            <td>
+                              <a
+                                href="instructor-grade-task.html"
+                                class="ad-st-view"
+                                >Grade</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <a href="#"
+                                ><span class="list-enq-name">Midterm Exam</span
+                                ><span class="list-enq-city"
+                                  >Database Concepts</span
+                                ></a
+                              >
+                            </td>
+                            <td>Database Systems</td>
+                            <td>Oct 30, 2023</td>
+                            <td>18/18</td>
+                            <td>
+                              <span class="label label-warning">Pending</span>
+                            </td>
+                            <td>
+                              <a
+                                href="instructor-grade-task.html"
+                                class="ad-st-view"
+                                >Grade</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <a href="#"
+                                ><span class="list-enq-name">Lab 5</span
+                                ><span class="list-enq-city"
+                                  >SQL Queries</span
+                                ></a
+                              >
+                            </td>
+                            <td>Database Systems</td>
+                            <td>Nov 5, 2023</td>
+                            <td>15/18</td>
+                            <td>
+                              <span class="label label-warning">Pending</span>
+                            </td>
+                            <td>
+                              <a
+                                href="instructor-grade-task.html"
+                                class="ad-st-view"
+                                >Grade</a
+                              >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--== Upcoming Schedule ==-->
+          <div class="sb2-2-3">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="box-inn-sp">
+                  <div class="inn-title">
+                    <h4>Upcoming Schedule</h4>
+                    <p>Your upcoming classes and events</p>
+                  </div>
+                  <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Course</th>
+                            <th>Topic</th>
+                            <th>Location</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Nov 20, 2023</td>
+                            <td>9:00 AM</td>
+                            <td>Web Development</td>
+                            <td>React.js Fundamentals</td>
+                            <td>302</td>
+                          </tr>
+                          <tr>
+                            <td>Nov 20, 2023</td>
+                            <td>2:00 PM</td>
+                            <td>Database Systems</td>
+                            <td>Normalization</td>
+                            <td>305</td>
+                          </tr>
+                          <tr>
+                            <td>Nov 22, 2023</td>
+                            <td>9:00 AM</td>
+                            <td>Web Development</td>
+                            <td>State Management</td>
+                            <td>302</td>
+                          </tr>
+                          <tr>
+                            <td>Nov 22, 2023</td>
+                            <td>2:00 PM</td>
+                            <td>Database Systems</td>
+                            <td>Transactions</td>
+                            <td>305</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!--Import jQuery before materialize.js-->
@@ -412,10 +490,15 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
 
     <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
     <!-- Preloader -->
     <div id="preloader"></div>
@@ -430,6 +513,5 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
-</body>
-
+  </body>
 </html>

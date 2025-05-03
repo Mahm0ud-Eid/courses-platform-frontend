@@ -531,7 +531,7 @@ h6 {
   display: none;
   list-style: none;
   position: absolute;
-  inset: 60px 20px 20px 20px;
+  inset: 50px 20px 20% 40%;
   padding: 10px 0;
   margin: 0;
   border-radius: 6px;
@@ -541,6 +541,9 @@ h6 {
   overflow-y: auto;
   transition: 0.3s;
   z-index: 9998;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 .navmenu-user a,
@@ -633,7 +636,7 @@ h6 {
 }
 
 .mobile-nav-active .navmenu-user > ul {
-  display: block;
+  display: flex;
 }
 /*--------------------------------------------------------------
 # Global Footer

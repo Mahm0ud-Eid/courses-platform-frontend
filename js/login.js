@@ -24,7 +24,7 @@ document
     // Send login request to backend
     try {
       let response = await fetch(
-        "https://mock.apidog.com/m1/855967-836772-default/login",
+        "https://uccd-etmsy.ondigitalocean.app/api/v1/login?email=manager@gmail.com&password=123456789",
         {
           method: "POST",
           headers: {

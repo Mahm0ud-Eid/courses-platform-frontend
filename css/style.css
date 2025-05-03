@@ -5718,3 +5718,49 @@ input:not(:focus):valid ~ .floating-label {
   font-weight: 700;
   color: #e66030;
 }
+
+/* file upload */
+.file-container {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 34.37em;
+  position: relative;
+  margin: 3.12em auto;
+  padding: 3.12em 1.25em;
+  border-radius: 0.43em;
+  box-shadow: 0 0 1em rgb(1, 28, 71, 0.3);
+}
+.file-container input[type="file"] {
+  display: none;
+}
+.file-container label {
+  display: block;
+  position: relative;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  font-size: 1.12em;
+  font-weight: 500;
+  text-align: center;
+  padding: 1.12em 0;
+  margin: auto;
+  border-radius: 0.31em;
+  cursor: pointer;
+}
+.file-container #num-of-files {
+  font-weight: 400;
+  text-align: center;
+  margin: 1.25em 0 1.87em 0;
+}
+.file-container ul {
+  list-style-type: none;
+}
+.file-container li {
+  font-weight: 500;
+  background-color: #eff5ff;
+  color: var(--accent-color);
+  margin-bottom: 1em;
+  padding: 1.1em 1em;
+  border-radius: 0.3em;
+  display: flex;
+  justify-content: space-between;
+}
