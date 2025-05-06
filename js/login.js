@@ -40,7 +40,7 @@ document
         alert("Login successful!");
 
         // Store JWT token in sessionStorage (or HttpOnly cookies if backend supports)
-        sessionStorage.setItem("token", data.token);
+        sessionStorage.setItem("token", data.data);
 
         // Redirect to dashboard or another page
         window.location.href = "admin.html";
