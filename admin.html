@@ -21,11 +21,12 @@
     />
 
     <!-- ALL CSS FILES -->
-    <!-- <link href="css/materialize.css" rel="stylesheet" /> -->
-    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!-- <link href="css/bootstrap.css" rel="stylesheet" /> -->
     <link href="css/style.css" rel="stylesheet" />
     <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
     <link href="css/style-mob.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/input-group.css" />
 
     <!-- Vendor CSS Files -->
     <link
@@ -45,6 +46,88 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
+
+    <style>
+      /* Center the form and adjust its width */
+      .form-section {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-section h4 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+      }
+
+      .form-section p {
+        text-align: center;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .input-field {
+        margin-bottom: 20px;
+      }
+
+      .input-field label {
+        /* font-size: 14px; */
+        color: #555;
+      }
+
+      .input-field input,
+      .input-field select,
+      .input-field textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .file-field .btn {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+      }
+
+      .file-path-wrapper input {
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .form-section button {
+        padding: 0 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .form-section button[type="submit"] {
+        background-color: #28a745;
+        color: #fff;
+        padding: 10px;
+        border: none;
+      }
+
+      .form-section button[type="reset"] {
+        background-color: #dc3545;
+        color: #fff;
+        margin-top: 10px;
+        padding: 10px;
+
+        border: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -123,10 +206,14 @@
               </li>
               <li>
                 <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-user" aria-hidden="true"></i> Users</a
+                  ><i class="fa fa-user" aria-hidden="true"></i> Instructors</a
                 >
                 <div class="collapsible-body left-sub-menu">
                   <ul>
+                    <li>
+                      <a class="inst-mg-btn" href="#">Manage</a>
+                    </li>
+
                     <li><a href="admin-user-all.html">All Users</a></li>
                     <li><a href="admin-user-add.html">Add New user</a></li>
                   </ul>
@@ -232,14 +319,16 @@
         <!--== BODY INNER CONTAINER ==-->
         <div class="sb2-2" style="padding: 40px; width: 80%">
           <!--== breadcrumbs ==-->
-          <div class="sb2-2-2">
+          <div class="sb2-2-2 path">
             <ul>
               <li>
                 <a href="index.html"
                   ><i class="fa fa-home" aria-hidden="true"></i> Home</a
                 >
               </li>
-              <li class="active-bre"><a href="#"> Dashboard</a></li>
+              <li class="active-bre">
+                <a class="curr-path" href="#"> Dashboard</a>
+              </li>
               <li class="page-back">
                 <a href="index.html"
                   ><i class="fa fa-backward" aria-hidden="true"></i> Back</a
@@ -247,8 +336,9 @@
               </li>
             </ul>
           </div>
+
           <!--== DASHBOARD INFO ==-->
-          <div class="sb2-2-1">
+          <div class="dash sb2-2-1">
             <h2>Admin Dashboard</h2>
             <p>
               The .table class adds basic styling (light padding and only
@@ -288,8 +378,89 @@
             </div>
           </div>
 
+          <!-- manage instructors -->
+
+          <div class="form-section add-inst">
+            <h4>Manage Instructors</h4>
+            <p>View, Add, Update or Delete Instructor</p>
+
+            <form id="addMaterialForm">
+              <div class="input-group mb-3">
+                <input
+                  type="email"
+                  class="form-control inst-email"
+                  placeholder="example@email.com"
+                  aria-label="email"
+                />
+                <button
+                  class="btn btn-outline-secondary inst-view"
+                  type="button inst-view"
+                  id="button-addon2"
+                >
+                  View
+                </button>
+              </div>
+
+              <div class="row" style="margin-bottom: 15px">
+                <div class="col">
+                  <input
+                    type="text"
+                    class="form-control inst-f-name"
+                    placeholder="First name"
+                    aria-label="First name"
+                  />
+                </div>
+                <div class="col">
+                  <input
+                    type="text"
+                    class="form-control inst-l-name"
+                    placeholder="Last name"
+                    aria-label="Last name"
+                  />
+                </div>
+              </div>
+
+              <div class="form-floating" style="margin-bottom: 15px">
+                <input
+                  type="password"
+                  class="form-control inst-pass"
+                  id="instPass"
+                  placeholder="Password"
+                />
+                <label for="instPass">Password</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="tel" class="form-control" id="instPhone" />
+                <label for="instPhone">Phone number</label>
+              </div>
+
+              <div class="form-floating">
+                <textarea
+                  class="form-control inst-desc"
+                  placeholder="Add a description"
+                  id="instDesc"
+                  style="height: 100px"
+                ></textarea>
+                <label for="instDesc">Description</label>
+              </div>
+
+              <div class="file-container">
+                <input type="file" id="file-input" />
+                <label for="file-input">
+                  <i class="bi bi-file-earmark-image"></i> Image To Upload
+                </label>
+                <div id="num-of-files">No Image Choosen</div>
+                <ul id="files-list"></ul>
+              </div>
+
+              <button type="submit">Upload Material</button>
+              <button type="reset">Cancel</button>
+            </form>
+          </div>
+
           <!--== User Details ==-->
-          <div class="sb2-2-3">
+          <div class="std-details sb2-2-3">
             <div class="row">
               <div class="col-md-12">
                 <div class="box-inn-sp">
@@ -567,7 +738,7 @@
           </div>
 
           <!--== User Details ==-->
-          <div class="sb2-2-3">
+          <div class="c-details sb2-2-3">
             <div class="row">
               <div class="col-md-12">
                 <div class="box-inn-sp">
@@ -918,7 +1089,7 @@
           <div class="sb2-2-3">
             <div class="row">
               <!--== Country Campaigns ==-->
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Job Openings</h4>
@@ -993,10 +1164,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <!--== Country Campaigns ==-->
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Event Details</h4>
@@ -1132,14 +1303,14 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
           <div class="sb2-2-3">
             <div class="row">
               <!--== Listing Enquiry ==-->
-              <div class="col-md-12">
+              <!-- <div class="col-md-12">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Exam Time Tables</h4>
@@ -1296,7 +1467,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -1304,7 +1475,7 @@
           <div class="sb2-2-3">
             <div class="row">
               <!--== Latest Activity ==-->
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Latest Activity</h4>
@@ -1369,10 +1540,10 @@
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <!--== Social Media ==-->
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Social Media</h4>
@@ -1543,11 +1714,12 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
+
           <!--== User Details ==-->
-          <div class="sb2-2-3">
+          <!-- <div class="sb2-2-3">
             <div class="row">
               <div class="col-md-12">
                 <div class="box-inn-sp">
@@ -1569,7 +1741,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -1591,17 +1763,17 @@
     <!-- Preloader -->
     <div id="preloader"></div>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/sidebar-tog.js"></script>
+    <script src="assets/js/input-group"></script>
+    <script src="assets/js/phone-input.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/image-upload.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/manager.js"></script>
     <script src="js/logout.js"></script>
   </body>
 </html>
