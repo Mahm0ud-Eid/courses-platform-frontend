@@ -1,11 +1,3 @@
-/**
- * Template Name: Mentor
- * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
- * Updated: Aug 07 2024 with Bootstrap v5.3.3
- * Author: BootstrapMade.com
- * License: https://bootstrapmade.com/license/
- */
-
 (function () {
   "use strict";
 
@@ -100,27 +92,27 @@
   /**
    * Animation on scroll function and init
    */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: "ease-in-out",
-      once: true,
-      mirror: false,
-    });
-  }
-  window.addEventListener("load", aosInit);
+  // function aosInit() {
+  //   AOS.init({
+  //     duration: 600,
+  //     easing: "ease-in-out",
+  //     once: true,
+  //     mirror: false,
+  //   });
+  // }
+  // window.addEventListener("load", aosInit);
 
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
-    selector: ".glightbox",
-  });
+  // const glightbox = GLightbox({
+  //   selector: ".glightbox",
+  // });
 
   /**
    * Initiate Pure Counter
    */
-  new PureCounter();
+  // new PureCounter();
 
   /**
    * Init swiper sliders
