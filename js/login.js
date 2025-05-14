@@ -24,7 +24,7 @@ document
     // Send login request to backend
     try {
       let response = await fetch(
-        "https://uccd-etmsy.ondigitalocean.app/api/v1/login?email=manager@gmail.com&password=123456789",
+        "https://uccd-ljoxz.ondigitalocean.app/api/v1/login",
         {
           method: "POST",
           headers: {
@@ -37,13 +37,16 @@ document
       let data = await response.json();
 
       if (response.ok) {
+        console.log(data.data);
+        sessionStorage.setItem("token", data.data.Token);
         alert("Login successful!");
 
         // Store JWT token in sessionStorage (or HttpOnly cookies if backend supports)
-        sessionStorage.setItem("token", data.data);
 
         // Redirect to dashboard or another page
-        window.location.href = "admin.html";
+        if (data.data.Role === "manager") {
+          window.location.href = "admin.html";
+        }
       } else {
         alert(data.message || "Login failed! Please check your credentials.");
       }
