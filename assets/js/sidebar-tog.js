@@ -4,15 +4,15 @@ sbTog.addEventListener("click", function () {
   let sidebar = document.querySelector(".sb2-1");
   let mainContent = document.querySelector(".sb2-2");
 
-  if (sbTog.classList.contains("expand")) {
+  if (sidebar.classList.contains("active")) {
+    sidebar.classList.remove("active");
+    mainContent.classList.remove("shifted");
     sbTog.classList.remove("expand");
-    sidebar.style.display = "block";
-    mainContent.style.width = "80%";
-    mainContent.style.marginLeft = "20%";
   } else {
+    sidebar.classList.add("active");
     sbTog.classList.add("expand");
-    sidebar.style.display = "none";
-    mainContent.style.width = "100%";
-    mainContent.style.marginLeft = "0px";
+    if (window.innerWidth > 992) {
+      mainContent.classList.add("shifted");
+    }
   }
 });
