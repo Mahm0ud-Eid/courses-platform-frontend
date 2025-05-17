@@ -5725,7 +5725,7 @@ input:not(:focus):valid ~ .floating-label {
   width: 90%;
   max-width: 34.37em;
   position: relative;
-  margin: 3.12em auto;
+  /* margin: 3.12em auto; */
   padding: 3.12em 1.25em;
   border-radius: 0.43em;
   box-shadow: 0 0 1em rgb(1, 28, 71, 0.3);
