@@ -28,6 +28,7 @@
   width: 100%;
   /* padding: 40px; */
   transition: all 0.3s ease;
+  margin: 0;
 }
 .sb2-2.shifted {
   padding-left: 22%;
