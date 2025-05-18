@@ -11,6 +11,8 @@ instDetails.style.display = "none";
 addInst.style.display = "none";
 
 let instViewBtn = document.querySelector(".inst-view");
+let instSaveBtn = document.querySelector(".inst-save");
+
 // let instFName = document.querySelector(".inst-f-name");
 // let instLName = document.querySelector(".inst-l-name");
 let instName = document.querySelector(".inst-name");
@@ -19,6 +21,8 @@ let instEmail = document.querySelector(".inst-email");
 let instPass = document.querySelector(".inst-pass");
 let instDesc = document.querySelector(".inst-desc");
 let instImg = document.querySelector(".inst-img");
+
+let rUrl = `https://uccd-ljoxz.ondigitalocean.app/api/v1/manager/instructor/update`;
 
 function validateToken() {
   const token = sessionStorage.getItem("token");
@@ -156,74 +160,119 @@ instViewBtn.addEventListener("click", function () {
       return response.json();
     })
     .then((data) => {
-      console.log(data.data);
-      // instFName.value = data.data.firstname || "";
-      // instLName.value = data.data.lastname || "";
-      instName.value = data.data.username || "";
-      instPass.value = data.data.password || "";
-      instPhone.value = data.data.Phone || "";
-      instDesc.value = data.data.description || "";
-      // instImg.src = data.data.image || "images/user/1.png";
+      // Check if the instructor exists
+      if (data.status !== true) {
+        Swal.fire({
+          title: "User Not Found",
+          text: "Fill the fields to create it",
+          icon: "info",
+          showCancelButton: true,
+          confirmButtonText: "Ok",
+          cancelButtonText: "No, thanks",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            console.log("yes");
+          } else if (result.isDismissed) {
+            console.log("No");
+          }
+        });
+        instSaveBtn.innerHTML = "Create Instructor";
+        rUrl = `https://uccd-ljoxz.ondigitalocean.app/api/v1/manager/instructor/store`;
+      } else {
+        Swal.fire({
+          title: "User Found",
+          text: "Fill the fields to update it",
+          icon: "success",
+          showCloseButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Ok",
+          cancelButtonText: "No, thanks",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            console.log("yes");
+          } else if (result.isDismissed) {
+            console.log("No");
+          }
+        });
+        rUrl = `https://uccd-ljoxz.ondigitalocean.app/api/v1/manager/instructor/update`;
+        instSaveBtn.innerHTML = "Update Instructor";
+      }
+      // Populate the form fields with the fetched data only if data.data exists
+      if (data.data) {
+        console.log(data.data);
+        // instFName.value = data.data.firstname || "";
+        // instLName.value = data.data.lastname || "";
+        instName.value = data.data.Name || "";
+        // instPass.value = data.data.password || "";
+        instPhone.value = data.data.Phone || "";
+        instDesc.value = data.data.Description || "";
+        // instImg.src = data.data.image || "images/user/1.png";
+      } else {
+        // Clear the form fields if no data is returned
+        instName.value = "";
+        instPhone.value = "";
+        instDesc.value = "";
+        // instPass.value = "";
+        // instImg.src = "images/user/1.png";
+      }
     })
     .catch((error) => {
       console.error("There was a problem with the fetch operation:", error);
     });
 });
 
-let instSaveBtn = document.querySelector(".inst-save");
-
 instSaveBtn.addEventListener("click", function (event) {
-  const token = validateToken();
   event.preventDefault(); // Prevent form submission
 
+  const token = validateToken();
+
+  // Prevent default form submission and handle everything via fetch
   const instructorData = {
-    email: instEmail.value,
-    name: instName.value,
-    // password: instPass.value,
-    phone: instPhone.value,
-    description: instDesc.value,
-    // image: instImg.src || "images/user/1.png",
+    Email: instEmail.value,
+    Name: instName.value,
+    Password: instPass.value,
+    Phone: instPhone.value,
+    Description: instDesc.value,
+    // Image: instImg.value || "images/user/1.png",
   };
 
-  fetch(
-    `https://uccd-ljoxz.ondigitalocean.app/api/v1/manager/instructor/update`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(instructorData),
-    }
-  )
+  fetch(rUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(instructorData),
+    redirect: "manual", // Prevent automatic following of redirects
+  })
     .then((response) => {
-      if (response.status === 404) {
-        // If not found, create a new instructor
-        return fetch(
-          `https://uccd-ljoxz.ondigitalocean.app/api/v1/manager/instructor/store`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(instructorData),
-          }
-        );
+      // If the backend tries to redirect, fetch with redirect: "manual" will not follow it
+      if (
+        response.type === "opaqueredirect" ||
+        response.status === 302 ||
+        response.status === 301
+      ) {
+        throw new Error("Redirect prevented by client.");
       }
-
-      return response;
-    })
-    .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       return response.json();
     })
     .then((data) => {
-      console.log("Operation successful:", data);
+      Swal.fire({
+        title: data.message,
+        icon: "success",
+        showCloseButton: true,
+      });
     })
     .catch((error) => {
       console.error("There was a problem with the operation:", error);
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        icon: "error",
+        showCloseButton: true,
+      });
     });
 });
