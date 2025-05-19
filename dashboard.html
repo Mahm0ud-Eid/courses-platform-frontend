@@ -1091,16 +1091,22 @@
     filterCourses("all"); document.getElementById("view-all-courses").addEventListener("click", function () {
       // Toggle visibility of the hidden courses
       var moreCourses = document.querySelectorAll(".more-courses");
+      var isHidden = moreCourses[0].classList.contains("hidden");
+
       moreCourses.forEach(function (course) {
         course.classList.toggle("hidden");
       });
 
-      // Change the text of the button depending on visibility
+      // Change the text of the button depending on visibility state
       var button = document.getElementById("view-all-courses");
-      if (button.textContent === "View All Courses") {
-        button.textContent = "View Fewer Courses";
+      const currentLang = document.documentElement.lang || 'en';
+
+      if (isHidden) {
+        // Courses were hidden and are now shown - change to "View Fewer"
+        button.textContent = currentLang === 'ar' ? translations.ar.viewFewerCourses : translations.en.viewFewerCourses;
       } else {
-        button.textContent = "View All Courses";
+        // Courses were shown and are now hidden - change to "View All"
+        button.textContent = currentLang === 'ar' ? translations.ar.viewAllCourses : translations.en.viewAllCourses;
       }
     });
 
