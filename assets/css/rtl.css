@@ -89,3 +89,8 @@ body.rtl .why-box {
 body.rtl .icon-box {
     text-align: right;
 }
+
+
+#language-toggle {
+  margin-left: 20px;
+}
