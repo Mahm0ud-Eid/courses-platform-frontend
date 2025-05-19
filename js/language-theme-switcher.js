@@ -85,9 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.innerHTML = '<i class="bi bi-moon"></i>';
             button.setAttribute('title', 'Switch to Dark Mode');
         }
-    }
-      // Apply translations to the page
-    function applyTranslations(lang) {
+    }    function applyTranslations(lang) {
         if (!translations || !translations[lang]) return;
         
         // Translate navigation items
@@ -108,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'لوحة التحكم': translations[lang].dashboard,
             'اتصل بنا': translations[lang].contact
         };
-          document.querySelectorAll('#navmenu a').forEach(link => {
+        
+        document.querySelectorAll('#navmenu a').forEach(link => {
             const text = link.textContent.trim().replace(/\s*\n\s*|\s*<br\s*\/?>\s*/gi, '');
             if (navItems[text]) {
                 // Handle special case for Home with <br> tag
@@ -122,7 +121,114 @@ document.addEventListener('DOMContentLoaded', function() {
                     link.textContent = navItems[text];
                 }
             }
-        });// Translate sign in button
+        });
+        
+        // Translate dashboard navigation items
+        const dashboardNavItems = {
+            'Dashboard': translations[lang].myDashboard,
+            'My Profile': translations[lang].myProfile,
+            'My Courses': translations[lang].myCourses,
+            'Exams & Results': translations[lang].examsResults,
+            'Schedule': translations[lang].schedule,
+            'Notifications': translations[lang].notifications,
+            'Settings': translations[lang].settings,
+            'Logout': translations[lang].logout,
+            // Arabic items for reverse mapping
+            'لوحة التحكم': translations[lang].myDashboard,
+            'الملف الشخصي': translations[lang].myProfile,
+            'دوراتي': translations[lang].myCourses,
+            'الاختبارات والنتائج': translations[lang].examsResults,
+            'الجدول الزمني': translations[lang].schedule,
+            'الإشعارات': translations[lang].notifications,
+            'الإعدادات': translations[lang].settings,
+            'تسجيل الخروج': translations[lang].logout
+        };
+        
+        document.querySelectorAll('.dashboard-nav .nav-link').forEach(link => {
+            const text = link.textContent.trim().replace(/\s*\n\s*|\s*<i[^>]*>.*?<\/i>\s*/gi, '').trim();
+            if (dashboardNavItems[text]) {
+                // Preserve the icon
+                const icon = link.querySelector('i');
+                if (icon) {
+                    link.innerHTML = icon.outerHTML + ' ' + dashboardNavItems[text];
+                } else {
+                    link.textContent = dashboardNavItems[text];
+                }
+            }
+        });
+        
+        // Translate dashboard section headers
+        const dashboardHeaders = {
+            'Welcome Back': translations[lang].welcomeBack,
+            'Enrolled Courses': translations[lang].enrolledCourses,
+            'Course Status': translations[lang].courseStatus,
+            'Upcoming Schedule': translations[lang].upcomingSchedule,
+            // Arabic items for reverse mapping
+            'مرحبًا بعودتك': translations[lang].welcomeBack,
+            'الدورات المسجلة': translations[lang].enrolledCourses,
+            'حالة الدورة': translations[lang].courseStatus,
+            'الجدول القادم': translations[lang].upcomingSchedule
+        };
+        
+        document.querySelectorAll('.section-header h4').forEach(header => {
+            const text = header.textContent.trim().replace(/\s*\n\s*|\s*<i[^>]*>.*?<\/i>\s*/gi, '').trim();
+            if (dashboardHeaders[text]) {
+                // Preserve the icon
+                const icon = header.querySelector('i');
+                if (icon) {
+                    header.innerHTML = icon.outerHTML + ' ' + dashboardHeaders[text];
+                } else {
+                    header.textContent = dashboardHeaders[text];
+                }
+            }
+        });
+          // Translate dashboard buttons and stats
+        const dashboardStatsLabels = document.querySelectorAll('.stats-card p');
+        if (dashboardStatsLabels.length >= 1) {
+            dashboardStatsLabels.forEach(label => {
+                if (label.textContent.trim() === 'Active Courses' || label.textContent.trim() === 'الدورات النشطة') {
+                    label.textContent = translations[lang].activeCourses;
+                } else if (label.textContent.trim() === 'Certificates' || label.textContent.trim() === 'الشهادات') {
+                    label.textContent = translations[lang].certificates;
+                } else if (label.textContent.trim() === 'Upcoming Classes' || label.textContent.trim() === 'الدروس القادمة') {
+                    label.textContent = translations[lang].upcomingClasses;
+                } else if (label.textContent.trim() === 'Study Time' || label.textContent.trim() === 'وقت الدراسة') {
+                    label.textContent = translations[lang].studyTime;
+                }
+            });
+        }
+        
+        // Translate dashboard buttons
+        const viewAllCoursesBtn = document.getElementById('view-all-courses');
+        if (viewAllCoursesBtn) {
+            if (viewAllCoursesBtn.textContent.trim() === 'View All Courses' || viewAllCoursesBtn.textContent.trim() === 'عرض جميع الدورات') {
+                viewAllCoursesBtn.textContent = translations[lang].viewAllCourses;
+            } else {
+                viewAllCoursesBtn.textContent = translations[lang].viewFewerCourses;
+            }
+        }
+        
+        const browseCoursesBtn = document.querySelector('.section-header a[href="courses.html"]');
+        if (browseCoursesBtn) {
+            browseCoursesBtn.textContent = translations[lang].browseCourses;
+        }
+        
+        const viewCalendarBtn = document.querySelector('.section-header a[href="db-time-line.html"]');
+        if (viewCalendarBtn) {
+            viewCalendarBtn.textContent = translations[lang].viewFullCalendar;
+        }
+        
+        // Filter buttons for course status
+        const allBtn = document.getElementById('all-btn');
+        if (allBtn) allBtn.textContent = translations[lang].all;
+        
+        const activeBtn = document.getElementById('active-btn');
+        if (activeBtn) activeBtn.textContent = translations[lang].active;
+        
+        const completedBtn = document.getElementById('completed-btn');
+        if (completedBtn) completedBtn.textContent = translations[lang].completed;
+
+        // Translate sign in button
         const signInBtn = document.querySelector('.btn-getstarted');
         if (signInBtn) {
             // Check both English and Arabic texts to handle switching between languages

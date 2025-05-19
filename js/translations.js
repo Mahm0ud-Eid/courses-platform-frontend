@@ -9,10 +9,39 @@ const translations = {
         "courses": "Courses",
         "trainers": "Trainers",
         "events": "Events",
-        "dashboard": "Dashboard",        "contact": "Contact",
+        "dashboard": "Dashboard",
+        "contact": "Contact",
         "signIn": "Sign In",
         "signOut": "Sign out",
         "getStarted": "Get Started",
+        
+        // Dashboard Navigation
+        "myDashboard": "Dashboard",
+        "myProfile": "My Profile",
+        "myCourses": "My Courses",
+        "examsResults": "Exams & Results",
+        "schedule": "Schedule",
+        "notifications": "Notifications",
+        "settings": "Settings",
+        "logout": "Logout",
+        
+        // Dashboard Content
+        "welcomeBack": "Welcome Back",
+        "activeCourses": "Active Courses",
+        "certificates": "Certificates",
+        "upcomingClasses": "Upcoming Classes",
+        "studyTime": "Study Time",
+        "export": "Export",
+        "enrolledCourses": "Enrolled Courses",
+        "browseCourses": "Browse Courses",
+        "viewAllCourses": "View All Courses",
+        "viewFewerCourses": "View Fewer Courses",
+        "courseStatus": "Course Status",
+        "all": "All",
+        "active": "Active",
+        "completed": "Completed",
+        "upcomingSchedule": "Upcoming Schedule",
+        "viewFullCalendar": "View Full Calendar",
         
         // Hero Section
         "heroTitle": "Learning Today,<br />Leading Tomorrow",
@@ -43,8 +72,7 @@ const translations = {
         "newsletter": "Our Newsletter",
         "newsletterDesc": "Subscribe to our newsletter and receive the latest news about our products and services!",
         "subscribe": "Subscribe",
-        "copyright": "© <span>Copyright</span> <strong class='px-1 sitename'>UCCD</strong> <span>All Rights Reserved</span>"
-    },
+        "copyright": "© <span>Copyright</span> <strong class='px-1 sitename'>UCCD</strong> <span>All Rights Reserved</span>"    },
     ar: {
         // Navigation
         "home": "الرئيسية",
@@ -52,10 +80,39 @@ const translations = {
         "courses": "الدورات",
         "trainers": "المدربون",
         "events": "الفعاليات",
-        "dashboard": "لوحة التحكم",        "contact": "اتصل بنا",
+        "dashboard": "لوحة التحكم",
+        "contact": "اتصل بنا",
         "signIn": "تسجيل الدخول",
         "signOut": "تسجيل الخروج",
         "getStarted": "ابدأ الآن",
+        
+        // Dashboard Navigation
+        "myDashboard": "لوحة التحكم",
+        "myProfile": "الملف الشخصي",
+        "myCourses": "دوراتي",
+        "examsResults": "الاختبارات والنتائج",
+        "schedule": "الجدول الزمني",
+        "notifications": "الإشعارات",
+        "settings": "الإعدادات",
+        "logout": "تسجيل الخروج",
+        
+        // Dashboard Content
+        "welcomeBack": "مرحبًا بعودتك",
+        "activeCourses": "الدورات النشطة",
+        "certificates": "الشهادات",
+        "upcomingClasses": "الدروس القادمة",
+        "studyTime": "وقت الدراسة",
+        "export": "تصدير",
+        "enrolledCourses": "الدورات المسجلة",
+        "browseCourses": "تصفح الدورات",
+        "viewAllCourses": "عرض جميع الدورات",
+        "viewFewerCourses": "عرض دورات أقل",
+        "courseStatus": "حالة الدورة",
+        "all": "الكل",
+        "active": "نشط",
+        "completed": "مكتمل",
+        "upcomingSchedule": "الجدول القادم",
+        "viewFullCalendar": "عرض التقويم الكامل",
         
         // Hero Section
         "heroTitle": "التعلم اليوم،<br />القيادة غداً",
