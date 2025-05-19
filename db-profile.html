@@ -30,7 +30,7 @@
   <link href="assets/css/rtl.css" rel="stylesheet" />
   <!-- Dark Mode Support -->
   <link href="assets/css/dark-mode.css" rel="stylesheet" />
-  
+
   <!-- Custom styles for language and theme switchers -->
   <style>
     :root {
@@ -278,18 +278,20 @@
       font-size: 0.75rem;
       font-weight: 600;
       display: inline-block;
-    }    .status-active {
+    }
+
+    .status-active {
       background: rgba(40, 167, 69, 0.1);
       color: var(--success);
     }
-    
+
     /* Phone Number Link Style */
     .profile-details a {
       color: var(--primary);
       transition: color 0.2s ease;
       text-decoration: none;
     }
-    
+
     .profile-details a:hover {
       color: var(--secondary);
       text-decoration: underline;
@@ -386,7 +388,8 @@
           <li><a href="dashboard.html" class="active">Dashboard</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>      </nav>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
       <div class="switchers-container me-3">
         <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
@@ -474,7 +477,8 @@
                 <tr>
                   <td>Student ID</td>
                   <td>ST17241</td>
-                </tr>                <tr>
+                </tr>
+                <tr>
                   <td>Email Address</td>
                   <td>emily.jessica@example.com</td>
                 </tr>
@@ -636,14 +640,14 @@
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <!-- Main JS File -->
-  <script src="js/main.js"></script>  <!-- Translations -->
+  <script src="js/main.js"></script> <!-- Translations -->
   <script src="js/translations.js"></script>
   <!-- Language and Theme Switcher -->
   <script src="js/language-theme-switcher.js"></script>
   <!-- Profile-specific translations -->
   <script src="js/profile-translations.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Initialize and apply profile-specific translations
       const currentLang = localStorage.getItem('language') || 'en';
       translateProfileElements(currentLang);

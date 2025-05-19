@@ -417,7 +417,8 @@
           <li><a href="dashboard.html" class="active">Dashboard</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>      </nav>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
       <div class="switchers-container me-3">
         <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
@@ -830,14 +831,14 @@
         button.textContent = "View All Courses";
       }
     });
-  </script>  <!-- Translations -->
+  </script> <!-- Translations -->
   <script src="js/translations.js"></script>
   <!-- Language and Theme Switcher -->
   <script src="js/language-theme-switcher.js"></script>
   <!-- Profile-specific translations -->
   <script src="js/profile-translations.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Initialize and apply profile-specific translations
       const currentLang = localStorage.getItem('language') || 'en';
       translateProfileElements(currentLang);
