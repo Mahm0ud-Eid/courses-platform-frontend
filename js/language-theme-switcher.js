@@ -1,0 +1,271 @@
+/**
+ * Language and Theme Switcher
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize language and theme from localStorage or defaults
+    const currentLang = localStorage.getItem('language') || 'en';
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    // Set initial language
+    if (currentLang === 'ar') {
+        document.documentElement.lang = 'ar';
+        document.body.classList.add('rtl');
+        updateLanguageButton('ar');
+        applyTranslations('ar');
+    } else {
+        document.documentElement.lang = 'en';
+        document.body.classList.remove('rtl');
+        updateLanguageButton('en');
+        applyTranslations('en');
+    }
+    
+    // Set initial theme
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        updateThemeButton('dark');
+    } else {
+        document.body.classList.remove('dark-mode');
+        updateThemeButton('light');
+    }
+    
+    // Language toggle button click handler
+    document.getElementById('language-toggle').addEventListener('click', function() {
+        const currentLang = document.documentElement.lang;
+        if (currentLang === 'en') {
+            // Switch to Arabic
+            document.documentElement.lang = 'ar';
+            document.body.classList.add('rtl');
+            localStorage.setItem('language', 'ar');
+            updateLanguageButton('ar');
+            applyTranslations('ar');
+        } else {
+            // Switch to English
+            document.documentElement.lang = 'en';
+            document.body.classList.remove('rtl');
+            localStorage.setItem('language', 'en');
+            updateLanguageButton('en');
+            applyTranslations('en');
+        }
+    });
+    
+    // Theme toggle button click handler
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        if (document.body.classList.contains('dark-mode')) {
+            // Switch to light mode
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+            updateThemeButton('light');
+        } else {
+            // Switch to dark mode
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+            updateThemeButton('dark');
+        }
+    });
+    
+    // Update language button appearance
+    function updateLanguageButton(lang) {
+        const button = document.getElementById('language-toggle');
+        if (lang === 'ar') {
+            button.innerHTML = 'English';
+            button.setAttribute('title', 'Switch to English');
+        } else {
+            button.innerHTML = 'العربية';
+            button.setAttribute('title', 'Switch to Arabic');
+        }
+    }
+    
+    // Update theme button appearance
+    function updateThemeButton(theme) {
+        const button = document.getElementById('theme-toggle');
+        if (theme === 'dark') {
+            button.innerHTML = '<i class="bi bi-sun"></i>';
+            button.setAttribute('title', 'Switch to Light Mode');
+        } else {
+            button.innerHTML = '<i class="bi bi-moon"></i>';
+            button.setAttribute('title', 'Switch to Dark Mode');
+        }
+    }
+      // Apply translations to the page
+    function applyTranslations(lang) {
+        if (!translations || !translations[lang]) return;
+        
+        // Translate navigation items
+        const navItems = {
+            'Home': translations[lang].home,
+            'About': translations[lang].about,
+            'Courses': translations[lang].courses,
+            'Trainers': translations[lang].trainers,
+            'Events': translations[lang].events,
+            'Dashboard': translations[lang].dashboard,
+            'Contact': translations[lang].contact,
+            // Arabic navigation items for reverse mapping
+            'الرئيسية': translations[lang].home,
+            'حول': translations[lang].about,
+            'الدورات': translations[lang].courses,
+            'المدربون': translations[lang].trainers,
+            'الفعاليات': translations[lang].events,
+            'لوحة التحكم': translations[lang].dashboard,
+            'اتصل بنا': translations[lang].contact
+        };
+          document.querySelectorAll('#navmenu a').forEach(link => {
+            const text = link.textContent.trim().replace(/\s*\n\s*|\s*<br\s*\/?>\s*/gi, '');
+            if (navItems[text]) {
+                // Handle special case for Home with <br> tag
+                if (text === 'Home' || text === 'الرئيسية') {
+                    if (link.innerHTML.includes('<br')) {
+                        link.innerHTML = translations[lang].home + '<br>';
+                    } else {
+                        link.textContent = translations[lang].home;
+                    }
+                } else {
+                    link.textContent = navItems[text];
+                }
+            }
+        });// Translate sign in button
+        const signInBtn = document.querySelector('.btn-getstarted');
+        if (signInBtn) {
+            // Check both English and Arabic texts to handle switching between languages
+            if (signInBtn.textContent.trim() === 'Sign In' || signInBtn.textContent.trim() === 'تسجيل الدخول') {
+                signInBtn.textContent = translations[lang].signIn;
+            } else if (signInBtn.textContent.trim() === 'Sign out' || signInBtn.textContent.trim() === 'تسجيل الخروج') {
+                signInBtn.textContent = translations[lang].signOut;
+            } else if (signInBtn.textContent.trim() === 'Get Started' || signInBtn.textContent.trim() === 'ابدأ الآن') {
+                signInBtn.textContent = translations[lang].getStarted;
+            }
+        }
+        
+        // Translate hero section
+        const heroTitle = document.querySelector('#hero h2');
+        if (heroTitle) {
+            heroTitle.innerHTML = translations[lang].heroTitle;
+        }
+        
+        const heroSubtitle = document.querySelector('#hero p');
+        if (heroSubtitle) {
+            heroSubtitle.textContent = translations[lang].heroSubtitle;
+        }
+        
+        const getStartedBtn = document.querySelector('#hero .btn-get-started');
+        if (getStartedBtn) {
+            getStartedBtn.textContent = translations[lang].getStarted;
+        }
+        
+        // Translate about section
+        const aboutTitle = document.querySelector('#about h3');
+        if (aboutTitle) {
+            aboutTitle.textContent = translations[lang].aboutTitle;
+        }
+        
+        const aboutDesc = document.querySelector('#about p.fst-italic');
+        if (aboutDesc) {
+            aboutDesc.textContent = translations[lang].aboutDesc;
+        }
+        
+        const aboutItems = document.querySelectorAll('#about ul li span');
+        if (aboutItems.length >= 3) {
+            aboutItems[0].textContent = translations[lang].aboutItem1;
+            aboutItems[1].textContent = translations[lang].aboutItem2;
+            aboutItems[2].textContent = translations[lang].aboutItem3;
+        }
+        
+        const readMoreBtn = document.querySelector('#about .read-more span');
+        if (readMoreBtn) {
+            readMoreBtn.textContent = translations[lang].readMore;
+        }
+        
+        // Translate stats section
+        const statsLabels = document.querySelectorAll('#counts .stats-item p');
+        if (statsLabels.length >= 4) {
+            statsLabels[0].textContent = translations[lang].students;
+            statsLabels[1].textContent = translations[lang].courses;
+            statsLabels[2].textContent = translations[lang].events;
+            statsLabels[3].textContent = translations[lang].trainers;
+        }
+        
+        // Translate why us section
+        const whyTitle = document.querySelector('#why-us .why-box h3');
+        if (whyTitle) {
+            whyTitle.textContent = translations[lang].whyTitle;
+        }
+        
+        const whyDesc = document.querySelector('#why-us .why-box p');
+        if (whyDesc) {
+            whyDesc.textContent = translations[lang].whyDesc;
+        }
+        
+        const learnMoreBtn = document.querySelector('#why-us .more-btn span');
+        if (learnMoreBtn) {
+            learnMoreBtn.textContent = translations[lang].learnMore;
+        }
+          // Translate footer
+        const footerSections = document.querySelectorAll('.footer h4');
+        footerSections.forEach(section => {
+            const text = section.textContent.trim();
+            if (text === 'Useful Links' || text === 'روابط مفيدة') {
+                section.textContent = translations[lang].usefulLinks;
+            } else if (text === 'Our Services' || text === 'خدماتنا') {
+                section.textContent = translations[lang].ourServices;
+            } else if (text === 'Our Newsletter' || text === 'النشرة الإخبارية') {
+                section.textContent = translations[lang].newsletter;
+                const newsletterDesc = section.nextElementSibling;
+                if (newsletterDesc && newsletterDesc.tagName === 'P') {
+                    newsletterDesc.textContent = translations[lang].newsletterDesc;
+                }
+            }
+        });
+        
+        // Translate subscribe button
+        const subscribeBtn = document.querySelector('.newsletter-form input[type="submit"]');
+        if (subscribeBtn) {
+            subscribeBtn.value = translations[lang].subscribe;
+        }
+        
+        // Translate copyright
+        const copyright = document.querySelector('.copyright p');
+        if (copyright) {
+            copyright.innerHTML = translations[lang].copyright;
+        }
+        
+        // Translate dashboard elements if they exist
+        // Dashboard titles and labels
+        const dashboardSectionTitles = document.querySelectorAll('.section-header h4');
+        if (dashboardSectionTitles.length > 0) {
+            const dashboardTitleMap = {
+                'Welcome Back': lang === 'ar' ? 'مرحباً بعودتك' : 'Welcome Back',
+                'Enrolled Courses': lang === 'ar' ? 'الدورات المسجلة' : 'Enrolled Courses',
+                'Course Status': lang === 'ar' ? 'حالة الدورات' : 'Course Status',
+                'Upcoming Schedule': lang === 'ar' ? 'الجدول القادم' : 'Upcoming Schedule'
+            };
+            
+            dashboardSectionTitles.forEach(title => {
+                for (const [key, value] of Object.entries(dashboardTitleMap)) {
+                    if (title.textContent.includes(key)) {
+                        title.textContent = title.textContent.replace(key, value);
+                        break;
+                    }
+                }
+            });
+        }
+        
+        // Dashboard buttons
+        const dashboardButtons = document.querySelectorAll('.dashboard-section .btn');
+        if (dashboardButtons.length > 0) {
+            const buttonTextMap = {
+                'Browse Courses': lang === 'ar' ? 'تصفح الدورات' : 'Browse Courses',
+                'View All Courses': lang === 'ar' ? 'عرض جميع الدورات' : 'View All Courses',
+                'View Fewer Courses': lang === 'ar' ? 'عرض دورات أقل' : 'View Fewer Courses',
+                'View Full Calendar': lang === 'ar' ? 'عرض التقويم الكامل' : 'View Full Calendar'
+            };
+            
+            dashboardButtons.forEach(button => {
+                for (const [key, value] of Object.entries(buttonTextMap)) {
+                    if (button.textContent.trim() === key) {
+                        button.textContent = value;
+                        break;
+                    }
+                }
+            });
+        }
+    }
+});

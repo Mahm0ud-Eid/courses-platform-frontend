@@ -21,6 +21,71 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
   <link href="css/style-mob.css" rel="stylesheet" />
+  <!-- Dark Mode Styles -->
+  <style>
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #222;
+      color: #f5f5f5;
+    }
+    
+    body.dark-mode .ed-top {
+      background-color: #333;
+    }
+    
+    body.dark-mode .ed-sub-header {
+      background-color: #2a2a2a;
+    }
+    
+    body.dark-mode .ed-sub-header h4, 
+    body.dark-mode .ed-sub-header .breadcrumb a, 
+    body.dark-mode .ed-sub-header .breadcrumb li {
+      color: #fff;
+    }
+    
+    body.dark-mode .ed-about {
+      background-color: #222;
+    }
+    
+    body.dark-mode .ed-about-sec h4,
+    body.dark-mode .ed-about-sec p {
+      color: #f5f5f5;
+    }
+    
+    body.dark-mode .ed-rsear {
+      background-color: #222;
+    }
+    
+    body.dark-mode .ed-rsear h4,
+    body.dark-mode .ed-rsear p,
+    body.dark-mode .ed-rsear ul li {
+      color: #f5f5f5;
+    }
+    
+    body.dark-mode .pg-inn {
+      background-color: #333;
+    }
+    
+    /* RTL Support */
+    body.rtl {
+      direction: rtl;
+      text-align: right;
+    }
+    
+    body.rtl .ed-com-t1-left {
+      float: right;
+    }
+    
+    body.rtl .ed-com-t1-right {
+      float: left;
+    }
+    
+    /* Adjust the spacing between language and theme toggle buttons */
+    .switchers-container {
+      display: flex;
+      gap: 20px !important;
+    }
+  </style>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -102,9 +167,21 @@
         <div class="row">
           <div class="col-md-12">
             <div class="ed-com-t1-left">
-              <ul></ul>
+              <ul>
+                <li><a href="#">UCCD - University Center for Career Development</a></li>
+              </ul>
             </div>
             <div class="ed-com-t1-right">
+              <!-- Language and Theme Switcher -->
+              <div class="switchers-container" style="display: flex; gap: 20px; margin-left: 20px;">
+                <button id="language-toggle" class="btn btn-sm" style="font-weight: 600;" title="Switch to Arabic">
+                  العربية
+                </button>
+                <button id="theme-toggle" class="btn btn-sm" style="font-weight: 600;" title="Switch to Dark Mode">
+                  <i class="fa fa-moon-o"></i>
+                </button>
+              </div>
+              <!-- End Language and Theme Switcher -->
               <ul>
                 <li>
                   <a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a>
@@ -678,6 +755,77 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/custom.js"></script>
+  
+  <!-- Language and Theme Switcher Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/language-theme-switcher.js"></script>
+  <script>
+    // Additional translations specific to research page
+    if (translations) {
+      translations.en.research = {
+        pageTitle: "Research & Publications",
+        pageDescription: "Explore our research projects and academic publications",
+        researchTab1: "Research Projects",
+        researchTab2: "Publications",
+        researchTab3: "Partnerships",
+        readMore: "Read More"
+      };
+      
+      translations.ar.research = {
+        pageTitle: "الأبحاث والمنشورات",
+        pageDescription: "استكشف مشاريع البحث والمنشورات الأكاديمية لدينا",
+        researchTab1: "مشاريع البحث",
+        researchTab2: "المنشورات",
+        researchTab3: "الشراكات",
+        readMore: "اقرأ المزيد"
+      };
+    }
+    
+    // Apply research-specific translations when language changes
+    document.addEventListener('DOMContentLoaded', function() {
+      const applyResearchTranslations = function(lang) {
+        if (!translations || !translations[lang] || !translations[lang].research) return;
+        
+        // Translate research page title
+        const pageTitle = document.querySelector('.head-2 h4');
+        if (pageTitle) {
+          pageTitle.textContent = translations[lang].research.pageTitle;
+        }
+        
+        // Translate research page description
+        const pageDesc = document.querySelector('.head-2 p');
+        if (pageDesc) {
+          pageDesc.textContent = translations[lang].research.pageDescription;
+        }
+        
+        // Translate research tabs
+        const tabsTitles = document.querySelectorAll('.ed-course-in-tit h4');
+        if (tabsTitles.length >= 3) {
+          tabsTitles[0].textContent = translations[lang].research.researchTab1;
+          tabsTitles[1].textContent = translations[lang].research.researchTab2;
+          tabsTitles[2].textContent = translations[lang].research.researchTab3;
+        }
+        
+        // Translate read more buttons
+        document.querySelectorAll('.read-more-btn').forEach(btn => {
+          btn.textContent = translations[lang].research.readMore;
+        });
+      };
+      
+      // Apply translations on page load
+      const currentLang = localStorage.getItem('language') || 'en';
+      applyResearchTranslations(currentLang);
+      
+      // Override the original applyTranslations function to include research translations
+      const originalApplyTranslations = window.applyTranslations;
+      if (originalApplyTranslations) {
+        window.applyTranslations = function(lang) {
+          originalApplyTranslations(lang);
+          applyResearchTranslations(lang);
+        };
+      }
+    });
+  </script>
 </body>
 
 </html>

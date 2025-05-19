@@ -32,10 +32,61 @@
       href="assets/vendor/glightbox/css/glightbox.min.css"
       rel="stylesheet"
     />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
-    <!-- Main CSS File -->
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />    <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
+    <!-- RTL Support for Arabic -->
+    <link href="assets/css/rtl.css" rel="stylesheet" />
+    <!-- Dark Mode Support -->
+    <link href="assets/css/dark-mode.css" rel="stylesheet" />
+    
+    <style>
+      .switchers-container {
+        display: flex;
+        gap: 20px;
+      }
+      .switcher-btn {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .switcher-btn:hover {
+        background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+      }
+      .switcher-btn i {
+        font-size: 16px;
+      }
+      
+      /* Dark mode styles for page title */
+      .dark-mode .page-title .heading {
+        background-color: #222;
+      }
+      
+      .dark-mode .page-title h1 {
+        color: #fff;
+      }
+      
+      .dark-mode .page-title p {
+        color: #ddd;
+      }
+      
+      .dark-mode .breadcrumbs {
+        background-color: #333;
+      }
+      
+      .dark-mode .breadcrumbs a,
+      .dark-mode .breadcrumbs .current {
+        color: #fff;
+      }
+    </style>
   </head>
 
   <body class="pricing-page">
@@ -81,13 +132,21 @@
                 </li>
                 <li><a href="#">Dropdown 2</a></li>
                 <li><a href="#">Dropdown 3</a></li>
-                <li><a href="#">Dropdown 4</a></li>
-              </ul>
+                <li><a href="#">Dropdown 4</a></li>              </ul>
             </li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
+
+        <div class="switchers-container me-3">
+          <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
+            العربية
+          </button>
+          <button id="theme-toggle" class="switcher-btn" title="Switch to Dark Mode">
+            <i class="bi bi-moon"></i>
+          </button>
+        </div>
 
         <a class="btn-getstarted" href="courses.html">Get Started</a>
       </div>
