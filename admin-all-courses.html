@@ -1,194 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>UCCD Admin - All Courses</title>
-    <!-- META TAGS -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="UCCD Education Management System" />
-    <meta
-      name="keywords"
-      content="UCCD, education, university, college, school, courses"
-    />
 
-    <!-- FAV ICON(BROWSER TAB ICON) -->
-    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+<head>
+  <title>UCCD Admin - All Courses</title>
+  <!-- META TAGS -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="UCCD Education Management System" />
+  <meta name="keywords" content="UCCD, education, university, college, school, courses" />
 
-    <!-- GOOGLE FONT -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- FAV ICON(BROWSER TAB ICON) -->
+  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
 
-    <!-- FONTAWESOME ICONS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-    <!-- ALL CSS FILES -->
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
-    <link href="css/style-mob.css" rel="stylesheet" />
+  <!-- FONTAWESOME ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <!-- ALL CSS FILES -->
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+  <link href="css/style-mob.css" rel="stylesheet" />
 
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-    <!-- Custom CSS -->
-    <style>
-      :root {
-        --primary-color: #4154f1;
-        --secondary-color: #717ff5;
-        --dark-color: #2a3546;
-        --light-color: #f6f9ff;
-        --success-color: #28a745;
-        --danger-color: #dc3545;
-        --warning-color: #ffc107;
-        --info-color: #17a2b8;
-      }
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
 
-      .admin-card {
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-        margin-bottom: 25px;
-        overflow: hidden;
-      }
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary-color: #4154f1;
+      --secondary-color: #717ff5;
+      --dark-color: #2a3546;
+      --light-color: #f6f9ff;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --info-color: #17a2b8;
+    }
 
-      .card-header {
-        padding: 20px;
-        border-bottom: 1px solid #f1f1f1;
-      }
+    .admin-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+      overflow: hidden;
+    }
 
-      .card-header h4 {
-        margin-bottom: 0;
-        font-weight: 600;
-      }
+    .card-header {
+      padding: 20px;
+      border-bottom: 1px solid #f1f1f1;
+    }
 
-      .card-body {
-        padding: 20px;
-      }
+    .card-header h4 {
+      margin-bottom: 0;
+      font-weight: 600;
+    }
 
-      .table-responsive {
-        overflow-x: auto;
-      }
+    .card-body {
+      padding: 20px;
+    }
 
-      .table-hover tbody tr:hover {
-        background-color: rgba(0, 0, 0, 0.02);
-      }
+    .table-responsive {
+      overflow-x: auto;
+    }
 
-      .label {
-        display: inline-block;
-        padding: 4px 8px;
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 1;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: baseline;
-        border-radius: 4px;
-      }
+    .table-hover tbody tr:hover {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
 
-      .label-success {
-        background-color: var(--success-color);
-        color: white;
-      }
+    .label {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 4px;
+    }
 
-      .ad-st-view {
-        color: var(--primary-color);
-        font-weight: 500;
-      }
+    .label-success {
+      background-color: var(--success-color);
+      color: white;
+    }
 
-      .ad-st-view:hover {
-        color: var(--secondary-color);
-        text-decoration: none;
-      }
+    .ad-st-view {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
 
-      .list-img img {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 4px;
-      }
+    .ad-st-view:hover {
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
 
-      .list-enq-name {
-        display: block;
-        font-weight: 500;
-      }
+    .list-img img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
 
-      .list-enq-city {
-        font-size: 12px;
-        color: #6c757d;
-      }
-    </style>
-  </head>
+    .list-enq-name {
+      display: block;
+      font-weight: 500;
+    }
 
-  <body>
-    <!--== MAIN CONTRAINER ==-->
-    <header
-      id="header"
-      style="border-bottom: 2px solid #e3e8ea"
-      class="header d d-flex align-items-center sticky-top"
-    >
-      <img
-        class="sd-tog"
-        src="assets/img/side-bar.png"
-        style="margin: 0 15px; width: 29px"
-        alt=""
-      />
-      <div
-        class="container-fluid container-xl position-relative d-flex align-items-center"
-      >
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <!-- <img src="images/uccd-logo.png" alt="" /> -->
-          <h1 class="sitename">UCCD</h1>
-        </a>
+    .list-enq-city {
+      font-size: 12px;
+      color: #6c757d;
+    }
+  </style>
+</head>
 
-        <nav id="navmenu" class="navmenu navmenu-user">
-          <ul>
-            <li>
-              <a href="#" class="logout-btn">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Log Out</span>
-              </a>
-            </li>
-          </ul>
-          <i class="mobile-nav-toggle bi bi-person-circle"></i>
-        </nav>
-      </div>
-    </header>
+<body>
+  <!--== MAIN CONTRAINER ==-->
+  <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
+    <img class="sd-tog" src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- <img src="images/uccd-logo.png" alt="" /> -->
+        <h1 class="sitename">UCCD</h1>
+      </a>
 
-    <!--== BODY CONTNAINER ==-->
-    <div class="container-fluid sb2">
-      <div class="row">
-        <div
-          class="sb2-1"
-          style="background-color: white; float: left; width: 19.5%"
-        >
-          <!--== USER INFO ==-->
-          <!-- <div class="sb2-12">
+      <nav id="navmenu" class="navmenu navmenu-user">
+        <ul>
+          <li>
+            <a href="#" class="logout-btn">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log Out</span>
+            </a>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle bi bi-person-circle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!--== BODY CONTNAINER ==-->
+  <div class="container-fluid sb2">
+    <div class="row">
+      <div class="sb2-1" style="background-color: white; float: left; width: 19.5%">
+        <!--== USER INFO ==-->
+        <!-- <div class="sb2-12">
             <ul>
               <li><img src="images/placeholder.jpg" alt="" /></li>
               <li>
@@ -197,517 +165,361 @@
               <li></li>
             </ul>
           </div> -->
-          <!--== LEFT MENU ==-->
-          <div class="sb2-13">
-            <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                <a href="admin.html">
-                  <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                  Dashboard</a
-                >
-              </li>
+        <!--== LEFT MENU ==-->
+        <div class="sb2-13">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <a href="admin.html">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                Dashboard</a>
+            </li>
 
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-book" aria-hidden="true"></i> All Courses</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li>
-                      <a href="admin-all-courses.html" class="menu-active"
-                        >All Course</a
-                      >
-                    </li>
-                    <li><a href="admin-add-courses.html">Add New Course</a></li>
-                    <li><a href="admin-trash-courses.html">Trash Course</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-user" aria-hidden="true"></i> Users</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li><a href="admin-user-all.html">All Users</a></li>
-                    <li><a href="admin-user-add.html">Add New user</a></li>
-                  </ul>
-                </div>
-              </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> All
+                Courses</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li>
+                    <a href="admin-all-courses.html" class="menu-active">All Course</a>
+                  </li>
+                  <li><a href="admin-add-courses.html">Add New Course</a></li>
+                  <li><a href="admin-trash-courses.html">Trash Course</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>
+                Users</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-user-all.html">All Users</a></li>
+                  <li><a href="admin-user-add.html">Add New user</a></li>
+                </ul>
+              </div>
+            </li>
 
-              <li>
-                <a href="admin-slider.html"
-                  ><i class="fa fa-image" aria-hidden="true"></i> Slider</a
-                >
-              </li>
-              <li>
-                <a href="admin-quick-link.html"
-                  ><i class="fa fa-external-link-square" aria-hidden="true"></i>
-                  Slider quick link</a
-                >
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-calendar" aria-hidden="true"></i> Events</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li><a href="admin-event-all.html">All Events</a></li>
-                    <li>
-                      <a href="admin-event-add.html">Create New Events</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-bullhorn" aria-hidden="true"></i> Seminar</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li><a href="admin-seminar-all.html">All Seminar</a></li>
-                    <li>
-                      <a href="admin-seminar-add.html">Create New Seminar</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-graduation-cap" aria-hidden="true"></i> Job
-                  Vacants</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li><a href="admin-job-all.html">All Jobs</a></li>
-                    <li><a href="admin-job-add.html">Create New Job</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-pencil" aria-hidden="true"></i> Exam time
-                  table</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li><a href="admin-exam-all.html">All Exams</a></li>
-                    <li><a href="admin-exam-add.html">Add New Exam</a></li>
-                    <li><a href="admin-exam-group-all.html">All Groups</a></li>
-                    <li>
-                      <a href="admin-exam-group-add.html">Create New Groups</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-users" aria-hidden="true"></i> Students</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li><a href="admin-user-all.html">All Students</a></li>
-                    <li><a href="admin-user-add.html">Add New Students</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-cloud-download" aria-hidden="true"></i>
-                  Import & Export</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li>
-                      <a href="admin-export-data.html">Export all datas</a>
-                    </li>
-                    <li>
-                      <a href="admin-import-data.html">Import all datas</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
+
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar" aria-hidden="true"></i>
+                Events</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-event-all.html">All Events</a></li>
+                  <li>
+                    <a href="admin-event-add.html">Create New Events</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li> <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i>
+                Students</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-user-all.html">All Students</a></li>
+                  <li><a href="admin-user-add.html">Add New Students</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-cloud-download"
+                  aria-hidden="true"></i>
+                Import & Export</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li>
+                    <a href="admin-export-data.html">Export all datas</a>
+                  </li>
+                  <li>
+                    <a href="admin-import-data.html">Import all datas</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--== BODY INNER CONTAINER ==-->
+      <div class="sb2-2" style="padding: 40px; width: 80%">
+        <!--== breadcrumbs ==-->
+        <div class="sb2-2-2">
+          <ul>
+            <li>
+              <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> All Courses</a></li>
+            <li class="page-back">
+              <a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+          </ul>
         </div>
 
-        <!--== BODY INNER CONTAINER ==-->
-        <div class="sb2-2" style="padding: 40px; width: 80%">
-          <!--== breadcrumbs ==-->
-          <div class="sb2-2-2">
-            <ul>
-              <li>
-                <a href="index.html"
-                  ><i class="fa fa-home" aria-hidden="true"></i> Home</a
-                >
-              </li>
-              <li class="active-bre"><a href="#"> All Courses</a></li>
-              <li class="page-back">
-                <a href="index.html"
-                  ><i class="fa fa-backward" aria-hidden="true"></i> Back</a
-                >
-              </li>
-            </ul>
-          </div>
+        <!--== Content Area ==-->
+        <div class="sb2-2-1">
+          <h2>All Courses</h2>
 
-          <!--== Content Area ==-->
-          <div class="sb2-2-1">
-            <h2>All Courses</h2>
-
-            <div class="admin-card">
-              <div class="card-header">
-                <h4>Course Details</h4>
-                <p class="mb-0">
-                  All about courses, program structure, fees, best course lists
-                  (ranking), syllabus, teaching techniques and other details.
-                </p>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive table-desi">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>Image</th>
-                        <th>Course Name</th>
-                        <th>Category</th>
-                        <th>Durations</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Total Seats</th>
-                        <th>Status</th>
-                        <th>View</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-1.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Aerospace Engineering</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Engineering</td>
-                        <td>60 Days(420hrs)</td>
-                        <td>03 Jun 2018</td>
-                        <td>12 Aug 2018</td>
-                        <td>74</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-5.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Fashion Technology</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Fashion</td>
-                        <td>30 Days(420hrs)</td>
-                        <td>01 Nov 2018</td>
-                        <td>01 Dec 2018</td>
-                        <td>30</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-2.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Agriculture Courses</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Agriculture</td>
-                        <td>25 Days(420hrs)</td>
-                        <td>05 Jan 2018</td>
-                        <td>25 Jan 2018</td>
-                        <td>25</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-3.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Marine Engineering</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Ocean / Marine</td>
-                        <td>06 Months</td>
-                        <td>12 Feb 2018</td>
-                        <td>14 Aug 2018</td>
-                        <td>68</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-4.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Building, Construction Management</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Construction</td>
-                        <td>1 Year</td>
-                        <td>05 Mar 2018</td>
-                        <td>16 Mar 2018</td>
-                        <td>72</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-1.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Aerospace Engineering</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Engineering</td>
-                        <td>60 Days(420hrs)</td>
-                        <td>03 Jun 2018</td>
-                        <td>12 Aug 2018</td>
-                        <td>74</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-5.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Fashion Technology</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Fashion</td>
-                        <td>30 Days(420hrs)</td>
-                        <td>01 Nov 2018</td>
-                        <td>01 Dec 2018</td>
-                        <td>30</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-2.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Agriculture Courses</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Agriculture</td>
-                        <td>25 Days(420hrs)</td>
-                        <td>05 Jan 2018</td>
-                        <td>25 Jan 2018</td>
-                        <td>25</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-3.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Marine Engineering</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Ocean / Marine</td>
-                        <td>06 Months</td>
-                        <td>12 Feb 2018</td>
-                        <td>14 Aug 2018</td>
-                        <td>68</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="list-img"
-                            ><img src="images/course/sm-4.jpg" alt=""
-                          /></span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html"
-                            ><span class="list-enq-name"
-                              >Building, Construction Management</span
-                            ><span class="list-enq-city"
-                              >Illunois, United States</span
-                            ></a
-                          >
-                        </td>
-                        <td>Construction</td>
-                        <td>1 Year</td>
-                        <td>05 Mar 2018</td>
-                        <td>16 Mar 2018</td>
-                        <td>72</td>
-                        <td>
-                          <span class="label label-success">Active</span>
-                        </td>
-                        <td>
-                          <a href="admin-course-details.html" class="ad-st-view"
-                            >Edit</a
-                          >
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+          <div class="admin-card">
+            <div class="card-header">
+              <h4>Course Details</h4>
+              <p class="mb-0">
+                All about courses, program structure, fees, best course lists
+                (ranking), syllabus, teaching techniques and other details.
+              </p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive table-desi">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Course Name</th>
+                      <th>Category</th>
+                      <th>Durations</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Total Seats</th>
+                      <th>Status</th>
+                      <th>View</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-1.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Aerospace
+                            Engineering</span><span class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Engineering</td>
+                      <td>60 Days(420hrs)</td>
+                      <td>03 Jun 2018</td>
+                      <td>12 Aug 2018</td>
+                      <td>74</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-5.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Fashion Technology</span><span
+                            class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Fashion</td>
+                      <td>30 Days(420hrs)</td>
+                      <td>01 Nov 2018</td>
+                      <td>01 Dec 2018</td>
+                      <td>30</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-2.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Agriculture Courses</span><span
+                            class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Agriculture</td>
+                      <td>25 Days(420hrs)</td>
+                      <td>05 Jan 2018</td>
+                      <td>25 Jan 2018</td>
+                      <td>25</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-3.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Marine Engineering</span><span
+                            class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Ocean / Marine</td>
+                      <td>06 Months</td>
+                      <td>12 Feb 2018</td>
+                      <td>14 Aug 2018</td>
+                      <td>68</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-4.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Building, Construction
+                            Management</span><span class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Construction</td>
+                      <td>1 Year</td>
+                      <td>05 Mar 2018</td>
+                      <td>16 Mar 2018</td>
+                      <td>72</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-1.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Aerospace
+                            Engineering</span><span class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Engineering</td>
+                      <td>60 Days(420hrs)</td>
+                      <td>03 Jun 2018</td>
+                      <td>12 Aug 2018</td>
+                      <td>74</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-5.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Fashion Technology</span><span
+                            class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Fashion</td>
+                      <td>30 Days(420hrs)</td>
+                      <td>01 Nov 2018</td>
+                      <td>01 Dec 2018</td>
+                      <td>30</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-2.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Agriculture Courses</span><span
+                            class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Agriculture</td>
+                      <td>25 Days(420hrs)</td>
+                      <td>05 Jan 2018</td>
+                      <td>25 Jan 2018</td>
+                      <td>25</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-3.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Marine Engineering</span><span
+                            class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Ocean / Marine</td>
+                      <td>06 Months</td>
+                      <td>12 Feb 2018</td>
+                      <td>14 Aug 2018</td>
+                      <td>68</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-4.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Building, Construction
+                            Management</span><span class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Construction</td>
+                      <td>1 Year</td>
+                      <td>05 Mar 2018</td>
+                      <td>16 Mar 2018</td>
+                      <td>72</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html" class="ad-st-view">Edit</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!--Import jQuery before materialize.js-->
-    <script src="js/main.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/custom.js"></script>
+  <!--Import jQuery before materialize.js-->
+  <script src="js/main.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/custom.js"></script>
 
-    <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+  <!-- Preloader -->
+  <div id="preloader"></div>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-    <!-- Main JS File -->
-    <script src="js/main.js"></script>
+  <!-- Main JS File -->
+  <script src="js/main.js"></script>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
