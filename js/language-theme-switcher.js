@@ -31,13 +31,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Language toggle button click handler
     document.getElementById('language-toggle').addEventListener('click', function() {
         const currentLang = document.documentElement.lang;
-        if (currentLang === 'en') {
-            // Switch to Arabic
+        if (currentLang === 'en') {            // Switch to Arabic
             document.documentElement.lang = 'ar';
             document.body.classList.add('rtl');
             localStorage.setItem('language', 'ar');
             updateLanguageButton('ar');
             applyTranslations('ar');
+            // Apply profile translations if function exists
+            if (typeof translateProfileElements === 'function') {
+                translateProfileElements('ar');
+            }
         } else {
             // Switch to English
             document.documentElement.lang = 'en';
@@ -45,6 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('language', 'en');
             updateLanguageButton('en');
             applyTranslations('en');
+            // Apply profile translations if function exists
+            if (typeof translateProfileElements === 'function') {
+                translateProfileElements('en');
+            }
         }
     });
     
@@ -122,8 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-        
-        // Translate dashboard navigation items
+          // Translate dashboard navigation items
         const dashboardNavItems = {
             'Dashboard': translations[lang].myDashboard,
             'My Profile': translations[lang].myProfile,
@@ -144,7 +150,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'تسجيل الخروج': translations[lang].logout
         };
         
-        document.querySelectorAll('.dashboard-nav .nav-link').forEach(link => {
+        // Select both dashboard-nav and profile-nav for translation
+        document.querySelectorAll('.dashboard-nav .nav-link, .profile-nav .nav-link').forEach(link => {
             const text = link.textContent.trim().replace(/\s*\n\s*|\s*<i[^>]*>.*?<\/i>\s*/gi, '').trim();
             if (dashboardNavItems[text]) {
                 // Preserve the icon
@@ -156,18 +163,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-        
-        // Translate dashboard section headers
+          // Translate dashboard section headers
         const dashboardHeaders = {
             'Welcome Back': translations[lang].welcomeBack,
             'Enrolled Courses': translations[lang].enrolledCourses,
             'Course Status': translations[lang].courseStatus,
             'Upcoming Schedule': translations[lang].upcomingSchedule,
+            'Personal Information': translations[lang].personalInfo,
+            'Account Security': translations[lang].accountSecurity,
             // Arabic items for reverse mapping
             'مرحبًا بعودتك': translations[lang].welcomeBack,
             'الدورات المسجلة': translations[lang].enrolledCourses,
             'حالة الدورة': translations[lang].courseStatus,
-            'الجدول القادم': translations[lang].upcomingSchedule
+            'الجدول القادم': translations[lang].upcomingSchedule,
+            'المعلومات الشخصية': translations[lang].personalInfo,
+            'أمان الحساب': translations[lang].accountSecurity
         };
           document.querySelectorAll('.section-header h4').forEach(header => {
             const text = header.textContent.trim().replace(/\s*\n\s*|\s*<i[^>]*>.*?<\/i>\s*/gi, '').trim();

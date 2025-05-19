@@ -9,6 +9,7 @@ body.dark-mode {
     --nav-mobile-background-color: #1e1e1e;
     --nav-dropdown-background-color: #1e1e1e;
     --nav-dropdown-color: #e0e0e0;
+    color: #e0e0e0;
 }
 
 /* Override specific elements for dark mode */
@@ -63,7 +64,10 @@ body.dark-mode .dashboard-section,
 body.dark-mode .profile-card,
 body.dark-mode .stats-card,
 body.dark-mode .course-card,
-body.dark-mode .timeline-content {
+body.dark-mode .timeline-content,
+body.dark-mode .profile-nav,
+body.dark-mode .profile-header,
+body.dark-mode .profile-section {
     background-color: #1e1e1e !important;
     border-color: #333 !important;
     color: #e0e0e0 !important;
@@ -73,7 +77,8 @@ body.dark-mode .stats-card h3,
 body.dark-mode .profile-card h4,
 body.dark-mode .course-card-body h5,
 body.dark-mode .section-header h4,
-body.dark-mode .timeline-content h5 {
+body.dark-mode .timeline-content h5,
+body.dark-mode .profile-info h2 {
     color: #ffffff !important;
 }
 
@@ -81,8 +86,10 @@ body.dark-mode .stats-card p,
 body.dark-mode .profile-card p,
 body.dark-mode .course-card-body p,
 body.dark-mode .timeline-content p,
-body.dark-mode .dashboard-nav .nav-link:not(.active) {
-    color: #ffffff !important;
+body.dark-mode .dashboard-nav .nav-link:not(.active),
+body.dark-mode .profile-nav .nav-link:not(.active),
+body.dark-mode .profile-info p {
+    color: #e0e0e0 !important;
 }
 
 body.dark-mode .course-duration {
@@ -104,13 +111,67 @@ body.dark-mode .status-badge.status-inactive {
     color: #ffb0b0 !important;
 }
 
-body.dark-mode .dashboard-nav .nav-link:hover:not(.active) {
+body.dark-mode .profile-nav .nav-link:hover:not(.active) {
     background-color: #333 !important;
     color: #ffffff !important;
 }
 
-body.dark-mode .dashboard-nav .nav-link.active {
+body.dark-mode .profile-nav .nav-link.active {
     background-color: rgba(67, 97, 238, 0.2) !important;
+    color: var(--primary) !important;
+}
+
+body.dark-mode .profile-details tr {
+    border-bottom: 1px solid #333 !important;
+}
+
+body.dark-mode .profile-details td:first-child {
+    color: #ffffff !important;
+}
+
+body.dark-mode .profile-details td:last-child {
+    color: #e0e0e0 !important;
+}
+
+/* Phone number and other links in profile details */
+body.dark-mode .profile-details a {
+    color: #4361ee !important;
+}
+
+body.dark-mode .profile-details a:hover {
+    color: #7189f7 !important;
+}
+
+body.dark-mode .avatar-edit {
+    border-color: #1e1e1e !important;
+}
+
+body.dark-mode .profile-avatar img {
+    border-color: rgba(67, 97, 238, 0.2) !important;
+}
+
+body.dark-mode .social-links a {
+    background-color: #333 !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .social-links a:hover {
+    background-color: var(--primary) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .edit-profile-btn {
+    background-color: var(--primary) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .edit-profile-btn:hover {
+    background-color: var(--secondary) !important;
+}
+
+body.dark-mode .btn-outline-primary {
+    border-color: var(--primary) !important;
+    color: var(--primary) !important;
 }
 
 body.dark-mode .course-badge {
@@ -150,6 +211,18 @@ body.dark-mode .alert-info {
     color: #a0e0ff !important;
 }
 
+body.dark-mode .alert-warning {
+    background-color: rgba(253, 126, 20, 0.15) !important;
+    border-color: rgba(253, 126, 20, 0.3) !important;
+    color: #ffd0a0 !important;
+}
+
+body.dark-mode .alert-danger {
+    background-color: rgba(220, 53, 69, 0.15) !important;
+    border-color: rgba(220, 53, 69, 0.3) !important;
+    color: #ffa0a8 !important;
+}
+
 /* Mobile view adjustments for dark mode */
 @media (max-width: 1199px) {
     body.dark-mode .mobile-nav-active .switchers-container {
@@ -161,4 +234,27 @@ body.dark-mode .alert-info {
         justify-content: center;
         z-index: 9999;
     }
+}
+
+/* Profile page specific dark mode styles */
+body.dark-mode .profile-section .section-header {
+    border-bottom-color: #333 !important;
+}
+
+body.dark-mode .stat-item h4 {
+    color: var(--primary) !important;
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: rgba(67, 97, 238, 0.2) !important;
+}
+
+body.dark-mode .navmenu ul li a:hover,
+body.dark-mode .navmenu ul li a:focus,
+body.dark-mode .navmenu .active {
+    color: var(--primary) !important;
+}
+
+body.dark-mode .profile-section .bi {
+    color: var(--primary) !important;
 }

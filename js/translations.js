@@ -24,8 +24,7 @@ const translations = {
         "notifications": "Notifications",
         "settings": "Settings",
         "logout": "Logout",
-        
-        // Dashboard Content
+          // Dashboard Content
         "welcomeBack": "Welcome Back",
         "activeCourses": "Active Courses",
         "certificates": "Certificates",
@@ -36,7 +35,8 @@ const translations = {
         "browseCourses": "Browse Courses",
         "viewAllCourses": "View All Courses",
         "viewFewerCourses": "View Fewer Courses",
-        "courseStatus": "Course Status",        "all": "All",
+        "courseStatus": "Course Status",
+        "all": "All",
         "active": "Active",
         "completed": "Completed",
         "upcomingSchedule": "Upcoming Schedule",
@@ -55,6 +55,25 @@ const translations = {
         "status": "Status",
         "course": "Course",
         "today": "Today",
+        
+        // Profile Page
+        "personalInfo": "Personal Information",
+        "editProfile": "Edit Profile",
+        "fullName": "Full Name",
+        "studentId": "Student ID",
+        "emailAddress": "Email Address",
+        "phoneNumber": "Phone Number",
+        "dateOfBirth": "Date of Birth",
+        "gender": "Gender",
+        "address": "Address",
+        "accountStatus": "Account Status",
+        "accountSecurity": "Account Security",
+        "lastLogin": "Last Login",
+        "password": "Password",
+        "twoFactorAuth": "Two-Factor Auth",
+        "changePassword": "Change Password",
+        "enable2FA": "Enable 2FA",
+        "changePhoto": "Change photo",
         
         // Hero Section
         "heroTitle": "Learning Today,<br />Leading Tomorrow",
@@ -108,8 +127,7 @@ const translations = {
         "notifications": "الإشعارات",
         "settings": "الإعدادات",
         "logout": "تسجيل الخروج",
-        
-        // Dashboard Content
+          // Dashboard Content
         "welcomeBack": "مرحبًا بعودتك",
         "activeCourses": "الدورات النشطة",
         "certificates": "الشهادات",
@@ -139,6 +157,25 @@ const translations = {
         "status": "الحالة",
         "course": "الدورة",
         "today": "اليوم",
+        
+        // Profile Page
+        "personalInfo": "المعلومات الشخصية",
+        "editProfile": "تعديل الملف الشخصي",
+        "fullName": "الاسم الكامل",
+        "studentId": "رقم الطالب",
+        "emailAddress": "البريد الإلكتروني",
+        "phoneNumber": "رقم الهاتف",
+        "dateOfBirth": "تاريخ الميلاد",
+        "gender": "الجنس",
+        "address": "العنوان",
+        "accountStatus": "حالة الحساب",
+        "accountSecurity": "أمان الحساب",
+        "lastLogin": "آخر تسجيل دخول",
+        "password": "كلمة المرور",
+        "twoFactorAuth": "المصادقة الثنائية",
+        "changePassword": "تغيير كلمة المرور",
+        "enable2FA": "تفعيل المصادقة الثنائية",
+        "changePhoto": "تغيير الصورة",
         
         // Hero Section
         "heroTitle": "التعلم اليوم،<br />القيادة غداً",

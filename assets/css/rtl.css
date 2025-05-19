@@ -25,9 +25,16 @@ body.rtl .mobile-nav-toggle {
 }
 
 /* RTL for dashboard components */
-body.rtl .dashboard-nav .nav-link i {
+body.rtl .dashboard-nav .nav-link i,
+body.rtl .profile-nav .nav-link i {
     margin-right: 0;
     margin-left: 0.75rem;
+}
+
+/* Phone numbers should maintain left-to-right */
+body.rtl [dir="ltr"] {
+    display: inline-block;
+    unicode-bidi: isolate;
 }
 
 body.rtl .timeline {
