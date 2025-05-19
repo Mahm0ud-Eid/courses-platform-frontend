@@ -28,58 +28,58 @@
       background-color: #222;
       color: #f5f5f5;
     }
-    
+
     body.dark-mode .ed-top {
       background-color: #333;
     }
-    
+
     body.dark-mode .ed-sub-header {
       background-color: #2a2a2a;
     }
-    
-    body.dark-mode .ed-sub-header h4, 
-    body.dark-mode .ed-sub-header .breadcrumb a, 
+
+    body.dark-mode .ed-sub-header h4,
+    body.dark-mode .ed-sub-header .breadcrumb a,
     body.dark-mode .ed-sub-header .breadcrumb li {
       color: #fff;
     }
-    
+
     body.dark-mode .ed-about {
       background-color: #222;
     }
-    
+
     body.dark-mode .ed-about-sec h4,
     body.dark-mode .ed-about-sec p {
       color: #f5f5f5;
     }
-    
+
     body.dark-mode .ed-rsear {
       background-color: #222;
     }
-    
+
     body.dark-mode .ed-rsear h4,
     body.dark-mode .ed-rsear p,
     body.dark-mode .ed-rsear ul li {
       color: #f5f5f5;
     }
-    
+
     body.dark-mode .pg-inn {
       background-color: #333;
     }
-    
+
     /* RTL Support */
     body.rtl {
       direction: rtl;
       text-align: right;
     }
-    
+
     body.rtl .ed-com-t1-left {
       float: right;
     }
-    
+
     body.rtl .ed-com-t1-right {
       float: left;
     }
-    
+
     /* Adjust the spacing between language and theme toggle buttons */
     .switchers-container {
       display: flex;
@@ -755,7 +755,7 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/custom.js"></script>
-  
+
   <!-- Language and Theme Switcher Scripts -->
   <script src="js/translations.js"></script>
   <script src="js/language-theme-switcher.js"></script>
@@ -770,7 +770,7 @@
         researchTab3: "Partnerships",
         readMore: "Read More"
       };
-      
+
       translations.ar.research = {
         pageTitle: "الأبحاث والمنشورات",
         pageDescription: "استكشف مشاريع البحث والمنشورات الأكاديمية لدينا",
@@ -780,24 +780,24 @@
         readMore: "اقرأ المزيد"
       };
     }
-    
+
     // Apply research-specific translations when language changes
-    document.addEventListener('DOMContentLoaded', function() {
-      const applyResearchTranslations = function(lang) {
+    document.addEventListener('DOMContentLoaded', function () {
+      const applyResearchTranslations = function (lang) {
         if (!translations || !translations[lang] || !translations[lang].research) return;
-        
+
         // Translate research page title
         const pageTitle = document.querySelector('.head-2 h4');
         if (pageTitle) {
           pageTitle.textContent = translations[lang].research.pageTitle;
         }
-        
+
         // Translate research page description
         const pageDesc = document.querySelector('.head-2 p');
         if (pageDesc) {
           pageDesc.textContent = translations[lang].research.pageDescription;
         }
-        
+
         // Translate research tabs
         const tabsTitles = document.querySelectorAll('.ed-course-in-tit h4');
         if (tabsTitles.length >= 3) {
@@ -805,21 +805,21 @@
           tabsTitles[1].textContent = translations[lang].research.researchTab2;
           tabsTitles[2].textContent = translations[lang].research.researchTab3;
         }
-        
+
         // Translate read more buttons
         document.querySelectorAll('.read-more-btn').forEach(btn => {
           btn.textContent = translations[lang].research.readMore;
         });
       };
-      
+
       // Apply translations on page load
       const currentLang = localStorage.getItem('language') || 'en';
       applyResearchTranslations(currentLang);
-      
+
       // Override the original applyTranslations function to include research translations
       const originalApplyTranslations = window.applyTranslations;
       if (originalApplyTranslations) {
-        window.applyTranslations = function(lang) {
+        window.applyTranslations = function (lang) {
           originalApplyTranslations(lang);
           applyResearchTranslations(lang);
         };
