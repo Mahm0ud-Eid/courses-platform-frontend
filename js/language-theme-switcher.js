@@ -218,8 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 viewAllCoursesBtn.textContent = translations[lang].viewFewerCourses;
             }
         }
-        
-        const browseCoursesBtn = document.querySelector('.section-header a[href="courses.html"]');
+          const browseCoursesBtn = document.querySelector('.section-header a[href="courses.html"]');
         if (browseCoursesBtn) {
             browseCoursesBtn.textContent = translations[lang].browseCourses;
         }
@@ -229,7 +228,15 @@ document.addEventListener('DOMContentLoaded', function() {
             viewCalendarBtn.textContent = translations[lang].viewFullCalendar;
         }
         
-        // Filter buttons for course status
+        // Translate course durations in "Days XX" format
+        document.querySelectorAll('.course-duration').forEach(duration => {
+            const durationText = duration.textContent.trim();
+            if (durationText.includes('Days') || durationText.includes('يوم')) {
+                const daysNumber = durationText.match(/\d+/)[0];
+                duration.textContent = translations[lang].days + ' ' + daysNumber;
+            }
+        });
+          // Filter buttons for course status
         const allBtn = document.getElementById('all-btn');
         if (allBtn) allBtn.textContent = translations[lang].all;
         
@@ -237,7 +244,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (activeBtn) activeBtn.textContent = translations[lang].active;
         
         const completedBtn = document.getElementById('completed-btn');
-        if (completedBtn) completedBtn.textContent = translations[lang].completed;        // Translate sign in button
+        if (completedBtn) completedBtn.textContent = translations[lang].completed;
+        
+        // Translate status badges
+        document.querySelectorAll('.status-badge').forEach(badge => {
+            if (badge.textContent.trim().toLowerCase() === 'active' || badge.textContent.trim() === 'نشط') {
+                badge.textContent = translations[lang].active;
+            } else if (badge.textContent.trim().toLowerCase() === 'completed' || badge.textContent.trim() === 'مكتمل') {
+                badge.textContent = translations[lang].completed;
+            }
+        });// Translate sign in button
         const signInBtn = document.querySelector('.btn-getstarted');
         if (signInBtn) {
             // Check both English and Arabic texts to handle switching between languages

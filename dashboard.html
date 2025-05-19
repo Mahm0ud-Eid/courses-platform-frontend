@@ -1100,8 +1100,7 @@
       completedBtn.classList.add("active");
     });
 
-    filterCourses("all");
-    document.getElementById("view-all-courses").addEventListener("click", function () {
+    filterCourses("all"); document.getElementById("view-all-courses").addEventListener("click", function () {
       // Toggle visibility of the hidden courses
       var moreCourses = document.querySelectorAll(".more-courses");
       moreCourses.forEach(function (course) {

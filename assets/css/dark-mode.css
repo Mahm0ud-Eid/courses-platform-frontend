@@ -85,6 +85,25 @@ body.dark-mode .dashboard-nav .nav-link:not(.active) {
     color: #ffffff !important;
 }
 
+body.dark-mode .course-duration {
+    background-color: rgba(67, 97, 238, 0.2) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .status-badge {
+    color: #ffffff !important;
+}
+
+body.dark-mode .status-badge.status-active {
+    background-color: rgba(40, 167, 69, 0.2) !important;
+    color: #90ee90 !important;
+}
+
+body.dark-mode .status-badge.status-inactive {
+    background-color: rgba(220, 53, 69, 0.2) !important;
+    color: #ffb0b0 !important;
+}
+
 body.dark-mode .dashboard-nav .nav-link:hover:not(.active) {
     background-color: #333 !important;
     color: #ffffff !important;
@@ -92,6 +111,11 @@ body.dark-mode .dashboard-nav .nav-link:hover:not(.active) {
 
 body.dark-mode .dashboard-nav .nav-link.active {
     background-color: rgba(67, 97, 238, 0.2) !important;
+}
+
+body.dark-mode .course-badge {
+    background-color: #ffd400 !important;
+    color: #2a3546 !important;
 }
 
 body.dark-mode .status-table th {
