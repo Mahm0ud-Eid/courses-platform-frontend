@@ -24,6 +24,59 @@ body.rtl .mobile-nav-toggle {
     margin-left: 10px;
 }
 
+/* RTL for dashboard components */
+body.rtl .dashboard-nav .nav-link i {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+body.rtl .timeline {
+    padding-left: 0;
+    padding-right: 2rem;
+}
+
+body.rtl .timeline::before {
+    left: auto;
+    right: 0.5rem;
+}
+
+body.rtl .timeline-icon {
+    left: auto;
+    right: -0.75rem;
+}
+
+body.rtl .timeline-content {
+    margin-left: 0;
+    margin-right: 2.5rem;
+}
+
+body.rtl .exam-item {
+    border-left: none;
+    border-right: 2px solid var(--primary);
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+body.rtl .section-header h4 i {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+body.rtl .status-table th,
+body.rtl .status-table td {
+    text-align: right;
+}
+
+body.rtl .exam-date i,
+body.rtl .timeline-hall i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+body.rtl .course-meta {
+    flex-direction: row-reverse;
+}
+
 /* RTL for sections content */
 body.rtl .section-title h2,
 body.rtl .section-title p {

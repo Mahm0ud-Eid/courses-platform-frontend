@@ -57,6 +57,75 @@ body.dark-mode .invert-in-dark {
     filter: invert(1);
 }
 
+/* Dashboard specific styles for dark mode */
+body.dark-mode .dashboard-nav,
+body.dark-mode .dashboard-section,
+body.dark-mode .profile-card,
+body.dark-mode .stats-card,
+body.dark-mode .course-card,
+body.dark-mode .timeline-content {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .stats-card h3,
+body.dark-mode .profile-card h4,
+body.dark-mode .course-card-body h5,
+body.dark-mode .section-header h4,
+body.dark-mode .timeline-content h5 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .stats-card p,
+body.dark-mode .profile-card p,
+body.dark-mode .course-card-body p,
+body.dark-mode .timeline-content p,
+body.dark-mode .dashboard-nav .nav-link:not(.active) {
+    color: #ffffff !important;
+}
+
+body.dark-mode .dashboard-nav .nav-link:hover:not(.active) {
+    background-color: #333 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .dashboard-nav .nav-link.active {
+    background-color: rgba(67, 97, 238, 0.2) !important;
+}
+
+body.dark-mode .status-table th {
+    background-color: #333 !important;
+}
+
+body.dark-mode .status-table tr:hover td {
+    background-color: #2a2a2a !important;
+}
+
+body.dark-mode .status-table td {
+    border-color: #333 !important;
+}
+
+body.dark-mode .course-progress {
+    background-color: #333 !important;
+}
+
+body.dark-mode .timeline::before {
+    background-color: #333 !important;
+}
+
+body.dark-mode .alert-primary {
+    background-color: rgba(67, 97, 238, 0.15) !important;
+    border-color: rgba(67, 97, 238, 0.3) !important;
+    color: #a0b0ff !important;
+}
+
+body.dark-mode .alert-info {
+    background-color: rgba(13, 202, 240, 0.15) !important;
+    border-color: rgba(13, 202, 240, 0.3) !important;
+    color: #a0e0ff !important;
+}
+
 /* Mobile view adjustments for dark mode */
 @media (max-width: 1199px) {
     body.dark-mode .mobile-nav-active .switchers-container {

@@ -169,10 +169,21 @@ document.addEventListener('DOMContentLoaded', function() {
             'حالة الدورة': translations[lang].courseStatus,
             'الجدول القادم': translations[lang].upcomingSchedule
         };
-        
-        document.querySelectorAll('.section-header h4').forEach(header => {
+          document.querySelectorAll('.section-header h4').forEach(header => {
             const text = header.textContent.trim().replace(/\s*\n\s*|\s*<i[^>]*>.*?<\/i>\s*/gi, '').trim();
-            if (dashboardHeaders[text]) {
+            // Special case for "Welcome Back, [Name]!"
+            if (text.startsWith('Welcome Back') || text.startsWith('مرحبًا بعودتك')) {
+                const nameMatch = text.match(/Welcome Back,\s*([^!]+)!/) || text.match(/مرحبًا بعودتك,\s*([^!]+)!/);
+                if (nameMatch && nameMatch[1]) {
+                    const name = nameMatch[1];
+                    const icon = header.querySelector('i');
+                    if (icon) {
+                        header.innerHTML = icon.outerHTML + ' ' + translations[lang].welcomeBack + ', ' + name + '!';
+                    } else {
+                        header.textContent = translations[lang].welcomeBack + ', ' + name + '!';
+                    }
+                }
+            } else if (dashboardHeaders[text]) {
                 // Preserve the icon
                 const icon = header.querySelector('i');
                 if (icon) {
@@ -226,20 +237,101 @@ document.addEventListener('DOMContentLoaded', function() {
         if (activeBtn) activeBtn.textContent = translations[lang].active;
         
         const completedBtn = document.getElementById('completed-btn');
-        if (completedBtn) completedBtn.textContent = translations[lang].completed;
-
-        // Translate sign in button
+        if (completedBtn) completedBtn.textContent = translations[lang].completed;        // Translate sign in button
         const signInBtn = document.querySelector('.btn-getstarted');
         if (signInBtn) {
             // Check both English and Arabic texts to handle switching between languages
             if (signInBtn.textContent.trim() === 'Sign In' || signInBtn.textContent.trim() === 'تسجيل الدخول') {
                 signInBtn.textContent = translations[lang].signIn;
-            } else if (signInBtn.textContent.trim() === 'Sign out' || signInBtn.textContent.trim() === 'تسجيل الخروج') {
-                signInBtn.textContent = translations[lang].signOut;
+            } else if (signInBtn.textContent.trim().includes('Sign out') || signInBtn.textContent.trim().includes('تسجيل الخروج')) {
+                const icon = signInBtn.querySelector('i');
+                if (icon) {
+                    signInBtn.innerHTML = icon.outerHTML + ' ' + translations[lang].signOut;
+                } else {
+                    signInBtn.textContent = translations[lang].signOut;
+                }
             } else if (signInBtn.textContent.trim() === 'Get Started' || signInBtn.textContent.trim() === 'ابدأ الآن') {
                 signInBtn.textContent = translations[lang].getStarted;
             }
         }
+        
+        // Translate dashboard elements
+        // Export dropdown
+        const exportButton = document.querySelector('#reportDropdown');
+        if (exportButton) {
+            const icon = exportButton.querySelector('i');
+            if (icon) {
+                exportButton.innerHTML = icon.outerHTML + ' ' + translations[lang].export;
+            } else {
+                exportButton.textContent = translations[lang].export;
+            }
+        }
+        
+        // Export dropdown items
+        document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(item => {
+            if (item.textContent.trim() === 'PDF Report' || item.textContent.trim() === 'تقرير PDF') {
+                item.textContent = translations[lang].pdfReport;
+            } else if (item.textContent.trim() === 'Excel Sheet' || item.textContent.trim() === 'جدول اكسل') {
+                item.textContent = translations[lang].excelSheet;
+            } else if (item.textContent.trim() === 'Print' || item.textContent.trim() === 'طباعة') {
+                item.textContent = translations[lang].print;
+            }
+        });
+        
+        // View details link
+        document.querySelectorAll('.alert-link').forEach(link => {
+            if (link.textContent.trim() === 'View details' || link.textContent.trim() === 'عرض التفاصيل') {
+                link.textContent = translations[lang].viewDetails;
+            }
+        });
+        
+        // Dashboard welcome message
+        const welcomeMessage = document.querySelector('.dashboard-section > p');
+        if (welcomeMessage && (welcomeMessage.innerHTML.includes('Welcome to your personalized') || welcomeMessage.innerHTML.includes('مرحبًا بك في لوحة التعلم'))) {
+            welcomeMessage.innerHTML = translations[lang].welcomeMessage;
+        }
+        
+        // Course status table headers
+        const tableHeaders = {
+            'Course': translations[lang].course,
+            'Instructor': translations[lang].instructor,
+            'Start Date': translations[lang].startDate,
+            'End Date': translations[lang].endDate,
+            'Status': translations[lang].status,
+            // Arabic items for reverse mapping
+            'الدورة': translations[lang].course,
+            'المعلم': translations[lang].instructor,
+            'تاريخ البدء': translations[lang].startDate,
+            'تاريخ الانتهاء': translations[lang].endDate,
+            'الحالة': translations[lang].status
+        };
+        
+        document.querySelectorAll('.status-table th').forEach(header => {
+            const text = header.textContent.trim();
+            if (tableHeaders[text]) {
+                header.textContent = tableHeaders[text];
+            }
+        });
+        
+        // Translate course badges
+        document.querySelectorAll('.course-badge').forEach(badge => {
+            if (badge.textContent.trim() === 'In Progress' || badge.textContent.trim() === 'قيد التقدم') {
+                badge.textContent = translations[lang].inProgress;
+            } else if (badge.textContent.trim() === 'Active' || badge.textContent.trim() === 'نشط') {
+                badge.textContent = translations[lang].active;
+            } else if (badge.textContent.trim() === 'Completed' || badge.textContent.trim() === 'مكتمل') {
+                badge.textContent = translations[lang].completed;
+            }
+        });
+        
+        // Timeline dates
+        document.querySelectorAll('.timeline-date').forEach(date => {
+            // For "Today" text
+            if (date.textContent.startsWith('Today') || date.textContent.startsWith('اليوم')) {
+                const dateText = date.textContent.split('-')[1].trim();
+                date.textContent = translations[lang].today + ' - ' + dateText;
+            }
+        });
         
         // Translate hero section
         const heroTitle = document.querySelector('#hero h2');
