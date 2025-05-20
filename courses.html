@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Courses -</title>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
+  <title>Courses - UCCD</title>
+  <meta name="description" content="Explore our wide range of courses at UCCD" />
+  <meta name="keywords" content="UCCD, courses, education, learning, training" />
 
   <!-- Favicons -->
   <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
@@ -194,14 +194,14 @@
               <img src="assets/img/course-2.jpg" class="img-fluid" alt="..." />
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Marketing</p>
+                  <p class="category" data-key="marketing">Marketing</p>
                   <p class="price">$250</p>
                 </div>
 
                 <h3>
-                  <a href="course-details.html">Search Engine Optimization</a>
+                  <a href="course-details.html" data-key="seoTitle">Search Engine Optimization</a>
                 </h3>
-                <p class="description">
+                <p class="description" data-key="courseDesc">
                   Et architecto provident deleniti facere repellat nobis iste.
                   Id facere quia quae dolores dolorem tempore.
                 </p>
@@ -227,12 +227,12 @@
               <img src="assets/img/course-3.jpg" class="img-fluid" alt="..." />
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Content</p>
+                  <p class="category" data-key="contentCategory">Content</p>
                   <p class="price">$180</p>
                 </div>
 
-                <h3><a href="course-details.html">Copywriting</a></h3>
-                <p class="description">
+                <h3><a href="course-details.html" data-key="copywritingTitle">Copywriting</a></h3>
+                <p class="description" data-key="courseDesc">
                   Et architecto provident deleniti facere repellat nobis iste.
                   Id facere quia quae dolores dolorem tempore.
                 </p>
@@ -261,16 +261,15 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Mentor</span>
+          <a href="index.html" class="logo d-flex align-items-center"> <span class="sitename">UCCD</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
+            <p data-key="address1">A108 Adam Street</p>
+            <p data-key="address2">New York, NY 535022</p>
             <p class="mt-3">
-              <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+              <strong data-key="phone">Phone:</strong> <span>+1 5589 55488 55</span>
             </p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
+            <p><strong data-key="email">Email:</strong> <span>info@example.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -292,13 +291,13 @@
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
+          <h4 data-key="ourServices">Our Services</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#" data-key="webDesign">Web Design</a></li>
+            <li><a href="#" data-key="webDevelopment">Web Development</a></li>
+            <li><a href="#" data-key="productManagement">Product Management</a></li>
+            <li><a href="#" data-key="marketing">Marketing</a></li>
+            <li><a href="#" data-key="graphicDesign">Graphic Design</a></li>
           </ul>
         </div>
 
@@ -312,9 +311,9 @@
             <div class="newsletter-form">
               <input type="email" name="email" /><input type="submit" value="Subscribe" />
             </div>
-            <div class="loading">Loading</div>
+            <div class="loading" data-key="loading">Loading</div>
             <div class="error-message"></div>
-            <div class="sent-message">
+            <div class="sent-message" data-key="subscriptionSuccess">
               Your subscription request has been sent. Thank you!
             </div>
           </form>
@@ -324,9 +323,8 @@
 
     <div class="container copyright text-center mt-4">
       <p>
-        © <span>Copyright</span>
-        <strong class="px-1 sitename">Mentor</strong>
-        <span>All Rights Reserved</span>
+        © <span>Copyright</span> <strong class="px-1 sitename">UCCD</strong>
+        <span data-key="allRightsReserved">All Rights Reserved</span>
       </p>
     </div>
   </footer>

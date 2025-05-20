@@ -10,6 +10,7 @@ const translations = {    en: {
         "events": "Events",
         "dashboard": "Dashboard",
         "contact": "Contact",
+        "community": "Community",
         "signIn": "Sign In",
         "signOut": "Sign out",
         "getStarted": "Get Started",
@@ -19,7 +20,15 @@ const translations = {    en: {
         "aboutUsDesc": "Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.",
         "ourAcademy": "Our Academy",
         "discoverUnique": "Discover what makes us unique",
-        
+
+        // Courses Page
+        "coursesTitle": "Our Courses",
+        "coursesDesc": "Explore our wide range of professional courses designed to help you advance your career and achieve your goals. From beginner to advanced levels, find the perfect course that matches your needs.",
+
+        // Courses Section
+        "coursesHeading": "Courses",
+        "popularCourses": "Popular Courses",
+
         // Dashboard Navigation
         "myDashboard": "Dashboard",
         "myProfile": "My Profile",
@@ -142,7 +151,26 @@ const translations = {    en: {
         "newsletter": "Our Newsletter",
         "newsletterDesc": "Subscribe to our newsletter and receive the latest news about our products and services!",
         "subscribe": "Subscribe",
-        "copyright": "© <span>Copyright</span> <strong class='px-1 sitename'>UCCD</strong> <span>All Rights Reserved</span>"    },    ar: {
+        "copyright": "© <span>Copyright</span> <strong class='px-1 sitename'>UCCD</strong> <span>All Rights Reserved</span>",
+
+        // Course Categories and Titles
+        "marketing": "Marketing",
+        "seoTitle": "Search Engine Optimization",
+        "copywritingTitle": "Copywriting",
+        "contentCategory": "Content",
+        "courseDesc": "Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.",
+        
+        // Services
+        "webDesign": "Web Design",
+        "webDevelopment": "Web Development",
+        "productManagement": "Product Management",
+        "graphicDesign": "Graphic Design",
+        
+        // Messages
+        "loading": "Loading",
+        "subscriptionSuccess": "Your subscription request has been sent. Thank you!",
+        },
+            ar: {
         // Navigation
         "home": "الرئيسية",
         "about": "حول",
@@ -151,6 +179,7 @@ const translations = {    en: {
         "events": "الفعاليات",
         "dashboard": "لوحة التحكم",
         "contact": "اتصل بنا",
+        "community": "المجتمع",
         "signIn": "تسجيل الدخول",
         "signOut": "تسجيل الخروج",
         "getStarted": "ابدأ الآن",
@@ -160,7 +189,15 @@ const translations = {    en: {
         "aboutUsDesc": "نحن مؤسسة تعليمية رائدة تسعى لتقديم أفضل الخدمات التعليمية والتدريبية للطلاب والمتدربين بأحدث الأساليب والتقنيات التعليمية الحديثة.",
         "ourAcademy": "أكاديميتنا",
         "discoverUnique": "اكتشف ما يميزنا",
-        
+
+        // Courses Page
+        "coursesTitle": "دوراتنا التدريبية",
+        "coursesDesc": "اكتشف مجموعتنا الواسعة من الدورات المهنية المصممة لمساعدتك في تطوير حياتك المهنية وتحقيق أهدافك. من المستوى المبتدئ إلى المتقدم، اعثر على الدورة المثالية التي تناسب احتياجاتك.",
+
+        // Courses Section
+        "coursesHeading": "الدورات",
+        "popularCourses": "الدورات الشائعة",
+
         // Dashboard Navigation
         "myDashboard": "لوحة التحكم",
         "myProfile": "الملف الشخصي",
@@ -282,6 +319,20 @@ const translations = {    en: {
         "newsletter": "النشرة الإخبارية",
         "newsletterDesc": "اشترك في نشرتنا الإخبارية واستقبل آخر الأخبار عن منتجاتنا وخدماتنا!",
         "subscribe": "اشترك",
-        "copyright": "© <span>حقوق النشر</span> <strong class='px-1 sitename'>UCCD</strong> <span>جميع الحقوق محفوظة</span>"
+        "copyright": "© <span>حقوق النشر</span> <strong class='px-1 sitename'>UCCD</strong> <span>جميع الحقوق محفوظة</span>",
+
+        
+        
+        // Services
+        "webDesign": "تصميم المواقع",
+        "webDevelopment": "تطوير المواقع",
+        "productManagement": "إدارة المنتجات",
+        "graphicDesign": "التصميم الجرافيكي",
+        
+        // Messages
+        "loading": "جاري التحميل",
+        "subscriptionSuccess": "تم إرسال طلب الاشتراك بنجاح. شكراً لك!",
+        
+       
     }
 };

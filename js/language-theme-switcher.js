@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Events': translations[lang].events,
             'Dashboard': translations[lang].dashboard,
             'Contact': translations[lang].contact,
+            'Community': translations[lang].community,
             // Arabic navigation items for reverse mapping
             'الرئيسية': translations[lang].home,
             'حول': translations[lang].about,
@@ -133,7 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'المدربون': translations[lang].trainers,
             'الفعاليات': translations[lang].events,
             'لوحة التحكم': translations[lang].dashboard,
-            'اتصل بنا': translations[lang].contact
+            'اتصل بنا': translations[lang].contact,
+            'المجتمع': translations[lang].community
         };
         
         document.querySelectorAll('#navmenu a').forEach(link => {
