@@ -1,8 +1,7 @@
 /**
  * Translations for the UCCD website
  */
-const translations = {
-    en: {
+const translations = {    en: {
         // Navigation
         "home": "Home",
         "about": "About",
@@ -14,6 +13,12 @@ const translations = {
         "signIn": "Sign In",
         "signOut": "Sign out",
         "getStarted": "Get Started",
+        
+        // About Us Page
+        "aboutUsTitle": "About Us",
+        "aboutUsDesc": "Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.",
+        "ourAcademy": "Our Academy",
+        "discoverUnique": "Discover what makes us unique",
         
         // Dashboard Navigation
         "myDashboard": "Dashboard",
@@ -86,12 +91,45 @@ const translations = {
         "aboutItem2": "Duis aute irure dolor in reprehenderit in voluptate velit.",
         "aboutItem3": "Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.",
         "readMore": "Read More",
-        
-        // Stats Section
+          // Stats Section
         "students": "Students",
         "courses": "Courses",
         "events": "Events",
         "trainers": "Trainers",
+        
+        // About Features Section
+        "awards": "Awards",
+        "awardsDesc": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi bibendum imperdiet bibendum.",
+        "recognition": "Recognition:",
+        "since": "Since:",
+        "research": "Research",
+        "researchDesc": "Etiam eget enim non magna vestibulum malesuada ut et lectus. Curabitur egestas risus massa, a malesuada erat ultrices non.",
+        "projects": "Projects:",
+        "funding": "Funding:",
+        "educations": "Educations",
+        "educationsDesc": "Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.",
+        "programs": "Programs:",
+        "alumni": "Alumni",
+        "alumniDesc": "Aliquam malesuada commodo lectus, at fermentum ligula finibus eu. Morbi nisi neque, suscipit non pulvinar vitae.",
+        "network": "Network:",
+        "successRate": "Success Rate:",
+        "facilities": "Facilities",
+        "facilitiesDesc": "Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.",
+        "campus": "Campus:",
+        "labs": "Labs:",
+        "departments": "Departments",
+        "departmentsDesc": "Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.",
+        "deptCount": "Departments:",
+        "faculty": "Faculty:",        "testimonials": "Testimonials",
+        "whatTheySaying": "What are they saying",
+        "testimonial1Name": "Saul Goodman",
+        "testimonial1Position": "CEO & Founder",
+        "testimonial1Text": "Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.",        "testimonial2Name": "Sara Wilsson",
+        "testimonial2Position": "Designer",
+        "testimonial2Text": "Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.",
+        "testimonial3Name": "Jena Karlis",
+        "testimonial3Position": "Store Owner",
+        "testimonial3Text": "Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.",
         
         // Why Us Section
         "whyTitle": "Why Choose Our Products?",
@@ -104,8 +142,7 @@ const translations = {
         "newsletter": "Our Newsletter",
         "newsletterDesc": "Subscribe to our newsletter and receive the latest news about our products and services!",
         "subscribe": "Subscribe",
-        "copyright": "© <span>Copyright</span> <strong class='px-1 sitename'>UCCD</strong> <span>All Rights Reserved</span>"    },
-    ar: {
+        "copyright": "© <span>Copyright</span> <strong class='px-1 sitename'>UCCD</strong> <span>All Rights Reserved</span>"    },    ar: {
         // Navigation
         "home": "الرئيسية",
         "about": "حول",
@@ -117,6 +154,12 @@ const translations = {
         "signIn": "تسجيل الدخول",
         "signOut": "تسجيل الخروج",
         "getStarted": "ابدأ الآن",
+        
+        // About Us Page
+        "aboutUsTitle": "من نحن",
+        "aboutUsDesc": "نحن مؤسسة تعليمية رائدة تسعى لتقديم أفضل الخدمات التعليمية والتدريبية للطلاب والمتدربين بأحدث الأساليب والتقنيات التعليمية الحديثة.",
+        "ourAcademy": "أكاديميتنا",
+        "discoverUnique": "اكتشف ما يميزنا",
         
         // Dashboard Navigation
         "myDashboard": "لوحة التحكم",
@@ -188,12 +231,45 @@ const translations = {
         "aboutItem2": "نؤمن بأن الجودة هي أساس التميز في خدماتنا.",
         "aboutItem3": "نسعى دائماً لتقديم أفضل الخدمات التعليمية والتدريبية لعملائنا الكرام بما يتناسب مع احتياجاتهم ومتطلباتهم.",
         "readMore": "اقرأ المزيد",
-        
-        // Stats Section
+          // Stats Section
         "students": "الطلاب",
         "courses": "الدورات",
         "events": "الفعاليات",
         "trainers": "المدربون",
+        
+        // About Features Section
+        "awards": "الجوائز",
+        "awardsDesc": "حصلنا على العديد من الجوائز المحلية والعالمية تقديراً لجهودنا المتميزة في مجال التعليم والتدريب.",
+        "recognition": "التقدير:",
+        "since": "منذ:",
+        "research": "البحث العلمي",
+        "researchDesc": "نقوم بإجراء البحوث العلمية المتطورة في مختلف المجالات لتطوير المعرفة وتقديم حلول مبتكرة للتحديات المعاصرة.",
+        "projects": "المشاريع:",
+        "funding": "التمويل:",
+        "educations": "برامج التعليم",
+        "educationsDesc": "نقدم مجموعة متنوعة من البرامج التعليمية التي تلبي احتياجات الطلاب والمتدربين في مختلف المجالات.",
+        "programs": "البرامج:",
+        "alumni": "الخريجون",
+        "alumniDesc": "يتمتع خريجونا بمستوى عالٍ من الكفاءة والمهارة، ويعملون في مؤسسات مرموقة محلياً وعالمياً.",
+        "network": "الشبكة:",
+        "successRate": "معدل النجاح:",
+        "facilities": "المرافق",
+        "facilitiesDesc": "تضم الأكاديمية مرافق حديثة ومتطورة تساعد الطلاب على التعلم في بيئة مريحة ومحفزة.",
+        "campus": "الحرم الجامعي:",
+        "labs": "المختبرات:",
+        "departments": "الأقسام",
+        "departmentsDesc": "تضم الأكاديمية مجموعة متنوعة من الأقسام التي تغطي مختلف التخصصات العلمية والأدبية.",
+        "deptCount": "الأقسام:",
+        "faculty": "هيئة التدريس:",        "testimonials": "آراء الطلاب",
+        "whatTheySaying": "ماذا يقولون",
+        "testimonial1Name": "سول جودمان",
+        "testimonial1Position": "المدير التنفيذي والمؤسس",
+        "testimonial1Text": "أنا سعيد جداً بالتجربة التعليمية المميزة التي تقدمها الأكاديمية. لقد حصلت على معرفة عميقة ومهارات عملية ساعدتني على تطوير مسيرتي المهنية بشكل كبير.",        "testimonial2Name": "سارة ويلسون",
+        "testimonial2Position": "مصممة",
+        "testimonial2Text": "كانت تجربتي مع الأكاديمية ممتازة من جميع النواحي. المدربون محترفون والمناهج حديثة ومتطورة. أنصح بشدة بالالتحاق بهذه الأكاديمية المتميزة.",
+        "testimonial3Name": "جينا كارليس",
+        "testimonial3Position": "صاحبة متجر",
+        "testimonial3Text": "أتاحت لي الدورات التدريبية في الأكاديمية فرصة تطوير مهاراتي العملية وزيادة خبرتي في مجال عملي. أشكر كل القائمين على هذا الصرح التعليمي المتميز.",
         
         // Why Us Section
         "whyTitle": "لماذا تختار منتجاتنا؟",

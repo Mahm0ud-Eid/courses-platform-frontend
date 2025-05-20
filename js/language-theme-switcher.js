@@ -95,6 +95,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }    function applyTranslations(lang) {
         if (!translations || !translations[lang]) return;
         
+        // Translate elements with data-key attribute
+        document.querySelectorAll('[data-key]').forEach(element => {
+            const key = element.getAttribute('data-key');
+            if (translations[lang][key]) {
+                // Check if the original element contains HTML
+                if (element.innerHTML.includes('<') && element.innerHTML.includes('>')) {
+                    // If original has HTML, preserve the HTML structure and only replace the text
+                    // This is specific for elements like <br> tags
+                    if (element.innerHTML.includes('<br')) {
+                        // Special case for <br> tags
+                        element.innerHTML = translations[lang][key] + (element.innerHTML.includes('<br/>') ? '<br/>' : '<br>');
+                    } else {
+                        // For other HTML content, don't overwrite it
+                        element.innerHTML = translations[lang][key];
+                    }
+                } else {
+                    // Simple text replacement for elements without HTML
+                    element.textContent = translations[lang][key];
+                }
+            }
+        });
+        
         // Translate navigation items
         const navItems = {
             'Home': translations[lang].home,

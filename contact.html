@@ -90,14 +90,14 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li>
-            <a href="index.html">Home<br /></a>
+            <a href="index.html" data-key="home">Home<br /></a>
           </li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="trainers.html">Trainers</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="about.html" data-key="about">About</a></li>
+          <li><a href="courses.html" data-key="courses">Courses</a></li>
+          <li><a href="trainers.html" data-key="trainers">Trainers</a></li>
+          <li><a href="events.html" data-key="events">Events</a></li>
+          <li><a href="dashboard.html" data-key="dashboard">Dashboard</a></li>
+          <li><a href="contact.html" class="active" data-key="contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -111,7 +111,7 @@
         </button>
       </div>
 
-      <a class="btn-getstarted" href="courses.html">Get Started</a>
+      <a class="btn-getstarted" href="courses.html" data-key="getStarted">Get Started</a>
     </div>
   </header>
 
@@ -122,8 +122,8 @@
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
-              <h1>Contact</h1>
-              <p class="mb-0">
+              <h1 data-key="contactTitle">Contact</h1>
+              <p class="mb-0" data-key="contactDesc">
                 Odio et unde deleniti. Deserunt numquam exercitationem.
                 Officiis quo odio sint voluptas consequatur ut a odio
                 voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi
@@ -136,8 +136,8 @@
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Contact</li>
+            <li><a href="index.html" data-key="home">Home</a></li>
+            <li class="current" data-key="contact">Contact</li>
           </ol>
         </div>
       </nav>
@@ -189,29 +189,33 @@
               data-aos-delay="200">
               <div class="row gy-4">
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="" />
+                  <input type="text" name="name" class="form-control" placeholder="Your Name"
+                    data-placeholder-key="yourName" required="" />
                 </div>
 
                 <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="" />
+                  <input type="email" class="form-control" name="email" placeholder="Your Email"
+                    data-placeholder-key="yourEmail" required="" />
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="" />
+                  <input type="text" class="form-control" name="subject" placeholder="Subject"
+                    data-placeholder-key="subject" required="" />
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message"
+                    data-placeholder-key="message" required=""></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
+                  <div class="loading" data-key="loading">Loading</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">
+                  <div class="sent-message" data-key="messageSent">
                     Your message has been sent. Thank you!
                   </div>
 
-                  <button type="submit">Send Message</button>
+                  <button type="submit" data-key="sendMessage">Send Message</button>
                 </div>
               </div>
             </form>
