@@ -34,9 +34,10 @@
   <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet" />
+  <link href="assets/css/file-upload.css" rel="stylesheet" />
+  <link href="css/admin-responsive.css" rel="stylesheet" />
 
   <!-- Custom CSS -->
   <style>
@@ -197,7 +198,7 @@
   <!--== BODY CONTNAINER ==-->
   <div class="container-fluid sb2">
     <div class="row">
-      <div class="sb2-1" style="background-color: white; float: left; width: 19.5%">
+      <div class="sb2-1" style="background-color: white;">
         <!--== LEFT MENU ==-->
         <div class="sb2-13">
           <ul class="collapsible" data-collapsible="accordion">
@@ -269,10 +270,8 @@
             </li>
           </ul>
         </div>
-      </div>
-
-      <!--== BODY INNER CONTAINER ==-->
-      <div class="sb2-2" style="padding: 40px; width: 80%">
+      </div> <!--== BODY INNER CONTAINER ==-->
+      <div class="sb2-2">
         <!--== breadcrumbs ==-->
         <div class="sb2-2-2">
           <ul>
@@ -454,8 +453,9 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/custom.js"></script>
-  <script src="js/sidebar-menu.js"></script>
+  <script src="assets/js/sidebar-tog.js"></script>
 
+  <!-- Script for select all functionality -->
   <script>
     // Script for select all functionality
     document.getElementById('selectAll').addEventListener('change', function () {
