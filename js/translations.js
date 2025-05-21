@@ -183,9 +183,11 @@ const translations = {    en: {
         "official": "Official",
         "reply": "Reply",
         "likePost": "Like",
-        "commentPost": "Comment",        "commentPlaceholder": "Write a comment...",
-        "likesCount": "%n likes",
-        "commentsCount": "%n comments"
+        "commentPost": "Comment",        "commentPlaceholder": "Write a comment...",        "likesCount": "%n likes",
+        "commentsCount": "%n comments",
+        "newCourse": "New Course",
+        "event": "Event",
+        "announcement": "Announcement"
     },
             ar: {
         // Navigation
@@ -365,6 +367,9 @@ const translations = {    en: {
         "likePost": "إعجاب",
         "commentPost": "تعليق",        "commentPlaceholder": "اكتب تعليقاً...",
         "likesCount": "%n إعجاب",
-        "commentsCount": "%n تعليق"
+        "commentsCount": "%n تعليق",
+        "newCourse": "دورة جديدة",
+        "event": "فعالية",
+        "announcement": "إعلان"
     }
 };

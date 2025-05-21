@@ -5,18 +5,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize language and theme from localStorage or defaults
     const currentLang = localStorage.getItem('language') || 'en';
     const currentTheme = localStorage.getItem('theme') || 'light';
-    
-    // Set initial language
+      // Set initial language
     if (currentLang === 'ar') {
         document.documentElement.lang = 'ar';
         document.body.classList.add('rtl');
         updateLanguageButton('ar');
         applyTranslations('ar');
+        // Initialize counts with Arabic translations
+        updateAllCountsTranslation('ar');
     } else {
         document.documentElement.lang = 'en';
         document.body.classList.remove('rtl');
         updateLanguageButton('en');
         applyTranslations('en');
+        // Initialize counts with English translations
+        updateAllCountsTranslation('en');
     }
     
     // Set initial theme
@@ -27,8 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('dark-mode');
         updateThemeButton('light');
     }
-    
-    // Language toggle button click handler
+      // Language toggle button click handler
     document.getElementById('language-toggle').addEventListener('click', function() {
         const currentLang = document.documentElement.lang;
         if (currentLang === 'en') {            // Switch to Arabic
@@ -41,11 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.comment-input').forEach(input => {
                 input.placeholder = translations['ar'].commentPlaceholder;
             });
+            
+            // Update all like and comment counts after language switch
+            updateAllCountsTranslation('ar');
+            
             // Apply profile translations if function exists
             if (typeof translateProfileElements === 'function') {
                 translateProfileElements('ar');
-            }
-        } else {
+            }        } else {
             // Switch to English
             document.documentElement.lang = 'en';            document.body.classList.remove('rtl');
             localStorage.setItem('language', 'en');
@@ -56,6 +61,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.comment-input').forEach(input => {
                 input.placeholder = translations['en'].commentPlaceholder;
             });
+            
+            // Update all like and comment counts after language switch
+            updateAllCountsTranslation('en');
+            
             // Apply profile translations if function exists
             if (typeof translateProfileElements === 'function') {
                 translateProfileElements('en');
@@ -89,8 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.setAttribute('title', 'Switch to Arabic');
         }
     }
-    
-    // Update theme button appearance
+      // Update theme button appearance
     function updateThemeButton(theme) {
         const button = document.getElementById('theme-toggle');
         if (theme === 'dark') {
@@ -100,15 +108,43 @@ document.addEventListener('DOMContentLoaded', function() {
             button.innerHTML = '<i class="bi bi-moon"></i>';
             button.setAttribute('title', 'Switch to Dark Mode');
         }
-    }    function applyTranslations(lang) {
+    }
+    
+    // Function to update all likes and comments counts with the proper translation
+    function updateAllCountsTranslation(lang) {
         if (!translations || !translations[lang]) return;
         
-        // Translate elements with data-key attribute
+        // Update likes counts
+        document.querySelectorAll('[data-key="likesCount"]').forEach(element => {
+            const count = parseInt(element.getAttribute('data-count')) || 0;
+            if (translations[lang]['likesCount']) {
+                element.textContent = translations[lang]['likesCount'].replace('%n', count);
+            }
+        });
+        
+        // Update comments counts
+        document.querySelectorAll('[data-key="commentsCount"]').forEach(element => {
+            const count = parseInt(element.getAttribute('data-count')) || 0;
+            if (translations[lang]['commentsCount']) {
+                element.textContent = translations[lang]['commentsCount'].replace('%n', count);
+            }
+        });
+    }
+    
+    function applyTranslations(lang) {
+        if (!translations || !translations[lang]) return;
+          // Translate elements with data-key attribute
         document.querySelectorAll('[data-key]').forEach(element => {
             const key = element.getAttribute('data-key');
             if (translations[lang][key]) {
+                // Special handling for like counts and comment counts which need count variable substitution
+                if (key === 'likesCount' || key === 'commentsCount') {
+                    const count = parseInt(element.getAttribute('data-count')) || 0;
+                    const translation = translations[lang][key].replace('%n', count);
+                    element.textContent = translation;
+                }
                 // Check if the original element contains HTML
-                if (element.innerHTML.includes('<') && element.innerHTML.includes('>')) {
+                else if (element.innerHTML.includes('<') && element.innerHTML.includes('>')) {
                     // If original has HTML, preserve the HTML structure and only replace the text
                     // This is specific for elements like <br> tags
                     if (element.innerHTML.includes('<br')) {

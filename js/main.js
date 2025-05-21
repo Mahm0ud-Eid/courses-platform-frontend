@@ -240,6 +240,13 @@ function addComment(inputElement) {
 // Update translated count function
 function updateTranslatedCount(element, count, translationKey) {
     const lang = localStorage.getItem('language') || 'en';
-    const translation = translations[lang][translationKey].replace('%n', count);
-    element.textContent = translation;
+    if (translations && translations[lang] && translations[lang][translationKey]) {
+        // Replace "%n" with the actual count number
+        let translation = translations[lang][translationKey];
+        translation = translation.replace('%n', count);
+        element.textContent = translation;
+    } else {
+        // Fallback if translation is not found
+        element.textContent = count + (translationKey === 'likesCount' ? ' likes' : ' comments');
+    }
 }
