@@ -15,6 +15,17 @@ const translations = {    en: {
         "signOut": "Sign out",
         "getStarted": "Get Started",
         
+        // Login Page
+        "loginTitle": "Log In",
+        "emailAddress": "Email address",
+        "emailPlaceholder": "Enter a valid email address",
+        "password": "Password",
+        "passwordPlaceholder": "Enter password",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password?",
+        "invalidEmail": "Invalid email format!",
+        "loginFailed": "Login failed! Please check your credentials.",
+        
         // Trainers Page
         "trainersTitle": "Trainers",
         "trainersDesc": "Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.",
@@ -203,13 +214,24 @@ const translations = {    en: {
         "dashboard": "لوحة التحكم",
         "contact": "اتصل بنا",
         "community": "المجتمع",
+        "signIn": "تسجيل الدخول",
+        "signOut": "تسجيل الخروج",
+        "getStarted": "ابدأ الآن",
+        
+        // Login Page
+        "loginTitle": "تسجيل الدخول",
+        "emailAddress": "البريد الإلكتروني",
+        "emailPlaceholder": "أدخل بريد إلكتروني صالح",
+        "password": "كلمة المرور",
+        "passwordPlaceholder": "أدخل كلمة المرور",
+        "rememberMe": "تذكرني",
+        "forgotPassword": "نسيت كلمة المرور؟",
+        "invalidEmail": "صيغة البريد الإلكتروني غير صحيحة!",
+        "loginFailed": "فشل تسجيل الدخول! يرجى التحقق من بيانات الاعتماد الخاصة بك.",
         
         // Trainers Page
         "trainersTitle": "المدربون",
         "trainersDesc": "فريق مدربينا المتميز يجمع بين الخبرة الأكاديمية والعملية، مما يتيح لطلابنا تلقي تعليم عالي الجودة وتدريب متخصص. تعرف على المدربين الذين يقودون رحلة نجاحك التعليمية.",
-        "signIn": "تسجيل الدخول",
-        "signOut": "تسجيل الخروج",
-        "getStarted": "ابدأ الآن",
         
         // About Us Page
         "aboutUsTitle": "من نحن",
