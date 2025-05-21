@@ -15,6 +15,10 @@ const translations = {    en: {
         "signOut": "Sign out",
         "getStarted": "Get Started",
         
+        // Trainers Page
+        "trainersTitle": "Trainers",
+        "trainersDesc": "Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.",
+        
         // About Us Page
         "aboutUsTitle": "About Us",
         "aboutUsDesc": "Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.",
@@ -189,7 +193,7 @@ const translations = {    en: {
         "event": "Event",
         "announcement": "Announcement"
     },
-            ar: {
+        ar: {
         // Navigation
         "home": "الرئيسية",
         "about": "حول",
@@ -199,6 +203,10 @@ const translations = {    en: {
         "dashboard": "لوحة التحكم",
         "contact": "اتصل بنا",
         "community": "المجتمع",
+        
+        // Trainers Page
+        "trainersTitle": "المدربون",
+        "trainersDesc": "فريق مدربينا المتميز يجمع بين الخبرة الأكاديمية والعملية، مما يتيح لطلابنا تلقي تعليم عالي الجودة وتدريب متخصص. تعرف على المدربين الذين يقودون رحلة نجاحك التعليمية.",
         "signIn": "تسجيل الدخول",
         "signOut": "تسجيل الخروج",
         "getStarted": "ابدأ الآن",
