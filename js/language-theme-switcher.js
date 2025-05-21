@@ -32,22 +32,30 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('language-toggle').addEventListener('click', function() {
         const currentLang = document.documentElement.lang;
         if (currentLang === 'en') {            // Switch to Arabic
-            document.documentElement.lang = 'ar';
-            document.body.classList.add('rtl');
+            document.documentElement.lang = 'ar';            document.body.classList.add('rtl');
             localStorage.setItem('language', 'ar');
             updateLanguageButton('ar');
             applyTranslations('ar');
+            
+            // Update comment placeholders
+            document.querySelectorAll('.comment-input').forEach(input => {
+                input.placeholder = translations['ar'].commentPlaceholder;
+            });
             // Apply profile translations if function exists
             if (typeof translateProfileElements === 'function') {
                 translateProfileElements('ar');
             }
         } else {
             // Switch to English
-            document.documentElement.lang = 'en';
-            document.body.classList.remove('rtl');
+            document.documentElement.lang = 'en';            document.body.classList.remove('rtl');
             localStorage.setItem('language', 'en');
             updateLanguageButton('en');
             applyTranslations('en');
+            
+            // Update comment placeholders
+            document.querySelectorAll('.comment-input').forEach(input => {
+                input.placeholder = translations['en'].commentPlaceholder;
+            });
             // Apply profile translations if function exists
             if (typeof translateProfileElements === 'function') {
                 translateProfileElements('en');

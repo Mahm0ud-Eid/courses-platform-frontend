@@ -169,7 +169,24 @@ const translations = {    en: {
         // Messages
         "loading": "Loading",
         "subscriptionSuccess": "Your subscription request has been sent. Thank you!",
-        },
+          // Community Page
+        "communityTitle": "Community",
+        "communityDesc": "Stay updated with our latest course announcements and community posts. Discover new learning opportunities, read about course highlights, and join our educational community to enhance your knowledge and skills.",
+        "communityPosts": "Community Posts",
+        "communitySubtitle": "Join the conversation and stay updated with the latest announcements",
+        "all": "All Posts",
+        "announcements": "Announcements",
+        "newCourses": "New Courses",
+        "events": "Events",
+        "noPostsMessage": "No posts found in this category. Please check back later.",
+        "instructor": "Instructor",
+        "official": "Official",
+        "reply": "Reply",
+        "likePost": "Like",
+        "commentPost": "Comment",        "commentPlaceholder": "Write a comment...",
+        "likesCount": "%n likes",
+        "commentsCount": "%n comments"
+    },
             ar: {
         // Navigation
         "home": "الرئيسية",
@@ -332,7 +349,22 @@ const translations = {    en: {
         // Messages
         "loading": "جاري التحميل",
         "subscriptionSuccess": "تم إرسال طلب الاشتراك بنجاح. شكراً لك!",
-        
-       
+          // Community Page
+        "communityTitle": "المجتمع",
+        "communityDesc": "ابق على اطلاع بآخر إعلانات الدورات ومنشورات المجتمع. اكتشف فرص تعليمية جديدة، واقرأ عن أبرز الدورات، وانضم إلى مجتمعنا التعليمي لتعزيز معرفتك ومهاراتك.",
+        "communityPosts": "منشورات المجتمع",
+        "communitySubtitle": "انضم إلى المحادثة وابق على اطلاع بآخر الإعلانات",
+        "all": "جميع المنشورات",
+        "announcements": "الإعلانات",
+        "newCourses": "الدورات الجديدة",
+        "events": "الفعاليات",
+        "noPostsMessage": "لم يتم العثور على منشورات في هذه الفئة. يرجى التحقق لاحقاً.",
+        "instructor": "مدرّب",
+        "official": "رسمي",
+        "reply": "رد",
+        "likePost": "إعجاب",
+        "commentPost": "تعليق",        "commentPlaceholder": "اكتب تعليقاً...",
+        "likesCount": "%n إعجاب",
+        "commentsCount": "%n تعليق"
     }
 };
