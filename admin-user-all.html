@@ -2,15 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>EEducation Master Template</title>
+  <title>All Students</title>
   <!-- META TAGS -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-    content="EEducation master is one of the best eEducational html template, it's suitable for all eEducation websites like university,college,school,online eEducation,tution center,distance eEducation,computer eEducation" />
-  <meta name="keyword"
-    content="eEducation html template, university template, college template, school template, online eEducation template, tution center template" />
   <!-- FAV ICON(BROWSER TAB ICON) -->
   <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
   <!-- GOOGLE FONT -->
@@ -18,69 +14,56 @@
     rel="stylesheet" />
   <!-- FONTAWESOME ICONS -->
   <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
   <!-- ALL CSS FILES -->
-  <link href="css/materialize.css" rel="stylesheet" />
-  <link href="css/bootstrap.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
   <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
   <link href="css/style-mob.css" rel="stylesheet" />
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+  <link rel="stylesheet" href="assets/css/input-group.css" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <link href="assets/css/file-upload.css" rel="stylesheet" />
+  <link href="css/admin-responsive.css" rel="stylesheet" />
+  <link href="css/post-management.css" rel="stylesheet" />
 </head>
 
 <body>
-  <!--== MAIN CONTRAINER ==-->
-  <div class="container-fluid sb1">
-    <div class="row">
-      <!--== LOGO ==-->
-      <div class="col-md-2 col-sm-3 col-xs-6 sb1-1">
-        <a href="#" class="btn-close-menu"><i class="fa fa-times" aria-hidden="true"></i></a>
-        <a href="#" class="atab-menu"><i class="fa fa-bars tab-menu" aria-hidden="true"></i></a>
-        <a href=" index.html" class="logo"><img src="images/logo1.png" alt="" />
-        </a>
-      </div>
-      <!--== SEARCH ==-->
-      <div class="col-md-6 col-sm-6 mob-hide">
-        <form class="app-search">
-          <input type="text" placeholder="Search..." class="form-control" />
-          <a href="#"><i class="fa fa-search"></i></a>
-        </form>
-      </div>
-      <!--== NOTIFICATION ==-->
-      <div class="col-md-2 tab-hide"></div>
-      <!--== MY ACCCOUNT ==-->
-      <div class="col-md-2 col-sm-3 col-xs-6">
-        <!-- Dropdown Trigger -->
-        <a class="waves-effect dropdown-button top-user-pro" href="#" data-activates="top-menu"><img
-            src="images/user/6.png" alt="" />My Account
-          <i class="fa fa-angle-down" aria-hidden="true"></i>
-        </a>
+  <!-- MAIN CONTRAINER -->
+  <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
+    <img class="sd-tog" src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- <img src="images/uccd-logo.png" alt="" /> -->
+        <h1 class="sitename">UCCD</h1>
+      </a>
 
-        <!-- Dropdown Structure -->
-        <ul id="top-menu" class="dropdown-content top-menu-sty">
+      <nav id="navmenu" class="navmenu navmenu-user">
+        <ul>
           <li>
-            <a href="admin-panel-setting.html" class="waves-effect"><i class="fa fa-cogs" aria-hidden="true"></i>Admin
-              Setting</a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="#" class="ho-dr-con-last waves-effect"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
+            <a class="logout-btn">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log Out</span>
+            </a>
           </li>
         </ul>
-      </div>
+        <i class="mobile-nav-toggle bi bi-person-circle"></i>
+      </nav>
     </div>
-  </div>
-
+  </header>
   <!--== BODY CONTNAINER ==-->
   <div class="container-fluid sb2">
     <div class="row">
-      <div class="sb2-1">
+      <div class="sb2-1" style="background-color: white;">
         <!--== USER INFO ==-->
-        <div class="sb2-12">
+        <!-- <div class="sb2-12">
           <ul>
             <li><img src="images/placeholder.jpg" alt="" /></li>
             <li>
@@ -88,12 +71,12 @@
             </li>
             <li></li>
           </ul>
-        </div>
+        </div> -->
         <!--== LEFT MENU ==-->
         <div class="sb2-13">
           <ul class="collapsible" data-collapsible="accordion">
             <li>
-              <a href="admin.html" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+              <a href="admin.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
                 Dashboard</a>
             </li>
 
@@ -110,18 +93,19 @@
             </li>
             <li>
               <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>
-                Users</a>
+                Instructors</a>
               <div class="collapsible-body left-sub-menu">
                 <ul>
-                  <li><a href="admin-user-all.html">All Users</a></li>
-                  <li><a href="admin-user-add.html">Add New user</a></li>
+                  <li>
+                    <a class="inst-mg-btn" href="#">Manage</a>
+                  </li>
+                  <li><a class="inst-v-all" href="#">All Users</a></li>
                 </ul>
               </div>
             </li>
-
-
             <li>
-              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar" aria-hidden="true"></i>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-newspaper-o"
+                  aria-hidden="true"></i>
                 Posts</a>
               <div class="collapsible-body left-sub-menu">
                 <ul>
@@ -133,23 +117,12 @@
               </div>
             </li>
             <li>
-              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-bullhorn" aria-hidden="true"></i>
-                Seminar</a>
-              <div class="collapsible-body left-sub-menu">
-                <ul>
-                  <li><a href="admin-seminar-all.html">All Seminar</a></li>
-                  <li>
-                    <a href="admin-seminar-add.html">Create New Seminar</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i>
+              <a href="javascript:void(0)" class="collapsible-header menu-active"><i class="fa fa-users"
+                  aria-hidden="true"></i>
                 Students</a>
               <div class="collapsible-body left-sub-menu">
                 <ul>
-                  <li><a href="admin-user-all.html">All Students</a></li>
+                  <li><a href="admin-user-all.html" class="menu-active">All Students</a></li>
                   <li><a href="admin-user-add.html">Add New Students</a></li>
                 </ul>
               </div>
@@ -174,14 +147,13 @@
       </div>
 
       <!--== BODY INNER CONTAINER ==-->
-      <div class="sb2-2">
-        <!--== breadcrumbs ==-->
+      <div class="sb2-2"> <!--== breadcrumbs ==-->
         <div class="sb2-2-2">
           <ul>
             <li>
               <a href=" index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
-            <li class="active-bre"><a href="#"> Users(Students)</a></li>
+            <li class="active-bre"><a href="#"> All Students</a></li>
             <li class="page-back">
               <a href=" index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
             </li>
@@ -194,13 +166,42 @@
             <div class="col-md-12">
               <div class="box-inn-sp">
                 <div class="inn-title">
-                  <h4>Student Details</h4>
+                  <h4>All Students</h4>
                   <p>
-                    All about students like name, student id, phone, email,
-                    country, city and more
+                    Manage student accounts and view student information
                   </p>
                 </div>
                 <div class="tab-inn">
+                  <!-- Search and Filter Section -->
+                  <div class="post-filter-section mb-4">
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search students by name..."
+                            aria-label="Search students">
+                          <button class="btn btn-primary" type="button">
+                            <i class="fa fa-search"></i> Search
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <select class="form-control" id="statusFilter">
+                          <option value="">All Status</option>
+                          <option value="Active">Active</option>
+                          <option value="Inactive">Inactive</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 text-end">
+                        <a href="admin-user-add.html" class="btn btn-success">
+                          <i class="fa fa-plus"></i> Add New Student
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Search and Filter Section -->
+
                   <div class="table-responsive table-desi">
                     <table class="table table-hover">
                       <thead>
@@ -209,7 +210,7 @@
                           <th>Name</th>
                           <th>Phone</th>
                           <th>Email</th>
-                          <th>Country</th>
+                          <th>Department</th>
                           <th>Id</th>
                           <th>Date of birth</th>
                           <th>Status</th>
@@ -227,7 +228,7 @@
                           </td>
                           <td>+01 3214 6522</td>
                           <td>chadengle@dummy.com</td>
-                          <td>united states</td>
+                          <td>Computer Science</td>
                           <td>ST17241</td>
                           <td>03 Jun 1990</td>
                           <td>
@@ -247,7 +248,7 @@
                           </td>
                           <td>+01 8574 6854</td>
                           <td>lucas@gmail.com</td>
-                          <td>Illinois</td>
+                          <td>Business Administration</td>
                           <td>ST10231</td>
                           <td>16 Feb 1987</td>
                           <td>
@@ -267,7 +268,7 @@
                           </td>
                           <td>+01 8574 6854</td>
                           <td>Ethan@gmail.com</td>
-                          <td>Illinois</td>
+                          <td>Engineering</td>
                           <td>ST32168</td>
                           <td>21 Jun 1992</td>
                           <td>
@@ -287,7 +288,7 @@
                           </td>
                           <td>+01 8574 6854</td>
                           <td>Ethan@gmail.com</td>
-                          <td>Illinois</td>
+                          <td>Arts & Design</td>
                           <td>ST32168</td>
                           <td>21 Jun 1992</td>
                           <td>
@@ -307,7 +308,7 @@
                           </td>
                           <td>+01 3214 6522</td>
                           <td>chadengle@dummy.com</td>
-                          <td>united states</td>
+                          <td>Computer Science</td>
                           <td>ST17241</td>
                           <td>03 Jun 1990</td>
                           <td>
@@ -327,7 +328,7 @@
                           </td>
                           <td>+01 8574 6854</td>
                           <td>lucas@gmail.com</td>
-                          <td>Illinois</td>
+                          <td>Mathematics</td>
                           <td>ST10231</td>
                           <td>16 Feb 1987</td>
                           <td>
@@ -347,7 +348,7 @@
                           </td>
                           <td>+01 8574 6854</td>
                           <td>Ethan@gmail.com</td>
-                          <td>Illinois</td>
+                          <td>Physics</td>
                           <td>ST32168</td>
                           <td>21 Jun 1992</td>
                           <td>
@@ -367,7 +368,7 @@
                           </td>
                           <td>+01 8574 6854</td>
                           <td>Ethan@gmail.com</td>
-                          <td>Illinois</td>
+                          <td>English Literature</td>
                           <td>ST32168</td>
                           <td>21 Jun 1992</td>
                           <td>
@@ -388,26 +389,67 @@
       </div>
     </div>
   </div>
+  </div> <!--Import jQuery before materialize.js-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="assets/js/sidebar-tog.js"></script>
+  <script src="js/sidebar-init.js"></script>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
-  </a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
 
-  <!-- JS Files (in order) -->
-  <script src="js/main.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/custom.js"></script>
-  <script src="assets/js/sidebar-tog.js"></script>
+  <!-- Main JS File -->
   <script src="js/image-upload.js"></script>
   <script src="js/main.js"></script>
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
+  <script>
+    // Status filtering script
+    $(document).ready(function () {
+      // Filter by status
+      $("#statusFilter").change(function () {
+        let selectedStatus = $(this).val();
+        filterStudents();
+      });
 
+      // Search functionality
+      $(".input-group button").click(function () {
+        filterStudents();
+      });
+
+      // Also trigger search when pressing Enter in the search field
+      $(".input-group input").keypress(function (e) {
+        if (e.which === 13) { // Enter key
+          filterStudents();
+        }
+      });
+
+      function filterStudents() {
+        let selectedStatus = $("#statusFilter").val();
+        let searchTerm = $(".input-group input").val().toLowerCase();
+
+        $("tbody tr").each(function () {
+          let studentName = $(this).find("td:nth-child(2) .list-enq-name").text().toLowerCase();
+          let status = $(this).find("td:nth-child(8) .label").text().trim();
+
+          let statusMatch = selectedStatus === "" || status === selectedStatus;
+          let searchMatch = searchTerm === "" || studentName.includes(searchTerm);
+
+          if (statusMatch && searchMatch) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
