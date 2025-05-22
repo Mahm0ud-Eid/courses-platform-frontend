@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Admin Events</title>
+  <title>Admin Posts</title>
   <!-- META TAGS -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -20,7 +20,6 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
   <link href="css/style-mob.css" rel="stylesheet" />
-
   <link rel="stylesheet" href="assets/css/input-group.css" />
 
   <!-- Vendor CSS Files -->
@@ -33,6 +32,7 @@
   <link href="assets/css/main.css" rel="stylesheet" />
   <link href="assets/css/file-upload.css" rel="stylesheet" />
   <link href="css/admin-responsive.css" rel="stylesheet" />
+  <link href="css/post-management.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -75,8 +75,7 @@
         <!--== LEFT MENU ==-->
         <div class="sb2-13">
           <ul class="collapsible" data-collapsible="accordion">
-            <li>
-              <a href="admin.html" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+            <li> <a href="admin.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
                 Dashboard</a>
             </li>
 
@@ -105,11 +104,12 @@
               </div>
             </li>
             <li>
-              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar" aria-hidden="true"></i>
+              <a href="javascript:void(0)" class="collapsible-header menu-active"><i class="fa fa-newspaper-o"
+                  aria-hidden="true"></i>
                 Posts</a>
               <div class="collapsible-body left-sub-menu">
                 <ul>
-                  <li><a href="admin-post-all.html">All Posts</a></li>
+                  <li><a href="admin-post-all.html" class="menu-active">All Posts</a></li>
                   <li>
                     <a href="admin-post-add.html">Create New Post</a>
                   </li>
@@ -152,7 +152,7 @@
             <li>
               <a href=" index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
-            <li class="active-bre"><a href="#"> Events</a></li>
+            <li class="active-bre"><a href="#"> Posts</a></li>
             <li class="page-back">
               <a href=" index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
             </li>
@@ -165,119 +165,121 @@
             <div class="col-md-12">
               <div class="box-inn-sp">
                 <div class="inn-title">
-                  <h4>All Events</h4>
+                  <h4>All Posts</h4>
                   <p>
-                    All about students like name, student id, phone, email,
-                    country, city and more
+                    Manage your blog posts, announcements, and news articles
                   </p>
                 </div>
                 <div class="tab-inn">
+                  <!-- Search and Filter Section -->
+                  <div class="post-filter-section mb-4">
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search posts by title..."
+                            aria-label="Search posts">
+                          <button class="btn btn-primary" type="button">
+                            <i class="fa fa-search"></i> Search
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <select class="form-control" id="categoryFilter">
+                          <option value="">All Categories</option>
+                          <option value="New Course">New Course</option>
+                          <option value="Event">Event</option>
+                          <option value="Announcement">Announcement</option>
+                        </select>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-12 text-end">
+                        <a href="admin-post-add.html" class="btn btn-success">
+                          <i class="fa fa-plus"></i> Add New Post
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Search and Filter Section -->
+
                   <div class="table-responsive table-desi">
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Image</th>
-                          <th>Name</th>
-                          <th>Start Date</th>
-                          <th>Location</th>
-                          <th>Status</th>
-                          <th>Edit</th>
+                          <th>Title</th>
+                          <th>Published Date</th>
+                          <th>Category</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody> <!-- Community Posts -->
                         <tr>
-                          <td>1</td>
+                          <td>Web Development Masterclass Starting Next Month</td>
+                          <td>18 May 2025</td>
+                          <td>New Course</td>
                           <td>
-                            <span class="list-img"><img src="images/course/sm-1.jpg" alt="" /></span>
-                          </td>
-                          <td>Admissions Information 2018</td>
-                          <td>21 June 2018</td>
-                          <td>los angeles</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-event-edit.html" class="ad-st-view">Edit</a>
+                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
                           </td>
                         </tr>
                         <tr>
-                          <td>2</td>
+                          <td>Data Science Fundamentals Course Registration Now Open</td>
+                          <td>15 May 2025</td>
+                          <td>New Course</td>
                           <td>
-                            <span class="list-img"><img src="images/course/sm-2.jpg" alt="" /></span>
-                          </td>
-                          <td>CUNY Assessment Test Workshop</td>
-                          <td>05 April 2018</td>
-                          <td>los angeles</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-event-edit.html" class="ad-st-view">Edit</a>
+                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
                           </td>
                         </tr>
                         <tr>
-                          <td>3</td>
+                          <td>Upcoming Tech Career Fair</td>
+                          <td>12 May 2025</td>
+                          <td>Event</td>
                           <td>
-                            <span class="list-img"><img src="images/course/sm-3.jpg" alt="" /></span>
-                          </td>
-                          <td>Fire & ice launch party</td>
-                          <td>12 December 2018</td>
-                          <td>los angeles</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-event-edit.html" class="ad-st-view">Edit</a>
+                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
                           </td>
                         </tr>
                         <tr>
-                          <td>4</td>
+                          <td>Summer Registration Now Open</td>
+                          <td>10 May 2025</td>
+                          <td>Announcement</td>
                           <td>
-                            <span class="list-img"><img src="images/course/sm-4.jpg" alt="" /></span>
-                          </td>
-                          <td>Educate to Empower NYE Party</td>
-                          <td>21 June 2018</td>
-                          <td>los angeles</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-event-edit.html" class="ad-st-view">Edit</a>
+                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
                           </td>
                         </tr>
                         <tr>
-                          <td>5</td>
+                          <td>New Mobile App Development Course</td>
+                          <td>8 May 2025</td>
+                          <td>New Course</td>
                           <td>
-                            <span class="list-img"><img src="images/course/sm-5.jpg" alt="" /></span>
-                          </td>
-                          <td>Latinoo College Expo 2018 - DONATION</td>
-                          <td>21 June 2018</td>
-                          <td>los angeles</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-event-edit.html" class="ad-st-view">Edit</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>6</td>
-                          <td>
-                            <span class="list-img"><img src="images/course/sm-6.jpg" alt="" /></span>
-                          </td>
-                          <td>Training at Team Fabio Clemente</td>
-                          <td>21 June 2018</td>
-                          <td>los angeles</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-event-edit.html" class="ad-st-view">Edit</a>
+                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
                           </td>
                         </tr>
                       </tbody>
                     </table>
+                  </div>
+
+                  <!-- Pagination and Bulk Actions -->
+                  <div class="row mt-4">
+                    <div class="col-md-6 mb-3">
+                      <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-end">
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                          </li>
+                          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -286,13 +288,13 @@
         </div>
       </div>
     </div>
-  </div>
-  <!--Import jQuery before materialize.js-->
+  </div> <!--Import jQuery before materialize.js-->
   <script src="js/main.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/materialize.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="assets/js/sidebar-tog.js"></script>
+  <script src="js/sidebar-init.js"></script>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -302,13 +304,33 @@
   <div id="preloader"></div>
 
   <!-- Main JS File -->
-  <script src="js/materialize.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/custom.js"></script>
   <script src="js/image-upload.js"></script>
   <script src="js/main.js"></script>
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
+  <script src="js/post-management.js"></script>
+  <script>
+    // Category filtering script
+    $(document).ready(function () {
+      // Filter by category
+      $("#categoryFilter").change(function () {
+        let selectedCategory = $(this).val();
+        filterPosts();
+      }); function filterPosts() {
+        let selectedCategory = $("#categoryFilter").val();
+
+        $("tbody tr").each(function () {
+          let categoryMatch = selectedCategory === "" || $(this).find("td:nth-child(3)").text().trim() === selectedCategory;
+
+          if (categoryMatch) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
