@@ -12,6 +12,7 @@ addInst.style.display = "none";
 
 let instViewBtn = document.querySelector(".inst-view");
 let instSaveBtn = document.querySelector(".inst-save");
+let instDelBtn = document.querySelector(".inst-del");
 
 // let instFName = document.querySelector(".inst-f-name");
 // let instLName = document.querySelector(".inst-l-name");
@@ -233,7 +234,7 @@ instSaveBtn.addEventListener("click", function (event) {
     Password: instPass.value,
     Phone: instPhone.value,
     Description: instDesc.value,
-    // Image: instImg.value || "images/user/1.png",
+    // Image: instImg.value || `images/user/1.png`,
   };
 
   fetch(rUrl, {
@@ -275,4 +276,62 @@ instSaveBtn.addEventListener("click", function (event) {
         showCloseButton: true,
       });
     });
+});
+
+instDelBtn.addEventListener("click", function (event) {
+  event.preventDefault(); // Prevent form submission
+
+  const token = validateToken();
+
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+    cancelButtonText: "No, cancel!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(
+        `https://uccd-ljoxz.ondigitalocean.app/api/v1/manager/instructor/delete?username=${instEmail.value}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          Swal.fire({
+            title: data.message,
+            icon: "success",
+            showCloseButton: true,
+          });
+          // Clear the form fields after deletion
+          instName.value = "";
+          instPhone.value = "";
+          instDesc.value = "";
+          instEmail.value = "";
+          instPass.value = "";
+        })
+        .catch((error) => {
+          console.error("There was a problem with the fetch operation:", error);
+          Swal.fire({
+            title: "Error",
+            text: error.message,
+            icon: "error",
+            showCloseButton: true,
+          });
+        });
+    } else if (result.isDismissed) {
+      console.log("Deletion cancelled");
+    }
+  });
 });
