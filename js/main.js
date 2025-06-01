@@ -89,34 +89,7 @@
   window.addEventListener("load", toggleScrollTop);
   document.addEventListener("scroll", toggleScrollTop);
 
-  /**
-   * Animation on scroll function and init
-   */
-  // function aosInit() {
-  //   AOS.init({
-  //     duration: 600,
-  //     easing: "ease-in-out",
-  //     once: true,
-  //     mirror: false,
-  //   });
-  // }
-  // window.addEventListener("load", aosInit);
-
-  /**
-   * Initiate glightbox
-   */
-  // const glightbox = GLightbox({
-  //   selector: ".glightbox",
-  // });
-
-  /**
-   * Initiate Pure Counter
-   */
-  // new PureCounter();
-
-  /**
-   * Init swiper sliders
-   */
+  
   function initSwiper() {
     document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
       let config = JSON.parse(
@@ -133,3 +106,147 @@
 
   window.addEventListener("load", initSwiper);
 })();
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const filterBtns = document.querySelectorAll('.post-filter-btn');
+    const posts = document.querySelectorAll('.post-container');
+    const noPostsMessage = document.getElementById('no-posts-message');
+
+    // Enable comment input functionality
+    const commentInputs = document.querySelectorAll('.comment-input');
+    commentInputs.forEach(input => {
+        const submitBtn = input.nextElementSibling;
+
+        input.addEventListener('input', function () {
+            submitBtn.disabled = !this.value.trim();
+        });
+
+        input.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && this.value.trim()) {
+                addComment(this);
+            }
+        });
+
+        submitBtn.addEventListener('click', function () {
+            addComment(input);
+        });
+    });
+
+    // Add click event to filter buttons
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            // Remove active class from all buttons
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            // Get filter value
+            const filterValue = this.getAttribute('data-filter');
+            let visiblePosts = 0;
+
+            // Filter posts
+            posts.forEach(post => {
+                if (filterValue === 'all' || post.getAttribute('data-category') === filterValue) {
+                    post.style.display = 'block';
+                    visiblePosts++;
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+
+            // Show/hide no posts message
+            if (visiblePosts === 0) {
+                noPostsMessage.style.display = 'block';
+            } else {
+                noPostsMessage.style.display = 'none';
+            }
+        });
+    });    // Initialize translated counts
+    document.querySelectorAll('[data-key="likesCount"], [data-key="commentsCount"]').forEach(element => {
+        const count = parseInt(element.getAttribute('data-count'));
+        updateTranslatedCount(element, count, element.getAttribute('data-key'));
+    });
+    
+    // Set translated comment placeholders
+    document.querySelectorAll('.comment-input').forEach(input => {
+        const lang = localStorage.getItem('language') || 'en';
+        input.placeholder = translations[lang].commentPlaceholder;
+    });
+});
+
+// Toggle like function
+function toggleLike(button) {
+    button.classList.toggle('liked');
+    const likesCount = button.closest('.post-actions').previousElementSibling.querySelector('.post-reactions span');
+    let count = parseInt(likesCount.getAttribute('data-count'));
+
+    if (button.classList.contains('liked')) {
+        count++;
+    } else {
+        count--;
+    }
+
+    likesCount.setAttribute('data-count', count);
+    updateTranslatedCount(likesCount, count, 'likesCount');
+}
+
+// Focus comment input function
+function focusCommentInput(button) {
+    const commentInput = button.closest('.post-container').querySelector('.comment-input');
+    commentInput.focus();
+}
+
+// Add comment function
+function addComment(inputElement) {
+    const commentText = inputElement.value.trim();
+    if (!commentText) return;
+
+    const commentsContainer = inputElement.closest('.comments-container');
+    const commentForm = inputElement.closest('.comment-form');
+    const currentUserAvatar = commentForm.querySelector('.comment-avatar').src;
+
+    // Create new comment
+    const newComment = document.createElement('div');
+    newComment.className = 'comment';
+    newComment.innerHTML = `
+        <img src="${currentUserAvatar}" alt="You" class="comment-avatar">
+        <div class="comment-content">
+            <div class="comment-author">You</div>
+            <div class="comment-text">${commentText}</div>
+            <div class="comment-actions">
+                <span class="comment-action">Like</span>
+                <span class="comment-action">Reply</span>
+                <span>Just now</span>
+            </div>
+        </div>
+    `;
+
+    // Insert before the comment form
+    commentsContainer.insertBefore(newComment, commentForm);
+
+    // Clear the input
+    inputElement.value = '';
+    inputElement.nextElementSibling.disabled = true;    // Update comment count
+    const postStats = commentsContainer.closest('.post-container').querySelector('.post-stats');
+    const commentCount = postStats.querySelector('div:last-child');
+    const currentCount = parseInt(commentCount.getAttribute('data-count'));
+    const newCount = currentCount + 1;
+    commentCount.setAttribute('data-count', newCount);
+    updateTranslatedCount(commentCount, newCount, 'commentsCount');
+}
+
+// Update translated count function
+function updateTranslatedCount(element, count, translationKey) {
+    const lang = localStorage.getItem('language') || 'en';
+    if (translations && translations[lang] && translations[lang][translationKey]) {
+        // Replace "%n" with the actual count number
+        let translation = translations[lang][translationKey];
+        translation = translation.replace('%n', count);
+        element.textContent = translation;
+    } else {
+        // Fallback if translation is not found
+        element.textContent = count + (translationKey === 'likesCount' ? ' likes' : ' comments');
+    }
+}

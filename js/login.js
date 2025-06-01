@@ -1,3 +1,46 @@
+document.addEventListener('DOMContentLoaded', function() {
+  // Apply translations to login page elements
+  translateLoginElements();
+  
+  // Re-translate when language changes
+  document.getElementById('language-toggle').addEventListener('click', function() {
+    setTimeout(translateLoginElements, 100); // Short delay to ensure translations are loaded
+  });
+});
+
+// Function to translate login page elements
+function translateLoginElements() {
+  const currentLang = document.documentElement.lang || 'en';
+  
+  if (!translations || !translations[currentLang]) return;
+  
+  // Translate login title
+  const loginTitle = document.querySelector('.divider p');
+  if (loginTitle) loginTitle.textContent = translations[currentLang].loginTitle;
+  
+  // Translate email label and placeholder
+  const emailLabel = document.querySelector('label[for="email"]');
+  if (emailLabel) emailLabel.textContent = translations[currentLang].emailAddress;
+  
+  const emailInput = document.getElementById('email');
+  if (emailInput) emailInput.placeholder = translations[currentLang].emailPlaceholder;
+  
+  // Translate password label and placeholder
+  const passwordLabel = document.querySelector('label[for="password"]');
+  if (passwordLabel) passwordLabel.textContent = translations[currentLang].password;
+  
+  const passwordInput = document.getElementById('password');
+  if (passwordInput) passwordInput.placeholder = translations[currentLang].passwordPlaceholder;
+  
+  // Translate remember me checkbox
+  const rememberLabel = document.querySelector('label[for="remember"]');
+  if (rememberLabel) rememberLabel.textContent = translations[currentLang].rememberMe;
+  
+  // Translate sign in button
+  const signInButton = document.querySelector('button[type="submit"]');
+  if (signInButton) signInButton.textContent = translations[currentLang].signIn;
+}
+
 document
   .getElementById("loginForm")
   .addEventListener("submit", async function (event) {
@@ -12,10 +55,12 @@ document
     passwordError.textContent = "";
 
     let isValid = true;
+    
+    const currentLang = document.documentElement.lang || 'en';
 
     // Email Validation
     if (!validateEmail(email)) {
-      emailError.textContent = "Invalid email format!";
+      emailError.textContent = translations[currentLang].invalidEmail;
       isValid = false;
     }
 
@@ -39,16 +84,15 @@ document
       if (response.ok) {
         console.log(data.data);
         sessionStorage.setItem("token", data.data.Token);
-        alert("Login successful!");
-
-        // Store JWT token in sessionStorage (or HttpOnly cookies if backend supports)
+        alert("Login successful!");        // Store JWT token in sessionStorage (or HttpOnly cookies if backend supports)
 
         // Redirect to dashboard or another page
         if (data.data.Role === "manager") {
           window.location.href = "admin.html";
         }
       } else {
-        alert(data.message || "Login failed! Please check your credentials.");
+        const currentLang = document.documentElement.lang || 'en';
+        alert(data.message || translations[currentLang].loginFailed);
       }
     } catch (error) {
       console.error("Error:", error);

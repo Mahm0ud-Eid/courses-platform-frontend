@@ -1,0 +1,156 @@
+/* RTL Support for Arabic Language */
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL for header and navigation */
+body.rtl .header .logo {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+body.rtl .header .btn-getstarted {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+body.rtl .navmenu ul {
+    padding-right: 0;
+}
+
+body.rtl .mobile-nav-toggle {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+/* RTL for dashboard components */
+body.rtl .dashboard-nav .nav-link i,
+body.rtl .profile-nav .nav-link i {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+/* Phone numbers should maintain left-to-right */
+body.rtl [dir="ltr"] {
+    display: inline-block;
+    unicode-bidi: isolate;
+}
+
+body.rtl .timeline {
+    padding-left: 0;
+    padding-right: 2rem;
+}
+
+body.rtl .timeline::before {
+    left: auto;
+    right: 0.5rem;
+}
+
+body.rtl .timeline-icon {
+    left: auto;
+    right: -0.75rem;
+}
+
+body.rtl .timeline-content {
+    margin-left: 0;
+    margin-right: 2.5rem;
+}
+
+body.rtl .exam-item {
+    border-left: none;
+    border-right: 2px solid var(--primary);
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+body.rtl .section-header h4 i {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+body.rtl .status-table th,
+body.rtl .status-table td {
+    text-align: right;
+}
+
+body.rtl .exam-date i,
+body.rtl .timeline-hall i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+body.rtl .course-meta {
+    flex-direction: row-reverse;
+}
+
+/* RTL for sections content */
+body.rtl .section-title h2,
+body.rtl .section-title p {
+    text-align: right;
+}
+
+body.rtl .about ul li {
+    padding-left: 0;
+    padding-right: 25px;
+}
+
+body.rtl .about ul li i {
+    left: auto;
+    right: 0;
+}
+
+body.rtl .member .social {
+    right: auto;
+    left: 0;
+}
+
+body.rtl .course-content .trainer-profile {
+    padding-right: 0;
+    padding-left: 15px;
+}
+
+/* RTL for footer */
+body.rtl .footer-links ul {
+    padding-right: 0;
+}
+
+body.rtl .footer-links ul i {
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+body.rtl .social-links a {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+body.rtl .footer-newsletter form input[type="submit"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+}
+
+/* RTL for other elements */
+body.rtl .stats-item {
+    text-align: right;
+}
+
+body.rtl .features-item i {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+body.rtl .why-box {
+    text-align: right;
+}
+
+body.rtl .icon-box {
+    text-align: right;
+}
+
+
+#language-toggle {
+  margin-left: 20px;
+}

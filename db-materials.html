@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Course Materials - UCCD</title>
+    <meta name="description" content="UCCD Student Materials - Access and download course materials" />
+    <meta name="keywords" content="UCCD, student, materials, downloads, documents, education" />
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <!-- RTL Support for Arabic -->
+    <link href="assets/css/rtl.css" rel="stylesheet" />
+    <!-- Dark Mode Support -->
+    <link href="assets/css/dark-mode.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --accent-color: #ffd400;
+            --contrast-color: #2a3546;
+            --primary: #4361ee;
+            --primary-light: #eef2ff;
+            --secondary: #3f37c9;
+            --accent: #ffd400;
+            --dark: #2a3546;
+            --gray: #6a6a6a;
+            --light-gray: #f8f9fa;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #fd7e14;
+        }
+
+        .switchers-container {
+            display: flex;
+            gap: 25px;
+            margin-right: 20px;
+        }
+
+        .rtl .switchers-container {
+            margin-left: 20px;
+            margin-right: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fb;
+        }
+
+        .dashboard-container {
+            padding: 2rem 0;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--primary-light);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.15);
+        }
+
+        .profile-card h4 {
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Dashboard Navigation */
+        .dashboard-nav {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dashboard-nav .nav-link {
+            color: var(--gray);
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .dashboard-nav .nav-link i {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .dashboard-nav .nav-link.active {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .dashboard-nav .nav-link:hover:not(.active) {
+            background: var(--light-gray);
+            color: var(--dark);
+        }
+
+        /* Dashboard Sections */
+        .dashboard-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .section-header h4 {
+            color: var(--dark);
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-header h4 i {
+            margin-right: 0.75rem;
+            color: var(--primary);
+        }
+
+        /* Materials Section */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .material-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .material-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .material-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .material-info {
+            flex: 1;
+        }
+
+        .material-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .material-course {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .material-instructor {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .material-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+
+        .material-icon.pdf {
+            background: rgba(220, 53, 69, 0.1);
+            color: var(--danger);
+        }
+
+        .material-icon.doc {
+            background: rgba(13, 110, 253, 0.1);
+            color: #0d6efd;
+        }
+
+        .material-icon.ppt {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+
+        .material-icon.video {
+            background: rgba(111, 66, 193, 0.1);
+            color: #6f42c1;
+        }
+
+        .material-icon.image {
+            background: rgba(25, 135, 84, 0.1);
+            color: var(--success);
+        }
+
+        .material-icon.default {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .material-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            line-height: 1.5;
+        }
+
+        .material-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .material-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .material-size,
+        .material-date {
+            display: flex;
+            align-items: center;
+        }
+
+        .material-size i,
+        .material-date i {
+            margin-right: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .material-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-download {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .btn-download i {
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-preview {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(67, 97, 238, 0.2);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .btn-preview:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .btn-preview i {
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* Filters */
+        .filters-section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .materials-filter {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding: 0 0.25rem;
+        }
+
+        .filter-chip {
+            background: var(--light-gray);
+            color: var(--gray);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-chip.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .filter-chip:hover:not(.active) {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .course-filter {
+            min-width: 200px;
+        }
+
+        .course-filter select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .course-filter select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        .empty-materials {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: var(--gray);
+        }
+
+        .empty-materials i {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-gray);
+        }
+
+        .empty-materials h5 {
+            color: var(--gray);
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .empty-materials p {
+            font-size: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Stats Cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stats-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .stats-card h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .stats-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Switchers */
+        .switchers-container {
+            display: flex;
+            gap: 25px;
+            margin-right: 20px;
+        }
+
+        .rtl .switchers-container {
+            margin-left: 20px;
+            margin-right: 0;
+        }
+
+        .switcher-btn {
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .switcher-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        .switcher-btn i {
+            font-size: 16px;
+        }
+
+        .switcher-btn i {
+            font-size: 16px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .materials-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .profile-card img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 1rem 0;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .material-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .material-icon {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .material-details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .material-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .search-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                min-width: auto;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* Dark Mode Styles for Material Cards */
+        body.dark-mode .material-card {
+            background-color: var(--surface-color);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--default-color);
+        }
+
+        body.dark-mode .material-card:hover {
+            background-color: #2a2a2a;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .material-title {
+            color: var(--heading-color);
+        }
+
+        body.dark-mode .material-course {
+            color: var(--primary);
+        }
+
+        body.dark-mode .material-instructor {
+            color: var(--default-color);
+            opacity: 0.8;
+        }
+
+        body.dark-mode .material-description {
+            color: var(--default-color);
+            opacity: 0.9;
+        }
+
+        body.dark-mode .material-meta {
+            color: var(--default-color);
+            opacity: 0.7;
+        }
+
+        body.dark-mode .btn-preview,
+        body.dark-mode .btn-download {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        body.dark-mode .btn-preview:hover,
+        body.dark-mode .btn-download:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        body.dark-mode .filter-chip {
+            background-color: #2a2a2a;
+            color: var(--default-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .filter-chip:hover:not(.active) {
+            background-color: rgba(67, 97, 238, 0.15);
+            color: #4361ee;
+        }
+
+        body.dark-mode .filter-chip.active {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        body.dark-mode .search-box input {
+            background-color: var(--surface-color) !important;
+            color: var(--default-color) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        body.dark-mode .search-box input::placeholder {
+            color: var(--default-color) !important;
+            opacity: 0.6 !important;
+        }
+
+        body.dark-mode .search-box {
+            background-color: var(--surface-color);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        body.dark-mode .search-box i {
+            color: var(--default-color);
+            opacity: 0.7;
+        }
+
+        body.dark-mode #course-filter {
+            background-color: var(--surface-color);
+            color: var(--default-color);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        body.dark-mode .dashboard-section {
+            background-color: var(--surface-color);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .section-header h4 {
+            color: var(--heading-color);
+        }
+
+        body.dark-mode .alert-info {
+            background-color: rgba(13, 110, 253, 0.1);
+            border-color: rgba(13, 110, 253, 0.2);
+            color: var(--default-color);
+        }
+
+        body.dark-mode .empty-materials {
+            color: var(--default-color);
+        }
+
+        body.dark-mode .empty-materials h5 {
+            color: var(--heading-color);
+        }
+    </style>
+</head>
+
+<body class="index-page">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <img src="images/uccd-logo.png" alt="UCCD Logo" class="img-fluid">
+                <h1 class="sitename">UCCD</h1>
+            </a>
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html" data-key="home">Home</a></li>
+                    <li><a href="about.html" data-key="about">About</a></li>
+                    <li><a href="courses.html" data-key="courses">Courses</a></li>
+                    <li><a href="trainers.html" data-key="trainers">Trainers</a></li>
+                    <li><a href="community.html" data-key="community">Community</a></li>
+                    <li><a href="dashboard.html" data-key="dashboard">Dashboard</a></li>
+                    <li><a href="contact.html" data-key="contact">Contact</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <div class="header-actions d-flex align-items-center">
+                <div class="switchers-container me-3">
+                    <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
+                        العربية
+                    </button>
+                    <button id="theme-toggle" class="switcher-btn" title="Switch to Dark Mode">
+                        <i class="bi bi-moon"></i>
+                    </button>
+                </div>
+
+                <a class="btn-getstarted" href="#!" data-bs-toggle="modal" data-bs-target="#modal1">
+                    <i class="bi bi-box-arrow-in-right me-1"></i> Sign out
+                </a>
+            </div>
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Materials Section ======= -->
+    <section id="materials" class="materials">
+        <div class="container dashboard-container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- Profile Card -->
+                    <div class="profile-card animate-fade delay-1">
+                        <img src="images/user.jpg" alt="Student" class="img-fluid">
+                        <h4>Emily Jessica</h4>
+                        <p>Student ID: ST17241</p>
+                    </div> <!-- Quick Stats -->
+                    <div class="stats-row">
+                        <div class="stats-card animate-fade delay-2">
+                            <i class="bi bi-folder2-open"></i>
+                            <h3>24</h3>
+                            <p data-key="totalMaterials">Total Materials</p>
+                        </div>
+                        <div class="stats-card animate-fade delay-3">
+                            <i class="bi bi-download"></i>
+                            <h3>18</h3>
+                            <p data-key="downloaded">Downloaded</p>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Navigation -->
+                    <div class="dashboard-nav animate-fade delay-4">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i>
+                                    Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="db-profile.html"><i class="bi bi-person"></i> My Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> My
+                                    Courses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="db-materials.html"><i class="bi bi-folder2-open"></i>
+                                    Course Materials</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="#"><i class="bi bi-box-arrow-right"></i>
+                                    Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-8"> <!-- Header Section -->
+                    <div class="dashboard-section animate-fade delay-1">
+                        <div class="section-header">
+                            <h4><i class="bi bi-folder2-open"></i> <span data-key="courseMaterials">Course
+                                    Materials</span></h4>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
+                                    id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-download me-1"></i> <span data-key="bulkDownload">Bulk
+                                        Download</span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                                    <li><a class="dropdown-item" href="#" data-key="downloadAllMaterials">Download All
+                                            Materials</a></li>
+                                    <li><a class="dropdown-item" href="#" data-key="downloadByCourse">Download by
+                                            Course</a></li>
+                                    <li><a class="dropdown-item" href="#" data-key="downloadByType">Download by Type</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-info" role="alert">
+                            <i class="bi bi-info-circle me-2"></i> <span data-key="materialsInfo">Access all your course
+                                materials in one place. You can preview, download, and organize materials by course or
+                                file type.</span>
+                        </div>
+                    </div> <!-- Filters Section -->
+                    <div class="filters-section animate-fade delay-2">
+                        <div class="search-filters">
+                            <div class="search-box">
+                                <i class="bi bi-search"></i>
+                                <input type="text" id="search-materials" data-key="searchMaterials"
+                                    placeholder="Search materials..." />
+                            </div>
+                            <div class="course-filter">
+                                <select id="course-filter">
+                                    <option value="all" data-key="allCourses">All Courses</option>
+                                    <option value="java-programming">Java Programming</option>
+                                    <option value="aeronautical-engineering">Aeronautical Engineering</option>
+                                    <option value="master-of-science">Master of Science</option>
+                                    <option value="software-testing">Software Testing</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Filter Chips -->
+                        <div class="materials-filter">
+                            <button class="filter-chip active" data-filter="all" data-key="allFiles">All Files</button>
+                            <button class="filter-chip" data-filter="pdf" data-key="pdfDocuments">PDF Documents</button>
+                            <button class="filter-chip" data-filter="video" data-key="videoFiles">Video Files</button>
+                            <button class="filter-chip" data-filter="presentation"
+                                data-key="presentations">Presentations</button>
+                            <button class="filter-chip" data-filter="document" data-key="documents">Documents</button>
+                            <button class="filter-chip" data-filter="image" data-key="images">Images</button>
+                        </div>
+                    </div>
+
+                    <!-- Materials Grid -->
+                    <div class="dashboard-section animate-fade delay-3">
+                        <div class="materials-grid" id="materials-grid">
+                            <!-- Material Item 1 -->
+                            <div class="material-card" data-type="pdf" data-course="java-programming">
+                                <div class="material-header">
+                                    <div class="material-info">
+                                        <div class="material-title">Java Programming Fundamentals</div>
+                                        <div class="material-course">Java Programming</div>
+                                        <div class="material-instructor">By Dr. Sarah Johnson</div>
+                                    </div>
+                                    <div class="material-icon pdf">
+                                        <i class="bi bi-file-earmark-pdf"></i>
+                                    </div>
+                                </div>
+                                <div class="material-description">
+                                    Comprehensive guide covering Java syntax, object-oriented programming concepts, and
+                                    best practices for beginner programmers.
+                                </div>
+                                <div class="material-details">
+                                    <div class="material-meta">
+                                        <div class="material-size">
+                                            <i class="bi bi-hdd"></i>
+                                            2.4 MB
+                                        </div>
+                                        <div class="material-date">
+                                            <i class="bi bi-calendar3"></i>
+                                            May 15, 2025
+                                        </div>
+                                    </div>
+                                    <div class="material-actions">
+                                        <a href="#" class="btn-preview">
+                                            <i class="bi bi-eye"></i>
+                                            <span data-key="preview">Preview</span>
+                                        </a>
+                                        <a href="#" class="btn-download">
+                                            <i class="bi bi-download"></i>
+                                            <span data-key="download">Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Material Item 2 -->
+                            <div class="material-card" data-type="video" data-course="java-programming">
+                                <div class="material-header">
+                                    <div class="material-info">
+                                        <div class="material-title">Object-Oriented Programming Concepts</div>
+                                        <div class="material-course">Java Programming</div>
+                                        <div class="material-instructor">By Dr. Sarah Johnson</div>
+                                    </div>
+                                    <div class="material-icon video">
+                                        <i class="bi bi-play-circle"></i>
+                                    </div>
+                                </div>
+                                <div class="material-description">
+                                    Video lecture series explaining inheritance, polymorphism, encapsulation, and
+                                    abstraction with practical examples.
+                                </div>
+                                <div class="material-details">
+                                    <div class="material-meta">
+                                        <div class="material-size">
+                                            <i class="bi bi-hdd"></i>
+                                            156 MB
+                                        </div>
+                                        <div class="material-date">
+                                            <i class="bi bi-calendar3"></i>
+                                            May 18, 2025
+                                        </div>
+                                    </div>
+                                    <div class="material-actions">
+                                        <a href="#" class="btn-preview">
+                                            <i class="bi bi-play"></i>
+                                            <span data-key="watch">Watch</span>
+                                        </a>
+                                        <a href="#" class="btn-download">
+                                            <i class="bi bi-download"></i>
+                                            <span data-key="download">Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Material Item 3 -->
+                            <div class="material-card" data-type="presentation" data-course="aeronautical-engineering">
+                                <div class="material-header">
+                                    <div class="material-info">
+                                        <div class="material-title">Aerodynamics Principles</div>
+                                        <div class="material-course">Aeronautical Engineering</div>
+                                        <div class="material-instructor">By Prof. Michael Chen</div>
+                                    </div>
+                                    <div class="material-icon ppt">
+                                        <i class="bi bi-file-earmark-slides"></i>
+                                    </div>
+                                </div>
+                                <div class="material-description">
+                                    PowerPoint presentation covering lift, drag, thrust, and weight forces in aircraft
+                                    design and flight dynamics.
+                                </div>
+                                <div class="material-details">
+                                    <div class="material-meta">
+                                        <div class="material-size">
+                                            <i class="bi bi-hdd"></i>
+                                            8.7 MB
+                                        </div>
+                                        <div class="material-date">
+                                            <i class="bi bi-calendar3"></i>
+                                            May 20, 2025
+                                        </div>
+                                    </div>
+                                    <div class="material-actions">
+                                        <a href="#" class="btn-preview">
+                                            <i class="bi bi-eye"></i>
+                                            <span data-key="preview">Preview</span>
+                                        </a>
+                                        <a href="#" class="btn-download">
+                                            <i class="bi bi-download"></i>
+                                            <span data-key="download">Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Material Item 4 -->
+                            <div class="material-card" data-type="document" data-course="master-of-science">
+                                <div class="material-header">
+                                    <div class="material-info">
+                                        <div class="material-title">Research Methodology Guidelines</div>
+                                        <div class="material-course">Master of Science</div>
+                                        <div class="material-instructor">By Dr. Emily Rodriguez</div>
+                                    </div>
+                                    <div class="material-icon doc">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                    </div>
+                                </div>
+                                <div class="material-description">
+                                    Comprehensive guide on research methods, data collection techniques, and academic
+                                    writing standards for graduate students.
+                                </div>
+                                <div class="material-details">
+                                    <div class="material-meta">
+                                        <div class="material-size">
+                                            <i class="bi bi-hdd"></i>
+                                            1.2 MB
+                                        </div>
+                                        <div class="material-date">
+                                            <i class="bi bi-calendar3"></i>
+                                            May 22, 2025
+                                        </div>
+                                    </div>
+                                    <div class="material-actions">
+                                        <a href="#" class="btn-preview">
+                                            <i class="bi bi-eye"></i>
+                                            <span data-key="preview">Preview</span>
+                                        </a>
+                                        <a href="#" class="btn-download">
+                                            <i class="bi bi-download"></i>
+                                            <span data-key="download">Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Material Item 5 -->
+                            <div class="material-card" data-type="pdf" data-course="java-programming">
+                                <div class="material-header">
+                                    <div class="material-info">
+                                        <div class="material-title">Advanced Java Programming Exercises</div>
+                                        <div class="material-course">Java Programming</div>
+                                        <div class="material-instructor">By Dr. Sarah Johnson</div>
+                                    </div>
+                                    <div class="material-icon pdf">
+                                        <i class="bi bi-file-earmark-pdf"></i>
+                                    </div>
+                                </div>
+                                <div class="material-description">
+                                    Practice exercises covering advanced topics like multithreading, collections
+                                    framework, and design patterns in Java.
+                                </div>
+                                <div class="material-details">
+                                    <div class="material-meta">
+                                        <div class="material-size">
+                                            <i class="bi bi-hdd"></i>
+                                            3.8 MB
+                                        </div>
+                                        <div class="material-date">
+                                            <i class="bi bi-calendar3"></i>
+                                            May 25, 2025
+                                        </div>
+                                    </div>
+                                    <div class="material-actions">
+                                        <a href="#" class="btn-preview">
+                                            <i class="bi bi-eye"></i>
+                                            <span data-key="preview">Preview</span>
+                                        </a>
+                                        <a href="#" class="btn-download">
+                                            <i class="bi bi-download"></i>
+                                            <span data-key="download">Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Material Item 6 -->
+                            <div class="material-card" data-type="image" data-course="aeronautical-engineering">
+                                <div class="material-header">
+                                    <div class="material-info">
+                                        <div class="material-title">Aircraft Design Blueprints</div>
+                                        <div class="material-course">Aeronautical Engineering</div>
+                                        <div class="material-instructor">By Prof. Michael Chen</div>
+                                    </div>
+                                    <div class="material-icon image">
+                                        <i class="bi bi-file-earmark-image"></i>
+                                    </div>
+                                </div>
+                                <div class="material-description">
+                                    Technical drawings and blueprints showing aircraft component design and engineering
+                                    specifications.
+                                </div>
+                                <div class="material-details">
+                                    <div class="material-meta">
+                                        <div class="material-size">
+                                            <i class="bi bi-hdd"></i>
+                                            5.2 MB
+                                        </div>
+                                        <div class="material-date">
+                                            <i class="bi bi-calendar3"></i>
+                                            May 26, 2025
+                                        </div>
+                                    </div>
+                                    <div class="material-actions">
+                                        <a href="#" class="btn-preview">
+                                            <i class="bi bi-eye"></i>
+                                            <span data-key="preview">Preview</span>
+                                        </a>
+                                        <a href="#" class="btn-download">
+                                            <i class="bi bi-download"></i>
+                                            <span data-key="download">Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Material Item 7 -->
+                            <div class="material-card" data-type="video" data-course="software-testing">
+                                <div class="material-header">
+                                    <div class="material-info">
+                                        <div class="material-title">Automated Testing Demo</div>
+                                        <div class="material-course">Software Testing</div>
+                                        <div class="material-instructor">By Dr. Ahmed Hassan</div>
+                                    </div>
+                                    <div class="material-icon video">
+                                        <i class="bi bi-play-circle"></i>
+                                    </div>
+                                </div>
+                                <div class="material-description">
+                                    Practical demonstration of automated testing tools and frameworks including Selenium
+                                    and JUnit.
+                                </div>
+                                <div class="material-details">
+                                    <div class="material-meta">
+                                        <div class="material-size">
+                                            <i class="bi bi-hdd"></i>
+                                            89 MB
+                                        </div>
+                                        <div class="material-date">
+                                            <i class="bi bi-calendar3"></i>
+                                            May 27, 2025
+                                        </div>
+                                    </div>
+                                    <div class="material-actions">
+                                        <a href="#" class="btn-preview">
+                                            <i class="bi bi-play"></i>
+                                            <span data-key="watch">Watch</span>
+                                        </a>
+                                        <a href="#" class="btn-download">
+                                            <i class="bi bi-download"></i>
+                                            <span data-key="download">Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Material Item 8 -->
+                            <div class="material-card" data-type="pdf" data-course="software-testing">
+                                <div class="material-header">
+                                    <div class="material-info">
+                                        <div class="material-title">Test Case Design Patterns</div>
+                                        <div class="material-course">Software Testing</div>
+                                        <div class="material-instructor">By Dr. Ahmed Hassan</div>
+                                    </div>
+                                    <div class="material-icon pdf">
+                                        <i class="bi bi-file-earmark-pdf"></i>
+                                    </div>
+                                </div>
+                                <div class="material-description">
+                                    Comprehensive guide on designing effective test cases using various testing
+                                    techniques and methodologies.
+                                </div>
+                                <div class="material-details">
+                                    <div class="material-meta">
+                                        <div class="material-size">
+                                            <i class="bi bi-hdd"></i>
+                                            1.9 MB
+                                        </div>
+                                        <div class="material-date">
+                                            <i class="bi bi-calendar3"></i>
+                                            May 28, 2025
+                                        </div>
+                                    </div>
+                                    <div class="material-actions">
+                                        <a href="#" class="btn-preview">
+                                            <i class="bi bi-eye"></i>
+                                            <span data-key="preview">Preview</span>
+                                        </a>
+                                        <a href="#" class="btn-download">
+                                            <i class="bi bi-download"></i>
+                                            <span data-key="download">Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- Empty State (hidden by default) -->
+                        <div class="empty-materials" id="empty-materials" style="display: none;">
+                            <i class="bi bi-folder-x"></i>
+                            <h5 data-key="noMaterialsFound">No Materials Found</h5>
+                            <p data-key="noMaterialsMessage">There are no materials available for the selected filters.
+                                Try adjusting your search criteria or contact your instructor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Materials Section -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer position-relative light-background">
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="logo d-flex align-items-center">
+                        <span class="sitename">UCCD</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>A108 Adam Street</p>
+                        <p>New York, NY 535022</p>
+                        <p class="mt-3">
+                            <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+                        </p>
+                        <p><strong>Email:</strong> <span>info@example.com</span></p>
+                    </div>
+                    <div class="social-links d-flex mt-4">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Product Management</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-12 footer-newsletter">
+                    <h4>Our Newsletter</h4>
+                    <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+                    <form action="forms/newsletter.php" method="post" class="php-email-form">
+                        <div class="newsletter-form">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </div>
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">UCCD</strong> <span>All Rights Reserved</span></p>
+            <div class="credits">
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sign Out Modal -->
+    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="signOutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signOutModalLabel">
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        Sign Out
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to sign out of your account?</p>
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Any unsaved changes will be lost.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger">
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="js/main.js"></script>
+    <!-- Translations -->
+    <script src="js/translations.js"></script>
+    <!-- Language and Theme Switcher -->
+    <script src="js/language-theme-switcher.js"></script>
+
+    <script>
+        // Materials Page Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get DOM elements
+            const filterChips = document.querySelectorAll('.filter-chip');
+            const materialCards = document.querySelectorAll('.material-card');
+            const emptyState = document.getElementById('empty-materials');
+            const materialsGrid = document.getElementById('materials-grid');
+            const searchInput = document.getElementById('search-materials');
+            const courseFilter = document.getElementById('course-filter');
+
+            // Current filters
+            let currentTypeFilter = 'all';
+            let currentCourseFilter = 'all';
+            let currentSearchTerm = '';
+
+            // Filter materials function
+            function filterMaterials() {
+                let visibleCount = 0;
+
+                materialCards.forEach(card => {
+                    const cardType = card.getAttribute('data-type');
+                    const cardCourse = card.getAttribute('data-course');
+                    const cardTitle = card.querySelector('.material-title').textContent.toLowerCase();
+                    const cardDescription = card.querySelector('.material-description').textContent.toLowerCase();
+
+                    const typeMatch = currentTypeFilter === 'all' || cardType === currentTypeFilter;
+                    const courseMatch = currentCourseFilter === 'all' || cardCourse === currentCourseFilter;
+                    const searchMatch = currentSearchTerm === '' ||
+                        cardTitle.includes(currentSearchTerm.toLowerCase()) ||
+                        cardDescription.includes(currentSearchTerm.toLowerCase());
+
+                    if (typeMatch && courseMatch && searchMatch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide empty state
+                if (visibleCount === 0) {
+                    materialsGrid.style.display = 'none';
+                    emptyState.style.display = 'block';
+                } else {
+                    materialsGrid.style.display = 'grid';
+                    emptyState.style.display = 'none';
+                }
+            }
+
+            // Type filter chips
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', function () {
+                    filterChips.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTypeFilter = this.getAttribute('data-filter');
+                    filterMaterials();
+                });
+            });
+
+            // Course filter dropdown
+            courseFilter.addEventListener('change', function () {
+                currentCourseFilter = this.value;
+                filterMaterials();
+            });
+
+            // Search input
+            searchInput.addEventListener('input', function () {
+                currentSearchTerm = this.value;
+                filterMaterials();
+            });
+
+            // Download functionality
+            const downloadButtons = document.querySelectorAll('.btn-download');
+            downloadButtons.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const materialCard = this.closest('.material-card');
+                    const materialTitle = materialCard.querySelector('.material-title').textContent;
+
+                    // Create toast notification
+                    showNotification(`Downloading "${materialTitle}"...`, 'success');
+
+                    // In real implementation, trigger actual file download
+                    console.log('Downloading:', materialTitle);
+                });
+            });
+
+            // Preview functionality
+            const previewButtons = document.querySelectorAll('.btn-preview');
+            previewButtons.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const materialCard = this.closest('.material-card');
+                    const materialTitle = materialCard.querySelector('.material-title').textContent;
+
+                    // Create toast notification
+                    showNotification(`Opening "${materialTitle}" for preview...`, 'info');
+
+                    // In real implementation, open file viewer
+                    console.log('Previewing:', materialTitle);
+                });
+            });
+
+            // Bulk download functionality
+            const bulkDownloadItems = document.querySelectorAll('#exportDropdown + .dropdown-menu .dropdown-item');
+            bulkDownloadItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const action = this.textContent;
+                    showNotification(`Preparing ${action.toLowerCase()}...`, 'info');
+                    console.log('Bulk action:', action);
+                });
+            });
+
+            // Notification function
+            function showNotification(message, type = 'info') {
+                const toast = document.createElement('div');
+                toast.className = `alert alert-${type} position-fixed`;
+                toast.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px; animation: slideIn 0.3s ease;';
+
+                const icon = type === 'success' ? 'check-circle' : type === 'info' ? 'info-circle' : 'exclamation-triangle';
+                toast.innerHTML = `<i class="bi bi-${icon} me-2"></i>${message}`;
+
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.style.animation = 'slideOut 0.3s ease';
+                        setTimeout(() => toast.parentNode.removeChild(toast), 300);
+                    }
+                }, 3000);
+            }
+
+            // Add slide animations for notifications
+            const style = document.createElement('style');
+            style.textContent = `
+        @keyframes slideIn {
+          from { transform: translateX(100%); opacity: 0; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+          from { transform: translateX(0); opacity: 1; }
+          to { transform: translateX(100%); opacity: 0; }
+        }
+      `;
+            document.head.appendChild(style);      // Initialize with all materials visible
+            filterMaterials();
+        });  </script>
+
+    <!-- External Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/language-theme-switcher.js"></script>
+</body>
+
+</html>

@@ -24,12 +24,17 @@
   <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet" />
+  <!-- RTL Support for Arabic -->
+  <link href="assets/css/rtl.css" rel="stylesheet" />
+  <!-- Dark Mode Support -->
+  <link href="assets/css/dark-mode.css" rel="stylesheet" />
 
   <style>
     :root {
+      --accent-color: #ffd400;
+      --contrast-color: #2a3546;
       --primary: #4361ee;
       --primary-light: #eef2ff;
       --secondary: #3f37c9;
@@ -40,6 +45,17 @@
       --success: #28a745;
       --danger: #dc3545;
       --warning: #fd7e14;
+    }
+
+    .switchers-container {
+      display: flex;
+      gap: 25px;
+      margin-right: 20px;
+    }
+
+    .rtl .switchers-container {
+      margin-left: 20px;
+      margin-right: 0;
     }
 
     body {
@@ -432,6 +448,31 @@
       margin: 0;
     }
 
+    /* Switchers */
+    .switchers-container {
+      display: flex;
+      gap: 25px;
+    }
+
+    .switcher-btn {
+      background-color: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .switcher-btn:hover {
+      background-color: var(--secondary);
+    }
+
     /* Responsive Adjustments */
     @media (max-width: 992px) {
       .profile-card img {
@@ -508,22 +549,28 @@
         <img src="images/uccd-logo.png" alt="UCCD Logo" class="img-fluid">
         <h1 class="sitename">UCCD</h1>
       </a>
-
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="trainers.html">Trainers</a></li>
-          <li><a href="trainers.html">Trainers</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="dashboard.html" class="active">Dashboard</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" data-key="home">Home</a></li>
+          <li><a href="about.html" data-key="about">About</a></li>
+          <li><a href="courses.html" data-key="courses">Courses</a></li>
+          <li><a href="trainers.html" data-key="trainers">Trainers</a></li>
+          <li><a href="community.html" data-key="community">Community</a></li>
+          <li><a href="dashboard.html" class="active" data-key="dashboard">Dashboard</a></li>
+          <li><a href="contact.html" data-key="contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
       <div class="header-actions d-flex align-items-center">
+        <div class="switchers-container me-3">
+          <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
+            العربية
+          </button>
+          <button id="theme-toggle" class="switcher-btn" title="Switch to Dark Mode">
+            <i class="bi bi-moon"></i>
+          </button>
+        </div>
 
         <a class="btn-getstarted" href="#!" data-bs-toggle="modal" data-bs-target="#modal1">
           <i class="bi bi-box-arrow-in-right me-1"></i> Sign out
@@ -589,18 +636,6 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> My Courses</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="db-exams.html"><i class="bi bi-file-earmark-text"></i> Exams & Results</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="db-time-line.html"><i class="bi bi-calendar-event"></i> Schedule</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-bell"></i> Notifications</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-danger" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
@@ -1010,7 +1045,6 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
-
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -1021,6 +1055,10 @@
 
   <!-- Main JS File -->
   <script src="js/main.js"></script>
+  <!-- Translations -->
+  <script src="js/translations.js"></script>
+  <!-- Language and Theme Switcher -->
+  <script src="js/language-theme-switcher.js"></script>
   <script>
     const allBtn = document.getElementById("all-btn");
     const activeBtn = document.getElementById("active-btn");
@@ -1061,20 +1099,25 @@
       completedBtn.classList.add("active");
     });
 
-    filterCourses("all");
-    document.getElementById("view-all-courses").addEventListener("click", function () {
+    filterCourses("all"); document.getElementById("view-all-courses").addEventListener("click", function () {
       // Toggle visibility of the hidden courses
       var moreCourses = document.querySelectorAll(".more-courses");
+      var isHidden = moreCourses[0].classList.contains("hidden");
+
       moreCourses.forEach(function (course) {
         course.classList.toggle("hidden");
       });
 
-      // Change the text of the button depending on visibility
+      // Change the text of the button depending on visibility state
       var button = document.getElementById("view-all-courses");
-      if (button.textContent === "View All Courses") {
-        button.textContent = "View Fewer Courses";
+      const currentLang = document.documentElement.lang || 'en';
+
+      if (isHidden) {
+        // Courses were hidden and are now shown - change to "View Fewer"
+        button.textContent = currentLang === 'ar' ? translations.ar.viewFewerCourses : translations.en.viewFewerCourses;
       } else {
-        button.textContent = "View All Courses";
+        // Courses were shown and are now hidden - change to "View All"
+        button.textContent = currentLang === 'ar' ? translations.ar.viewAllCourses : translations.en.viewAllCourses;
       }
     });
 

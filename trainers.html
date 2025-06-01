@@ -24,9 +24,70 @@
   <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet" />
+  <!-- RTL Support for Arabic -->
+  <link href="assets/css/rtl.css" rel="stylesheet" />
+  <!-- Dark Mode Support -->
+  <link href="assets/css/dark-mode.css" rel="stylesheet" />
+
+  <!-- Custom styles for language and theme switchers -->
+  <style>
+    :root {
+      --accent-color: #ffd400;
+      --contrast-color: #2a3546;
+    }
+
+    .switchers-container {
+      display: flex;
+      gap: 25px;
+    }
+
+    .switcher-btn {
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .switcher-btn:hover {
+      background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    .switcher-btn i {
+      font-size: 16px;
+    }
+
+    /* Dark mode styles for page title */
+    .dark-mode .page-title .heading {
+      background-color: #222;
+    }
+
+    .dark-mode .page-title h1 {
+      color: #fff;
+    }
+
+    .dark-mode .page-title p {
+      color: #ddd;
+    }
+
+    .dark-mode .breadcrumbs {
+      background-color: #333;
+    }
+
+    .dark-mode .breadcrumbs a,
+    .dark-mode .breadcrumbs .current {
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body class="trainers-page">
@@ -37,23 +98,31 @@
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="sitename">UCCD</h1>
       </a>
-
       <nav id="navmenu" class="navmenu">
         <ul>
           <li>
-            <a href="index.html">Home<br /></a>
+            <a href="index.html" data-key="home">Home<br /></a>
           </li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="trainers.html" class="active">Trainers</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html" data-key="about">About</a></li>
+          <li><a href="courses.html" data-key="courses">Courses</a></li>
+          <li><a href="trainers.html" class="active" data-key="trainers">Trainers</a></li>
+          <li><a href="community.html" data-key="community">Community</a></li>
+          <li><a href="dashboard.html" data-key="dashboard">Dashboard</a></li>
+          <li><a href="contact.html" data-key="contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="courses.html">Get Started</a>
+      <div class="switchers-container me-3">
+        <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
+          العربية
+        </button>
+        <button id="theme-toggle" class="switcher-btn" title="Switch to Dark Mode">
+          <i class="bi bi-moon"></i>
+        </button>
+      </div>
+
+      <a class="btn-getstarted" href="courses.html" data-key="getStarted">Get Started</a>
     </div>
   </header>
 
@@ -64,8 +133,8 @@
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
-              <h1>Trainers</h1>
-              <p class="mb-0">
+              <h1 data-key="trainersTitle">Trainers</h1>
+              <p class="mb-0" data-key="trainersDesc">
                 Odio et unde deleniti. Deserunt numquam exercitationem.
                 Officiis quo odio sint voluptas consequatur ut a odio
                 voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi
@@ -78,8 +147,8 @@
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Trainers</li>
+            <li><a href="index.html" data-key="home">Home</a></li>
+            <li class="current" data-key="trainers">Trainers</li>
           </ol>
         </div>
       </nav>
@@ -101,9 +170,9 @@
               </div>
             </div>
             <div class="member-info text-center">
-              <h4>Walter White</h4>
-              <span>Business</span>
-              <p>
+              <h4 data-key="trainer1Name">Walter White</h4>
+              <span data-key="businessSpecialty">Business</span>
+              <p data-key="trainer1Bio">
                 Aliquam iure quaerat voluptatem praesentium possimus unde
                 laudantium vel dolorum distinctio dire flow
               </p>
@@ -301,7 +370,6 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
-
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -312,6 +380,10 @@
 
   <!-- Main JS File -->
   <script src="js/main.js"></script>
+  <!-- Translations -->
+  <script src="js/translations.js"></script>
+  <!-- Language and Theme Switcher -->
+  <script src="js/language-theme-switcher.js"></script>
 </body>
 
 </html>

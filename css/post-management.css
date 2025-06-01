@@ -1,0 +1,77 @@
+/* 
+ * Post Management CSS
+ */
+
+/* Notification styles */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#notification-container .alert {
+    min-width: 300px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid;
+}
+
+#notification-container .alert-success {
+    border-left-color: #28a745;
+}
+
+#notification-container .alert-danger {
+    border-left-color: #dc3545;
+}
+
+#notification-container .alert-warning {
+    border-left-color: #ffc107;
+}
+
+#notification-container .alert-info {
+    border-left-color: #17a2b8;
+}
+
+/* Post table styles */
+.table .list-img {
+    width: 80px;
+    height: 50px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.table .list-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fix for checkbox alignment */
+.table th:first-child, 
+.table td:first-child {
+    width: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Style for post filters */
+.post-filter-section .form-control {
+    height: 38px;
+}
+
+/* Style for bulk actions */
+.bulk-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Make delete buttons consistent */
+.ad-st-view.bg-danger {
+    background-color: #dc3545;
+}
+
+.ad-st-view.bg-danger:hover {
+    background-color: #c82333;
+}

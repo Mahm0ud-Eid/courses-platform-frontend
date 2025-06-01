@@ -1,115 +1,566 @@
 <!DOCTYPE html>
-<html>
-<body>
-  <script>
+<html lang="en">
 
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
-      this.responseText;
-      document.getElementById("first-header").innerHTML = "404 - File Not Found";
-      document.getElementById("second-sub-header").innerHTML = "The Page/Resource you are looking for could not be found or is unavailable. Ensure you are using the correct URL/Domain name or contact the Site Owner";
-      var get=document.getElementsByTagName("A");
-      for(i=0; i<get.length; i++){
-        get[i].removeAttribute("onmouseover");
-        get[i].removeAttribute("onmouseout");
-      }
+<head>
+  <title>UCCD Admin - Delete Courses</title>
+  <!-- META TAGS -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="UCCD Education Management System" />
+  <meta name="keywords" content="UCCD, education, university, college, school, courses" />
+
+  <!-- FAV ICON(BROWSER TAB ICON) -->
+  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- FONTAWESOME ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- ALL CSS FILES -->
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+  <link href="css/style-mob.css" rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <link href="assets/css/file-upload.css" rel="stylesheet" />
+  <link href="css/admin-responsive.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary-color: #4154f1;
+      --secondary-color: #717ff5;
+      --dark-color: #2a3546;
+      --light-color: #f6f9ff;
+      --success-color: #28a745;
+      --danger-color: #dc3545;
+      --warning-color: #ffc107;
+      --info-color: #17a2b8;
     }
-  };
-  xhttp.open("GET", "/errors/MultiDomainHosting.php", true);
-  xhttp.send();
 
+    .admin-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 20px;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    .card-header h4 {
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    .label {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 4px;
+    }
+
+    .label-success {
+      background-color: var(--success-color);
+      color: white;
+    }
+
+    .label-danger {
+      background-color: var(--danger-color);
+      color: white;
+    }
+
+    .label-warning {
+      background-color: var(--warning-color);
+      color: #212529;
+    }
+
+    .ad-st-view {
+      color: var(--primary-color);
+      font-weight: 500;
+      margin-right: 10px;
+    }
+
+    .ad-st-view:hover {
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+
+    .delete-btn {
+      color: var(--danger-color);
+      font-weight: 500;
+    }
+
+    .delete-btn:hover {
+      color: #b02a37;
+      text-decoration: none;
+    }
+
+    .restore-btn {
+      color: var(--success-color);
+      font-weight: 500;
+    }
+
+    .restore-btn:hover {
+      color: #157347;
+      text-decoration: none;
+    }
+
+    .list-img img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .list-enq-name {
+      display: block;
+      font-weight: 500;
+    }
+
+    .list-enq-city {
+      font-size: 12px;
+      color: #6c757d;
+    }
+
+    .select-all {
+      margin-bottom: 20px;
+    }
+
+    .action-buttons {
+      margin-bottom: 20px;
+    }
+
+    .action-buttons button {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!--== MAIN CONTRAINER ==-->
+  <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
+    <img class="sd-tog" src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- <img src="images/uccd-logo.png" alt="" /> -->
+        <h1 class="sitename">UCCD</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu navmenu-user">
+        <ul>
+          <li>
+            <a href="#" class="logout-btn">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log Out</span>
+            </a>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle bi bi-person-circle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!--== BODY CONTNAINER ==-->
+  <div class="container-fluid sb2">
+    <div class="row">
+      <div class="sb2-1" style="background-color: white;">
+        <!--== LEFT MENU ==-->
+        <div class="sb2-13">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <a href="admin.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                Dashboard</a>
+            </li>
+
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> All
+                Courses</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-all-courses.html">All Course</a></li>
+                  <li><a href="admin-add-courses.html">Add New Course</a></li>
+                  <li><a href="admin-delete-courses.html" class="menu-active">Delete Course</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>
+                Instructors</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li>
+                    <a class="inst-mg-btn" href="#">Manage</a>
+                  </li>
+
+                  <li><a class="inst-v-all" href="#">All Users</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-file-text" aria-hidden="true"></i>
+                Posts</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-post-all.html">All Posts</a></li>
+                  <li>
+                    <a href="admin-post-add.html">Create New Post</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i>
+                Students</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-user-all.html">All Students</a></li>
+                  <li><a href="admin-user-add.html">Add New Students</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-cloud-download"
+                  aria-hidden="true"></i>
+                Import & Export</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li>
+                    <a href="admin-export-data.html">Export all datas</a>
+                  </li>
+                  <li>
+                    <a href="admin-import-data.html">Import all datas</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div> <!--== BODY INNER CONTAINER ==-->
+      <div class="sb2-2">
+        <!--== breadcrumbs ==-->
+        <div class="sb2-2-2">
+          <ul>
+            <li>
+              <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> Delete Courses</a></li>
+            <li class="page-back">
+              <a href="admin.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+          </ul>
+        </div>
+
+        <!--== Content Area ==-->
+        <div class="sb2-2-1">
+          <h2>Delete Courses</h2>
+
+          <div class="admin-card">
+            <div class="card-header">
+              <h4>Course Management</h4>
+              <p class="mb-0">
+                Select and delete courses, or restore previously deleted courses.
+              </p>
+            </div>
+            <div class="card-body">
+              <div class="select-all">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="selectAll">
+                  <label class="form-check-label" for="selectAll">Select All</label>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <button type="button" class="btn btn-danger" id="deleteSelected">Delete Selected</button>
+                <button type="button" class="btn btn-success" id="restoreSelected">Restore Selected</button>
+              </div>
+
+              <div class="table-responsive table-desi">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Select</th>
+                      <th>Image</th>
+                      <th>Course Name</th>
+                      <th>Category</th>
+                      <th>Durations</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input course-checkbox" type="checkbox" value="1">
+                        </div>
+                      </td>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-1.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Aerospace
+                            Engineering</span><span class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Engineering</td>
+                      <td>60 Days(420hrs)</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="#" class="ad-st-view">Edit</a>
+                        <a href="#" class="delete-btn" data-id="1">Delete</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input course-checkbox" type="checkbox" value="2">
+                        </div>
+                      </td>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-5.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Fashion Technology</span><span
+                            class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Fashion</td>
+                      <td>30 Days(420hrs)</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="#" class="ad-st-view">Edit</a>
+                        <a href="#" class="delete-btn" data-id="2">Delete</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input course-checkbox" type="checkbox" value="3">
+                        </div>
+                      </td>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-2.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Agriculture Courses</span><span
+                            class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Agriculture</td>
+                      <td>25 Days(420hrs)</td>
+                      <td>
+                        <span class="label label-warning">Pending</span>
+                      </td>
+                      <td>
+                        <a href="#" class="ad-st-view">Edit</a>
+                        <a href="#" class="delete-btn" data-id="3">Delete</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input course-checkbox" type="checkbox" value="4">
+                        </div>
+                      </td>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-3.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Marine Engineering</span><span
+                            class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Ocean / Marine</td>
+                      <td>06 Months</td>
+                      <td>
+                        <span class="label label-danger">Deleted</span>
+                      </td>
+                      <td>
+                        <a href="#" class="ad-st-view">Edit</a>
+                        <a href="#" class="restore-btn" data-id="4">Restore</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input course-checkbox" type="checkbox" value="5">
+                        </div>
+                      </td>
+                      <td>
+                        <span class="list-img"><img src="images/course/sm-4.jpg" alt="" /></span>
+                      </td>
+                      <td>
+                        <a href="admin-course-details.html"><span class="list-enq-name">Building, Construction
+                            Management</span><span class="list-enq-city">Illunois, United States</span></a>
+                      </td>
+                      <td>Construction</td>
+                      <td>1 Year</td>
+                      <td>
+                        <span class="label label-danger">Deleted</span>
+                      </td>
+                      <td>
+                        <a href="#" class="ad-st-view">Edit</a>
+                        <a href="#" class="restore-btn" data-id="5">Restore</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- JS Files (in order) -->
+  <script src="js/main.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="assets/js/sidebar-tog.js"></script>
+  <script src="js/image-upload.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/manager.js"></script>
+  <script src="js/logout.js"></script>
+
+  <!-- Script for select all functionality -->
+  <script>
+    // Script for select all functionality
+    document.getElementById('selectAll').addEventListener('change', function () {
+      const checkboxes = document.querySelectorAll('.course-checkbox');
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = this.checked;
+      });
+    });
+
+    // Delete functionality
+    document.getElementById('deleteSelected').addEventListener('click', function () {
+      const selectedCheckboxes = document.querySelectorAll('.course-checkbox:checked');
+      if (selectedCheckboxes.length === 0) {
+        alert('Please select at least one course to delete.');
+        return;
+      }
+
+      if (confirm('Are you sure you want to delete the selected courses?')) {
+        const selectedIds = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+        console.log('Deleting courses with IDs:', selectedIds);
+
+        // Here you would make an API call to delete the courses
+        // For now, let's just update the UI for demonstration
+        selectedCheckboxes.forEach(checkbox => {
+          const row = checkbox.closest('tr');
+          const statusCell = row.querySelector('td:nth-child(6)');
+          statusCell.innerHTML = '<span class="label label-danger">Deleted</span>';
+
+          const actionCell = row.querySelector('td:last-child');
+          actionCell.innerHTML = '<a href="#" class="ad-st-view">Edit</a> <a href="#" class="restore-btn" data-id="' + checkbox.value + '">Restore</a>';
+        });
+      }
+    });
+
+    // Restore functionality
+    document.getElementById('restoreSelected').addEventListener('click', function () {
+      const selectedCheckboxes = document.querySelectorAll('.course-checkbox:checked');
+      if (selectedCheckboxes.length === 0) {
+        alert('Please select at least one course to restore.');
+        return;
+      }
+
+      if (confirm('Are you sure you want to restore the selected courses?')) {
+        const selectedIds = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+        console.log('Restoring courses with IDs:', selectedIds);
+
+        // Here you would make an API call to restore the courses
+        // For now, let's just update the UI for demonstration
+        selectedCheckboxes.forEach(checkbox => {
+          const row = checkbox.closest('tr');
+          const statusCell = row.querySelector('td:nth-child(6)');
+          statusCell.innerHTML = '<span class="label label-success">Active</span>';
+
+          const actionCell = row.querySelector('td:last-child');
+          actionCell.innerHTML = '<a href="#" class="ad-st-view">Edit</a> <a href="#" class="delete-btn" data-id="' + checkbox.value + '">Delete</a>';
+        });
+      }
+    });
+
+    // Individual delete and restore buttons
+    document.addEventListener('click', function (e) {
+      if (e.target.classList.contains('delete-btn')) {
+        e.preventDefault();
+        const courseId = e.target.getAttribute('data-id');
+
+        if (confirm('Are you sure you want to delete this course?')) {
+          console.log('Deleting course ID:', courseId);
+
+          // Update UI
+          const row = e.target.closest('tr');
+          const statusCell = row.querySelector('td:nth-child(6)');
+          statusCell.innerHTML = '<span class="label label-danger">Deleted</span>';
+
+          e.target.parentNode.innerHTML = '<a href="#" class="ad-st-view">Edit</a> <a href="#" class="restore-btn" data-id="' + courseId + '">Restore</a>';
+        }
+      }
+
+      if (e.target.classList.contains('restore-btn')) {
+        e.preventDefault();
+        const courseId = e.target.getAttribute('data-id');
+
+        if (confirm('Are you sure you want to restore this course?')) {
+          console.log('Restoring course ID:', courseId);
+
+          // Update UI
+          const row = e.target.closest('tr');
+          const statusCell = row.querySelector('td:nth-child(6)');
+          statusCell.innerHTML = '<span class="label label-success">Active</span>';
+
+          e.target.parentNode.innerHTML = '<a href="#" class="ad-st-view">Edit</a> <a href="#" class="delete-btn" data-id="' + courseId + '">Delete</a>';
+        }
+      }
+    });
   </script>
-<style>
-
-.wrapper{
-  overflow-y: hidden;
-  padding: 0px;
-  margin:0px;
-  background: none !important;
-  width: 100% !important;
-}
-.header-container {
-  text-align: -webkit-center;
-  width: 100%;
-  height: 150px;
-  background: white;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  font-size: larger;
-}
-.header-container > p,h1 {
-  padding:5px;
-}
-.header-container > p {
-  color: #707070;
-}
-.header-container > h1 {
-  color: #333333;
-}
-.content-container {
-  position: absolute;
-  background-color: #202020;
-  height: 635px;
-  width: 100%;
-}
-.dynamic-content {
-  position: relative !important;
-  padding: 0 10em 0 10em;
-  top: -50px;
-}
-.dynamic-content > div {
-  border-style: solid;
-  border-width: 0 10px 10px 10px;
-  border-color: #e1e1e1;
-  height: 550px;
-  overflow-y: hidden;
-}
-@media only screen and (max-width:480px) {
-  .dynamic-content > div {
-    border-style: solid;
-    border-width: 0 2px 2px 2px;
-    border-color: #e1e1e1;
-    overflow-y: hidden;
-    height: auto;
-  }
-  .dynamic-content {
-    padding: 0;
-    top: 0;
-  }
-  .content-container {
-    height: auto;
-  }
-}
-@media only screen and (max-width: 768px) and (min-width: 481px)  {
-  .dynamic-content > div {
-    border-style: solid;
-    border-width: 0 5px 5px 5px;
-    border-color: #e1e1e1;
-    overflow-y: hidden;
-    height: auto;
-  }
-  .dynamic-content {
-    padding: 0 2em 0 2em;
-    top: 0;
-  }
-  .content-container {
-    height: auto;
-  }
-}
-</style>
-<div class="wrapper" id="wrapper">
-  <div class="header-container">
-    <h1 id="first-header"></h1>
-    <p id="first-sub-header"></p>
-    <p id="second-sub-header"></p>
-  </div>
-  <div class="content-container">
-  </div>
-  <div class="dynamic-content" id="demo">
-  </div>
-</div>
-
 </body>
+
 </html>

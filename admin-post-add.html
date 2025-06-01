@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Add New Post</title>
+  <!-- META TAGS -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- FAV ICON(BROWSER TAB ICON) -->
+  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+    rel="stylesheet" />
+  <!-- FONTAWESOME ICONS -->
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <!-- ALL CSS FILES -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+  <link href="css/style-mob.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/input-group.css" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <link href="assets/css/file-upload.css" rel="stylesheet" />
+  <link href="css/admin-responsive.css" rel="stylesheet" />
+  <link href="css/post-management.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- MAIN CONTRAINER -->
+  <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
+    <img class="sd-tog" src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- <img src="images/uccd-logo.png" alt="" /> -->
+        <h1 class="sitename">UCCD</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu navmenu-user">
+        <ul>
+          <li>
+            <a class="logout-btn">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log Out</span>
+            </a>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle bi bi-person-circle"></i>
+      </nav>
+    </div>
+  </header>
+  <!--== BODY CONTNAINER ==-->
+  <div class="container-fluid sb2">
+    <div class="row">
+      <div class="sb2-1" style="background-color: white;">
+        <!--== USER INFO ==-->
+        <!-- <div class="sb2-12">
+          <ul>
+            <li><img src="images/placeholder.jpg" alt="" /></li>
+            <li>
+              <h5>Victoria Baker <span> Santa Ana, CA</span></h5>
+            </li>
+            <li></li>
+          </ul>
+        </div> -->
+        <!--== LEFT MENU ==-->
+        <div class="sb2-13">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <a href="admin.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                Dashboard</a>
+            </li>
+
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i> All
+                Courses</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-all-courses.html">All Course</a></li>
+                  <li><a href="admin-add-courses.html">Add New Course</a></li>
+                  <li><a href="admin-trash-courses.html">Trash Course</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>
+                Instructors</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li>
+                    <a class="inst-mg-btn" href="#">Manage</a>
+                  </li>
+
+                  <li><a class="inst-v-all" href="#">All Users</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header menu-active"><i class="fa fa-newspaper-o"
+                  aria-hidden="true"></i>
+                Posts</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-post-all.html">All Posts</a></li>
+                  <li>
+                    <a href="admin-post-add.html" class="menu-active">Create New Post</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i>
+                Students</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-user-all.html">All Students</a></li>
+                  <li><a href="admin-user-add.html">Add New Students</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-cloud-download"
+                  aria-hidden="true"></i>
+                Import & Export</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li>
+                    <a href="admin-export-data.html">Export all datas</a>
+                  </li>
+                  <li>
+                    <a href="admin-import-data.html">Import all datas</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--== BODY INNER CONTAINER ==-->
+      <div class="sb2-2"> <!--== breadcrumbs ==-->
+        <div class="sb2-2-2">
+          <ul>
+            <li>
+              <a href=" index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> Add New Post</a></li>
+            <li class="page-back">
+              <a href="admin-post-all.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+          </ul>
+        </div>
+
+        <!--== User Details ==-->
+        <div class="sb2-2-3">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="box-inn-sp">
+                <div class="inn-title">
+                  <h4>Create New Post</h4>
+                  <p>
+                    Create a new post, announcement, or course notification
+                  </p>
+                </div>
+                <div class="tab-inn">
+                  <div class="post-form-section mb-4">
+                    <form>
+                      <div class="row mb-3">
+                        <div class="col-md-12">
+                          <label for="postTitle" class="form-label">Post Title</label>
+                          <input type="text" class="form-control" id="postTitle" placeholder="Enter post title"
+                            required>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-md-12">
+                          <label for="postContent" class="form-label">Post Content</label>
+                          <textarea class="form-control" id="postContent" rows="8" placeholder="Enter post content"
+                            required></textarea>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <label for="postCategory" class="form-label">Category</label>
+                          <select class="form-control" id="postCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="New Course">New Course</option>
+                            <option value="Event">Event</option>
+                            <option value="Announcement">Announcement</option>
+                          </select>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="postDate" class="form-label">Publish Date</label>
+                          <input type="date" class="form-control" id="postDate" required>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-md-12">
+                          <label for="featuredImage" class="form-label">Featured Image (Optional)</label>
+                          <input class="form-control" type="file" id="featuredImage">
+                        </div>
+                      </div>
+                      <div class="row mt-4">
+                        <div class="col-md-12 text-end">
+                          <button type="submit" class="btn btn-primary">Publish Post</button>
+                          <button type="button" class="btn btn-outline-secondary ms-2">Save Draft</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Import jQuery before materialize.js-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="assets/js/sidebar-tog.js"></script>
+  <script src="js/sidebar-init.js"></script>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Main JS File -->
+  <script src="js/image-upload.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/manager.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/post-management.js"></script>
+</body>
+
+</html>
