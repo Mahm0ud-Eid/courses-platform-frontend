@@ -370,6 +370,73 @@
         width: 40%;
       }
     }
+
+    /* Change Password Modal Styles */
+    .modal-content {
+      border-radius: 12px;
+      border: none;
+    }
+
+    .modal-header {
+      background: var(--primary-light);
+      border-radius: 12px 12px 0 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .modal-title {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .modal-footer {
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem 2rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+    }
+
+    .is-invalid {
+      border-color: var(--danger) !important;
+    }
+
+    .invalid-feedback {
+      color: var(--danger);
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Dark mode support for modal */
+    body.dark-mode .modal-content {
+      background-color: var(--light-gray);
+      color: var(--dark);
+    }
+
+    body.dark-mode .modal-header {
+      background: rgba(67, 97, 238, 0.1);
+    }
+
+    body.dark-mode .form-control {
+      background-color: #444;
+      border-color: #555;
+      color: var(--dark);
+    }
+
+    body.dark-mode .form-control:focus {
+      background-color: #444;
+      border-color: var(--primary);
+      color: var(--dark);
+    }
+
+    body.dark-mode .form-text {
+      color: #ccc;
+    }
   </style>
 </head>
 
@@ -488,10 +555,6 @@
                   <td>Emily Jessica</td>
                 </tr>
                 <tr>
-                  <td>Student ID</td>
-                  <td>ST17241</td>
-                </tr>
-                <tr>
                   <td>Email Address</td>
                   <td>emily.jessica@example.com</td>
                 </tr>
@@ -500,20 +563,8 @@
                   <td><a href="tel:+12345678901" class="text-decoration-none" dir="ltr">+1 (234) 567-8901</a></td>
                 </tr>
                 <tr>
-                  <td>Date of Birth</td>
-                  <td>June 3, 1995</td>
-                </tr>
-                <tr>
                   <td>Gender</td>
-                  <td>Female</td>
-                </tr>
-                <tr>
-                  <td>Address</td>
-                  <td>
-                    8800 Orchard Lake Road, Suite 180<br>
-                    Farmington Hills, MI 48334<br>
-                    United States
-                  </td>
+                  <td>Male</td>
                 </tr>
                 <tr>
                   <td>Account Status</td>
@@ -529,32 +580,21 @@
             <div class="section-header">
               <h4><i class="bi bi-shield-lock"></i> Account Security</h4>
             </div>
-
             <div class="alert alert-warning" role="alert">
               <i class="bi bi-exclamation-triangle me-2"></i> Your password hasn't been changed in 120 days. Consider
               updating it for better security.
             </div>
-
             <table class="profile-details">
               <tbody>
-                <tr>
-                  <td>Last Login</td>
-                  <td>Today at 10:45 AM from Chrome, Windows</td>
-                </tr>
                 <tr>
                   <td>Password</td>
                   <td>Last changed 4 months ago</td>
                 </tr>
-                <tr>
-                  <td>Two-Factor Auth</td>
-                  <td>Not enabled</td>
-                </tr>
               </tbody>
             </table>
-
             <div class="mt-3">
-              <button class="btn btn-sm btn-outline-primary me-2">Change Password</button>
-              <button class="btn btn-sm btn-outline-primary">Enable 2FA</button>
+              <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal"
+                data-bs-target="#changePasswordModal">Change Password</button>
             </div>
           </div>
         </div>
@@ -644,6 +684,48 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
+  <!-- Change Password Modal -->
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="changePasswordModalLabel">
+            <i class="bi bi-shield-lock me-2"></i>
+            Change Password
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="changePasswordForm">
+            <div class="mb-3">
+              <label for="currentPassword" class="form-label">Current Password</label>
+              <input type="password" class="form-control" id="currentPassword" required>
+              <div class="invalid-feedback" id="currentPasswordError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="newPassword" class="form-label">New Password</label>
+              <input type="password" class="form-control" id="newPassword" required minlength="8">
+              <div class="form-text">Password must be at least 8 characters long.</div>
+              <div class="invalid-feedback" id="newPasswordError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm New Password</label>
+              <input type="password" class="form-control" id="confirmPassword" required>
+              <div class="invalid-feedback" id="confirmPasswordError"></div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="savePasswordBtn">
+            <i class="bi bi-check-circle me-2"></i>
+            Change Password
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -664,6 +746,115 @@
       // Initialize and apply profile-specific translations
       const currentLang = localStorage.getItem('language') || 'en';
       translateProfileElements(currentLang);
+
+      // Change Password functionality
+      const changePasswordForm = document.getElementById('changePasswordForm');
+      const savePasswordBtn = document.getElementById('savePasswordBtn');
+      const modal = new bootstrap.Modal(document.getElementById('changePasswordModal'));
+
+      savePasswordBtn.addEventListener('click', function () {
+        const currentPassword = document.getElementById('currentPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Clear previous errors
+        clearErrors();
+
+        // Validate form
+        if (validatePasswordForm(currentPassword, newPassword, confirmPassword)) {
+          // Call change password function
+          changePassword(currentPassword, newPassword, modal);
+        }
+      }); function validatePasswordForm(currentPassword, newPassword, confirmPassword) {
+        let isValid = true;
+        const currentLang = localStorage.getItem('language') || 'en';
+
+        // Check if current password is provided
+        if (!currentPassword) {
+          showError('currentPasswordError', translations[currentLang].currentPasswordIncorrect);
+          isValid = false;
+        }
+
+        // Check new password length
+        if (newPassword.length < 8) {
+          showError('newPasswordError', translations[currentLang].passwordTooShort);
+          isValid = false;
+        }
+
+        // Check if passwords match
+        if (newPassword !== confirmPassword) {
+          showError('confirmPasswordError', translations[currentLang].passwordMismatch);
+          isValid = false;
+        }        // Check if new password is different from current
+        if (currentPassword === newPassword) {
+          showError('newPasswordError', translations[currentLang].newPasswordDifferent);
+          isValid = false;
+        }
+
+        return isValid;
+      }
+
+      function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        const inputElement = errorElement.previousElementSibling;
+
+        errorElement.textContent = message;
+        inputElement.classList.add('is-invalid');
+      }
+
+      function clearErrors() {
+        const errorElements = document.querySelectorAll('.invalid-feedback');
+        const inputElements = document.querySelectorAll('#changePasswordForm .form-control');
+
+        errorElements.forEach(el => el.textContent = '');
+        inputElements.forEach(el => el.classList.remove('is-invalid'));
+      } function changePassword(currentPassword, newPassword, modal) {
+        const currentLang = localStorage.getItem('language') || 'en';
+
+        // Show loading state
+        savePasswordBtn.disabled = true;
+        savePasswordBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>' +
+          (currentLang === 'ar' ? 'جاري التغيير...' : 'Changing...');
+
+        // Simulate processing time
+        setTimeout(() => {
+          // Success feedback
+          alert(translations[currentLang].passwordChanged);
+          changePasswordForm.reset();
+          modal.hide();
+
+          // Update the last changed date in the UI
+          updatePasswordDate();
+
+          // Reset button state
+          savePasswordBtn.disabled = false;
+          const icon = '<i class="bi bi-check-circle me-2"></i>';
+          savePasswordBtn.innerHTML = icon + translations[currentLang].changePassword;
+        }, 1500); // 1.5 second delay to simulate processing
+      } function updatePasswordDate() {
+        const currentLang = localStorage.getItem('language') || 'en';
+        // Find the password row and update the date
+        const rows = document.querySelectorAll('.profile-details tr');
+        rows.forEach(row => {
+          const firstCell = row.querySelector('td:first-child');
+          if (firstCell && (firstCell.textContent.trim() === 'Password' || firstCell.textContent.trim() === 'كلمة المرور')) {
+            const secondCell = row.querySelector('td:last-child');
+            if (secondCell) {
+              secondCell.textContent = translations[currentLang].lastChangedNow;
+            }
+          }
+        });
+      }// Clear form when modal is hidden
+      document.getElementById('changePasswordModal').addEventListener('hidden.bs.modal', function () {
+        changePasswordForm.reset();
+        clearErrors();
+      });
+
+      // Translate modal when it's shown
+      document.getElementById('changePasswordModal').addEventListener('shown.bs.modal', function () {
+        const currentLang = localStorage.getItem('language') || 'en';
+        translateChangePasswordModal(currentLang);
+      });
     });
   </script>
 </body>
