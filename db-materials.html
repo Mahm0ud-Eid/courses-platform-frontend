@@ -503,12 +503,108 @@
             .material-actions {
                 width: 100%;
                 justify-content: flex-end;
+                gap: 1rem;
             }
 
             .section-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
+            }
+
+            /* Improve mobile button sizes for better touch interaction */
+            .btn-preview-small,
+            .btn-download-small {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+                margin: 0 0.25rem;
+                /* Ensure proper spacing between buttons */
+                min-width: 48px;
+                min-height: 48px;
+            }
+
+            /* Remove pseudo-element on mobile since we have proper sizing */
+            .btn-preview-small::before,
+            .btn-download-small::before {
+                display: none;
+            }
+
+            /* Ensure material item has enough space for buttons */
+            .material-item {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            /* Stack material info on mobile for better readability */
+            .material-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .material-details {
+                width: 100%;
+                order: 2;
+            }
+
+            .material-actions {
+                width: 100%;
+                order: 3;
+                justify-content: flex-start;
+                padding-top: 0.5rem;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            .material-icon {
+                order: 1;
+                margin: 0;
+            }
+        }
+
+        /* Additional mobile improvements for very small screens */
+        @media (max-width: 480px) {
+
+            .btn-preview-small,
+            .btn-download-small {
+                width: 52px;
+                height: 52px;
+                font-size: 1.3rem;
+                margin: 0 0.3rem;
+                border-radius: 10px;
+                /* Larger touch targets for phones */
+                min-width: 52px;
+                min-height: 52px;
+            }
+
+            .material-actions {
+                gap: 0.75rem;
+                padding-top: 0.75rem;
+                justify-content: center;
+                /* Center buttons on very small screens */
+            }
+
+            .material-item {
+                padding: 1.25rem;
+                border-radius: 12px;
+            }
+
+            .material-name {
+                font-size: 0.95rem;
+                line-height: 1.4;
+            }
+
+            .material-meta {
+                font-size: 0.8rem;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            /* Add more space around touch targets */
+            .course-folder {
+                margin-bottom: 1.5rem;
             }
         }
 
@@ -809,16 +905,41 @@
 
         .btn-preview-small,
         .btn-download-small {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border: none;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.2s ease;
+            /* Improve touch interaction */
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /* Add minimum touch target padding for mobile */
+            position: relative;
+        }
+
+        /* Ensure minimum 44px touch target on all devices */
+        .btn-preview-small::before,
+        .btn-download-small::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         .btn-preview-small {
@@ -929,11 +1050,6 @@
                             <i class="bi bi-folder2-open"></i>
                             <h3>20</h3>
                             <p data-key="totalMaterials">Total Materials</p>
-                        </div>
-                        <div class="stats-card animate-fade delay-3">
-                            <i class="bi bi-download"></i>
-                            <h3>15</h3>
-                            <p data-key="downloaded">Downloaded</p>
                         </div>
                     </div>
 
@@ -1582,14 +1698,26 @@
                         }, 300);
                     }
                 });
-            });
-
-            // Download functionality for small buttons
+            });            // Download functionality for small buttons
             const downloadButtons = document.querySelectorAll('.btn-download-small');
             downloadButtons.forEach(btn => {
-                btn.addEventListener('click', function (e) {
+                // Prevent double-tap zoom on iOS
+                btn.addEventListener('touchstart', function (e) {
+                    e.preventDefault();
+                }, { passive: false });
+
+                // Handle both click and touch events
+                const handleDownload = function (e) {
                     e.preventDefault();
                     e.stopPropagation();
+
+                    // Add visual feedback for touch interaction
+                    this.style.transform = 'scale(0.9)';
+                    this.style.transition = 'transform 0.1s ease';
+
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 100);
 
                     const materialItem = this.closest('.material-item');
                     const materialName = materialItem.querySelector('.material-name').textContent;
@@ -1599,24 +1727,89 @@
 
                     // In real implementation, trigger actual file download
                     console.log('Downloading:', materialName);
-                });
-            });
 
-            // Preview functionality for small buttons
+                    // Simulate download for demo purposes
+                    setTimeout(() => {
+                        const link = document.createElement('a');
+                        link.href = '#'; // In real app, this would be the file URL
+                        link.download = materialName;
+                        document.body.appendChild(link);
+                        // link.click(); // Uncomment for real download
+                        document.body.removeChild(link);
+                        showNotification(`"${materialName}" downloaded successfully!`, 'success');
+                    }, 1000);
+                };
+
+                // Add event listeners for both touch and mouse
+                btn.addEventListener('click', handleDownload);
+                btn.addEventListener('touchend', handleDownload);
+
+                // Visual feedback for touch start
+                btn.addEventListener('touchstart', function (e) {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'transform 0.1s ease';
+                }, { passive: true });
+
+                // Reset on touch cancel
+                btn.addEventListener('touchcancel', function () {
+                    this.style.transform = 'scale(1)';
+                });
+            });            // Preview functionality for small buttons
             const previewButtons = document.querySelectorAll('.btn-preview-small');
             previewButtons.forEach(btn => {
-                btn.addEventListener('click', function (e) {
+                // Prevent double-tap zoom on iOS
+                btn.addEventListener('touchstart', function (e) {
+                    e.preventDefault();
+                }, { passive: false });
+
+                // Handle both click and touch events
+                const handlePreview = function (e) {
                     e.preventDefault();
                     e.stopPropagation();
 
+                    // Add visual feedback for touch interaction
+                    this.style.transform = 'scale(0.9)';
+                    this.style.transition = 'transform 0.1s ease';
+
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 100);
+
                     const materialItem = this.closest('.material-item');
                     const materialName = materialItem.querySelector('.material-name').textContent;
+                    const materialType = materialItem.getAttribute('data-type');
 
                     // Create toast notification
                     showNotification(`Opening "${materialName}" for preview...`, 'info');
 
                     // In real implementation, open file viewer
                     console.log('Previewing:', materialName);
+
+                    // Simulate preview opening
+                    setTimeout(() => {
+                        if (materialType === 'video') {
+                            showNotification(`Playing video: "${materialName}"`, 'info');
+                        } else if (materialType === 'pdf') {
+                            showNotification(`Opening PDF: "${materialName}"`, 'info');
+                        } else {
+                            showNotification(`Previewing: "${materialName}"`, 'info');
+                        }
+                    }, 800);
+                };
+
+                // Add event listeners for both touch and mouse
+                btn.addEventListener('click', handlePreview);
+                btn.addEventListener('touchend', handlePreview);
+
+                // Visual feedback for touch start
+                btn.addEventListener('touchstart', function (e) {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'transform 0.1s ease';
+                }, { passive: true });
+
+                // Reset on touch cancel
+                btn.addEventListener('touchcancel', function () {
+                    this.style.transform = 'scale(1)';
                 });
             });
 
@@ -1668,8 +1861,7 @@
                 @keyframes slideIn {
                     from { transform: translateX(100%); opacity: 0; }
                     to { transform: translateX(0); opacity: 1; }
-                }
-                @keyframes slideOut {
+                }                @keyframes slideOut {
                     from { transform: translateX(0); opacity: 1; }
                     to { transform: translateX(100%); opacity: 0; }
                 }
@@ -1682,6 +1874,38 @@
                 
                 .folder-content[style*="display: block"] {
                     max-height: none;
+                }
+
+                /* Prevent iOS double-tap zoom */
+                button, input, select, textarea {
+                    touch-action: manipulation;
+                }
+
+                /* Improve button active states for mobile */
+                .btn-preview-small:active,
+                .btn-download-small:active {
+                    transform: scale(0.95) !important;
+                    transition: transform 0.1s ease !important;
+                }
+
+                /* Better spacing for mobile touch targets */
+                @media (max-width: 768px) {
+                    .material-actions {
+                        padding: 0.75rem 0;
+                        gap: 1rem;
+                        min-height: 60px;
+                        align-items: center;
+                    }
+                }
+
+                /* Prevent text selection on buttons */
+                .btn-preview-small, .btn-download-small {
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    outline: none;
+                    -webkit-tap-highlight-color: rgba(0,0,0,0);
                 }
             `;
             document.head.appendChild(style);
