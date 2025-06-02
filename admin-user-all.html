@@ -194,9 +194,16 @@
                     </div>
                     <div class="row">
                       <div class="col-12 text-end">
-                        <a href="admin-user-add.html" class="btn btn-success">
+                        <button type="button" class="btn btn-info me-2" id="importStudentsBtn">
+                          <i class="fa fa-upload"></i> Import Students
+                        </button>
+                        <button type="button" class="btn btn-warning me-2" id="exportStudentsBtn">
+                          <i class="fa fa-download"></i> Export Students
+                        </button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                          data-bs-target="#addStudentModal">
                           <i class="fa fa-plus"></i> Add New Student
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -213,8 +220,7 @@
                           <th>Department</th>
                           <th>Id</th>
                           <th>Date of birth</th>
-                          <th>Status</th>
-                          <th>View</th>
+                          <th>Edit</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -235,7 +241,7 @@
                             <span class="label label-success">Active</span>
                           </td>
                           <td>
-                            <a href="admin-student-details.html" class="ad-st-view">View</a>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
                           </td>
                         </tr>
                         <tr>
@@ -255,7 +261,7 @@
                             <span class="label label-success">Active</span>
                           </td>
                           <td>
-                            <a href="admin-student-details.html" class="ad-st-view">View</a>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
                           </td>
                         </tr>
                         <tr>
@@ -275,7 +281,7 @@
                             <span class="label label-success">Active</span>
                           </td>
                           <td>
-                            <a href="admin-student-details.html" class="ad-st-view">View</a>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
                           </td>
                         </tr>
                         <tr>
@@ -295,7 +301,7 @@
                             <span class="label label-success">Active</span>
                           </td>
                           <td>
-                            <a href="admin-student-details.html" class="ad-st-view">View</a>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
                           </td>
                         </tr>
                         <tr>
@@ -315,7 +321,7 @@
                             <span class="label label-success">Active</span>
                           </td>
                           <td>
-                            <a href="admin-student-details.html" class="ad-st-view">View</a>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
                           </td>
                         </tr>
                         <tr>
@@ -335,7 +341,7 @@
                             <span class="label label-success">Active</span>
                           </td>
                           <td>
-                            <a href="admin-student-details.html" class="ad-st-view">View</a>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
                           </td>
                         </tr>
                         <tr>
@@ -355,7 +361,7 @@
                             <span class="label label-success">Active</span>
                           </td>
                           <td>
-                            <a href="admin-student-details.html" class="ad-st-view">View</a>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
                           </td>
                         </tr>
                         <tr>
@@ -375,7 +381,7 @@
                             <span class="label label-success">Active</span>
                           </td>
                           <td>
-                            <a href="admin-student-details.html" class="ad-st-view">View</a>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
                           </td>
                         </tr>
                       </tbody>
@@ -389,10 +395,89 @@
       </div>
     </div>
   </div>
+
+  <!-- Hidden file input for importing students -->
+  <input type="file" id="importFileInput" accept=".csv,.xlsx,.xls" style="display: none;">
+
+  <!-- Add Student Modal -->
+  <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addStudentModalLabel">
+            <i class="fa fa-user-plus"></i> Add New Student
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addStudentForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="studentName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="studentName" name="name" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="studentDepartment" class="form-label">Department <span class="text-danger">*</span></label>
+                <select class="form-control" id="studentDepartment" name="department" required>
+                  <option value="">Select Department</option>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Business Administration">Business Administration</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="Arts & Design">Arts & Design</option>
+                  <option value="Mathematics">Mathematics</option>
+                  <option value="Physics">Physics</option>
+                  <option value="English Literature">English Literature</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="studentEmail" class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="studentEmail" name="email" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="studentPhone" class="form-label">Phone <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="studentPhone" name="phone" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="studentId" class="form-label">Student ID <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="studentId" name="id" required placeholder="e.g., ST12345">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="studentStatus" class="form-label">Status <span class="text-danger">*</span></label>
+                <select class="form-control" id="studentStatus" name="status" required>
+                  <option value="">Select Status</option>
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 mb-3">
+                <label for="studentCity" class="form-label">City</label>
+                <input type="text" class="form-control" id="studentCity" name="city"
+                  placeholder="e.g., Illinois, United States">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="fa fa-times"></i> Cancel
+          </button>
+          <button type="button" class="btn btn-success" id="saveStudentBtn">
+            <i class="fa fa-save"></i> Save Student
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   </div> <!--Import jQuery before materialize.js-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="assets/js/sidebar-tog.js"></script>
   <script src="js/sidebar-init.js"></script>
@@ -410,8 +495,14 @@
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
   <script>
+    // Debug information
+    console.log("Script starting - jQuery available:", typeof $ !== 'undefined');
+    console.log("Document ready state:", document.readyState);
+
     // Status filtering script
     $(document).ready(function () {
+      console.log("Document ready fired - jQuery version:", $.fn.jquery);
+
       // Filter by status
       $("#statusFilter").change(function () {
         let selectedStatus = $(this).val();
@@ -447,6 +538,264 @@
             $(this).hide();
           }
         });
+      }
+
+      // Add Student Form Handling
+      $("#saveStudentBtn").click(function () {
+        const form = document.getElementById('addStudentForm');
+
+        // Check if form is valid
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        // Get form data
+        const formData = new FormData(form);
+        const studentData = {};
+        for (let [key, value] of formData.entries()) {
+          studentData[key] = value;
+        }
+
+        // Generate a random user image (1-5)
+        const randomImageNum = Math.floor(Math.random() * 5) + 1;
+        const imageSrc = `images/user/${randomImageNum}.png`;
+
+        // Generate random date of birth (for demo purposes)
+        const randomDate = generateRandomDate();
+
+        // Get status label class
+        const statusClass = studentData.status === 'Active' ? 'label-success' : 'label-warning';
+
+        // Create new table row
+        const newRow = `
+          <tr>
+            <td>
+              <span class="list-img"><img src="${imageSrc}" alt="" /></span>
+            </td>
+            <td>
+              <a href="#"><span class="list-enq-name">${studentData.name}</span><span class="list-enq-city">${studentData.city || 'N/A'}</span></a>
+            </td>
+            <td>${studentData.phone}</td>
+            <td>${studentData.email}</td>
+            <td>${studentData.department}</td>
+            <td>${studentData.id}</td>
+            <td>${randomDate}</td>
+            <td>
+              <span class="label ${statusClass}">${studentData.status}</span>
+            </td>
+            <td>
+              <a href="admin-student-details.html" class="ad-st-view">View</a>
+            </td>
+          </tr>
+        `;
+
+        // Add to table
+        $("tbody").prepend(newRow);
+
+        // Reset form and close modal
+        form.reset();
+        $('#addStudentModal').modal('hide');
+
+        // Show success message
+        showSuccessMessage('Student added successfully!');
+      });
+
+      // Generate random date of birth
+      function generateRandomDate() {
+        const start = new Date(1985, 0, 1);
+        const end = new Date(2000, 11, 31);
+        const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+        return date.toLocaleDateString('en-GB', {
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric'
+        });
+      }      // Show success message
+      function showSuccessMessage(message) {
+        // Create and show a temporary success alert
+        const alertHtml = `
+          <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: fixed; top: 80px; right: 20px; z-index: 9999; min-width: 300px;">
+            <i class="fa fa-check-circle"></i> ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        `;
+        $('body').append(alertHtml);
+
+        // Auto remove after 3 seconds
+        setTimeout(function () {
+          $('.alert').fadeOut();
+        }, 3000);
+      }
+
+      // Reset form when modal is closed
+      $('#addStudentModal').on('hidden.bs.modal', function () {
+        document.getElementById('addStudentForm').reset();
+      });      // Import Students functionality
+      console.log("Setting up import button handler");
+      console.log("Import button found:", $("#importStudentsBtn").length);
+      console.log("Export button found:", $("#exportStudentsBtn").length);
+      console.log("File input found:", $("#importFileInput").length);
+
+      $("#importStudentsBtn").click(function () {
+        console.log("Import button clicked!");
+        $("#importFileInput").click();
+      });
+
+      $("#importFileInput").change(function (e) {
+        console.log("File input changed");
+        const file = e.target.files[0];
+        if (file) {
+          const fileName = file.name;
+          const fileExtension = fileName.split('.').pop().toLowerCase();
+
+          if (!['csv', 'xlsx', 'xls'].includes(fileExtension)) {
+            alert('Please select a valid file format (CSV, XLSX, or XLS)');
+            return;
+          }
+
+          // For demo purposes, we'll simulate importing students
+          simulateImport(fileName);
+
+          // Reset file input
+          this.value = '';
+        }
+      });
+
+      // Export Students functionality
+      console.log("Setting up export button handler");
+      $("#exportStudentsBtn").click(function () {
+        console.log("Export button clicked!");
+        exportStudentsToCSV();
+      });
+
+      // Simulate import functionality (in real app, you'd parse the actual file)
+      function simulateImport(fileName) {
+        // Sample imported students
+        const importedStudents = [
+          {
+            name: "Sarah Johnson",
+            department: "Computer Science",
+            email: "sarah.johnson@example.com",
+            phone: "+01 5551234",
+            id: "ST90001",
+            status: "Active",
+            city: "New York, United States"
+          },
+          {
+            name: "Michael Chen",
+            department: "Engineering",
+            email: "michael.chen@example.com",
+            phone: "+01 5555678",
+            id: "ST90002",
+            status: "Active",
+            city: "California, United States"
+          },
+          {
+            name: "Emma Davis",
+            department: "Business Administration",
+            email: "emma.davis@example.com",
+            phone: "+01 5559876",
+            id: "ST90003",
+            status: "Inactive",
+            city: "Texas, United States"
+          }
+        ];
+
+        // Add imported students to table
+        importedStudents.forEach(function (student) {
+          const randomImageNum = Math.floor(Math.random() * 5) + 1;
+          const imageSrc = `images/user/${randomImageNum}.png`;
+          const randomDate = generateRandomDate();
+          const statusClass = student.status === 'Active' ? 'label-success' : 'label-warning';
+
+          const newRow = `
+            <tr style="background-color: #e8f5e8;">
+              <td>
+                <span class="list-img"><img src="${imageSrc}" alt="" /></span>
+              </td>
+              <td>
+                <a href="#"><span class="list-enq-name">${student.name}</span><span class="list-enq-city">${student.city}</span></a>
+              </td>
+              <td>${student.phone}</td>
+              <td>${student.email}</td>
+              <td>${student.department}</td>
+              <td>${student.id}</td>
+              <td>${randomDate}</td>
+              <td>
+                <span class="label ${statusClass}">${student.status}</span>
+              </td>
+              <td>
+                <a href="admin-student-details.html" class="ad-st-view">View</a>
+              </td>
+            </tr>
+          `;
+          $("tbody").prepend(newRow);
+        });
+
+        showSuccessMessage(`Successfully imported ${importedStudents.length} students from ${fileName}`);
+
+        // Remove highlight after 3 seconds
+        setTimeout(function () {
+          $("tr[style*='background-color: #e8f5e8']").css('background-color', '');
+        }, 3000);
+      }
+
+      // Export students to CSV
+      function exportStudentsToCSV() {
+        const students = [];
+
+        // Get all visible students from table
+        $("tbody tr:visible").each(function () {
+          const row = $(this);
+          const student = {
+            name: row.find('.list-enq-name').text().trim(),
+            city: row.find('.list-enq-city').text().trim(),
+            phone: row.find('td:nth-child(3)').text().trim(),
+            email: row.find('td:nth-child(4)').text().trim(),
+            department: row.find('td:nth-child(5)').text().trim(),
+            id: row.find('td:nth-child(6)').text().trim(),
+            dateOfBirth: row.find('td:nth-child(7)').text().trim(),
+            status: row.find('td:nth-child(8) .label').text().trim()
+          };
+          students.push(student);
+        });
+
+        if (students.length === 0) {
+          alert('No students to export');
+          return;
+        }
+
+        // Create CSV content
+        const headers = ['Name', 'City', 'Phone', 'Email', 'Department', 'Student ID', 'Date of Birth', 'Status'];
+        let csvContent = headers.join(',') + '\n';
+
+        students.forEach(function (student) {
+          const row = [
+            `"${student.name}"`,
+            `"${student.city}"`,
+            `"${student.phone}"`,
+            `"${student.email}"`,
+            `"${student.department}"`,
+            `"${student.id}"`,
+            `"${student.dateOfBirth}"`,
+            `"${student.status}"`
+          ];
+          csvContent += row.join(',') + '\n';
+        });
+
+        // Create and download file
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `students_export_${new Date().toISOString().split('T')[0]}.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        showSuccessMessage(`Successfully exported ${students.length} students to CSV file`);
       }
     });
   </script>
