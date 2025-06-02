@@ -30,14 +30,27 @@
   <link href="assets/css/rtl.css" rel="stylesheet" />
   <!-- Dark Mode Support -->
   <link href="assets/css/dark-mode.css" rel="stylesheet" />
-
-  <!-- Custom styles for language and theme switchers -->
+  <!-- Custom styles for courses page -->
   <style>
     :root {
+      /* Color palette */
+      --primary: #4361ee;
+      --primary-light: #eef2ff;
+      --secondary: #3f37c9;
+      --accent: #ffd400;
+      --dark: #2a3546;
+      --gray: #6a6a6a;
+      --light-gray: #f8f9fa;
+      --success: #28a745;
+      --danger: #dc3545;
+      --warning: #fd7e14;
+
+      /* Theme switcher colors */
       --accent-color: #ffd400;
       --contrast-color: #2a3546;
     }
 
+    /* Language and Theme Switchers */
     .switchers-container {
       display: flex;
       gap: 25px;
@@ -48,7 +61,6 @@
       margin-left: 20px;
       margin-right: 0;
     }
-
 
     .switcher-btn {
       background-color: var(--accent-color);
@@ -72,25 +84,19 @@
     .switcher-btn i {
       font-size: 16px;
     }
-  </style>
-
-  <style>
-    :root {
-      --primary: #4361ee;
-      --primary-light: #eef2ff;
-      --secondary: #3f37c9;
-      --accent: #ffd400;
-      --dark: #2a3546;
-      --gray: #6a6a6a;
-      --light-gray: #f8f9fa;
-      --success: #28a745;
-      --danger: #dc3545;
-      --warning: #fd7e14;
-    }
 
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f5f7fb;
+    }
+
+    /* Dark mode variables override */
+    body.dark-mode {
+      --primary-light: rgba(67, 97, 238, 0.2);
+      --dark: #ffffff;
+      --gray: #e0e0e0;
+      --light-gray: #333;
+      background-color: #121212;
     }
 
     .dashboard-container {
@@ -426,17 +432,16 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <div class="switchers-container me-3">
-        <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
-          العربية
-        </button>
-        <button id="theme-toggle" class="switcher-btn" title="Switch to Dark Mode">
-          <i class="bi bi-moon"></i>
-        </button>
-      </div>
-
       <div class="header-actions d-flex align-items-center">
+        <div class="switchers-container me-3">
+          <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
+            العربية
+          </button>
+          <button id="theme-toggle" class="switcher-btn" title="Switch to Dark Mode">
+            <i class="bi bi-moon"></i>
+          </button>
+        </div>
+
         <a class="btn-getstarted" href="#!" data-bs-toggle="modal" data-bs-target="#modal1">
           <i class="bi bi-box-arrow-in-right me-1"></i> Sign out
         </a>
