@@ -102,8 +102,20 @@ const translations = {
     accountStatus: "Account Status",
     accountSecurity: "Account Security",
     lastLogin: "Last Login",
-    password: "Password",    twoFactorAuth: "Two-Factor Auth",    changePassword: "Change Password",    enable2FA: "Enable 2FA",
-    changePhoto: "Change photo",    // Change Password Modal
+    password: "Password",    twoFactorAuth: "Two-Factor Auth",    changePassword: "Change Password",    enable2FA: "Enable 2FA",    changePhoto: "Change photo",
+    
+    // Change Photo Modal
+    changeProfilePhoto: "Change Profile Photo",
+    selectNewPhoto: "Select a new photo",
+    uploadPhoto: "Upload Photo",
+    removePhoto: "Remove Photo",
+    photoRequirements: "Please select a JPG, PNG, or GIF image under 5MB.",
+    photoUpdated: "Profile photo updated successfully!",
+    photoError: "Error uploading photo. Please try again.",
+    invalidFileType: "Invalid file type. Please select a JPG, PNG, or GIF image.",
+    fileTooLarge: "File size too large. Please select an image under 5MB.",
+    
+    // Change Password Modal
     currentPassword: "Current Password",
     newPassword: "New Password",
     confirmNewPassword: "Confirm New Password",
@@ -341,8 +353,20 @@ const translations = {
     accountSecurity: "أمان الحساب",
     lastLogin: "آخر تسجيل دخول",
     password: "كلمة المرور",
-    twoFactorAuth: "المصادقة الثنائية",    changePassword: "تغيير كلمة المرور",    enable2FA: "تفعيل المصادقة الثنائية",
-    changePhoto: "تغيير الصورة",    // Change Password Modal
+    twoFactorAuth: "المصادقة الثنائية",    changePassword: "تغيير كلمة المرور",    enable2FA: "تفعيل المصادقة الثنائية",    changePhoto: "تغيير الصورة",
+    
+    // Change Photo Modal
+    changeProfilePhoto: "تغيير صورة الملف الشخصي",
+    selectNewPhoto: "اختر صورة جديدة",
+    uploadPhoto: "رفع الصورة",
+    removePhoto: "إزالة الصورة",
+    photoRequirements: "يرجى اختيار صورة JPG أو PNG أو GIF أقل من 5 ميجابايت.",
+    photoUpdated: "تم تحديث صورة الملف الشخصي بنجاح!",
+    photoError: "خطأ في رفع الصورة. يرجى المحاولة مرة أخرى.",
+    invalidFileType: "نوع ملف غير صالح. يرجى اختيار صورة JPG أو PNG أو GIF.",
+    fileTooLarge: "حجم الملف كبير جداً. يرجى اختيار صورة أقل من 5 ميجابايت.",
+    
+    // Change Password Modal
     currentPassword: "كلمة المرور الحالية",
     newPassword: "كلمة المرور الجديدة",
     confirmNewPassword: "تأكيد كلمة المرور الجديدة",

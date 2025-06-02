@@ -519,9 +519,11 @@
           <div class="profile-header">
             <div class="profile-avatar">
               <img src="images/user.jpg" alt="Emily Jessica">
-              <div class="avatar-edit" data-bs-toggle="tooltip" title="Change photo">
+              <div class="avatar-edit" onclick="triggerPhotoUpload()" title="Change photo">
                 <i class="bi bi-camera"></i>
               </div>
+              <input type="file" id="profilePhotoInput" accept="image/jpeg,image/jpg,image/png,image/gif"
+                style="display: none;">
             </div>
             <div class="profile-info">
               <h2>Emily Jessica</h2>
@@ -848,12 +850,55 @@
       document.getElementById('changePasswordModal').addEventListener('hidden.bs.modal', function () {
         changePasswordForm.reset();
         clearErrors();
-      });
-
-      // Translate modal when it's shown
+      });      // Translate modal when it's shown
       document.getElementById('changePasswordModal').addEventListener('shown.bs.modal', function () {
         const currentLang = localStorage.getItem('language') || 'en';
         translateChangePasswordModal(currentLang);
+      });
+
+      // Simple Change Photo functionality
+      window.triggerPhotoUpload = function () {
+        document.getElementById('profilePhotoInput').click();
+      };
+
+      // Handle photo file selection
+      document.getElementById('profilePhotoInput').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        const currentLang = localStorage.getItem('language') || 'en';
+
+        if (file) {
+          // Validate file type
+          const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+          if (!allowedTypes.includes(file.type)) {
+            alert(translations[currentLang].invalidFileType);
+            return;
+          }
+
+          // Validate file size (5MB limit)
+          const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+          if (file.size > maxSize) {
+            alert(translations[currentLang].fileTooLarge);
+            return;
+          }
+
+          // Show confirmation before uploading
+          if (confirm(currentLang === 'ar' ? 'هل تريد تحديث صورة الملف الشخصي؟' : 'Do you want to update your profile photo?')) {
+            // Create file reader to preview the image
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              // Update profile image immediately
+              const profileAvatar = document.querySelector('.profile-avatar img');
+              profileAvatar.src = e.target.result;
+
+              // Show success message
+              alert(translations[currentLang].photoUpdated);
+            };
+            reader.readAsDataURL(file);
+          }
+
+          // Reset the file input
+          e.target.value = '';
+        }
       });
     });
   </script>
