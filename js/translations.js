@@ -46,12 +46,11 @@ const translations = {
 
     // Courses Section
     coursesHeading: "Courses",
-    popularCourses: "Popular Courses",
-
-    // Dashboard Navigation
+    popularCourses: "Popular Courses",    // Dashboard Navigation
     myDashboard: "Dashboard",
     myProfile: "My Profile",
     myCourses: "My Courses",
+    courseMaterials: "Course Materials",
     examsResults: "Exams & Results",
     schedule: "Schedule",
     notifications: "Notifications",
@@ -105,9 +104,15 @@ const translations = {
     lastLogin: "Last Login",
     password: "Password",
     twoFactorAuth: "Two-Factor Auth",
-    changePassword: "Change Password",
-    enable2FA: "Enable 2FA",
-    changePhoto: "Change photo",
+    changePassword: "Change Password",    enable2FA: "Enable 2FA",
+    changePhoto: "Change photo",    // Materials Page
+    bulkDownload: "Bulk Download",
+    downloadAllMaterials: "Download All Materials",
+    downloadByCourse: "Download by Course",
+    downloadByType: "Download by Type",
+    totalMaterials: "Total Materials",
+    downloaded: "Downloaded",
+    materialsInfo: "Access all your course materials in one place. You can preview, download, and organize materials by course or file type.",
 
     // Hero Section
     heroTitle: "Learning Today,<br />Leading Tomorrow",
@@ -275,12 +280,11 @@ const translations = {
 
     // Courses Section
     coursesHeading: "الدورات",
-    popularCourses: "الدورات الشائعة",
-
-    // Dashboard Navigation
+    popularCourses: "الدورات الشائعة",    // Dashboard Navigation
     myDashboard: "لوحة التحكم",
     myProfile: "الملف الشخصي",
     myCourses: "دوراتي",
+    courseMaterials: "مواد الدورة",
     examsResults: "الاختبارات والنتائج",
     schedule: "الجدول الزمني",
     notifications: "الإشعارات",
@@ -334,9 +338,15 @@ const translations = {
     lastLogin: "آخر تسجيل دخول",
     password: "كلمة المرور",
     twoFactorAuth: "المصادقة الثنائية",
-    changePassword: "تغيير كلمة المرور",
-    enable2FA: "تفعيل المصادقة الثنائية",
-    changePhoto: "تغيير الصورة",
+    changePassword: "تغيير كلمة المرور",    enable2FA: "تفعيل المصادقة الثنائية",
+    changePhoto: "تغيير الصورة",    // Materials Page
+    bulkDownload: "تحميل مجمع",
+    downloadAllMaterials: "تحميل جميع المواد",
+    downloadByCourse: "تحميل حسب الدورة",
+    downloadByType: "تحميل حسب النوع",
+    totalMaterials: "إجمالي المواد",
+    downloaded: "تم التحميل",
+    materialsInfo: "الوصول إلى جميع مواد الدورة الخاصة بك في مكان واحد. يمكنك معاينة وتحميل وتنظيم المواد حسب الدورة أو نوع الملف.",
 
     // Hero Section
     heroTitle: "التعلم اليوم،<br />القيادة غداً",

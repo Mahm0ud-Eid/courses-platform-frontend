@@ -390,108 +390,9 @@
             background: var(--primary);
             color: white;
             transform: translateY(-1px);
-        }
-
-        .btn-preview i {
+        }        .btn-preview i {
             margin-right: 0.5rem;
             font-size: 1rem;
-        }
-
-        /* Filters */
-        .filters-section {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .materials-filter {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            padding: 0 0.25rem;
-        }
-
-        .filter-chip {
-            background: var(--light-gray);
-            color: var(--gray);
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .filter-chip.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .filter-chip:hover:not(.active) {
-            background: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
-        }
-
-        .search-filters {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 250px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 0.75rem 1rem 0.75rem 2.5rem;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gray);
-        }
-
-        .course-filter {
-            min-width: 200px;
-        }
-
-        .course-filter select {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            font-size: 0.9rem;
-            background: white;
-            transition: all 0.2s ease;
-        }
-
-        .course-filter select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
         }
 
         .empty-materials {
@@ -552,51 +453,10 @@
             font-weight: 600;
             color: var(--dark);
             margin-bottom: 0.25rem;
-        }
-
-        .stats-card p {
+        }        .stats-card p {
             color: var(--gray);
             font-size: 0.9rem;
             margin: 0;
-        }
-
-        /* Switchers */
-        .switchers-container {
-            display: flex;
-            gap: 25px;
-            margin-right: 20px;
-        }
-
-        .rtl .switchers-container {
-            margin-left: 20px;
-            margin-right: 0;
-        }
-
-        .switcher-btn {
-            background-color: var(--primary);
-            color: #ffffff;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .switcher-btn:hover {
-            background-color: var(--secondary);
-        }
-
-        .switcher-btn i {
-            font-size: 16px;
-        }
-
-        .switcher-btn i {
-            font-size: 16px;
         }
 
         /* Responsive Adjustments */
@@ -634,20 +494,9 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
-            }
-
-            .material-actions {
+            }            .material-actions {
                 width: 100%;
                 justify-content: flex-end;
-            }
-
-            .search-filters {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .search-box {
-                min-width: auto;
             }
 
             .section-header {
@@ -730,56 +579,10 @@
             background-color: var(--primary);
             color: white;
             border-color: var(--primary);
-        }
-
-        body.dark-mode .btn-preview:hover,
+        }        body.dark-mode .btn-preview:hover,
         body.dark-mode .btn-download:hover {
             background-color: var(--secondary);
             border-color: var(--secondary);
-        }
-
-        body.dark-mode .filter-chip {
-            background-color: #2a2a2a;
-            color: var(--default-color);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        body.dark-mode .filter-chip:hover:not(.active) {
-            background-color: rgba(67, 97, 238, 0.15);
-            color: #4361ee;
-        }
-
-        body.dark-mode .filter-chip.active {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-        }
-
-        body.dark-mode .search-box input {
-            background-color: var(--surface-color) !important;
-            color: var(--default-color) !important;
-            border-color: rgba(255, 255, 255, 0.2) !important;
-        }
-
-        body.dark-mode .search-box input::placeholder {
-            color: var(--default-color) !important;
-            opacity: 0.6 !important;
-        }
-
-        body.dark-mode .search-box {
-            background-color: var(--surface-color);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        body.dark-mode .search-box i {
-            color: var(--default-color);
-            opacity: 0.7;
-        }
-
-        body.dark-mode #course-filter {
-            background-color: var(--surface-color);
-            color: var(--default-color);
-            border-color: rgba(255, 255, 255, 0.2);
         }
 
         body.dark-mode .dashboard-section {
@@ -799,9 +602,264 @@
 
         body.dark-mode .empty-materials {
             color: var(--default-color);
+        }        body.dark-mode .empty-materials h5 {
+            color: var(--heading-color);
         }
 
-        body.dark-mode .empty-materials h5 {
+        /* Course Folders Styling */
+        .course-folders {
+            margin-top: 1.5rem;
+        }
+
+        .course-folder {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .course-folder:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .folder-header {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .folder-header:hover {
+            background: rgba(67, 97, 238, 0.05);
+        }
+
+        .folder-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .folder-info {
+            flex: 1;
+        }
+
+        .folder-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0 0 0.5rem 0;
+            line-height: 1.2;
+        }
+
+        .folder-meta {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .folder-toggle {
+            width: 40px;
+            height: 40px;
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .folder-header:hover .folder-toggle {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .folder-toggle.active {
+            transform: rotate(180deg);
+            background: var(--primary);
+            color: white;
+        }
+
+        .folder-content {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .materials-list {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .material-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .material-item:last-child {
+            border-bottom: none;
+        }
+
+        .material-item:hover {
+            background: rgba(67, 97, 238, 0.03);
+            margin: 0 -1rem;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .material-item .material-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .material-item .material-icon.pdf {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+
+        .material-item .material-icon.video {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+
+        .material-item .material-icon.ppt {
+            background: rgba(255, 87, 34, 0.1);
+            color: #ff5722;
+        }
+
+        .material-item .material-icon.doc {
+            background: rgba(33, 150, 243, 0.1);
+            color: #2196f3;
+        }
+
+        .material-item .material-icon.image {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+        }
+
+        .material-item .material-icon.default {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .material-details {
+            flex: 1;
+        }
+
+        .material-name {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+
+        .material-meta {
+            color: var(--gray);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .material-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .btn-preview-small,
+        .btn-download-small {
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-preview-small {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+
+        .btn-preview-small:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .btn-download-small {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+
+        .btn-download-small:hover {
+            background: #28a745;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Dark mode overrides for folders */
+        body.dark-mode .course-folder {
+            background: #1e1e1e;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .folder-header:hover {
+            background: rgba(67, 97, 238, 0.15);
+        }
+
+        body.dark-mode .folder-content {
+            border-top-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .material-item {
+            border-bottom-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body.dark-mode .material-item:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        body.dark-mode .folder-title {
+            color: var(--heading-color);
+        }
+
+        body.dark-mode .material-name {
             color: var(--heading-color);
         }
     </style>
@@ -822,7 +880,7 @@
                     <li><a href="courses.html" data-key="courses">Courses</a></li>
                     <li><a href="trainers.html" data-key="trainers">Trainers</a></li>
                     <li><a href="community.html" data-key="community">Community</a></li>
-                    <li><a href="dashboard.html" data-key="dashboard">Dashboard</a></li>
+                    <li><a href="dashboard.html" data-key="dashboard" class="active">Dashboard</a></li>
                     <li><a href="contact.html" data-key="contact">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -855,41 +913,39 @@
                         <img src="images/user.jpg" alt="Student" class="img-fluid">
                         <h4>Emily Jessica</h4>
                         <p>Student ID: ST17241</p>
-                    </div> <!-- Quick Stats -->
-                    <div class="stats-row">
+                    </div> <!-- Quick Stats -->                    <div class="stats-row">
                         <div class="stats-card animate-fade delay-2">
                             <i class="bi bi-folder2-open"></i>
-                            <h3>24</h3>
+                            <h3>20</h3>
                             <p data-key="totalMaterials">Total Materials</p>
                         </div>
                         <div class="stats-card animate-fade delay-3">
                             <i class="bi bi-download"></i>
-                            <h3>18</h3>
+                            <h3>15</h3>
                             <p data-key="downloaded">Downloaded</p>
                         </div>
                     </div>
 
-                    <!-- Dashboard Navigation -->
-                    <div class="dashboard-nav animate-fade delay-4">
+                    <!-- Dashboard Navigation -->                    <div class="dashboard-nav animate-fade delay-4">
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i>
-                                    Dashboard</a>
+                                    <span data-key="myDashboard">Dashboard</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="db-profile.html"><i class="bi bi-person"></i> My Profile</a>
+                                <a class="nav-link" href="db-profile.html"><i class="bi bi-person"></i> <span data-key="myProfile">My Profile</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> My
-                                    Courses</a>
+                                <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> <span data-key="myCourses">My
+                                    Courses</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="db-materials.html"><i class="bi bi-folder2-open"></i>
-                                    Course Materials</a>
+                                    <span data-key="courseMaterials">Course Materials</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-danger" href="#"><i class="bi bi-box-arrow-right"></i>
-                                    Logout</a>
+                                    <span data-key="logout">Logout</span></a>
                             </li>
                         </ul>
                     </div>
@@ -920,360 +976,450 @@
                             <i class="bi bi-info-circle me-2"></i> <span data-key="materialsInfo">Access all your course
                                 materials in one place. You can preview, download, and organize materials by course or
                                 file type.</span>
-                        </div>
-                    </div> <!-- Filters Section -->
-                    <div class="filters-section animate-fade delay-2">
-                        <div class="search-filters">
-                            <div class="search-box">
-                                <i class="bi bi-search"></i>
-                                <input type="text" id="search-materials" data-key="searchMaterials"
-                                    placeholder="Search materials..." />
-                            </div>
-                            <div class="course-filter">
-                                <select id="course-filter">
-                                    <option value="all" data-key="allCourses">All Courses</option>
-                                    <option value="java-programming">Java Programming</option>
-                                    <option value="aeronautical-engineering">Aeronautical Engineering</option>
-                                    <option value="master-of-science">Master of Science</option>
-                                    <option value="software-testing">Software Testing</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Filter Chips -->
-                        <div class="materials-filter">
-                            <button class="filter-chip active" data-filter="all" data-key="allFiles">All Files</button>
-                            <button class="filter-chip" data-filter="pdf" data-key="pdfDocuments">PDF Documents</button>
-                            <button class="filter-chip" data-filter="video" data-key="videoFiles">Video Files</button>
-                            <button class="filter-chip" data-filter="presentation"
-                                data-key="presentations">Presentations</button>
-                            <button class="filter-chip" data-filter="document" data-key="documents">Documents</button>
-                            <button class="filter-chip" data-filter="image" data-key="images">Images</button>
-                        </div>
-                    </div>
-
-                    <!-- Materials Grid -->
+                        </div>                    </div>                    <!-- Course Folders -->
                     <div class="dashboard-section animate-fade delay-3">
-                        <div class="materials-grid" id="materials-grid">
-                            <!-- Material Item 1 -->
-                            <div class="material-card" data-type="pdf" data-course="java-programming">
-                                <div class="material-header">
-                                    <div class="material-info">
-                                        <div class="material-title">Java Programming Fundamentals</div>
-                                        <div class="material-course">Java Programming</div>
-                                        <div class="material-instructor">By Dr. Sarah Johnson</div>
+                        <div class="course-folders" id="course-folders">
+                            
+                            <!-- Java Programming Folder -->
+                            <div class="course-folder" data-course="java-programming">
+                                <div class="folder-header">
+                                    <div class="folder-icon">
+                                        <i class="bi bi-folder-fill"></i>
                                     </div>
-                                    <div class="material-icon pdf">
-                                        <i class="bi bi-file-earmark-pdf"></i>
+                                    <div class="folder-info">
+                                        <h5 class="folder-title">Java Programming</h5>
+                                        <p class="folder-meta">6 materials • Dr. Sarah Johnson</p>
+                                    </div>
+                                    <div class="folder-toggle">
+                                        <i class="bi bi-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="material-description">
-                                    Comprehensive guide covering Java syntax, object-oriented programming concepts, and
-                                    best practices for beginner programmers.
-                                </div>
-                                <div class="material-details">
-                                    <div class="material-meta">
-                                        <div class="material-size">
-                                            <i class="bi bi-hdd"></i>
-                                            2.4 MB
+                                <div class="folder-content" style="display: none;">
+                                    <div class="materials-list">
+                                        <!-- Java Programming Materials -->
+                                        <div class="material-item" data-type="pdf">
+                                            <div class="material-icon pdf">
+                                                <i class="bi bi-file-earmark-pdf"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Java Programming Fundamentals.pdf</div>
+                                                <div class="material-meta">2.4 MB • May 15, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="material-date">
-                                            <i class="bi bi-calendar3"></i>
-                                            May 15, 2025
+                                        
+                                        <div class="material-item" data-type="video">
+                                            <div class="material-icon video">
+                                                <i class="bi bi-play-circle"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">OOP Concepts Video Lecture.mp4</div>
+                                                <div class="material-meta">156 MB • May 18, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Watch">
+                                                    <i class="bi bi-play"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="material-actions">
-                                        <a href="#" class="btn-preview">
-                                            <i class="bi bi-eye"></i>
-                                            <span data-key="preview">Preview</span>
-                                        </a>
-                                        <a href="#" class="btn-download">
-                                            <i class="bi bi-download"></i>
-                                            <span data-key="download">Download</span>
-                                        </a>
+                                        
+                                        <div class="material-item" data-type="pdf">
+                                            <div class="material-icon pdf">
+                                                <i class="bi bi-file-earmark-pdf"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Advanced Java Exercises.pdf</div>
+                                                <div class="material-meta">3.8 MB • May 25, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="material-item" data-type="document">
+                                            <div class="material-icon doc">
+                                                <i class="bi bi-file-earmark-text"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Java Coding Standards.docx</div>
+                                                <div class="material-meta">1.2 MB • May 30, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="material-item" data-type="presentation">
+                                            <div class="material-icon ppt">
+                                                <i class="bi bi-file-earmark-slides"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Java Design Patterns.pptx</div>
+                                                <div class="material-meta">5.6 MB • June 1, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="material-item" data-type="code">
+                                            <div class="material-icon default">
+                                                <i class="bi bi-file-earmark-code"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Sample Java Projects.zip</div>
+                                                <div class="material-meta">12.4 MB • June 2, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Material Item 2 -->
-                            <div class="material-card" data-type="video" data-course="java-programming">
-                                <div class="material-header">
-                                    <div class="material-info">
-                                        <div class="material-title">Object-Oriented Programming Concepts</div>
-                                        <div class="material-course">Java Programming</div>
-                                        <div class="material-instructor">By Dr. Sarah Johnson</div>
+                            <!-- Aeronautical Engineering Folder -->
+                            <div class="course-folder" data-course="aeronautical-engineering">
+                                <div class="folder-header">
+                                    <div class="folder-icon">
+                                        <i class="bi bi-folder-fill"></i>
                                     </div>
-                                    <div class="material-icon video">
-                                        <i class="bi bi-play-circle"></i>
+                                    <div class="folder-info">
+                                        <h5 class="folder-title">Aeronautical Engineering</h5>
+                                        <p class="folder-meta">5 materials • Prof. Michael Chen</p>
+                                    </div>
+                                    <div class="folder-toggle">
+                                        <i class="bi bi-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="material-description">
-                                    Video lecture series explaining inheritance, polymorphism, encapsulation, and
-                                    abstraction with practical examples.
-                                </div>
-                                <div class="material-details">
-                                    <div class="material-meta">
-                                        <div class="material-size">
-                                            <i class="bi bi-hdd"></i>
-                                            156 MB
+                                <div class="folder-content" style="display: none;">
+                                    <div class="materials-list">
+                                        <!-- Aeronautical Engineering Materials -->
+                                        <div class="material-item" data-type="presentation">
+                                            <div class="material-icon ppt">
+                                                <i class="bi bi-file-earmark-slides"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Aerodynamics Principles.pptx</div>
+                                                <div class="material-meta">8.7 MB • May 20, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="material-date">
-                                            <i class="bi bi-calendar3"></i>
-                                            May 18, 2025
+                                        
+                                        <div class="material-item" data-type="image">
+                                            <div class="material-icon image">
+                                                <i class="bi bi-file-earmark-image"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Aircraft Design Blueprints.pdf</div>
+                                                <div class="material-meta">5.2 MB • May 26, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="material-actions">
-                                        <a href="#" class="btn-preview">
-                                            <i class="bi bi-play"></i>
-                                            <span data-key="watch">Watch</span>
-                                        </a>
-                                        <a href="#" class="btn-download">
-                                            <i class="bi bi-download"></i>
-                                            <span data-key="download">Download</span>
-                                        </a>
+                                        
+                                        <div class="material-item" data-type="pdf">
+                                            <div class="material-icon pdf">
+                                                <i class="bi bi-file-earmark-pdf"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Flight Dynamics Handbook.pdf</div>
+                                                <div class="material-meta">15.8 MB • May 28, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="material-item" data-type="video">
+                                            <div class="material-icon video">
+                                                <i class="bi bi-play-circle"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Wind Tunnel Testing.mp4</div>
+                                                <div class="material-meta">234 MB • June 1, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Watch">
+                                                    <i class="bi bi-play"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="material-item" data-type="document">
+                                            <div class="material-icon doc">
+                                                <i class="bi bi-file-earmark-text"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Aircraft Safety Regulations.docx</div>
+                                                <div class="material-meta">2.1 MB • June 2, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Material Item 3 -->
-                            <div class="material-card" data-type="presentation" data-course="aeronautical-engineering">
-                                <div class="material-header">
-                                    <div class="material-info">
-                                        <div class="material-title">Aerodynamics Principles</div>
-                                        <div class="material-course">Aeronautical Engineering</div>
-                                        <div class="material-instructor">By Prof. Michael Chen</div>
+                            <!-- Software Testing Folder -->
+                            <div class="course-folder" data-course="software-testing">
+                                <div class="folder-header">
+                                    <div class="folder-icon">
+                                        <i class="bi bi-folder-fill"></i>
                                     </div>
-                                    <div class="material-icon ppt">
-                                        <i class="bi bi-file-earmark-slides"></i>
+                                    <div class="folder-info">
+                                        <h5 class="folder-title">Software Testing</h5>
+                                        <p class="folder-meta">4 materials • Dr. Ahmed Hassan</p>
+                                    </div>
+                                    <div class="folder-toggle">
+                                        <i class="bi bi-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="material-description">
-                                    PowerPoint presentation covering lift, drag, thrust, and weight forces in aircraft
-                                    design and flight dynamics.
-                                </div>
-                                <div class="material-details">
-                                    <div class="material-meta">
-                                        <div class="material-size">
-                                            <i class="bi bi-hdd"></i>
-                                            8.7 MB
+                                <div class="folder-content" style="display: none;">
+                                    <div class="materials-list">
+                                        <!-- Software Testing Materials -->
+                                        <div class="material-item" data-type="video">
+                                            <div class="material-icon video">
+                                                <i class="bi bi-play-circle"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Automated Testing Demo.mp4</div>
+                                                <div class="material-meta">89 MB • May 27, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Watch">
+                                                    <i class="bi bi-play"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="material-date">
-                                            <i class="bi bi-calendar3"></i>
-                                            May 20, 2025
+                                        
+                                        <div class="material-item" data-type="pdf">
+                                            <div class="material-icon pdf">
+                                                <i class="bi bi-file-earmark-pdf"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Test Case Design Patterns.pdf</div>
+                                                <div class="material-meta">1.9 MB • May 28, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="material-actions">
-                                        <a href="#" class="btn-preview">
-                                            <i class="bi bi-eye"></i>
-                                            <span data-key="preview">Preview</span>
-                                        </a>
-                                        <a href="#" class="btn-download">
-                                            <i class="bi bi-download"></i>
-                                            <span data-key="download">Download</span>
-                                        </a>
+                                        
+                                        <div class="material-item" data-type="presentation">
+                                            <div class="material-icon ppt">
+                                                <i class="bi bi-file-earmark-slides"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Selenium Framework Guide.pptx</div>
+                                                <div class="material-meta">7.3 MB • May 30, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="material-item" data-type="code">
+                                            <div class="material-icon default">
+                                                <i class="bi bi-file-earmark-code"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Testing Scripts Collection.zip</div>
+                                                <div class="material-meta">8.4 MB • June 1, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Material Item 4 -->
-                            <div class="material-card" data-type="document" data-course="master-of-science">
-                                <div class="material-header">
-                                    <div class="material-info">
-                                        <div class="material-title">Research Methodology Guidelines</div>
-                                        <div class="material-course">Master of Science</div>
-                                        <div class="material-instructor">By Dr. Emily Rodriguez</div>
+                            <!-- Master of Science Folder -->
+                            <div class="course-folder" data-course="master-of-science">
+                                <div class="folder-header">
+                                    <div class="folder-icon">
+                                        <i class="bi bi-folder-fill"></i>
                                     </div>
-                                    <div class="material-icon doc">
-                                        <i class="bi bi-file-earmark-text"></i>
+                                    <div class="folder-info">
+                                        <h5 class="folder-title">Master of Science</h5>
+                                        <p class="folder-meta">5 materials • Dr. Emily Rodriguez</p>
+                                    </div>
+                                    <div class="folder-toggle">
+                                        <i class="bi bi-chevron-down"></i>
                                     </div>
                                 </div>
-                                <div class="material-description">
-                                    Comprehensive guide on research methods, data collection techniques, and academic
-                                    writing standards for graduate students.
-                                </div>
-                                <div class="material-details">
-                                    <div class="material-meta">
-                                        <div class="material-size">
-                                            <i class="bi bi-hdd"></i>
-                                            1.2 MB
+                                <div class="folder-content" style="display: none;">
+                                    <div class="materials-list">
+                                        <!-- Master of Science Materials -->
+                                        <div class="material-item" data-type="document">
+                                            <div class="material-icon doc">
+                                                <i class="bi bi-file-earmark-text"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Research Methodology Guidelines.docx</div>
+                                                <div class="material-meta">1.2 MB • May 22, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="material-date">
-                                            <i class="bi bi-calendar3"></i>
-                                            May 22, 2025
+                                        
+                                        <div class="material-item" data-type="pdf">
+                                            <div class="material-icon pdf">
+                                                <i class="bi bi-file-earmark-pdf"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Thesis Writing Standards.pdf</div>
+                                                <div class="material-meta">3.7 MB • May 25, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="material-actions">
-                                        <a href="#" class="btn-preview">
-                                            <i class="bi bi-eye"></i>
-                                            <span data-key="preview">Preview</span>
-                                        </a>
-                                        <a href="#" class="btn-download">
-                                            <i class="bi bi-download"></i>
-                                            <span data-key="download">Download</span>
-                                        </a>
+                                        
+                                        <div class="material-item" data-type="presentation">
+                                            <div class="material-icon ppt">
+                                                <i class="bi bi-file-earmark-slides"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Statistical Analysis Methods.pptx</div>
+                                                <div class="material-meta">9.2 MB • May 28, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="material-item" data-type="document">
+                                            <div class="material-icon doc">
+                                                <i class="bi bi-file-earmark-text"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Academic Writing Style Guide.docx</div>
+                                                <div class="material-meta">2.1 MB • June 1, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="material-item" data-type="pdf">
+                                            <div class="material-icon pdf">
+                                                <i class="bi bi-file-earmark-pdf"></i>
+                                            </div>
+                                            <div class="material-details">
+                                                <div class="material-name">Literature Review Template.pdf</div>
+                                                <div class="material-meta">1.8 MB • June 2, 2025</div>
+                                            </div>
+                                            <div class="material-actions">
+                                                <button class="btn-preview-small" title="Preview">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn-download-small" title="Download">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Material Item 5 -->
-                            <div class="material-card" data-type="pdf" data-course="java-programming">
-                                <div class="material-header">
-                                    <div class="material-info">
-                                        <div class="material-title">Advanced Java Programming Exercises</div>
-                                        <div class="material-course">Java Programming</div>
-                                        <div class="material-instructor">By Dr. Sarah Johnson</div>
-                                    </div>
-                                    <div class="material-icon pdf">
-                                        <i class="bi bi-file-earmark-pdf"></i>
-                                    </div>
-                                </div>
-                                <div class="material-description">
-                                    Practice exercises covering advanced topics like multithreading, collections
-                                    framework, and design patterns in Java.
-                                </div>
-                                <div class="material-details">
-                                    <div class="material-meta">
-                                        <div class="material-size">
-                                            <i class="bi bi-hdd"></i>
-                                            3.8 MB
-                                        </div>
-                                        <div class="material-date">
-                                            <i class="bi bi-calendar3"></i>
-                                            May 25, 2025
-                                        </div>
-                                    </div>
-                                    <div class="material-actions">
-                                        <a href="#" class="btn-preview">
-                                            <i class="bi bi-eye"></i>
-                                            <span data-key="preview">Preview</span>
-                                        </a>
-                                        <a href="#" class="btn-download">
-                                            <i class="bi bi-download"></i>
-                                            <span data-key="download">Download</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Material Item 6 -->
-                            <div class="material-card" data-type="image" data-course="aeronautical-engineering">
-                                <div class="material-header">
-                                    <div class="material-info">
-                                        <div class="material-title">Aircraft Design Blueprints</div>
-                                        <div class="material-course">Aeronautical Engineering</div>
-                                        <div class="material-instructor">By Prof. Michael Chen</div>
-                                    </div>
-                                    <div class="material-icon image">
-                                        <i class="bi bi-file-earmark-image"></i>
-                                    </div>
-                                </div>
-                                <div class="material-description">
-                                    Technical drawings and blueprints showing aircraft component design and engineering
-                                    specifications.
-                                </div>
-                                <div class="material-details">
-                                    <div class="material-meta">
-                                        <div class="material-size">
-                                            <i class="bi bi-hdd"></i>
-                                            5.2 MB
-                                        </div>
-                                        <div class="material-date">
-                                            <i class="bi bi-calendar3"></i>
-                                            May 26, 2025
-                                        </div>
-                                    </div>
-                                    <div class="material-actions">
-                                        <a href="#" class="btn-preview">
-                                            <i class="bi bi-eye"></i>
-                                            <span data-key="preview">Preview</span>
-                                        </a>
-                                        <a href="#" class="btn-download">
-                                            <i class="bi bi-download"></i>
-                                            <span data-key="download">Download</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Material Item 7 -->
-                            <div class="material-card" data-type="video" data-course="software-testing">
-                                <div class="material-header">
-                                    <div class="material-info">
-                                        <div class="material-title">Automated Testing Demo</div>
-                                        <div class="material-course">Software Testing</div>
-                                        <div class="material-instructor">By Dr. Ahmed Hassan</div>
-                                    </div>
-                                    <div class="material-icon video">
-                                        <i class="bi bi-play-circle"></i>
-                                    </div>
-                                </div>
-                                <div class="material-description">
-                                    Practical demonstration of automated testing tools and frameworks including Selenium
-                                    and JUnit.
-                                </div>
-                                <div class="material-details">
-                                    <div class="material-meta">
-                                        <div class="material-size">
-                                            <i class="bi bi-hdd"></i>
-                                            89 MB
-                                        </div>
-                                        <div class="material-date">
-                                            <i class="bi bi-calendar3"></i>
-                                            May 27, 2025
-                                        </div>
-                                    </div>
-                                    <div class="material-actions">
-                                        <a href="#" class="btn-preview">
-                                            <i class="bi bi-play"></i>
-                                            <span data-key="watch">Watch</span>
-                                        </a>
-                                        <a href="#" class="btn-download">
-                                            <i class="bi bi-download"></i>
-                                            <span data-key="download">Download</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Material Item 8 -->
-                            <div class="material-card" data-type="pdf" data-course="software-testing">
-                                <div class="material-header">
-                                    <div class="material-info">
-                                        <div class="material-title">Test Case Design Patterns</div>
-                                        <div class="material-course">Software Testing</div>
-                                        <div class="material-instructor">By Dr. Ahmed Hassan</div>
-                                    </div>
-                                    <div class="material-icon pdf">
-                                        <i class="bi bi-file-earmark-pdf"></i>
-                                    </div>
-                                </div>
-                                <div class="material-description">
-                                    Comprehensive guide on designing effective test cases using various testing
-                                    techniques and methodologies.
-                                </div>
-                                <div class="material-details">
-                                    <div class="material-meta">
-                                        <div class="material-size">
-                                            <i class="bi bi-hdd"></i>
-                                            1.9 MB
-                                        </div>
-                                        <div class="material-date">
-                                            <i class="bi bi-calendar3"></i>
-                                            May 28, 2025
-                                        </div>
-                                    </div>
-                                    <div class="material-actions">
-                                        <a href="#" class="btn-preview">
-                                            <i class="bi bi-eye"></i>
-                                            <span data-key="preview">Preview</span>
-                                        </a>
-                                        <a href="#" class="btn-download">
-                                            <i class="bi bi-download"></i>
-                                            <span data-key="download">Download</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </div><!-- Empty State (hidden by default) -->
                         <div class="empty-materials" id="empty-materials" style="display: none;">
                             <i class="bi bi-folder-x"></i>
@@ -1404,111 +1550,72 @@
     <!-- Translations -->
     <script src="js/translations.js"></script>
     <!-- Language and Theme Switcher -->
-    <script src="js/language-theme-switcher.js"></script>
-
-    <script>
+    <script src="js/language-theme-switcher.js"></script>    <script>
         // Materials Page Functionality
         document.addEventListener('DOMContentLoaded', function () {
-            // Get DOM elements
-            const filterChips = document.querySelectorAll('.filter-chip');
-            const materialCards = document.querySelectorAll('.material-card');
-            const emptyState = document.getElementById('empty-materials');
-            const materialsGrid = document.getElementById('materials-grid');
-            const searchInput = document.getElementById('search-materials');
-            const courseFilter = document.getElementById('course-filter');
-
-            // Current filters
-            let currentTypeFilter = 'all';
-            let currentCourseFilter = 'all';
-            let currentSearchTerm = '';
-
-            // Filter materials function
-            function filterMaterials() {
-                let visibleCount = 0;
-
-                materialCards.forEach(card => {
-                    const cardType = card.getAttribute('data-type');
-                    const cardCourse = card.getAttribute('data-course');
-                    const cardTitle = card.querySelector('.material-title').textContent.toLowerCase();
-                    const cardDescription = card.querySelector('.material-description').textContent.toLowerCase();
-
-                    const typeMatch = currentTypeFilter === 'all' || cardType === currentTypeFilter;
-                    const courseMatch = currentCourseFilter === 'all' || cardCourse === currentCourseFilter;
-                    const searchMatch = currentSearchTerm === '' ||
-                        cardTitle.includes(currentSearchTerm.toLowerCase()) ||
-                        cardDescription.includes(currentSearchTerm.toLowerCase());
-
-                    if (typeMatch && courseMatch && searchMatch) {
-                        card.style.display = 'block';
-                        visibleCount++;
+            // Folder expand/collapse functionality
+            const folderHeaders = document.querySelectorAll('.folder-header');
+            folderHeaders.forEach(header => {
+                header.addEventListener('click', function () {
+                    const folder = this.closest('.course-folder');
+                    const content = folder.querySelector('.folder-content');
+                    const toggle = folder.querySelector('.folder-toggle');
+                    
+                    if (content.style.display === 'none' || content.style.display === '') {
+                        // Expand folder
+                        content.style.display = 'block';
+                        toggle.classList.add('active');
+                        
+                        // Animate folder expansion
+                        setTimeout(() => {
+                            content.style.maxHeight = content.scrollHeight + 'px';
+                        }, 10);
                     } else {
-                        card.style.display = 'none';
+                        // Collapse folder
+                        content.style.maxHeight = '0px';
+                        toggle.classList.remove('active');
+                        
+                        // Hide after animation
+                        setTimeout(() => {
+                            content.style.display = 'none';
+                        }, 300);
                     }
                 });
-
-                // Show/hide empty state
-                if (visibleCount === 0) {
-                    materialsGrid.style.display = 'none';
-                    emptyState.style.display = 'block';
-                } else {
-                    materialsGrid.style.display = 'grid';
-                    emptyState.style.display = 'none';
-                }
-            }
-
-            // Type filter chips
-            filterChips.forEach(chip => {
-                chip.addEventListener('click', function () {
-                    filterChips.forEach(c => c.classList.remove('active'));
-                    this.classList.add('active');
-                    currentTypeFilter = this.getAttribute('data-filter');
-                    filterMaterials();
-                });
             });
 
-            // Course filter dropdown
-            courseFilter.addEventListener('change', function () {
-                currentCourseFilter = this.value;
-                filterMaterials();
-            });
-
-            // Search input
-            searchInput.addEventListener('input', function () {
-                currentSearchTerm = this.value;
-                filterMaterials();
-            });
-
-            // Download functionality
-            const downloadButtons = document.querySelectorAll('.btn-download');
+            // Download functionality for small buttons
+            const downloadButtons = document.querySelectorAll('.btn-download-small');
             downloadButtons.forEach(btn => {
                 btn.addEventListener('click', function (e) {
                     e.preventDefault();
+                    e.stopPropagation();
 
-                    const materialCard = this.closest('.material-card');
-                    const materialTitle = materialCard.querySelector('.material-title').textContent;
+                    const materialItem = this.closest('.material-item');
+                    const materialName = materialItem.querySelector('.material-name').textContent;
 
                     // Create toast notification
-                    showNotification(`Downloading "${materialTitle}"...`, 'success');
+                    showNotification(`Downloading "${materialName}"...`, 'success');
 
                     // In real implementation, trigger actual file download
-                    console.log('Downloading:', materialTitle);
+                    console.log('Downloading:', materialName);
                 });
             });
 
-            // Preview functionality
-            const previewButtons = document.querySelectorAll('.btn-preview');
+            // Preview functionality for small buttons
+            const previewButtons = document.querySelectorAll('.btn-preview-small');
             previewButtons.forEach(btn => {
                 btn.addEventListener('click', function (e) {
                     e.preventDefault();
+                    e.stopPropagation();
 
-                    const materialCard = this.closest('.material-card');
-                    const materialTitle = materialCard.querySelector('.material-title').textContent;
+                    const materialItem = this.closest('.material-item');
+                    const materialName = materialItem.querySelector('.material-name').textContent;
 
                     // Create toast notification
-                    showNotification(`Opening "${materialTitle}" for preview...`, 'info');
+                    showNotification(`Opening "${materialName}" for preview...`, 'info');
 
                     // In real implementation, open file viewer
-                    console.log('Previewing:', materialTitle);
+                    console.log('Previewing:', materialName);
                 });
             });
 
@@ -1517,11 +1624,14 @@
             bulkDownloadItems.forEach(item => {
                 item.addEventListener('click', function (e) {
                     e.preventDefault();
-                    const action = this.textContent;
+                    const action = this.textContent.trim();
                     showNotification(`Preparing ${action.toLowerCase()}...`, 'info');
                     console.log('Bulk action:', action);
                 });
             });
+
+            // Update statistics based on materials
+            updateMaterialStats();
 
             // Notification function
             function showNotification(message, type = 'info') {
@@ -1542,25 +1652,41 @@
                 }, 3000);
             }
 
+            // Update material statistics
+            function updateMaterialStats() {
+                const totalMaterials = document.querySelectorAll('.material-item').length;
+                const totalMaterialsElement = document.querySelector('.stats-card h3');
+                if (totalMaterialsElement) {
+                    totalMaterialsElement.textContent = totalMaterials;
+                }
+            }
+
             // Add slide animations for notifications
             const style = document.createElement('style');
             style.textContent = `
-        @keyframes slideIn {
-          from { transform: translateX(100%); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-          from { transform: translateX(0); opacity: 1; }
-          to { transform: translateX(100%); opacity: 0; }
-        }
-      `;
-            document.head.appendChild(style);      // Initialize with all materials visible
-            filterMaterials();
-        });  </script>
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+                
+                .folder-content {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease;
+                }
+                
+                .folder-content[style*="display: block"] {
+                    max-height: none;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 
-    <!-- External Scripts -->
-    <script src="js/translations.js"></script>
-    <script src="js/language-theme-switcher.js"></script>
 </body>
 
 </html>
