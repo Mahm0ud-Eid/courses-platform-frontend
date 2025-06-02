@@ -390,7 +390,9 @@
             background: var(--primary);
             color: white;
             transform: translateY(-1px);
-        }        .btn-preview i {
+        }
+
+        .btn-preview i {
             margin-right: 0.5rem;
             font-size: 1rem;
         }
@@ -453,7 +455,9 @@
             font-weight: 600;
             color: var(--dark);
             margin-bottom: 0.25rem;
-        }        .stats-card p {
+        }
+
+        .stats-card p {
             color: var(--gray);
             font-size: 0.9rem;
             margin: 0;
@@ -494,7 +498,9 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
-            }            .material-actions {
+            }
+
+            .material-actions {
                 width: 100%;
                 justify-content: flex-end;
             }
@@ -579,7 +585,9 @@
             background-color: var(--primary);
             color: white;
             border-color: var(--primary);
-        }        body.dark-mode .btn-preview:hover,
+        }
+
+        body.dark-mode .btn-preview:hover,
         body.dark-mode .btn-download:hover {
             background-color: var(--secondary);
             border-color: var(--secondary);
@@ -602,7 +610,9 @@
 
         body.dark-mode .empty-materials {
             color: var(--default-color);
-        }        body.dark-mode .empty-materials h5 {
+        }
+
+        body.dark-mode .empty-materials h5 {
             color: var(--heading-color);
         }
 
@@ -913,7 +923,8 @@
                         <img src="images/user.jpg" alt="Student" class="img-fluid">
                         <h4>Emily Jessica</h4>
                         <p>Student ID: ST17241</p>
-                    </div> <!-- Quick Stats -->                    <div class="stats-row">
+                    </div> <!-- Quick Stats -->
+                    <div class="stats-row">
                         <div class="stats-card animate-fade delay-2">
                             <i class="bi bi-folder2-open"></i>
                             <h3>20</h3>
@@ -926,18 +937,21 @@
                         </div>
                     </div>
 
-                    <!-- Dashboard Navigation -->                    <div class="dashboard-nav animate-fade delay-4">
+                    <!-- Dashboard Navigation -->
+                    <div class="dashboard-nav animate-fade delay-4">
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i>
                                     <span data-key="myDashboard">Dashboard</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="db-profile.html"><i class="bi bi-person"></i> <span data-key="myProfile">My Profile</span></a>
+                                <a class="nav-link" href="db-profile.html"><i class="bi bi-person"></i> <span
+                                        data-key="myProfile">My Profile</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> <span data-key="myCourses">My
-                                    Courses</span></a>
+                                <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> <span
+                                        data-key="myCourses">My
+                                        Courses</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="db-materials.html"><i class="bi bi-folder2-open"></i>
@@ -976,10 +990,11 @@
                             <i class="bi bi-info-circle me-2"></i> <span data-key="materialsInfo">Access all your course
                                 materials in one place. You can preview, download, and organize materials by course or
                                 file type.</span>
-                        </div>                    </div>                    <!-- Course Folders -->
+                        </div>
+                    </div> <!-- Course Folders -->
                     <div class="dashboard-section animate-fade delay-3">
                         <div class="course-folders" id="course-folders">
-                            
+
                             <!-- Java Programming Folder -->
                             <div class="course-folder" data-course="java-programming">
                                 <div class="folder-header">
@@ -1014,7 +1029,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="video">
                                             <div class="material-icon video">
                                                 <i class="bi bi-play-circle"></i>
@@ -1032,7 +1047,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="pdf">
                                             <div class="material-icon pdf">
                                                 <i class="bi bi-file-earmark-pdf"></i>
@@ -1050,7 +1065,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="document">
                                             <div class="material-icon doc">
                                                 <i class="bi bi-file-earmark-text"></i>
@@ -1068,7 +1083,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="presentation">
                                             <div class="material-icon ppt">
                                                 <i class="bi bi-file-earmark-slides"></i>
@@ -1086,7 +1101,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="code">
                                             <div class="material-icon default">
                                                 <i class="bi bi-file-earmark-code"></i>
@@ -1142,7 +1157,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="image">
                                             <div class="material-icon image">
                                                 <i class="bi bi-file-earmark-image"></i>
@@ -1160,7 +1175,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="pdf">
                                             <div class="material-icon pdf">
                                                 <i class="bi bi-file-earmark-pdf"></i>
@@ -1178,7 +1193,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="video">
                                             <div class="material-icon video">
                                                 <i class="bi bi-play-circle"></i>
@@ -1196,7 +1211,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="document">
                                             <div class="material-icon doc">
                                                 <i class="bi bi-file-earmark-text"></i>
@@ -1252,7 +1267,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="pdf">
                                             <div class="material-icon pdf">
                                                 <i class="bi bi-file-earmark-pdf"></i>
@@ -1270,7 +1285,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="presentation">
                                             <div class="material-icon ppt">
                                                 <i class="bi bi-file-earmark-slides"></i>
@@ -1288,7 +1303,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="code">
                                             <div class="material-icon default">
                                                 <i class="bi bi-file-earmark-code"></i>
@@ -1344,7 +1359,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="pdf">
                                             <div class="material-icon pdf">
                                                 <i class="bi bi-file-earmark-pdf"></i>
@@ -1362,7 +1377,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="presentation">
                                             <div class="material-icon ppt">
                                                 <i class="bi bi-file-earmark-slides"></i>
@@ -1380,7 +1395,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="document">
                                             <div class="material-icon doc">
                                                 <i class="bi bi-file-earmark-text"></i>
@@ -1398,7 +1413,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="material-item" data-type="pdf">
                                             <div class="material-icon pdf">
                                                 <i class="bi bi-file-earmark-pdf"></i>
@@ -1550,7 +1565,8 @@
     <!-- Translations -->
     <script src="js/translations.js"></script>
     <!-- Language and Theme Switcher -->
-    <script src="js/language-theme-switcher.js"></script>    <script>
+    <script src="js/language-theme-switcher.js"></script>
+    <script>
         // Materials Page Functionality
         document.addEventListener('DOMContentLoaded', function () {
             // Folder expand/collapse functionality
@@ -1560,12 +1576,12 @@
                     const folder = this.closest('.course-folder');
                     const content = folder.querySelector('.folder-content');
                     const toggle = folder.querySelector('.folder-toggle');
-                    
+
                     if (content.style.display === 'none' || content.style.display === '') {
                         // Expand folder
                         content.style.display = 'block';
                         toggle.classList.add('active');
-                        
+
                         // Animate folder expansion
                         setTimeout(() => {
                             content.style.maxHeight = content.scrollHeight + 'px';
@@ -1574,7 +1590,7 @@
                         // Collapse folder
                         content.style.maxHeight = '0px';
                         toggle.classList.remove('active');
-                        
+
                         // Hide after animation
                         setTimeout(() => {
                             content.style.display = 'none';
