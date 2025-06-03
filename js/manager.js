@@ -293,13 +293,14 @@ instDelBtn.addEventListener("click", function (event) {
   }).then((result) => {
     if (result.isConfirmed) {
       fetch(
-        `https://uccd-ljoxz.ondigitalocean.app/api/v1/manager/instructor/delete?username=${instEmail.value}`,
+        `https://uccd-ljoxz.ondigitalocean.app/api/v1/manager/instructor/delete`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
+          body: JSON.stringify({ username: instEmail.value }),
         }
       )
         .then((response) => {
