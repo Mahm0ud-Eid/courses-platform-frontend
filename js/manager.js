@@ -30,7 +30,7 @@ function validateToken() {
 
   if (!token) {
     alert("No token found. Please log in.");
-    window.location.href = "/admin-login.html";
+    window.location.href = "/login.html";
     return null;
   }
 
@@ -46,13 +46,13 @@ function validateToken() {
 
     if (isExpired) {
       alert("Token expired. Please log in again.");
-      window.location.href = "/admin-login.html";
+      window.location.href = "/login.html";
       return null;
     }
   } catch (error) {
     console.error("Invalid token format:", error);
     alert("Invalid token format. Please log in again.");
-    window.location.href = "/admin-login.html";
+    window.location.href = "/login.html";
     return null;
   }
 

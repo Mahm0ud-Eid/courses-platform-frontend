@@ -7,7 +7,7 @@ function logout() {
   localStorage.removeItem("userInfo");
 
   // Redirect to login page
-  window.location.href = "/admin-login.html";
+  window.location.href = "/login.html";
 }
 
 // Attach logout functionality to a button (if needed)
