@@ -206,7 +206,7 @@
               </li>
               <li>
                 <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-user" aria-hidden="true"></i> Instructors</a
+                  ><i class="fa fa-user" aria-hidden="true"></i> users</a
                 >
                 <div class="collapsible-body left-sub-menu">
                   <ul>
@@ -323,10 +323,10 @@
             </div>
           </div>
 
-          <!-- manage instructors -->
+          <!-- manage users -->
           <div class="form-section add-inst">
-            <h4>Manage Instructors</h4>
-            <p>View, Add, Update or Delete Instructor</p>
+            <h4>Manage users</h4>
+            <p>View, Add, Update or Delete user</p>
 
             <form id="addMaterialForm">
               <div class="input-group mb-3">
@@ -354,6 +354,15 @@
                 />
                 <label for="instAddName">Name</label>
               </div>
+
+              <select
+                class="form-select browser-default"
+                aria-label="Default select example"
+                style="margin-bottom: 15px"
+              >
+                <option value="instructor">instructor</option>
+                <option value="student">student</option>
+              </select>
 
               <div class="form-floating" style="margin-bottom: 15px">
                 <input
@@ -393,15 +402,15 @@
                 <ul id="files-list"></ul>
               </div>
 
-              <button type="submit" class="inst-save">Update Instructor</button>
-              <button type="reset" class="inst-del">Delete Instructor</button>
+              <button type="submit" class="inst-save">Update user</button>
+              <button type="reset" class="inst-del">Delete user</button>
             </form>
           </div>
 
-          <!--== All Instructors ==-->
+          <!--== All users ==-->
           <div class="form-section inst-details std-details">
-            <h4>Manage Instructors</h4>
-            <p>View, Add, Update or Delete Instructor</p>
+            <h4>Manage users</h4>
+            <p>View, Add, Update or Delete user</p>
             <div class="tab-inn">
               <div class="table-responsive table-desi">
                 <table class="table table-hover instructors-table">
@@ -1466,7 +1475,7 @@
     <!--Import jQuery before materialize.js-->
     <script src="js/main.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/materialize.min.js"></script>
+    <!-- <script src="js/materialize.min.js"></script> -->
     <script src="js/custom.js"></script>
     <script src="assets/js/sidebar-tog.js"></script>
 
