@@ -46,12 +46,11 @@ const translations = {
 
     // Courses Section
     coursesHeading: "Courses",
-    popularCourses: "Popular Courses",
-
-    // Dashboard Navigation
+    popularCourses: "Popular Courses",    // Dashboard Navigation
     myDashboard: "Dashboard",
     myProfile: "My Profile",
     myCourses: "My Courses",
+    courseMaterials: "Course Materials",
     examsResults: "Exams & Results",
     schedule: "Schedule",
     notifications: "Notifications",
@@ -103,11 +102,33 @@ const translations = {
     accountStatus: "Account Status",
     accountSecurity: "Account Security",
     lastLogin: "Last Login",
-    password: "Password",
-    twoFactorAuth: "Two-Factor Auth",
-    changePassword: "Change Password",
-    enable2FA: "Enable 2FA",
-    changePhoto: "Change photo",
+    password: "Password",    twoFactorAuth: "Two-Factor Auth",    changePassword: "Change Password",    enable2FA: "Enable 2FA",    changePhoto: "Change photo",
+    
+    // Change Photo Modal
+    changeProfilePhoto: "Change Profile Photo",
+    selectNewPhoto: "Select a new photo",
+    uploadPhoto: "Upload Photo",
+    removePhoto: "Remove Photo",
+    photoRequirements: "Please select a JPG, PNG, or GIF image under 5MB.",
+    photoUpdated: "Profile photo updated successfully!",
+    photoError: "Error uploading photo. Please try again.",
+    invalidFileType: "Invalid file type. Please select a JPG, PNG, or GIF image.",
+    fileTooLarge: "File size too large. Please select an image under 5MB.",
+    
+    // Change Password Modal
+    currentPassword: "Current Password",
+    newPassword: "New Password",
+    confirmNewPassword: "Confirm New Password",
+    cancel: "Cancel",
+    passwordRequirements: "Password must be at least 8 characters long.",
+    passwordChanged: "Password changed successfully!",
+    passwordMismatch: "Passwords do not match.",
+    currentPasswordIncorrect: "Current password is required.",    passwordTooShort: "Password must be at least 8 characters long.",
+    newPasswordDifferent: "New password must be different from current password.",
+    lastChangedNow: "Last changed just now",// Materials Page
+    totalMaterials: "Total Materials",
+    downloaded: "Downloaded",
+    materialsInfo: "Access all your course materials in one place. You can preview, download, and organize materials by course or file type.",
 
     // Hero Section
     heroTitle: "Learning Today,<br />Leading Tomorrow",
@@ -275,12 +296,11 @@ const translations = {
 
     // Courses Section
     coursesHeading: "الدورات",
-    popularCourses: "الدورات الشائعة",
-
-    // Dashboard Navigation
+    popularCourses: "الدورات الشائعة",    // Dashboard Navigation
     myDashboard: "لوحة التحكم",
     myProfile: "الملف الشخصي",
     myCourses: "دوراتي",
+    courseMaterials: "مواد الدورة",
     examsResults: "الاختبارات والنتائج",
     schedule: "الجدول الزمني",
     notifications: "الإشعارات",
@@ -333,10 +353,33 @@ const translations = {
     accountSecurity: "أمان الحساب",
     lastLogin: "آخر تسجيل دخول",
     password: "كلمة المرور",
-    twoFactorAuth: "المصادقة الثنائية",
-    changePassword: "تغيير كلمة المرور",
-    enable2FA: "تفعيل المصادقة الثنائية",
-    changePhoto: "تغيير الصورة",
+    twoFactorAuth: "المصادقة الثنائية",    changePassword: "تغيير كلمة المرور",    enable2FA: "تفعيل المصادقة الثنائية",    changePhoto: "تغيير الصورة",
+    
+    // Change Photo Modal
+    changeProfilePhoto: "تغيير صورة الملف الشخصي",
+    selectNewPhoto: "اختر صورة جديدة",
+    uploadPhoto: "رفع الصورة",
+    removePhoto: "إزالة الصورة",
+    photoRequirements: "يرجى اختيار صورة JPG أو PNG أو GIF أقل من 5 ميجابايت.",
+    photoUpdated: "تم تحديث صورة الملف الشخصي بنجاح!",
+    photoError: "خطأ في رفع الصورة. يرجى المحاولة مرة أخرى.",
+    invalidFileType: "نوع ملف غير صالح. يرجى اختيار صورة JPG أو PNG أو GIF.",
+    fileTooLarge: "حجم الملف كبير جداً. يرجى اختيار صورة أقل من 5 ميجابايت.",
+    
+    // Change Password Modal
+    currentPassword: "كلمة المرور الحالية",
+    newPassword: "كلمة المرور الجديدة",
+    confirmNewPassword: "تأكيد كلمة المرور الجديدة",
+    cancel: "إلغاء",
+    passwordRequirements: "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+    passwordChanged: "تم تغيير كلمة المرور بنجاح!",
+    passwordMismatch: "كلمات المرور غير متطابقة.",
+    currentPasswordIncorrect: "كلمة المرور الحالية مطلوبة.",    passwordTooShort: "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+    newPasswordDifferent: "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية.",
+    lastChangedNow: "تم التغيير للتو",// Materials Page
+    totalMaterials: "إجمالي المواد",
+    downloaded: "تم التحميل",
+    materialsInfo: "الوصول إلى جميع مواد الدورة الخاصة بك في مكان واحد. يمكنك معاينة وتحميل وتنظيم المواد حسب الدورة أو نوع الملف.",
 
     // Hero Section
     heroTitle: "التعلم اليوم،<br />القيادة غداً",

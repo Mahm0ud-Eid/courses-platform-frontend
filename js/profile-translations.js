@@ -106,8 +106,7 @@ function translateProfileElements(lang) {
     if (avatarEdit) {
         avatarEdit.setAttribute('title', translations[lang].changePhoto);
     }
-    
-    // Translate courses and certificates labels in profile stats
+      // Translate courses and certificates labels in profile stats
     document.querySelectorAll('.stat-item p').forEach(item => {
         if (item.textContent.trim() === 'Courses' || item.textContent.trim() === 'الدورات') {
             item.textContent = translations[lang].courses;
@@ -115,4 +114,113 @@ function translateProfileElements(lang) {
             item.textContent = translations[lang].certificates;
         }
     });
+
+    // Translate change password modal elements
+    translateChangePasswordModal(lang);
+}
+
+// Function to translate change password modal elements
+function translateChangePasswordModal(lang) {
+    if (!translations || !translations[lang]) return;
+
+    // Translate modal title
+    const modalTitle = document.querySelector('#changePasswordModalLabel');
+    if (modalTitle) {
+        const icon = modalTitle.querySelector('i');
+        if (icon) {
+            modalTitle.innerHTML = icon.outerHTML + ' ' + translations[lang].changePassword;
+        } else {
+            modalTitle.textContent = translations[lang].changePassword;
+        }
+    }
+
+    // Translate form labels
+    const labelMappings = {
+        'currentPassword': translations[lang].currentPassword,
+        'newPassword': translations[lang].newPassword,
+        'confirmPassword': translations[lang].confirmNewPassword
+    };
+
+    Object.keys(labelMappings).forEach(id => {
+        const label = document.querySelector(`label[for="${id}"]`);
+        if (label) {
+            label.textContent = labelMappings[id];
+        }
+    });
+
+    // Translate password requirements text
+    const requirementsText = document.querySelector('#changePasswordForm .form-text');
+    if (requirementsText) {
+        requirementsText.textContent = translations[lang].passwordRequirements;
+    }
+
+    // Translate modal buttons
+    const cancelBtn = document.querySelector('#changePasswordModal .btn-secondary');
+    if (cancelBtn) {
+        cancelBtn.textContent = translations[lang].cancel;
+    }
+
+    const saveBtn = document.querySelector('#savePasswordBtn');
+    if (saveBtn) {
+        const icon = saveBtn.querySelector('i');
+        if (icon) {
+            saveBtn.innerHTML = icon.outerHTML + ' ' + translations[lang].changePassword;
+        } else {
+            saveBtn.textContent = translations[lang].changePassword;
+        }    }
+}
+
+// Function to translate change photo modal elements
+function translateChangePhotoModal(lang) {
+    if (!translations || !translations[lang]) return;
+
+    const modalTitle = document.querySelector('#changePhotoModalLabel');
+    if (modalTitle) {
+        const icon = modalTitle.querySelector('i');
+        if (icon) {
+            modalTitle.innerHTML = icon.outerHTML + ' ' + translations[lang].changeProfilePhoto;
+        } else {
+            modalTitle.textContent = translations[lang].changeProfilePhoto;
+        }
+    }
+
+    const selectPhotoLabel = document.querySelector('#changePhotoModal label[for="photoFileInput"]');
+    if (selectPhotoLabel) {
+        selectPhotoLabel.textContent = translations[lang].selectNewPhoto;
+    }
+
+    const photoRequirements = document.querySelector('#changePhotoModal .form-text');
+    if (photoRequirements) {
+        photoRequirements.textContent = translations[lang].photoRequirements;
+    }
+
+    const cancelBtn = document.querySelector('#changePhotoModal .btn-secondary');
+    if (cancelBtn) {
+        cancelBtn.textContent = translations[lang].cancel;
+    }
+
+    const removeBtn = document.querySelector('#removePhotoBtn');
+    if (removeBtn) {
+        const icon = removeBtn.querySelector('i');
+        if (icon) {
+            removeBtn.innerHTML = icon.outerHTML + ' ' + translations[lang].removePhoto;
+        } else {
+            removeBtn.textContent = translations[lang].removePhoto;
+        }
+    }
+
+    const uploadBtn = document.querySelector('#uploadPhotoBtn');
+    if (uploadBtn) {
+        const icon = uploadBtn.querySelector('i');
+        if (icon) {
+            uploadBtn.innerHTML = icon.outerHTML + ' ' + translations[lang].uploadPhoto;
+        } else {
+            uploadBtn.textContent = translations[lang].uploadPhoto;
+        }
+    }
+
+    const previewLabel = document.querySelector('#changePhotoModal h6');
+    if (previewLabel) {
+        previewLabel.textContent = lang === 'ar' ? 'معاينة:' : 'Preview:';
+    }
 }
