@@ -32,4 +32,14 @@ const db = getFirestore(app);
 const users = collection(db, "users");
 const snapshot = await getDocs(users);
 
-export { auth, db };
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, you can access user information here
+    console.log("User is signed in:", user);
+  } else {
+    // User is signed out
+    console.log("No user is signed in.");
+  }
+});
+
+export { auth, db, app };
