@@ -1,22 +1,17 @@
-// import { auth, db } from "js/index.js"; // Import auth and db from index.js
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import { auth, db } from "../js/index.js"; // Import auth and db from index.js
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 import {
   collection,
+  getFirestore,
   getDocs,
   query,
   where,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     // User is signed in, you can access user information here
-//     console.log("Useris signed in:", user);
-//   } else {
-//     // User is signed out
-//     console.log("No user is signed in.");
-//   }
-// });
+import {
+  getAuth,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
 document
   .getElementById("loginForm")
@@ -75,6 +70,16 @@ async function signIn(email, password) {
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
+
+// // onAuthStateChanged(auth, (user) => {
+// //   if (user) {
+// //     // User is signed in, you can access user information here
+// //     console.log("Useris signed in:", user);
+// //   } else {
+// //     // User is signed out
+// //     console.log("No user is signed in.");
+// //   }
+// // });
 
 // Translations for login page
 document.addEventListener("DOMContentLoaded", function () {
