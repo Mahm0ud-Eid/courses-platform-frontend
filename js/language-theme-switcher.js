@@ -196,12 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     link.textContent = navItems[text];
                 }
             }
-        });
-          // Translate dashboard navigation items
+        });          // Translate dashboard navigation items
         const dashboardNavItems = {
             'Dashboard': translations[lang].myDashboard,
             'My Profile': translations[lang].myProfile,
             'My Courses': translations[lang].myCourses,
+            'Course Materials': translations[lang].courseMaterials,
             'Exams & Results': translations[lang].examsResults,
             'Schedule': translations[lang].schedule,
             'Notifications': translations[lang].notifications,
@@ -211,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'لوحة التحكم': translations[lang].myDashboard,
             'الملف الشخصي': translations[lang].myProfile,
             'دوراتي': translations[lang].myCourses,
+            'مواد الدورة': translations[lang].courseMaterials,
             'الاختبارات والنتائج': translations[lang].examsResults,
             'الجدول الزمني': translations[lang].schedule,
             'الإشعارات': translations[lang].notifications,

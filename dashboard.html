@@ -30,11 +30,10 @@
   <link href="assets/css/rtl.css" rel="stylesheet" />
   <!-- Dark Mode Support -->
   <link href="assets/css/dark-mode.css" rel="stylesheet" />
-
+  <!-- Custom styles for dashboard page -->
   <style>
     :root {
-      --accent-color: #ffd400;
-      --contrast-color: #2a3546;
+      /* Color palette */
       --primary: #4361ee;
       --primary-light: #eef2ff;
       --secondary: #3f37c9;
@@ -45,8 +44,13 @@
       --success: #28a745;
       --danger: #dc3545;
       --warning: #fd7e14;
+
+      /* Theme switcher colors */
+      --accent-color: #ffd400;
+      --contrast-color: #2a3546;
     }
 
+    /* Language and Theme Switchers */
     .switchers-container {
       display: flex;
       gap: 25px;
@@ -58,9 +62,41 @@
       margin-right: 0;
     }
 
+    .switcher-btn {
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .switcher-btn:hover {
+      background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    .switcher-btn i {
+      font-size: 16px;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f5f7fb;
+    }
+
+    /* Dark mode variables override */
+    body.dark-mode {
+      --primary-light: rgba(67, 97, 238, 0.2);
+      --dark: #ffffff;
+      --gray: #e0e0e0;
+      --light-gray: #333;
+      background-color: #121212;
     }
 
     .dashboard-container {
@@ -448,31 +484,6 @@
       margin: 0;
     }
 
-    /* Switchers */
-    .switchers-container {
-      display: flex;
-      gap: 25px;
-    }
-
-    .switcher-btn {
-      background-color: var(--primary);
-      color: #ffffff;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .switcher-btn:hover {
-      background-color: var(--secondary);
-    }
-
     /* Responsive Adjustments */
     @media (max-width: 992px) {
       .profile-card img {
@@ -629,16 +640,24 @@
           <div class="dashboard-nav animate-fade delay-4">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                <a class="nav-link active" href="#"><i class="bi bi-speedometer2"></i> <span
+                    data-key="myDashboard">Dashboard</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="db-profile.html"><i class="bi bi-person"></i> My Profile</a>
+                <a class="nav-link" href="db-profile.html"><i class="bi bi-person"></i> <span data-key="myProfile">My
+                    Profile</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> My Courses</a>
+                <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> <span
+                    data-key="myCourses">My Courses</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-danger" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                <a class="nav-link" href="db-materials.html"><i class="bi bi-folder2-open"></i><span
+                    data-key="courseMaterials">Course Materials</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="#"><i class="bi bi-box-arrow-right"></i> <span
+                    data-key="logout">Logout</span></a>
               </li>
             </ul>
           </div>
