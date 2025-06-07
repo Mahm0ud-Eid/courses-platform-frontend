@@ -4675,6 +4675,7 @@ textarea {
   margin: 2px;
   position: relative;
   overflow: hidden;
+  border-radius: 11px;
 }
 .dash-book i {
   font-size: 72px;
