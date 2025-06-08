@@ -3,8 +3,12 @@ import {
   collection,
   getFirestore,
   getDocs,
+  addDoc,
+  updateDoc,
   query,
   where,
+  doc,
+  deleteDoc,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
 let dir = document.querySelector(".curr-path");
@@ -32,12 +36,20 @@ let instPass = document.querySelector(".inst-pass");
 let instDesc = document.querySelector(".inst-desc");
 let instImg = document.querySelector(".inst-img");
 
+const usersRef = collection(db, "users");
+
 function validateToken() {
   const token = sessionStorage.getItem("token");
 
   if (!token) {
-    alert("No token found. Please log in.");
-    window.location.href = "/login.html";
+    Swal.fire({
+      title: "No token found",
+      text: "Please log in.",
+      icon: "warning",
+      showCloseButton: true,
+    }).then(() => {
+      window.location.href = "/login.html";
+    });
     return null;
   }
 
@@ -52,14 +64,26 @@ function validateToken() {
     const isExpired = payload.exp * 1000 < Date.now();
 
     if (isExpired) {
-      alert("Token expired. Please log in again.");
-      window.location.href = "/login.html";
+      Swal.fire({
+        title: "Session Expired",
+        text: "Your session has expired. Please log in again.",
+        icon: "warning",
+        showCloseButton: true,
+      }).then(() => {
+        window.location.href = "/login.html";
+      });
       return null;
     }
   } catch (error) {
     console.error("Invalid token format:", error);
-    alert("Invalid token format. Please log in again.");
-    window.location.href = "/login.html";
+    Swal.fire({
+      title: "Invalid token format",
+      text: "Please log in again.",
+      icon: "error",
+      showCloseButton: true,
+    }).then(() => {
+      window.location.href = "/login.html";
+    });
     return null;
   }
 
@@ -93,36 +117,26 @@ instViewBtn.addEventListener("click", async function () {
   //   });
   // }
   // const db = firebase.firestore();
-  const db = getFirestore();
-  const usersRef = collection(db, "users");
-  const q = query(usersRef, where("email", "==", instEmail.value));
-  const querySnapshot = await getDocs(q);
+  const qSnap = await getDocs(
+    query(usersRef, where("email", "==", instEmail.value))
+  );
 
-  if (!querySnapshot.empty) {
-    const userData = querySnapshot.docs[0].data();
+  if (!qSnap.empty) {
+    const userData = qSnap.docs[0].data();
     console.log("Fetched user data:", userData);
     Swal.fire({
       title: "User Found",
       text: "Fill the fields to update it",
       icon: "success",
       showCloseButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Ok",
-      cancelButtonText: "No, thanks",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        console.log("yes");
-      } else if (result.isDismissed) {
-        console.log("No");
-      }
     });
-    instSaveBtn.innerHTML = "Update Instructor";
+    instSaveBtn.innerHTML = "Update User";
     // instFName.value = userData.firstname || "";
     // instLName.value = userData.lastname || "";
     instName.value = userData.name || "";
-    // instPass.value = userData.password || "";
-    instPhone.value = userData.Phone || "";
-    instDesc.value = userData.Description || "";
+    instPass.value = userData.password || "";
+    instPhone.value = userData.phone || "";
+    instDesc.value = userData.description || "";
     // instImg.src = userData.image || "images/user/1.png";
 
     const role = userData.role ? userData.role.toLowerCase() : "";
@@ -137,17 +151,9 @@ instViewBtn.addEventListener("click", async function () {
       title: "User Not Found",
       text: "Fill the fields to create it",
       icon: "info",
-      showCancelButton: true,
-      confirmButtonText: "Ok",
-      cancelButtonText: "No, thanks",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        console.log("yes");
-      } else if (result.isDismissed) {
-        console.log("No");
-      }
+      showCloseButton: true,
     });
-    instSaveBtn.innerHTML = "Create Instructor";
+    instSaveBtn.innerHTML = "Create User";
     // Clear the form fields if no data is returned
     instName.value = "";
     instPhone.value = "";
@@ -157,66 +163,91 @@ instViewBtn.addEventListener("click", async function () {
   }
 });
 
-instSaveBtn.addEventListener("click", function (event) {
-  event.preventDefault(); // Prevent form submission
+document.getElementById("file-input").addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
 
+  const formData = new FormData();
+  formData.append("myFile", file);
+});
+
+instSaveBtn.addEventListener("click", async (event) => {
+  event.preventDefault(); // Prevent form submission
   const token = validateToken();
 
-  // Prevent default form submission and handle everything via fetch
   const instructorData = {
-    Email: instEmail.value,
-    Name: instName.value,
-    Password: instPass.value,
-    Phone: instPhone.value,
-    Description: instDesc.value,
-    // Image: instImg.value || `images/user/1.png`,
+    email: instEmail.value,
+    name: instName.value,
+    password: instPass.value,
+    phone: instPhone.value,
+    description: instDesc.value,
+    role: document.getElementById("userRole").value,
+    // image: instImg.value || `images/user/1.png`,
   };
 
-  fetch(rUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(instructorData),
-    redirect: "manual", // Prevent automatic following of redirects
-  })
-    .then((response) => {
-      // If the backend tries to redirect, fetch with redirect: "manual" will not follow it
-      if (
-        response.type === "opaqueredirect" ||
-        response.status === 302 ||
-        response.status === 301
-      ) {
-        throw new Error("Redirect prevented by client.");
+  try {
+    if (instSaveBtn.innerHTML === "Update User") {
+      // Update existing user
+      const qSnap = await getDocs(
+        query(usersRef, where("email", "==", instEmail.value))
+      );
+      if (!qSnap.empty) {
+        const userDoc = qSnap.docs[0];
+        await updateDoc(doc(db, "users", userDoc.id), {
+          ...instructorData,
+          updatedAt: new Date(),
+        });
+        Swal.fire({
+          title: "User updated!",
+          text: `User updated successfully.`,
+          icon: "success",
+          showCloseButton: true,
+        });
+      } else {
+        Swal.fire({
+          title: "User not found",
+          text: "Cannot update non-existing user.",
+          icon: "error",
+          showCloseButton: true,
+        });
       }
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
+    } else {
+      // Create new user
+      const docRef = await addDoc(usersRef, instructorData);
       Swal.fire({
-        title: data.message,
+        title: "User saved!",
+        text: `User ID: ${docRef.id}`,
         icon: "success",
         showCloseButton: true,
       });
-    })
-    .catch((error) => {
-      console.error("There was a problem with the operation:", error);
-      Swal.fire({
-        title: "Error",
-        text: error.message,
-        icon: "error",
-        showCloseButton: true,
-      });
+    }
+  } catch (error) {
+    console.error("Error saving user: ", error);
+    Swal.fire({
+      title: "Error",
+      text: error.message,
+      icon: "error",
+      showCloseButton: true,
     });
+  }
 });
 
-instDelBtn.addEventListener("click", function (event) {
+// DELETE User
+instDelBtn.addEventListener("click", async (event) => {
   event.preventDefault(); // Prevent form submission
-
   const token = validateToken();
+
+  const qSnap = await getDocs(
+    query(usersRef, where("email", "==", instEmail.value))
+  );
+  if (qSnap.empty) {
+    Swal.fire({
+      title: "User not found",
+      icon: "error",
+      showCloseButton: true,
+    });
+    return;
+  }
 
   Swal.fire({
     title: "Are you sure?",
@@ -225,48 +256,22 @@ instDelBtn.addEventListener("click", function (event) {
     showCancelButton: true,
     confirmButtonText: "Yes, delete it!",
     cancelButtonText: "No, cancel!",
-  }).then((result) => {
+  }).then(async (result) => {
     if (result.isConfirmed) {
-      fetch(
-        `https://uccd-ljoxz.ondigitalocean.app/api/v1/manager/instructor/delete`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ username: instEmail.value }),
-        }
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          Swal.fire({
-            title: data.message,
-            icon: "success",
-            showCloseButton: true,
-          });
-          // Clear the form fields after deletion
-          instName.value = "";
-          instPhone.value = "";
-          instDesc.value = "";
-          instEmail.value = "";
-          instPass.value = "";
-        })
-        .catch((error) => {
-          console.error("There was a problem with the fetch operation:", error);
-          Swal.fire({
-            title: "Error",
-            text: error.message,
-            icon: "error",
-            showCloseButton: true,
-          });
-        });
-    } else if (result.isDismissed) {
+      const userDoc = qSnap.docs[0];
+      await deleteDoc(doc(db, "users", userDoc.id));
+      Swal.fire({
+        title: "Deleted!",
+        icon: "success",
+        showCloseButton: true,
+      });
+      // Clear form after deletion
+      instName.value = "";
+      instEmail.value = "";
+      instPhone.value = "";
+      instDesc.value = "";
+      instPass.value = "";
+    } else {
       console.log("Deletion cancelled");
     }
   });
