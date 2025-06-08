@@ -358,7 +358,8 @@
               </div>
 
               <select
-                class="form-select browser-default"
+                id="userRole"
+                class="form-select browser-default user-role"
                 aria-label="Default select example"
                 style="margin-bottom: 15px"
               >
@@ -396,7 +397,7 @@
               </div>
 
               <div class="file-container">
-                <input type="file" id="file-input" />
+                <input type="file" id="file-input" class="inst-img" />
                 <label for="file-input">
                   <i class="bi bi-file-earmark-image"></i> Image To Upload
                 </label>
@@ -404,7 +405,9 @@
                 <ul id="files-list"></ul>
               </div>
 
-              <button type="submit" class="inst-save">Update user</button>
+              <button type="submit" create="false" class="inst-save">
+                Update user
+              </button>
               <button type="reset" class="inst-del">Delete user</button>
             </form>
           </div>
