@@ -344,3 +344,5 @@ function showAllInst(data) {
     tableBody.appendChild(row);
   });
 }
+
+export { db, validateToken, dir, instDetails, cDetails, stdDetails, dash }; // Export the validateToken function for use in other modules
