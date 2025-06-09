@@ -75,36 +75,6 @@ crViewBtn.addEventListener("click", async function () {
     crSeats.value = crData.maxAcceptedStudents;
     crDesc.value = crData.description;
     // Combine and convert courseStartDate and courseEndDate to "MM-DD-YYYY - MM-DD-YYYY"
-    function formatDate(dateStr) {
-      if (!dateStr) return "";
-      // If dateStr is a Firestore Timestamp, convert to JS Date
-      if (
-        dateStr &&
-        typeof dateStr === "object" &&
-        typeof dateStr.toDate === "function"
-      ) {
-        dateStr = dateStr.toDate();
-      }
-      // If it's a Date object, format directly
-      if (dateStr instanceof Date) {
-        const mm = String(dateStr.getMonth() + 1).padStart(2, "0");
-        const dd = String(dateStr.getDate()).padStart(2, "0");
-        const yyyy = dateStr.getFullYear();
-        return `${mm}/${dd}/${yyyy}`;
-      }
-      // If it's a string, parse as before
-      if (typeof dateStr === "string") {
-        const datePart = dateStr.split(" at")[0];
-        const dateObj = new Date(datePart);
-        if (!isNaN(dateObj)) {
-          const mm = String(dateObj.getMonth() + 1).padStart(2, "0");
-          const dd = String(dateObj.getDate()).padStart(2, "0");
-          const yyyy = dateObj.getFullYear();
-          return `${mm}/${dd}/${yyyy}`;
-        }
-      }
-      return "";
-    }
     const crStart = formatDate(crData.courseStartDate);
     const crEnd = formatDate(crData.courseEndDate);
     const intrStart = formatDate(crData.interviewStartDate);
@@ -130,3 +100,34 @@ crViewBtn.addEventListener("click", async function () {
   }
 });
 // Add event listener for delete buttons
+
+function formatDate(dateStr) {
+  if (!dateStr) return "";
+  // If dateStr is a Firestore Timestamp, convert to JS Date
+  if (
+    dateStr &&
+    typeof dateStr === "object" &&
+    typeof dateStr.toDate === "function"
+  ) {
+    dateStr = dateStr.toDate();
+  }
+  // If it's a Date object, format directly
+  if (dateStr instanceof Date) {
+    const mm = String(dateStr.getMonth() + 1).padStart(2, "0");
+    const dd = String(dateStr.getDate()).padStart(2, "0");
+    const yyyy = dateStr.getFullYear();
+    return `${mm}/${dd}/${yyyy}`;
+  }
+  // If it's a string, parse as before
+  if (typeof dateStr === "string") {
+    const datePart = dateStr.split(" at")[0];
+    const dateObj = new Date(datePart);
+    if (!isNaN(dateObj)) {
+      const mm = String(dateObj.getMonth() + 1).padStart(2, "0");
+      const dd = String(dateObj.getDate()).padStart(2, "0");
+      const yyyy = dateObj.getFullYear();
+      return `${mm}/${dd}/${yyyy}`;
+    }
+  }
+  return "";
+}
