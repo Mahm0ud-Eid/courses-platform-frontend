@@ -26,12 +26,14 @@ let catNameSel = document.querySelector(".cat");
 let instSel = document.querySelector(".cr-inst");
 let crSeats = document.querySelector(".cr-seats");
 let crDesc = document.querySelector(".cr-desc");
+let crDates = document.querySelector(".cr-dates");
+let intrDates = document.querySelector(".intr-dates");
 let crStartDate, crEndDate, intrStartDate, intrEndDate;
 
 let crMgBtn = document.querySelector(".cr-mg-btn");
 let crViewBtn = document.querySelector(".cr-view");
-let crAddBtn = document.querySelector(".cr-add");
-let crDeleteBtn = document.querySelector(".cr-delete");
+let crSaveBtn = document.querySelector(".cr-save");
+let crDelBtn = document.querySelector(".cr-del");
 
 const coursesRef = collection(db, "courses");
 
@@ -48,3 +50,83 @@ crMgBtn.addEventListener("click", function () {
   cDetails.style.display = "none";
   addCr.style.display = "block";
 });
+
+crViewBtn.addEventListener("click", async function () {
+  dir.innerHTML = "View Courses";
+
+  const cSnap = await getDocs(
+    query(coursesRef, where("title", "==", crName.value))
+  );
+
+  if (!cSnap.empty) {
+    const crData = cSnap.docs[0].data();
+    console.log("Fetched Course data:", crData);
+    Swal.fire({
+      title: "Course Found",
+      text: "Fill the fields to update it",
+      icon: "success",
+      showCloseButton: true,
+    });
+    crSaveBtn.innerHTML = "Update Course";
+
+    crName.value = crData.title;
+    catNameSel.value = crData.category;
+    instSel.value = crData.instructor;
+    crSeats.value = crData.maxAcceptedStudents;
+    crDesc.value = crData.description;
+    // Combine and convert courseStartDate and courseEndDate to "MM-DD-YYYY - MM-DD-YYYY"
+    function formatDate(dateStr) {
+      if (!dateStr) return "";
+      // If dateStr is a Firestore Timestamp, convert to JS Date
+      if (
+        dateStr &&
+        typeof dateStr === "object" &&
+        typeof dateStr.toDate === "function"
+      ) {
+        dateStr = dateStr.toDate();
+      }
+      // If it's a Date object, format directly
+      if (dateStr instanceof Date) {
+        const mm = String(dateStr.getMonth() + 1).padStart(2, "0");
+        const dd = String(dateStr.getDate()).padStart(2, "0");
+        const yyyy = dateStr.getFullYear();
+        return `${mm}/${dd}/${yyyy}`;
+      }
+      // If it's a string, parse as before
+      if (typeof dateStr === "string") {
+        const datePart = dateStr.split(" at")[0];
+        const dateObj = new Date(datePart);
+        if (!isNaN(dateObj)) {
+          const mm = String(dateObj.getMonth() + 1).padStart(2, "0");
+          const dd = String(dateObj.getDate()).padStart(2, "0");
+          const yyyy = dateObj.getFullYear();
+          return `${mm}/${dd}/${yyyy}`;
+        }
+      }
+      return "";
+    }
+    const crStart = formatDate(crData.courseStartDate);
+    const crEnd = formatDate(crData.courseEndDate);
+    const intrStart = formatDate(crData.interviewStartDate);
+    const intrEnd = formatDate(crData.interviewEndDate);
+
+    crDates.value = crStart && crEnd ? `${crStart} - ${crEnd}` : "";
+    intrDates.value = intrStart && intrEnd ? `${intrStart} - ${intrEnd}` : "";
+  } else {
+    Swal.fire({
+      title: "Course Not Found",
+      text: "Fill the fields to create it",
+      icon: "info",
+      showCloseButton: true,
+    });
+    crSaveBtn.innerHTML = "Create Course";
+    crName.value = "";
+    catNameSel.value = "";
+    instSel.value = "";
+    crSeats.value = "";
+    crDesc.value = "";
+    crDates.value = "";
+    intrDates.value = "";
+  }
+});
+// Add event listener for delete buttons
