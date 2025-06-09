@@ -99,7 +99,61 @@ crViewBtn.addEventListener("click", async function () {
     crDates.value = "";
     intrDates.value = "";
   }
-  console.log(parseDateToTimestamp(crDates.value.split(" - ")[0]));
+});
+
+crSaveBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+  const crData = {
+    title: crName.value,
+    category: catNameSel.value,
+    instructor: instSel.value,
+    maxAcceptedStudents: parseInt(crSeats.value, 10),
+    description: crDesc.value,
+    courseStartDate: parseDateToTimestamp(
+      crDates.value.split(" - ")[0]
+    ).toDate(),
+    courseEndDate: parseDateToTimestamp(crDates.value.split(" - ")[1]).toDate(),
+    interviewStartDate: parseDateToTimestamp(
+      intrDates.value.split(" - ")[0]
+    ).toDate(),
+    interviewEndDate: parseDateToTimestamp(
+      intrDates.value.split(" - ")[1]
+    ).toDate(),
+  };
+
+  try {
+    if (crSaveBtn.innerHTML === "Create Course") {
+      const docRef = await addDoc(coursesRef, crData);
+      Swal.fire({
+        title: "Course Saved",
+        text: `Course ID: ${docRef.id}`,
+        icon: "success",
+        showCloseButton: true,
+      });
+    } else if (crSaveBtn.innerHTML === "Update Course") {
+      const cSnap = await getDocs(
+        query(coursesRef, where("title", "==", crName.value))
+      );
+      if (!cSnap.empty) {
+        const docRef = doc(db, "courses", cSnap.docs[0].id);
+        await updateDoc(docRef, crData);
+        Swal.fire({
+          title: "Course Updated",
+          text: "The course has been updated successfully.",
+          icon: "success",
+          showCloseButton: true,
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Error saving course:", error);
+    Swal.fire({
+      title: "Error",
+      text: "There was an error saving the course. Please try again.",
+      icon: "error",
+      showCloseButton: true,
+    });
+  }
 });
 
 // Functions
@@ -158,59 +212,4 @@ document.getElementById("file-input").addEventListener("change", (event) => {
 
   const formData = new FormData();
   formData.append("myFile", file);
-});
-
-crSaveBtn.addEventListener("click", async (event) => {
-  event.preventDefault();
-  const crData = {
-    title: crName.value,
-    category: catNameSel.value,
-    instructor: instSel.value,
-    maxAcceptedStudents: parseInt(crSeats.value, 10),
-    description: crDesc.value,
-    courseStartDate: parseDateToTimestamp(
-      crDates.value.split(" - ")[0]
-    ).toDate(),
-    courseEndDate: parseDateToTimestamp(crDates.value.split(" - ")[1]).toDate(),
-    interviewStartDate: parseDateToTimestamp(
-      intrDates.value.split(" - ")[0]
-    ).toDate(),
-    interviewEndDate: parseDateToTimestamp(
-      intrDates.value.split(" - ")[1]
-    ).toDate(),
-  };
-
-  try {
-    if (crSaveBtn.innerHTML === "Create Course") {
-      const docRef = await addDoc(coursesRef, crData);
-      Swal.fire({
-        title: "Course Saved",
-        text: `Course ID: ${docRef.id}`,
-        icon: "success",
-        showCloseButton: true,
-      });
-    } else if (crSaveBtn.innerHTML === "Update Course") {
-      const cSnap = await getDocs(
-        query(coursesRef, where("title", "==", crName.value))
-      );
-      if (!cSnap.empty) {
-        const docRef = doc(db, "courses", cSnap.docs[0].id);
-        await updateDoc(docRef, crData);
-        Swal.fire({
-          title: "Course Updated",
-          text: "The course has been updated successfully.",
-          icon: "success",
-          showCloseButton: true,
-        });
-      }
-    }
-  } catch (error) {
-    console.error("Error saving course:", error);
-    Swal.fire({
-      title: "Error",
-      text: "There was an error saving the course. Please try again.",
-      icon: "error",
-      showCloseButton: true,
-    });
-  }
 });

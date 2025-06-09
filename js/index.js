@@ -35,7 +35,7 @@ const snapshot = await getDocs(users);
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, you can access user information here
-    console.log("User is signed in:", user);
+    // console.log("User is signed in:", user);
   } else {
     // User is signed out
     console.log("No user is signed in.");
