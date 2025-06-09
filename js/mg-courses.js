@@ -17,6 +17,7 @@ import {
   where,
   doc,
   deleteDoc,
+  Timestamp,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
 let addCr = document.querySelector(".add-cr");
@@ -99,8 +100,8 @@ crViewBtn.addEventListener("click", async function () {
     intrDates.value = "";
   }
 });
-// Add event listener for delete buttons
 
+// Functions
 function formatDate(dateStr) {
   if (!dateStr) return "";
   // If dateStr is a Firestore Timestamp, convert to JS Date
@@ -131,3 +132,29 @@ function formatDate(dateStr) {
   }
   return "";
 }
+
+// Converts "MM/DD/YYYY" to Firestore Timestamp
+function parseDateToTimestamp(dateStr) {
+  if (!dateStr) return null;
+  // Import Timestamp from Firestore if not already imported
+  const [mm, dd, yyyy] = dateStr.split("/");
+  if (!mm || !dd || !yyyy) return null;
+  const dateObj = new Date(`${yyyy}-${mm}-${dd}T00:00:00`);
+  if (isNaN(dateObj)) return null;
+  // Firestore Timestamp expects seconds and nanoseconds
+  return {
+    seconds: Math.floor(dateObj.getTime() / 1000),
+    nanoseconds: 0,
+    toDate: () => dateObj,
+  };
+  // If you have access to Firestore Timestamp:
+  // return Timestamp.fromDate(dateObj);
+}
+
+document.getElementById("file-input").addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append("myFile", file);
+});
