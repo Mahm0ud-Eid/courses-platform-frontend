@@ -53,6 +53,7 @@ crMgBtn.addEventListener("click", function () {
 });
 
 crViewBtn.addEventListener("click", async function () {
+  const token = validateToken();
   dir.innerHTML = "View Courses";
 
   const cSnap = await getDocs(
@@ -101,6 +102,7 @@ crViewBtn.addEventListener("click", async function () {
   }
 });
 
+// Save Course
 crSaveBtn.addEventListener("click", async (event) => {
   event.preventDefault();
   const crData = {
@@ -154,6 +156,63 @@ crSaveBtn.addEventListener("click", async (event) => {
       showCloseButton: true,
     });
   }
+});
+
+// Delete Course
+crDelBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+  const token = validateToken();
+
+  const cSnap = await getDocs(
+    query(coursesRef, where("title", "==", crName.value))
+  );
+  if (cSnap.empty) {
+    Swal.fire({
+      title: "Course Not Found",
+      text: "No course found with the given name.",
+      icon: "info",
+      showCloseButton: true,
+    });
+    return;
+  }
+
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+    cancelButtonText: "No, cancel!",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const docRef = doc(db, "courses", cSnap.docs[0].id);
+        await deleteDoc(docRef);
+        Swal.fire({
+          title: "Course Deleted",
+          text: "The course has been deleted successfully.",
+          icon: "success",
+          showCloseButton: true,
+        });
+        // Clear the form fields
+        crName.value = "";
+        catNameSel.value = "";
+        instSel.value = "";
+        crSeats.value = "";
+        crDesc.value = "";
+        crDates.value = "";
+        intrDates.value = "";
+      } catch (error) {
+        console.error("Error deleting course:", error);
+        Swal.fire({
+          title: "Error",
+          text: "There was an error deleting the course. Please try again.",
+          icon: "error",
+          showCloseButton: true,
+        });
+      }
+    }
+  });
 });
 
 // Functions
