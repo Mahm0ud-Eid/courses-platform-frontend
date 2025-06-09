@@ -50,6 +50,8 @@ crMgBtn.addEventListener("click", function () {
   stdDetails.style.display = "none";
   cDetails.style.display = "none";
   addCr.style.display = "block";
+  populateDatalist("cat");
+  populateDatalist("inst");
 });
 
 crViewBtn.addEventListener("click", async function () {
@@ -272,3 +274,41 @@ document.getElementById("file-input").addEventListener("change", (event) => {
   const formData = new FormData();
   formData.append("myFile", file);
 });
+
+async function populateDatalist(type) {
+  let options = [];
+  if (type === "cat") {
+    const catRef = collection(db, "category");
+    const catSnap = await getDocs(catRef);
+    options = catSnap.docs.map((doc) => doc.data().name).filter(Boolean);
+  } else if (type === "inst") {
+    const usersRef = collection(db, "users");
+    const q = query(usersRef, where("role", "==", "Instructor"));
+    const usersSnap = await getDocs(q);
+    options = usersSnap.docs.map((doc) => doc.data().name).filter(Boolean);
+  } else {
+    return;
+  }
+
+  if (type === "cat") {
+    const datalist = document.getElementById("catlistOptions");
+    if (datalist) {
+      datalist.innerHTML = "";
+      options.forEach((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        datalist.appendChild(option);
+      });
+    }
+  } else if (type === "inst") {
+    const datalist = document.getElementById("instlistOptions");
+    if (datalist) {
+      datalist.innerHTML = "";
+      options.forEach((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        datalist.appendChild(option);
+      });
+    }
+  }
+}
