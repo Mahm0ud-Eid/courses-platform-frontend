@@ -20,6 +20,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
+    <!-- DATEPICKER LIBRARY -->
+    <script src="/assets/dist/datera.min.js"></script>
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="/assets/dist/datera.min.css" />
+
     <!-- ALL CSS FILES -->
     <!-- <link href="css/bootstrap.css" rel="stylesheet" /> -->
     <link href="css/style.css" rel="stylesheet" />
@@ -435,7 +440,7 @@
                 </button>
               </div>
 
-              <div class="form-floating mb-3">
+              <!-- <div class="form-floating mb-3">
                 <input
                   type="text"
                   class="form-control inst-name"
@@ -443,23 +448,67 @@
                   placeholder="Name"
                 />
                 <label for="instAddName">Name</label>
+              </div> -->
+
+              <label for="instList" class="form-label">Course Instructor</label>
+              <input
+                class="form-control cr-inst"
+                list="instlistOptions"
+                id="instList"
+                placeholder="Choose Instructor..."
+                style="margin-bottom: 15px"
+              />
+              <datalist id="instlistOptions">
+                <option value="instructor 1"></option>
+                <option value="instructor 2"></option>
+              </datalist>
+
+              <label for="catList" class="form-label">Course Category</label>
+              <input
+                class="form-control cat"
+                list="catlistOptions"
+                id="catList"
+                placeholder="Choose Category..."
+                style="margin-bottom: 15px"
+              />
+              <datalist id="catlistOptions">
+                <option value="cat 1"></option>
+                <option value="cat 2"></option>
+              </datalist>
+
+              <div class="mb-3">
+                <label for="courseDates" class="form-label"
+                  >Course Dates (Start - End):</label
+                >
+                <input
+                  type="text"
+                  id="courseDates"
+                  class="form-control datepicker1"
+                />
               </div>
+              <script>
+                new window.Datera("datepicker1", {
+                  minYear: 2000,
+                  selectionType: "range",
+                }).mount();
+              </script>
 
-              <select
-                class="form-select browser-default cat"
-                aria-label="Default select example"
-                style="margin-bottom: 15px"
-              >
-                <option value="Category" selected></option>
-              </select>
-
-              <select
-                class="form-select browser-default cat-inst"
-                aria-label="Default select example"
-                style="margin-bottom: 15px"
-              >
-                <option value="Course Instructor" selected></option>
-              </select>
+              <div class="mb-3">
+                <label for="interviewDates" class="form-label"
+                  >Interview Dates (Start - End):</label
+                >
+                <input
+                  type="text"
+                  id="interviewDates"
+                  class="form-control datepicker2"
+                />
+              </div>
+              <script>
+                new window.Datera("datepicker2", {
+                  minYear: 2000,
+                  selectionType: "range",
+                }).mount();
+              </script>
 
               <div class="form-floating mb-3">
                 <input
