@@ -105,7 +105,7 @@ instMgBtn.addEventListener("click", function () {
 
 instViewBtn.addEventListener("click", async function () {
   dir.innerHTML = "view user";
-  const token = validateToken();
+  // const token = validateToken();
 
   // // Initialize Firebase if not already initialized
   // if (!firebase.apps.length) {
