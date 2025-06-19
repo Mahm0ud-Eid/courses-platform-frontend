@@ -25,72 +25,86 @@ if (userData) {
 
 const container = document.querySelector(".enr-courses");
 
-if (userData?.courses?.length) {
-  userData.courses.forEach(async (course) => {
-    try {
-      const q = query(collection(db, "courses"), where("title", "==", course));
-      const querySnapshot = await getDocs(q);
-      let courseRef;
-      if (!querySnapshot.empty) {
-        courseRef = querySnapshot.docs[0].ref;
-      } else {
-        console.error(`No course found with title '${course}'`);
-      }
-      const courseSnap = await getDoc(courseRef);
-      // console.log("Fetched Course data:", courseSnap.data());
-      if (courseSnap.exists()) {
+if (Array.isArray(userData?.courses) && userData.courses.length) {
+  for (const course of userData.courses) {
+    (async () => {
+      try {
+        const q = query(
+          collection(db, "courses"),
+          where("title", "==", course)
+        );
+        const querySnapshot = await getDocs(q);
+        if (querySnapshot.empty) {
+          console.error(`No course found with title '${course}'`);
+          return;
+        }
+        const courseRef = querySnapshot.docs[0].ref;
+        const courseSnap = await getDoc(courseRef);
+        if (!courseSnap.exists()) return;
         const data = courseSnap.data();
-        const colDiv = document.createElement("div");
-        colDiv.className = "col-md-6";
-
-        const card = document.createElement("div");
-        card.className = "course-card";
-
-        const cardImg = document.createElement("div");
-        cardImg.className = "course-card-img";
-
-        const img = document.createElement("img");
-        img.src = data.imageLink ? data.imageLink : "images/course/3.jpg";
-        img.alt = data.title;
-
-        const badge = document.createElement("span");
-        badge.className = "course-badge";
-        badge.textContent = "Completed";
-
-        cardImg.appendChild(img);
-        cardImg.appendChild(badge);
-
-        const cardBody = document.createElement("div");
-        cardBody.className = "course-card-body";
-
-        const title = document.createElement("h5");
-        title.textContent = data.title;
-
-        const desc = document.createElement("p");
-        desc.textContent = data.description;
-
-        const meta = document.createElement("div");
-        meta.className = "course-meta";
-
-        const duration = document.createElement("span");
-        duration.className = "course-duration";
-        duration.textContent = `${data.duration} Days`;
-
-        meta.appendChild(duration);
-        cardBody.appendChild(title);
-        cardBody.appendChild(desc);
-        cardBody.appendChild(meta);
-
-        card.appendChild(cardImg);
-        card.appendChild(cardBody);
-        colDiv.appendChild(card);
-        container.appendChild(colDiv);
+        const crCard = `
+          <div class="col-md-6">
+            <div class="course-card">
+              <div class="course-card-img">
+                <img src="${data.imageLink ?? "images/course/3.jpg"}" alt="${
+          data.title
+        }" />
+                <span class="course-badge">Completed</span>
+              </div>
+              <div class="course-card-body">
+                <h5>${data.title}</h5>
+                <p>${data.description ?? data.title + " course."}</p>
+                <div class="course-meta">
+                  <span class="course-duration">${data.duration} Days</span>
+                  <div class="star-rating ${data.courseID}">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`;
+        container.insertAdjacentHTML("beforeend", crCard);
+      } catch (error) {
+        console.error("Error fetching course data:", error);
       }
-    } catch (error) {
-      console.error("Error fetching course data:", error);
-    }
-  });
+    })();
+  }
 }
+
+document.addEventListener("mouseover", (e) => {
+  if (!e.target.classList.contains("star")) return;
+  const rating = e.target.dataset.value;
+  const container = e.target.closest(".star-rating");
+  container?.querySelectorAll(".star").forEach((s) => {
+    s.style.color = Number(s.dataset.value) <= rating ? "gold" : "gray";
+  });
+});
+
+let rating;
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("star")) {
+    rating = e.target.dataset.value;
+    const container = e.target.closest(".star-rating");
+    container?.querySelectorAll(".star").forEach((s) => {
+      s.style.color = Number(s.dataset.value) <= rating ? "gold" : "gray";
+    });
+    console.log(e.target.parentElement.classList[1], rating);
+  }
+});
+
+document.addEventListener("mouseout", (e) => {
+  if (!e.target.classList.contains("star")) return;
+  e.target
+    .closest(".star-rating")
+    ?.querySelectorAll(".star")
+    .forEach((s) => {
+      s.style.color = Number(s.dataset.value) <= rating ? "gold" : "gray";
+    });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   validateToken();
