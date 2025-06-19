@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>UCCD - Student </title>
+  <meta name="description" content="UCCD Student Dashboard - Track your learning progress" />
+  <meta name="keywords" content="UCCD, student, dashboard, courses, education" />
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <!-- RTL Support for Arabic -->
+  <link href="assets/css/rtl.css" rel="stylesheet" />
+  <!-- Dark Mode Support -->
+  <link href="assets/css/dark-mode.css" rel="stylesheet" />
+  
+  <script type="module" src="js/student.js"></script>
+
+  <!-- Custom styles for dashboard page -->
+  <style>
+    :root {
+      /* Color palette */
+      --primary: #4361ee;
+      --primary-light: #eef2ff;
+      --secondary: #3f37c9;
+      --accent: #ffd400;
+      --dark: #2a3546;
+      --gray: #6a6a6a;
+      --light-gray: #f8f9fa;
+      --success: #28a745;
+      --danger: #dc3545;
+      --warning: #fd7e14;
+
+      /* Theme switcher colors */
+      --accent-color: #ffd400;
+      --contrast-color: #2a3546;
+    }
+
+    /* Language and Theme Switchers */
+    .switchers-container {
+      display: flex;
+      gap: 25px;
+      margin-right: 20px;
+    }
+
+    .rtl .switchers-container {
+      margin-left: 20px;
+      margin-right: 0;
+    }
+
+    .switcher-btn {
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .switcher-btn:hover {
+      background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    .switcher-btn i {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f7fb;
+    }
+
+    /* Dark mode variables override */
+    body.dark-mode {
+      --primary-light: rgba(67, 97, 238, 0.2);
+      --dark: #ffffff;
+      --gray: #e0e0e0;
+      --light-gray: #333;
+      background-color: #121212;
+    }
+
+    .dashboard-container {
+      padding: 2rem 0;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 4px solid var(--primary-light);
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.15);
+    }
+
+    .profile-card h4 {
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-card p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+
+    /* Dashboard Navigation */
+    .dashboard-nav {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .dashboard-nav .nav-link {
+      color: var(--gray);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .dashboard-nav .nav-link i {
+      margin-right: 0.75rem;
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    .dashboard-nav .nav-link.active {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .dashboard-nav .nav-link:hover:not(.active) {
+      background: var(--light-gray);
+      color: var(--dark);
+    }
+
+    /* Dashboard Sections */
+    .dashboard-section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header h4 {
+      color: var(--dark);
+      font-weight: 600;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-header h4 i {
+      margin-right: 0.75rem;
+      color: var(--primary);
+    }
+
+    /* Course Cards */
+    .course-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: white;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .course-card-img {
+      position: relative;
+      height: 140px;
+      overflow: hidden;
+    }
+
+    .course-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .course-card:hover .course-card-img img {
+      transform: scale(1.05);
+    }
+
+    .course-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .course-card-body {
+      padding: 1.25rem;
+    }
+
+    .course-card-body h5 {
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .course-card-body p {
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .course-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .course-duration {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .course-progress {
+      width: 100%;
+      height: 6px;
+      background: var(--light-gray);
+      border-radius: 3px;
+      margin-top: 0.75rem;
+      overflow: hidden;
+    }
+
+    .course-progress-bar {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+      width: 65%;
+    }
+
+    /* Status Table */
+    .status-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .status-table th {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1rem;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .status-table th:first-child {
+      border-top-left-radius: 8px;
+    }
+
+    .status-table th:last-child {
+      border-top-right-radius: 8px;
+    }
+
+    .status-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      vertical-align: middle;
+    }
+
+    .status-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .status-table tr:hover td {
+      background: var(--primary-light);
+    }
+
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .status-active {
+      background: rgba(40, 167, 69, 0.1);
+      color: var(--success);
+    }
+
+    .status-inactive {
+      background: rgba(220, 53, 69, 0.1);
+      color: var(--danger);
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0.5rem;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: var(--light-gray);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-icon {
+      position: absolute;
+      left: -0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      z-index: 1;
+    }
+
+    .timeline-content {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-left: 2.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .timeline-date {
+      font-weight: 600;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .timeline-content h5 {
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .timeline-content p {
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .timeline-hall {
+      display: flex;
+      align-items: center;
+    }
+
+    .timeline-hall i {
+      margin-right: 0.25rem;
+    }
+
+    /* Stats Cards */
+    .stats-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .stats-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .stats-card i {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .stats-card h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .stats-card p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .profile-card img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .course-card-img {
+        height: 120px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-container {
+        padding: 1rem 0;
+      }
+
+      .profile-card,
+      .dashboard-nav,
+      .dashboard-section {
+        padding: 1.25rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade {
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-4 {
+      animation-delay: 0.4s;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- <img src="images/uccd-logo.png" alt="UCCD Logo" class="img-fluid"> -->
+        <h1 class="sitename">UCCD</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" data-key="home">Home</a></li>
+          <li><a href="about.html" data-key="about">About</a></li>
+          <li><a href="courses.html" data-key="courses">Courses</a></li>
+          <li><a href="trainers.html" data-key="trainers">Trainers</a></li>
+          <li><a href="community.html" data-key="community">Community</a></li>
+          <li><a href="dashboard.html" class="active" data-key="dashboard">Dashboard</a></li>
+          <li><a href="contact.html" data-key="contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-actions d-flex align-items-center">
+        <div class="switchers-container me-3">
+          <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
+            العربية
+          </button>
+          <button id="theme-toggle" class="switcher-btn" title="Switch to Dark Mode">
+            <i class="bi bi-moon"></i>
+          </button>
+        </div>
+
+        <a class="btn-getstarted" href="#!" data-bs-toggle="modal" data-bs-target="#modal1">
+          <i class="bi bi-box-arrow-in-right me-1"></i> Sign out
+        </a>
+      </div>
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <!-- ======= Dashboard Section ======= -->
+  <section id="dashboard" class="dashboard">
+    <div class="container dashboard-container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-4">
+          <!-- Profile Card -->
+          <div class="profile-card animate-fade delay-1">
+            <img src="images/user.jpg" alt="Student" class="img-fluid">
+            <h4>Emily Jessica</h4>
+            <p>Student ID: ST17241</p>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="row">
+            <div class="col-md-6 col-6">
+              <div class="stats-card animate-fade delay-2">
+                <i class="bi bi-book"></i>
+                <h3>5</h3>
+                <p>Active Courses</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-6">
+              <div class="stats-card animate-fade delay-3">
+                <i class="bi bi-award"></i>
+                <h3>3</h3>
+                <p>Certificates</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-6">
+              <div class="stats-card animate-fade delay-2">
+                <i class="bi bi-calendar-check"></i>
+                <h3>12</h3>
+                <p>Upcoming Classes</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-6">
+              <div class="stats-card animate-fade delay-3">
+                <i class="bi bi-hourglass-split"></i>
+                <h3>24h</h3>
+                <p>Study Time</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Navigation -->
+          <div class="dashboard-nav animate-fade delay-4">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#"><i class="bi bi-speedometer2"></i> <span
+                    data-key="myDashboard">Dashboard</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="db-profile.html"><i class="bi bi-person"></i> <span data-key="myProfile">My
+                    Profile</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="db-courses.html"><i class="bi bi-journal-bookmark"></i> <span
+                    data-key="myCourses">My Courses</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="db-materials.html"><i class="bi bi-folder2-open"></i><span
+                    data-key="courseMaterials">Course Materials</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="#"><i class="bi bi-box-arrow-right"></i> <span
+                    data-key="logout">Logout</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <!-- Welcome Section -->
+          <div class="dashboard-section animate-fade delay-1">
+            <div class="section-header">
+              <h4><i class="bi bi-emoji-smile"></i> Welcome Back, Emily!</h4>
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="reportDropdown"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-download me-1"></i> Export
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="reportDropdown">
+                  <li><a class="dropdown-item" href="#">PDF Report</a></li>
+                  <li><a class="dropdown-item" href="#">Excel Sheet</a></li>
+                  <li><a class="dropdown-item" href="#">Print</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="alert alert-primary" role="alert">
+              <i class="bi bi-info-circle me-2"></i> You have 2 upcoming assignments due this week. <a href="#"
+                class="alert-link">View details</a>
+            </div>
+            <p>
+              Welcome to your personalized learning dashboard. Here you can track your progress, manage your courses,
+              and stay updated with your schedule. You've completed <strong>65%</strong> of your current courses and
+              are on track to finish by your target date.
+            </p>
+          </div>
+
+          <!-- Enrolled Courses Section -->
+          <div class="dashboard-section">
+            <div class="section-header">
+              <h4><i class="bi bi-book"></i> Enrolled Courses</h4>
+              <a href="courses.html" class="btn btn-sm btn-outline-primary">Browse Courses</a>
+            </div>
+
+            <div class="row mt-3" id="courses-list">
+              <!-- First 4 Courses (visible initially) -->
+              <div class="col-md-6">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/3.jpg" alt="Master of Science">
+                    <span class="course-badge">In Progress</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Master of Science</h5>
+                    <p>Illinois City - Advanced degree program focusing on scientific research</p>
+                    <div class="course-meta">
+                      <span class="course-duration">150 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/4.jpg" alt="Java Programming">
+                    <span class="course-badge">Active</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Java Programming</h5>
+                    <p>Comprehensive course covering Java fundamentals to advanced concepts</p>
+                    <div class="course-meta">
+                      <span class="course-duration">60 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/5.jpg" alt="Aeronautical Engineering">
+                    <span class="course-badge">Active</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Aeronautical Engineering</h5>
+                    <p>Fundamentals of aircraft design and aerospace technology</p>
+                    <div class="course-meta">
+                      <span class="course-duration">30 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/3.jpg" alt="Master of Science">
+                    <span class="course-badge">Completed</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Master of Science</h5>
+                    <p>Previous completed program in scientific research methods</p>
+                    <div class="course-meta">
+                      <span class="course-duration">20 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hidden Courses (initially hidden) -->
+              <div class="col-md-6 more-courses hidden">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/3.jpg" alt="Master of Science">
+                    <span class="course-badge">In Progress</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Master of Science</h5>
+                    <p>Illinois City - Advanced degree program focusing on scientific research</p>
+                    <div class="course-meta">
+                      <span class="course-duration">150 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 more-courses hidden">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/4.jpg" alt="Java Programming">
+                    <span class="course-badge">Active</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Java Programming</h5>
+                    <p>Comprehensive course covering Java fundamentals to advanced concepts</p>
+                    <div class="course-meta">
+                      <span class="course-duration">60 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 more-courses hidden">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/5.jpg" alt="Aeronautical Engineering">
+                    <span class="course-badge">Active</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Aeronautical Engineering</h5>
+                    <p>Fundamentals of aircraft design and aerospace technology</p>
+                    <div class="course-meta">
+                      <span class="course-duration">30 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 more-courses hidden">
+                <div class="course-card">
+                  <div class="course-card-img">
+                    <img src="images/course/3.jpg" alt="Master of Science">
+                    <span class="course-badge">Completed</span>
+                  </div>
+                  <div class="course-card-body">
+                    <h5>Master of Science</h5>
+                    <p>Previous completed program in scientific research methods</p>
+                    <div class="course-meta">
+                      <span class="course-duration">20 Days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-3">
+              <a href="javascript:void(0)" class="btn btn-primary" id="view-all-courses">View All Courses</a>
+            </div>
+          </div>
+        </div>
+        <!-- Course Status Section -->
+        <div class="dashboard-section animate-fade delay-3">
+          <div class="section-header">
+            <h4><i class="bi bi-list-check"></i> Course Status</h4>
+            <div class="btn-group">
+              <button class="btn btn-sm btn-outline-primary active" id="all-btn">All</button>
+              <button class="btn btn-sm btn-outline-primary" id="active-btn">Active</button>
+              <button class="btn btn-sm btn-outline-primary" id="completed-btn">Completed</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="status-table">
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Instructor</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-status="active">
+                  <td>Software Testing</td>
+                  <td>Dr.Mohamed</td>
+                  <td>12 May 2018</td>
+                  <td>18 Aug 2018</td>
+                  <td><span class="status-badge status-active">active</span></td>
+                </tr>
+                <tr data-status="active">
+                  <td>Mechanical Design</td>
+                  <td>Dr.Mohamed</td>
+                  <td>05 Jan 2019</td>
+                  <td>10 Feb 2019</td>
+                  <td><span class="status-badge status-active">active</span></td>
+                </tr>
+                <tr data-status="active">
+                  <td>Architecture & Planning</td>
+                  <td>Dr.Mohamed</td>
+                  <td>21 Jun 2020</td>
+                  <td>08 Dec 2020</td>
+                  <td><span class="status-badge status-active">active</span></td>
+                </tr>
+                <tr data-status="completed">
+                  <td>Board Exam Training</td>
+                  <td>Dr.Mohamed</td>
+                  <td>08 Jun 2018</td>
+                  <td>21 Sep 2018</td>
+                  <td><span class="status-badge status-inactive">completed</span></td>
+                </tr>
+                <tr data-status="completed">
+                  <td>Yoga Training Classes</td>
+                  <td>Dr.Mohamed</td>
+                  <td>16 Feb 2018</td>
+                  <td>26 Mar 2018</td>
+                  <td><span class="status-badge status-inactive">completed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <!-- Timeline Section -->
+        <div class="dashboard-section animate-fade delay-4">
+          <div class="section-header">
+            <h4><i class="bi bi-calendar-event"></i> Upcoming Schedule</h4>
+            <a href="db-time-line.html" class="btn btn-sm btn-outline-primary">View Full Calendar</a>
+          </div>
+
+          <div class="timeline">
+            <!-- Today -->
+            <div class="timeline-item">
+              <div class="timeline-icon">
+                <i class="bi bi-calendar-day"></i>
+              </div>
+              <div class="timeline-date">Today - 10 Sep 2018</div>
+              <div class="timeline-content">
+                <h5>Software Testing</h5>
+                <p>Advanced module on automated testing frameworks</p>
+                <div class="timeline-meta">
+                  <span>09:30 am - 10:15 pm</span>
+                  <span class="timeline-hall">
+                    <i class="bi bi-geo-alt"></i> Apj Hall 112
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tuesday -->
+            <div class="timeline-item">
+              <div class="timeline-icon">
+                <i class="bi bi-calendar-day"></i>
+              </div>
+              <div class="timeline-date">Tuesday - 11 Sep 2018</div>
+              <div class="timeline-content">
+                <h5>Agriculture</h5>
+                <p>Guest lecture on sustainable farming practices</p>
+                <div class="timeline-meta">
+                  <span>09:30 am - 10:15 am</span>
+                  <span class="timeline-hall">
+                    <i class="bi bi-geo-alt"></i> Apj Hall 112
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wednesday -->
+            <div class="timeline-item">
+              <div class="timeline-icon">
+                <i class="bi bi-calendar-day"></i>
+              </div>
+              <div class="timeline-date">Wednesday - 12 Sep 2018</div>
+              <div class="timeline-content">
+                <h5>Software Testing Lab</h5>
+                <p>Practical session on test automation tools</p>
+                <div class="timeline-meta">
+                  <span>09:30 am - 10:15 am</span>
+                  <span class="timeline-hall">
+                    <i class="bi bi-geo-alt"></i> Computer Lab 3
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Holiday -->
+            <div class="timeline-item">
+              <div class="timeline-icon">
+                <i class="bi bi-emoji-smile"></i>
+              </div>
+              <div class="timeline-date">Thursday - Holiday</div>
+              <div class="timeline-content">
+                <div class="alert alert-info mb-0">
+                  <i class="bi bi-info-circle me-2"></i> No classes scheduled. Enjoy your day off!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section><!-- End Dashboard Section -->
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">UCCD</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p class="mt-3">
+              <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+            </p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+          <h4>Our Newsletter</h4>
+          <p>
+            Subscribe to our newsletter and receive the latest news about our
+            products and services!
+          </p>
+          <form action="forms/newsletter.php" method="post" class="php-email-form">
+            <div class="newsletter-form">
+              <input type="email" name="email" /><input type="submit" value="Subscribe" />
+            </div>
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">
+              Your subscription request has been sent. Thank you!
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>
+        © <span>Copyright</span> <strong class="px-1 sitename">UCCD</strong>
+        <span>All Rights Reserved</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="js/main.js"></script>
+  <!-- Translations -->
+  <script src="js/translations.js"></script>
+  <!-- Language and Theme Switcher -->
+  <script src="js/language-theme-switcher.js"></script>
+  <script>
+    const allBtn = document.getElementById("all-btn");
+    const activeBtn = document.getElementById("active-btn");
+    const completedBtn = document.getElementById("completed-btn");
+
+    const rows = document.querySelectorAll(".status-table tbody tr");
+
+    function filterCourses(status) {
+      rows.forEach(row => {
+        if (status === "all") {
+          row.style.display = "";
+        } else if (row.getAttribute("data-status") === status) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
+
+    allBtn.addEventListener("click", () => {
+      filterCourses("all");
+      allBtn.classList.add("active");
+      activeBtn.classList.remove("active");
+      completedBtn.classList.remove("active");
+    });
+
+    activeBtn.addEventListener("click", () => {
+      filterCourses("active");
+      allBtn.classList.remove("active");
+      activeBtn.classList.add("active");
+      completedBtn.classList.remove("active");
+    });
+
+    completedBtn.addEventListener("click", () => {
+      filterCourses("completed");
+      allBtn.classList.remove("active");
+      activeBtn.classList.remove("active");
+      completedBtn.classList.add("active");
+    });
+
+    filterCourses("all"); document.getElementById("view-all-courses").addEventListener("click", function () {
+      // Toggle visibility of the hidden courses
+      var moreCourses = document.querySelectorAll(".more-courses");
+      var isHidden = moreCourses[0].classList.contains("hidden");
+
+      moreCourses.forEach(function (course) {
+        course.classList.toggle("hidden");
+      });
+
+      // Change the text of the button depending on visibility state
+      var button = document.getElementById("view-all-courses");
+      const currentLang = document.documentElement.lang || 'en';
+
+      if (isHidden) {
+        // Courses were hidden and are now shown - change to "View Fewer"
+        button.textContent = currentLang === 'ar' ? translations.ar.viewFewerCourses : translations.en.viewFewerCourses;
+      } else {
+        // Courses were shown and are now hidden - change to "View All"
+        button.textContent = currentLang === 'ar' ? translations.ar.viewAllCourses : translations.en.viewAllCourses;
+      }
+    });
+
+  </script>
+</body>
+
+</html>
