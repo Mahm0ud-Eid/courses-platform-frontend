@@ -160,13 +160,14 @@
                     Update the post content and settings
                   </p>
                 </div>
-                <div class="tab-inn">                  <div class="post-form-section mb-4">
+                <div class="tab-inn">
+                  <div class="post-form-section mb-4">
                     <form id="editPostForm">
                       <div class="row mb-3">
                         <div class="col-md-12">
                           <label for="postContent" class="form-label">Post Content</label>
-                          <textarea class="form-control" id="postContent" rows="8" 
-                                    placeholder="Enter post content" required>This is a sample post content that can be edited. Update this text with your new post content.</textarea>
+                          <textarea class="form-control" id="postContent" rows="8" placeholder="Enter post content"
+                            required>This is a sample post content that can be edited. Update this text with your new post content.</textarea>
                         </div>
                       </div>
                       <div class="row mb-3">
@@ -178,7 +179,8 @@
                       </div>
                       <div class="row mt-4">
                         <div class="col-md-12 text-end">
-                          <button type="button" class="btn btn-secondary me-2" onclick="window.location.href='admin-post-all.html'">Cancel</button>
+                          <button type="button" class="btn btn-secondary me-2"
+                            onclick="window.location.href='admin-post-all.html'">Cancel</button>
                           <button type="submit" class="btn btn-primary">Update Post</button>
                         </div>
                       </div>
@@ -215,11 +217,11 @@
   <script src="js/post-management.js"></script>
 
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       // Get post ID from URL parameters (for editing specific post)
       const urlParams = new URLSearchParams(window.location.search);
       const postId = urlParams.get('id');
-      
+
       // Load post data if editing existing post
       if (postId) {
         // This would typically load data from your backend
@@ -227,16 +229,16 @@
       }
 
       // Form submission
-      $('#editPostForm').on('submit', function(e) {
+      $('#editPostForm').on('submit', function (e) {
         e.preventDefault();
-          // Get form data
+        // Get form data
         const formData = {
           content: $('#postContent').val()
         };
-        
+
         // Show success message
         alert('Post updated successfully!');
-        
+
         // Redirect back to all posts
         window.location.href = 'admin-post-all.html';
       });
