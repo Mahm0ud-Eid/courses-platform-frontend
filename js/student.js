@@ -7,4 +7,7 @@ import {
 
 // ...existing code...
 const userData = JSON.parse(sessionStorage.getItem("userData"));
-console.log(userData);
+
+document.addEventListener("DOMContentLoaded", function () {
+  validateToken();
+});
