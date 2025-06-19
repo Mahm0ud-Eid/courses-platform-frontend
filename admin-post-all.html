@@ -173,23 +173,14 @@
                 <div class="tab-inn">
                   <!-- Search and Filter Section -->
                   <div class="post-filter-section mb-4">
-                    <div class="row">
-                      <div class="col-md-6 mb-3">
+                    <div class="row">                      <div class="col-md-6 mb-3">
                         <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Search posts by title..."
+                          <input type="text" class="form-control" id="searchInput" placeholder="Search posts by Description..."
                             aria-label="Search posts">
-                          <button class="btn btn-primary" type="button">
+                          <button class="btn btn-primary" id="searchBtn" type="button">
                             <i class="fa fa-search"></i> Search
                           </button>
                         </div>
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <select class="form-control" id="categoryFilter">
-                          <option value="">All Categories</option>
-                          <option value="New Course">New Course</option>
-                          <option value="Event">Event</option>
-                          <option value="Announcement">Announcement</option>
-                        </select>
                       </div>
 
                     </div>
@@ -207,9 +198,8 @@
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>Title</th>
+                          <th>Description</th>
                           <th>Published Date</th>
-                          <th>Category</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -217,7 +207,6 @@
                         <tr>
                           <td>Web Development Masterclass Starting Next Month</td>
                           <td>18 May 2025</td>
-                          <td>New Course</td>
                           <td>
                             <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
                             <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
@@ -226,7 +215,6 @@
                         <tr>
                           <td>Data Science Fundamentals Course Registration Now Open</td>
                           <td>15 May 2025</td>
-                          <td>New Course</td>
                           <td>
                             <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
                             <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
@@ -235,7 +223,6 @@
                         <tr>
                           <td>Upcoming Tech Career Fair</td>
                           <td>12 May 2025</td>
-                          <td>Event</td>
                           <td>
                             <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
                             <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
@@ -244,7 +231,6 @@
                         <tr>
                           <td>Summer Registration Now Open</td>
                           <td>10 May 2025</td>
-                          <td>Announcement</td>
                           <td>
                             <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
                             <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
@@ -253,7 +239,6 @@
                         <tr>
                           <td>New Mobile App Development Course</td>
                           <td>8 May 2025</td>
-                          <td>New Course</td>
                           <td>
                             <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
                             <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
@@ -287,10 +272,9 @@
           </div>
         </div>
       </div>
-    </div>
-  </div> <!--Import jQuery before materialize.js-->
-  <script src="js/main.min.js"></script>
+    </div>  </div> <!--Import jQuery before materialize.js-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/main.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="assets/js/sidebar-tog.js"></script>
@@ -308,21 +292,34 @@
   <script src="js/main.js"></script>
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
-  <script src="js/post-management.js"></script>
-  <script>
-    // Category filtering script
+  <script src="js/post-management.js"></script>  <script>
     $(document).ready(function () {
-      // Filter by category
-      $("#categoryFilter").change(function () {
-        let selectedCategory = $(this).val();
-        filterPosts();
-      }); function filterPosts() {
-        let selectedCategory = $("#categoryFilter").val();
+      // Search functionality
+      $("#searchBtn").click(function () {
+        performSearch();
+      });
+
+      // Search on enter key press
+      $("#searchInput").keypress(function (e) {
+        if (e.which == 13) {
+          performSearch();
+        }
+      });
+
+      // Clear search when input is empty
+      $("#searchInput").on('input', function() {
+        if ($(this).val() === '') {
+          $("tbody tr").show();
+        }
+      });
+
+      function performSearch() {
+        let searchTerm = $("#searchInput").val().toLowerCase();
 
         $("tbody tr").each(function () {
-          let categoryMatch = selectedCategory === "" || $(this).find("td:nth-child(3)").text().trim() === selectedCategory;
-
-          if (categoryMatch) {
+          let description = $(this).find("td:first-child").text().toLowerCase();
+          
+          if (searchTerm === "" || description.includes(searchTerm)) {
             $(this).show();
           } else {
             $(this).hide();
