@@ -173,10 +173,11 @@
                 <div class="tab-inn">
                   <!-- Search and Filter Section -->
                   <div class="post-filter-section mb-4">
-                    <div class="row">                      <div class="col-md-6 mb-3">
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
                         <div class="input-group">
-                          <input type="text" class="form-control" id="searchInput" placeholder="Search posts by Description..."
-                            aria-label="Search posts">
+                          <input type="text" class="form-control" id="searchInput"
+                            placeholder="Search posts by Description..." aria-label="Search posts">
                           <button class="btn btn-primary" id="searchBtn" type="button">
                             <i class="fa fa-search"></i> Search
                           </button>
@@ -272,7 +273,8 @@
           </div>
         </div>
       </div>
-    </div>  </div> <!--Import jQuery before materialize.js-->
+    </div>
+  </div> <!--Import jQuery before materialize.js-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/main.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -292,7 +294,8 @@
   <script src="js/main.js"></script>
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
-  <script src="js/post-management.js"></script>  <script>
+  <script src="js/post-management.js"></script>
+  <script>
     $(document).ready(function () {
       // Search functionality
       $("#searchBtn").click(function () {
@@ -307,7 +310,7 @@
       });
 
       // Clear search when input is empty
-      $("#searchInput").on('input', function() {
+      $("#searchInput").on('input', function () {
         if ($(this).val() === '') {
           $("tbody tr").show();
         }
@@ -318,7 +321,7 @@
 
         $("tbody tr").each(function () {
           let description = $(this).find("td:first-child").text().toLowerCase();
-          
+
           if (searchTerm === "" || description.includes(searchTerm)) {
             $(this).show();
           } else {
