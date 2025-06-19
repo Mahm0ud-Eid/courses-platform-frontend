@@ -2,6 +2,7 @@ import { auth, db, validateToken, collection } from "../js/index.js"; // Import 
 
 import {
   doc,
+  setDoc,
   getDoc,
   getDocs,
   query,
@@ -92,7 +93,22 @@ document.addEventListener("click", (e) => {
     container?.querySelectorAll(".star").forEach((s) => {
       s.style.color = Number(s.dataset.value) <= rating ? "gold" : "gray";
     });
-    console.log(e.target.parentElement.classList[1], rating);
+    const courseId = e.target.parentElement.classList[1];
+    const ratingsRef = collection(db, "courses", courseId, "ratings");
+    const ratingDocRef = doc(ratingsRef, userData.id);
+    setDoc(
+      ratingDocRef,
+      {
+        courseId,
+        rate: rating,
+        rateId: ratingDocRef.id,
+        userId: userData.id,
+        userName: userData.name,
+      },
+      { merge: true }
+    )
+      .then(() => console.log("Rating saved/updated."))
+      .catch((error) => console.error("Error updating rating:", error));
   }
 });
 
