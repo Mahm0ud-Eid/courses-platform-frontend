@@ -43,28 +43,48 @@ if (Array.isArray(userData?.courses) && userData.courses.length) {
         const courseSnap = await getDoc(courseRef);
         if (!courseSnap.exists()) return;
         const data = courseSnap.data();
+        const ratingDocRef = doc(
+          collection(db, "courses", data.courseID, "ratings"),
+          userData.id
+        );
+        const ratingSnap = await getDoc(ratingDocRef);
+        let userRating = 0;
+        if (ratingSnap.exists()) {
+          userRating = ratingSnap.data().rate;
+        }
+
         const crCard = `
           <div class="col-md-6">
             <div class="course-card">
               <div class="course-card-img">
-                <img src="${data.imageLink ?? "images/course/3.jpg"}" alt="${
+          <img src="${data.imageLink ?? "images/course/3.jpg"}" alt="${
           data.title
         }" />
-                <span class="course-badge">Completed</span>
+          <span class="course-badge">Completed</span>
               </div>
               <div class="course-card-body">
-                <h5>${data.title}</h5>
-                <p>${data.description ?? data.title + " course."}</p>
-                <div class="course-meta">
-                  <span class="course-duration">${data.duration} Days</span>
-                  <div class="star-rating ${data.courseID}">
-                    <span class="star" data-value="1">&#9733;</span>
-                    <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
-                    <span class="star" data-value="4">&#9733;</span>
-                    <span class="star" data-value="5">&#9733;</span>
-                  </div>
-                </div>
+          <h5>${data.title}</h5>
+          <p>${data.description ?? data.title + " course."}</p>
+          <div class="course-meta">
+            <span class="course-duration">${data.duration} Days</span>
+            <div class="star-rating ${data.courseID}">
+              <span class="star" data-value="1" style="color:${
+                userRating >= 1 ? "gold" : "gray"
+              }">&#9733;</span>
+              <span class="star" data-value="2" style="color:${
+                userRating >= 2 ? "gold" : "gray"
+              }">&#9733;</span>
+              <span class="star" data-value="3" style="color:${
+                userRating >= 3 ? "gold" : "gray"
+              }">&#9733;</span>
+              <span class="star" data-value="4" style="color:${
+                userRating >= 4 ? "gold" : "gray"
+              }">&#9733;</span>
+              <span class="star" data-value="5" style="color:${
+                userRating >= 5 ? "gold" : "gray"
+              }">&#9733;</span>
+            </div>
+          </div>
               </div>
             </div>
           </div>`;
