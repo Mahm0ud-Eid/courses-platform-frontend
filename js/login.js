@@ -43,7 +43,7 @@ async function signIn(email, password) {
       email,
       password
     );
-    console.log("User signed in:", userCredential.user);
+    // console.log("User signed in:", userCredential.user);
 
     const userId = userCredential.user.uid;
     const db = getFirestore();
@@ -53,11 +53,12 @@ async function signIn(email, password) {
 
     if (!querySnapshot.empty) {
       const userData = querySnapshot.docs[0].data();
-      console.log("Fetched user data:", userData);
+      // console.log("Fetched user data:", userData);
       // Handle userData as needed...
       let role = userData.role.toLowerCase();
       window.location.href = `${role}.html`; // Redirect based on role
       sessionStorage.setItem("token", userCredential.user.accessToken);
+      sessionStorage.setItem("userData", JSON.stringify(userData));
     } else {
       console.log("No matching user document found.");
     }
