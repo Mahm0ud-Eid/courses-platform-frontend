@@ -717,24 +717,6 @@
         }
       }
 
-      addDebugButton() {
-        const button = document.createElement('button');
-        button.textContent = 'Debug Database';
-        button.style.position = 'fixed';
-        button.style.bottom = '10px';
-        button.style.right = '10px';
-        button.style.zIndex = '9999';
-        button.style.padding = '10px';
-        button.style.backgroundColor = '#ff5722';
-        button.style.color = 'white';
-        button.style.border = 'none';
-        button.style.borderRadius = '4px';
-        button.style.cursor = 'pointer';
-
-        button.onclick = () => this.debugComments();
-
-        document.body.appendChild(button);
-      }
       async loadPosts() {
         try {
           console.log('Loading posts from Firebase...');
