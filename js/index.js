@@ -30,7 +30,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const users = collection(db, "users");
-const snapshot = await getDocs(users);
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -41,5 +40,57 @@ onAuthStateChanged(auth, (user) => {
     console.log("No user is signed in.");
   }
 });
+function validateToken() {
+  const token = sessionStorage.getItem("token");
 
-export { auth, db, app };
+  if (!token) {
+    Swal.fire({
+      title: "No token found",
+      text: "Please log in.",
+      icon: "warning",
+      showCloseButton: true,
+    }).then(() => {
+      window.location.href = "/login.html";
+    });
+    return null;
+  }
+
+  // If token is not a JWT, skip decoding logic
+  if (!token.includes(".")) {
+    console.log("Token is not a JWT. Skipping verification");
+    return token;
+  }
+
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    const isExpired = payload.exp * 1000 < Date.now();
+
+    if (isExpired) {
+      Swal.fire({
+        title: "Session Expired",
+        text: "Your session has expired. Please log in again.",
+        icon: "warning",
+        showCloseButton: true,
+      }).then(() => {
+        window.location.href = "/login.html";
+      });
+      return null;
+    }
+  } catch (error) {
+    console.error("Invalid token format:", error);
+    Swal.fire({
+      title: "Invalid token format",
+      text: "Please log in again.",
+      icon: "error",
+      showCloseButton: true,
+    }).then(() => {
+      window.location.href = "/login.html";
+    });
+    return null;
+  }
+
+  console.log("Token is valid and not expired.");
+  return token;
+}
+
+export { auth, db, app, validateToken, collection };
