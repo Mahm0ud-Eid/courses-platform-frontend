@@ -196,7 +196,7 @@
                     <div class="row">
                       <div class="col-md-6 mb-3">
                         <div class="input-group"> <input type="text" class="form-control" id="searchInput"
-                            placeholder="Search by Description, Publisher or Date..." aria-label="Search posts">
+                            placeholder="Search by post description..." aria-label="Search posts">
                           <button class="btn btn-primary" id="searchBtn" type="button">
                             <i class="fa fa-search"></i> Search
                           </button>
@@ -274,17 +274,22 @@
   <div id="preloader"></div>
 
   <!-- Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  <script type="module">    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
     import {
       getFirestore,
       collection,
       getDocs,
       doc,
+      getDoc,
       deleteDoc,
       query,
       orderBy
     } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+    import {
+      getStorage,
+      ref,
+      deleteObject
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
 
     // Firebase configuration
     const firebaseConfig = {
@@ -295,11 +300,10 @@
       messagingSenderId: "1037776187244",
       appId: "1:1037776187244:web:7d02b5edc4908dad390d49",
       measurementId: "G-B95Y1W5QWP",
-    };
-
-    // Initialize Firebase
+    };    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const storage = getStorage(app);
 
     // Fetch and display posts when the page loads
     document.addEventListener('DOMContentLoaded', async function () {
@@ -393,37 +397,80 @@
           </tr>
         `;
       }
-    }
-
-    async function deletePost(postId) {
+    } async function deletePost(postId) {
       try {
-        await deleteDoc(doc(db, "posts", postId));
+        console.log(`Attempting to delete post: ${postId}`);
+
+        // First, get the post data to check if it exists and has an image
+        const postDocRef = doc(db, "posts", postId);
+        const postDoc = await getDoc(postDocRef);
+
+        if (!postDoc.exists()) {
+          console.warn("Post document does not exist");
+          alert('Post not found or already deleted');
+          await loadPosts(); // Refresh the list
+          return;
+        }
+
+        const postData = postDoc.data();
+        console.log("Post data:", postData);        // If the post has an image, try to delete it from Storage
+        if (postData.postImageLink || postData.imageUrl) {
+          try {
+            const imageUrl = postData.postImageLink || postData.imageUrl;
+            console.log("Attempting to delete image:", imageUrl);
+            // Create reference from the full URL
+            const imageRef = ref(storage, imageUrl);
+            await deleteObject(imageRef);
+            console.log("Image deleted successfully");
+          } catch (storageError) {
+            console.warn("Error deleting image (continuing with post deletion):", storageError);
+            // Continue with document deletion even if image deletion fails
+          }
+        }
+
+        // Delete the document from Firestore
+        console.log("Deleting document from Firestore...");
+        await deleteDoc(postDocRef);
+        console.log("Document deleted successfully");
+
         // Remove the row from the UI
         const row = document.querySelector(`tr[data-post-id="${postId}"]`);
         if (row) {
           row.remove();
         }
+
         alert('Post deleted successfully');
+
+        // Reload posts to ensure the list is fresh
+        console.log("Reloading posts...");
+        await loadPosts();
+
       } catch (error) {
         console.error("Error deleting post:", error);
-        alert(`Failed to delete post: ${error.message}`);
+        alert(`Failed to delete post: ${error.message}\n\nCheck console for details.`);
       }
     } function performSearch() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      const rows = document.querySelectorAll('#postsTableBody tr'); rows.forEach(row => {        // Skip rows that don't have enough cells (like loading rows)
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('#postsTableBody tr');
+
+      rows.forEach(row => {
+        // Skip rows that don't have enough cells (like loading rows)
         if (!row.cells || row.cells.length < 3) return;
 
         const description = row.cells[0]?.textContent.toLowerCase() || '';
-        const publisher = row.cells[1]?.textContent.toLowerCase() || '';
-        const publishDate = row.cells[2]?.textContent.toLowerCase() || '';
 
-        if (searchTerm === '' ||
-          description.includes(searchTerm) ||
-          publisher.includes(searchTerm) ||
-          publishDate.includes(searchTerm)) {
+        if (searchTerm === '') {
           row.style.display = '';
         } else {
-          row.style.display = 'none';
+          // Split description into words and check if any word starts with the search term
+          const words = description.split(/\s+/);
+          const found = words.some(word => word.startsWith(searchTerm));
+
+          if (found) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
         }
       });
     }
