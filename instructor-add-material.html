@@ -1,313 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Add Material - Instructor Dashboard</title>
-    <!-- META TAGS -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- FAV ICON(BROWSER TAB ICON) -->
-    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
-    <!-- GOOGLE FONT -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Josefin+Sans:600,700"
-      rel="stylesheet"
-    />
 
-    <!-- FONTAWESOME ICONS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+<head>
+  <title>Add Material - Instructor Dashboard</title>
+  <!-- META TAGS -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- FAV ICON(BROWSER TAB ICON) -->
+  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Josefin+Sans:600,700"
+    rel="stylesheet" />
 
-    <!-- ALL CSS FILES -->
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
-    <link href="css/style-mob.css" rel="stylesheet" />
+  <!-- FONTAWESOME ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <!-- ALL CSS FILES -->
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+  <link href="css/style-mob.css" rel="stylesheet" />
 
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-    <style>
-      /* Center the form and adjust its width */
-      .form-section {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
 
-      .form-section h4 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 24px;
-        color: #333;
-      }
+  <style>
+    /* Center the form and adjust its width */
+    .form-section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-      .form-section p {
-        text-align: center;
-        color: #666;
-        margin-bottom: 20px;
-      }
+    .form-section h4 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
 
-      .input-field {
-        margin-bottom: 20px;
-      }
+    .form-section p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+    }
 
-      .input-field label {
-        font-size: 14px;
-        color: #555;
-      }
+    .input-field {
+      margin-bottom: 20px;
+    }
 
-      .input-field input,
-      .input-field select,
-      .input-field textarea {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
+    .input-field label {
+      font-size: 14px;
+      color: #555;
+    }
 
-      select {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #fff;
-        color: #333;
-        appearance: none;
-      }
+    .input-field input,
+    .input-field select,
+    .input-field textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-      select:focus {
-        outline: none;
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-      }
+    select {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      color: #333;
+      appearance: none;
+    }
 
-      .file-field .btn {
-        background-color: #007bff;
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 4px;
-      }
+    select:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
 
-      .file-path-wrapper input {
-        font-size: 16px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
+    .file-field .btn {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
 
-      .form-section button {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
+    .file-path-wrapper input {
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-      .form-section button[type="submit"] {
-        background-color: #28a745;
-        color: #fff;
-      }
+    .form-section button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-      .form-section button[type="reset"] {
-        background-color: #dc3545;
-        color: #fff;
-        margin-top: 10px;
-      }
-    </style>
-  </head>
+    .form-section button[type="submit"] {
+      background-color: #28a745;
+      color: #fff;
+    }
 
-  <body>
-    <!--== MAIN CONTAINER ==-->
-    <header
-      id="header"
-      style="border-bottom: 2px solid #e3e8ea"
-      class="header d d-flex align-items-center sticky-top"
-    >
-      <img
-        src="assets/img/side-bar.png"
-        style="margin: 0 15px; width: 29px"
-        alt=""
-      />
-      <div
-        class="container-fluid container-xl position-relative d-flex align-items-center"
-      >
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <h1 class="sitename">UCCD</h1>
-        </a>
+    .form-section button[type="reset"] {
+      background-color: #dc3545;
+      color: #fff;
+      margin-top: 10px;
+    }
+  </style>
+</head>
 
-        <nav id="navmenu" class="navmenu navmenu-user">
-          <ul>
+<body>
+  <!--== MAIN CONTAINER ==-->
+  <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
+    <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">UCCD</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu navmenu-user">
+        <ul>
+          <li>
+            <a href="#" class="logout-btn">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log Out</span>
+            </a>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle bi bi-person-circle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!--== BODY CONTAINER ==-->
+  <div class="container-fluid sb2">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="sb2-1" style="background-color: white; float: left; width: 19.5%">
+        <div class="sb2-13">
+          <ul class="collapsible" data-collapsible="accordion">
             <li>
-              <a href="#" class="logout-btn">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Log Out</span>
-              </a>
+              <a href="instructor.html" class="menu"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                Dashboard</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header active"><i class="fa fa-book"
+                  aria-hidden="true"></i> My Courses</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="instructor-courses.html">View Courses</a></li>
+                  <li>
+                    <a href="instructor-add-material.html">Add Material</a>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
-          <i class="mobile-nav-toggle bi bi-person-circle"></i>
-        </nav>
+        </div>
       </div>
-    </header>
 
-    <!--== BODY CONTAINER ==-->
-    <div class="container-fluid sb2">
-      <div class="row">
-        <!-- Sidebar -->
-        <div
-          class="sb2-1"
-          style="background-color: white; float: left; width: 19.5%"
-        >
-          <div class="sb2-13">
-            <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                <a href="instructor.html" class="menu"
-                  ><i class="fa fa-bar-chart" aria-hidden="true"></i>
-                  Dashboard</a
-                >
-              </li>
-
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header active"
-                  ><i class="fa fa-book" aria-hidden="true"></i> My Courses</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li><a href="instructor-courses.html">View Courses</a></li>
-                    <li>
-                      <a href="instructor-add-material.html">Add Material</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a href="javascript:void(0)" class="collapsible-header"
-                  ><i class="fa fa-tasks" aria-hidden="true"></i> Tasks</a
-                >
-                <div class="collapsible-body left-sub-menu">
-                  <ul>
-                    <li><a href="instructor-view-tasks.html">View Tasks</a></li>
-                    <li>
-                      <a href="instructor-create-task.html">Create Task</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a href="instructor-students.html"
-                  ><i class="fa fa-users" aria-hidden="true"></i> Students</a
-                >
-              </li>
-
-              <li>
-                <a href="instructor-ratings.html"
-                  ><i class="fa fa-star" aria-hidden="true"></i> Rate
-                  Students</a
-                >
-              </li>
-
-              <li>
-                <a href="instructor-schedule.html"
-                  ><i class="fa fa-calendar" aria-hidden="true"></i> Schedule</a
-                >
-              </li>
-
-              <li>
-                <a href="instructor-messages.html"
-                  ><i class="fa fa-envelope" aria-hidden="true"></i> Messages</a
-                >
-              </li>
-            </ul>
-          </div>
+      <!-- Main Content -->
+      <div class="sb2-2" style="padding: 40px; width: 80%">
+        <!-- Breadcrumbs -->
+        <div class="sb2-2-2">
+          <ul>
+            <li>
+              <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre"><a href="#"> Add Material</a></li>
+          </ul>
         </div>
 
-        <!-- Main Content -->
-        <div class="sb2-2" style="padding: 40px; width: 80%">
-          <!-- Breadcrumbs -->
-          <div class="sb2-2-2">
-            <ul>
-              <li>
-                <a href="index.html"
-                  ><i class="fa fa-home" aria-hidden="true"></i> Home</a
-                >
-              </li>
-              <li class="active-bre"><a href="#"> Add Material</a></li>
-            </ul>
-          </div>
+        <!-- Add Material Form -->
+        <div class="form-section">
+          <h4>Add New Course Material</h4>
+          <p>Upload course materials for your students</p>
 
-          <!-- Add Material Form -->
-          <div class="form-section">
-            <h4>Add New Course Material</h4>
-            <p>Upload course materials for your students</p>
+          <form id="addMaterialForm">
+            <div class="input-field">
+              <label for="materialTitle">Material Title</label>
+              <input type="text" id="materialTitle" required />
+            </div>
 
-            <form id="addMaterialForm">
-              <div class="input-field">
-                <label for="materialTitle">Material Title</label>
-                <input type="text" id="materialTitle" required />
-              </div>
+            <div class="input-field">
+              <label for="materialCourse">Course</label>
+              <select id="materialCourse" required>
+                <option value="" disabled selected>Select Course</option>
+                <option value="1">Web Development (CS401)</option>
+                <option value="2">Database Systems (CS402)</option>
+                <option value="3">Algorithms (CS403)</option>
+              </select>
+            </div>
 
-              <div class="input-field">
-                <label for="materialCourse">Course</label>
-                <select id="materialCourse" required>
-                  <option value="" disabled selected>Select Course</option>
-                  <option value="1">Web Development (CS401)</option>
-                  <option value="2">Database Systems (CS402)</option>
-                  <option value="3">Algorithms (CS403)</option>
-                </select>
-              </div>
+            <div class="input-field">
+              <label for="materialType">Material Type</label>
+              <select id="materialType" required>
+                <option value="" disabled selected>
+                  Select Material Type
+                </option>
+                <option value="lecture">Lecture Notes</option>
+                <option value="slides">Presentation Slides</option>
+                <option value="video">Video Lecture</option>
+                <option value="code">Code Examples</option>
+              </select>
+            </div>
 
-              <div class="input-field">
-                <label for="materialType">Material Type</label>
-                <select id="materialType" required>
-                  <option value="" disabled selected>
-                    Select Material Type
-                  </option>
-                  <option value="lecture">Lecture Notes</option>
-                  <option value="slides">Presentation Slides</option>
-                  <option value="video">Video Lecture</option>
-                  <option value="code">Code Examples</option>
-                </select>
-              </div>
+            <div class="file-container">
+              <input type="file" id="file-input" multiple />
+              <label for="file-input">
+                <i class="bi bi-file-earmark-arrow-up"></i> &nbsp; Choose
+                Files To Upload
+              </label>
+              <div id="num-of-files">No Files Choosen</div>
+              <ul id="files-list"></ul>
+            </div>
 
-              <div class="file-container">
-                <input type="file" id="file-input" multiple />
-                <label for="file-input">
-                  <i class="bi bi-file-earmark-arrow-up"></i> &nbsp; Choose
-                  Files To Upload
-                </label>
-                <div id="num-of-files">No Files Choosen</div>
-                <ul id="files-list"></ul>
-              </div>
-
-              <!-- <div class="file-field input-field">
+            <!-- <div class="file-field input-field">
                             <div class="btn">
                                 <span>Upload File</span>
                                 <input type="file" id="materialFile" multiple />
@@ -318,26 +247,27 @@
                         </div>
                          -->
 
-              <p>
-                <label>
-                  <input type="checkbox" id="makeAnnouncement" />
-                  <span>Send announcement to students about this material</span>
-                </label>
-              </p>
+            <p>
+              <label>
+                <input type="checkbox" id="makeAnnouncement" />
+                <span>Send announcement to students about this material</span>
+              </label>
+            </p>
 
-              <button type="submit">Upload Material</button>
-              <button type="reset">Cancel</button>
-            </form>
-          </div>
+            <button type="submit">Upload Material</button>
+            <button type="reset">Cancel</button>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- JS Libraries -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/file-upload.js"></script>
-  </body>
+  <!-- JS Libraries -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/file-upload.js"></script>
+</body>
+
 </html>
