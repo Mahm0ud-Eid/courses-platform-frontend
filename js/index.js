@@ -31,6 +31,11 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const users = collection(db, "users");
 
+const userData = JSON.parse(sessionStorage.getItem("userData"));
+let signBtn = document.querySelector(".sign-btn");
+
+// events
+// Check if the user is authenticated
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, you can access user information here
@@ -40,6 +45,32 @@ onAuthStateChanged(auth, (user) => {
     console.log("No user is signed in.");
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  let token = validateToken();
+  if (token) {
+    signBtn.innerHTML = "Sign Out";
+  }
+});
+
+signBtn.addEventListener("click", function () {
+  if (signBtn.innerHTML === "Sign Out") {
+    auth
+      .signOut()
+      .then(() => {
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("userData");
+        window.location.href = "/login.html";
+      })
+      .catch((error) => {
+        console.error("Sign out error:", error);
+      });
+  } else {
+    window.location.href = "/login.html";
+  }
+});
+
+// Function to validate the token and check for expiration
 function validateToken() {
   const token = sessionStorage.getItem("token");
 
