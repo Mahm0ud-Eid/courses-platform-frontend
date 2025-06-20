@@ -33,6 +33,26 @@
   <link href="assets/css/file-upload.css" rel="stylesheet" />
   <link href="css/admin-responsive.css" rel="stylesheet" />
   <link href="css/post-management.css" rel="stylesheet" />
+
+  <!-- Custom Styles for Table Alignment -->
+  <style>
+    .table th {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .table td,
+    .table th {
+      padding: 12px 15px;
+      vertical-align: middle;
+    }
+
+    .table th:first-child,
+    .table td:first-child {
+      padding-left: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -175,9 +195,8 @@
                   <div class="post-filter-section mb-4">
                     <div class="row">
                       <div class="col-md-6 mb-3">
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="searchInput"
-                            placeholder="Search posts by Description..." aria-label="Search posts">
+                        <div class="input-group"> <input type="text" class="form-control" id="searchInput"
+                            placeholder="Search by Description, Publisher or Date..." aria-label="Search posts">
                           <button class="btn btn-primary" id="searchBtn" type="button">
                             <i class="fa fa-search"></i> Search
                           </button>
@@ -194,56 +213,20 @@
                     </div>
                   </div>
                   <!-- End Search and Filter Section -->
-
                   <div class="table-responsive table-desi">
-                    <table class="table table-hover">
+                    <table class="table table-hover" data-no-checkboxes="true">
                       <thead>
                         <tr>
-                          <th>Description</th>
-                          <th>Published Date</th>
-                          <th>Actions</th>
+                          <th>DESCRIPTION</th>
+                          <th>PUBLISHER</th>
+                          <th>PUBLISHED DATE</th>
+                          <th>ACTIONS</th>
                         </tr>
                       </thead>
-                      <tbody> <!-- Community Posts -->
+                      <tbody id="postsTableBody"> <!-- Will be populated from Firebase -->
+                        <!-- Posts will be loaded from Firebase -->
                         <tr>
-                          <td>Web Development Masterclass Starting Next Month</td>
-                          <td>18 May 2025</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Data Science Fundamentals Course Registration Now Open</td>
-                          <td>15 May 2025</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Upcoming Tech Career Fair</td>
-                          <td>12 May 2025</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Summer Registration Now Open</td>
-                          <td>10 May 2025</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>New Mobile App Development Course</td>
-                          <td>8 May 2025</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
+                          <td colspan="4" class="text-center">Loading posts from Firebase...</td>
                         </tr>
                       </tbody>
                     </table>
@@ -281,6 +264,7 @@
   <script src="js/custom.js"></script>
   <script src="assets/js/sidebar-tog.js"></script>
   <script src="js/sidebar-init.js"></script>
+  <script src="js/post-management.js"></script>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -289,48 +273,173 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      doc,
+      deleteDoc,
+      query,
+      orderBy
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCaUETFsFnRgSmNFIwEgyGWugfrK9zHbM0",
+      authDomain: "uccd-f607e.firebaseapp.com",
+      projectId: "uccd-f607e",
+      storageBucket: "uccd-f607e.firebasestorage.app",
+      messagingSenderId: "1037776187244",
+      appId: "1:1037776187244:web:7d02b5edc4908dad390d49",
+      measurementId: "G-B95Y1W5QWP",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Fetch and display posts when the page loads
+    document.addEventListener('DOMContentLoaded', async function () {
+      await loadPosts();
+
+      // Set up search functionality
+      document.getElementById('searchBtn').addEventListener('click', performSearch);
+      document.getElementById('searchInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+      document.getElementById('searchInput').addEventListener('input', function () {
+        if (this.value === '') {
+          showAllPosts();
+        }
+      });
+    });
+
+    async function loadPosts() {
+      try {
+        const tableBody = document.getElementById('postsTableBody');
+        tableBody.innerHTML = '<tr><td colspan="4" class="text-center">Loading posts...</td></tr>';
+
+        // Create a query to get posts ordered by publishedAt (most recent first)
+        const postsQuery = query(collection(db, "posts"), orderBy("publishedAt", "desc"));
+        const querySnapshot = await getDocs(postsQuery);
+
+        if (querySnapshot.empty) {
+          tableBody.innerHTML = '<tr><td colspan="4" class="text-center">No posts found</td></tr>';
+          return;
+        }
+
+        let postsHTML = '';
+        querySnapshot.forEach((doc) => {
+          const postData = doc.data();
+          const postId = doc.id;
+          // Extract the fields we want
+          const postDescription = postData.postDescription || postData.content || 'No description';
+
+          // Get the publisher name
+          const publisherName = postData.publisherName || postData.authorName || 'Anonymous';
+
+          // Format the date from Firebase Timestamp
+          let formattedDate = 'No date';
+          if (postData.publishedAt) {
+            if (typeof postData.publishedAt.toDate === 'function') {
+              const date = postData.publishedAt.toDate();
+              formattedDate = date.toLocaleString('en-GB', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              });
+            } else if (typeof postData.publishedAt === 'string') {
+              formattedDate = postData.publishedAt;
+            }
+          }          // Create table row for each post
+          postsHTML += `
+            <tr data-post-id="${postId}">
+              <td>${postDescription}</td>
+              <td>${publisherName}</td>
+              <td>${formattedDate}</td>
+              <td>
+                <a href="admin-post-edit.html?id=${postId}" class="ad-st-view">Edit</a>
+                <a href="#" class="ad-st-view bg-danger delete-post" data-post-id="${postId}" style="margin-left: 5px;">Delete</a>
+              </td>
+            </tr>
+          `;
+        });
+
+        tableBody.innerHTML = postsHTML;
+
+        // Add event listeners to delete buttons
+        document.querySelectorAll('.delete-post').forEach(button => {
+          button.addEventListener('click', function (e) {
+            e.preventDefault();
+            const postId = this.getAttribute('data-post-id');
+            if (confirm('Are you sure you want to delete this post?')) {
+              deletePost(postId);
+            }
+          });
+        });
+
+      } catch (error) {
+        console.error("Error loading posts:", error);
+        document.getElementById('postsTableBody').innerHTML = `
+          <tr>
+            <td colspan="4" class="text-center text-danger">
+              Error loading posts: ${error.message}
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    async function deletePost(postId) {
+      try {
+        await deleteDoc(doc(db, "posts", postId));
+        // Remove the row from the UI
+        const row = document.querySelector(`tr[data-post-id="${postId}"]`);
+        if (row) {
+          row.remove();
+        }
+        alert('Post deleted successfully');
+      } catch (error) {
+        console.error("Error deleting post:", error);
+        alert(`Failed to delete post: ${error.message}`);
+      }
+    } function performSearch() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const rows = document.querySelectorAll('#postsTableBody tr'); rows.forEach(row => {        // Skip rows that don't have enough cells (like loading rows)
+        if (!row.cells || row.cells.length < 3) return;
+
+        const description = row.cells[0]?.textContent.toLowerCase() || '';
+        const publisher = row.cells[1]?.textContent.toLowerCase() || '';
+        const publishDate = row.cells[2]?.textContent.toLowerCase() || '';
+
+        if (searchTerm === '' ||
+          description.includes(searchTerm) ||
+          publisher.includes(searchTerm) ||
+          publishDate.includes(searchTerm)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    function showAllPosts() {
+      const rows = document.querySelectorAll('#postsTableBody tr');
+      rows.forEach(row => {
+        row.style.display = '';
+      });
+    }
+  </script>
   <!-- Main JS File -->
   <script src="js/image-upload.js"></script>
   <script src="js/main.js"></script>
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
-  <script src="js/post-management.js"></script>
-  <script>
-    $(document).ready(function () {
-      // Search functionality
-      $("#searchBtn").click(function () {
-        performSearch();
-      });
-
-      // Search on enter key press
-      $("#searchInput").keypress(function (e) {
-        if (e.which == 13) {
-          performSearch();
-        }
-      });
-
-      // Clear search when input is empty
-      $("#searchInput").on('input', function () {
-        if ($(this).val() === '') {
-          $("tbody tr").show();
-        }
-      });
-
-      function performSearch() {
-        let searchTerm = $("#searchInput").val().toLowerCase();
-
-        $("tbody tr").each(function () {
-          let description = $(this).find("td:first-child").text().toLowerCase();
-
-          if (searchTerm === "" || description.includes(searchTerm)) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        });
-      }
-    });
-  </script>
 </body>
 
 </html>
