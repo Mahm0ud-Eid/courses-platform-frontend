@@ -134,7 +134,7 @@ document.addEventListener("mouseover", (e) => {
 let rating;
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("star")) {
-    rating = e.target.dataset.value;
+    rating = Number(e.target.dataset.value);
     const container = e.target.closest(".star-rating");
     container?.querySelectorAll(".star").forEach((s) => {
       s.style.color = Number(s.dataset.value) <= rating ? "gold" : "gray";
@@ -146,7 +146,7 @@ document.addEventListener("click", (e) => {
       ratingDocRef,
       {
         courseId,
-        rate: rating,
+        overallRating: rating,
         rateId: ratingDocRef.id,
         userId: userData.id,
         userName: userData.name,
