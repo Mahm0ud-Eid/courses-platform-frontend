@@ -28,19 +28,15 @@
   <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet" />
-  <!-- Custom Responsive CSS -->
-  <link href="css/instructor-responsive.css" rel="stylesheet" />
 </head>
 
-<body> <!--== MAIN CONTRAINER ==-->
+<body>
+  <!--== MAIN CONTRAINER ==-->
   <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
-    <button id="header-menu-toggle" class="d-md-none border-0 bg-transparent">
-      <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="Menu" />
-    </button>
-    <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px; display: none;" class="d-none d-md-block"
-      alt="" />
+    <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <h1 class="sitename">UCCD</h1>
@@ -61,24 +57,8 @@
 
   <!--== BODY CONTNAINER ==-->
   <div class="container-fluid sb2">
-    <div class="row"> <!-- Mobile Menu Toggle Button (hidden since we use the header icon now) -->
-      <div class="d-none mobile-menu-toggle">
-        <button class="btn btn-primary position-fixed" id="menu-toggle"
-          style="top: 70px; left: 15px; z-index: 999; padding: 8px 12px;">
-          <i class="fa fa-bars"></i> Menu
-        </button>
-      </div>
-
-      <!-- Sidebar overlay for mobile -->
-      <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-      <div class="sb2-1" style="background-color: white; float: left; width: 19.5%" id="sidebar-menu">
-        <!-- Close button inside sidebar -->
-        <div class="d-block d-md-none p-3 text-right">
-          <button class="btn btn-danger btn-sm mobile-close-btn" id="sidebar-close">
-            <i class="fa fa-times"></i>
-          </button>
-        </div>
+    <div class="row">
+      <div class="sb2-1" style="background-color: white; float: left; width: 19.5%">
         <!--== LEFT MENU ==-->
         <div class="sb2-13">
           <ul class="collapsible" data-collapsible="accordion">
@@ -95,19 +75,18 @@
                   <li>
                     <a href="instructor-add-material.html">Add Material</a>
                   </li>
-                  <li>
-                    <a href="instructor-attendance.html">Attendance</a>
-                  </li>
                 </ul>
               </div>
             </li>
           </ul>
         </div>
-      </div> <!--== BODY INNER CONTAINER ==-->
-      <div class="sb2-2" style="padding: 40px; width: 80%" id="main-content">
+      </div>
+
+      <!--== BODY INNER CONTAINER ==-->
+      <div class="sb2-2" style="padding: 40px; width: 80%">
         <!--== breadcrumbs ==-->
         <div class="sb2-2-2">
-          <ul class="breadcrumb">
+          <ul>
             <li>
               <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
@@ -123,29 +102,22 @@
             courses, materials, and students.
           </p>
           <div class="db-2">
-            <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="dash-book dash-b-1 h-100">
+            <ul>
+              <li>
+                <div class="dash-book dash-b-1">
                   <h5>My Courses</h5>
                   <h4>5</h4>
-                  <a href="instructor-courses.html" class="btn btn-sm btn-info mt-2">View courses</a>
+                  <a href="instructor-courses.html">View courses</a>
                 </div>
-              </div>
-              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="dash-book dash-b-2 h-100">
+              </li>
+              <li>
+                <div class="dash-book dash-b-2">
                   <h5>Total Materials</h5>
                   <h4>35</h4>
-                  <a href="instructor-add-material.html" class="btn btn-sm btn-info mt-2">Add material</a>
+                  <a href="instructor-add-material.html">Add material</a>
                 </div>
-              </div>
-              <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
-                <div class="dash-book dash-b-3 h-100" style="background: linear-gradient(135deg, #3498db, #2980b9);">
-                  <h5>Attendance</h5>
-                  <h4>Daily Tracking</h4>
-                  <a href="instructor-attendance.html" class="btn btn-sm btn-light mt-2">Manage attendance</a>
-                </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -163,102 +135,66 @@
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th class="course-name-col">Course Name</th>
-                          <th class="start-date-col">Start Date</th>
-                          <th class="end-date-col d-none d-md-table-cell">End Date</th>
-                          <th class="duration-col d-none d-md-table-cell">Duration</th>
-                          <th class="students-col d-none d-lg-table-cell">Students</th>
-                          <th class="room-col d-none d-lg-table-cell">Room</th>
-                          <th class="status-col">Status</th>
-                          <th class="actions-col">Actions</th>
+                          <th>Course Name</th>
+                          <th>Start Date</th>
+                          <th>End Date</th>
+                          <th>Duration</th>
+                          <th>Number of Students</th>
+                          <th>Room Number</th>
+                          <th>Status</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td class="course-name-col">
+                          <td>
                             <a href="instructor-course-detail.html">Web Development</a>
                           </td>
-                          <td class="start-date-col">Sep 1, 2023</td>
-                          <td class="end-date-col d-none d-md-table-cell">Dec 15, 2023</td>
-                          <td class="duration-col d-none d-md-table-cell">15 weeks</td>
-                          <td class="students-col d-none d-lg-table-cell">24</td>
-                          <td class="room-col d-none d-lg-table-cell">Lab 301</td>
-                          <td class="status-col">
+                          <td>Sep 1, 2023</td>
+                          <td>Dec 15, 2023</td>
+                          <td>15 weeks</td>
+                          <td>24</td>
+                          <td>Lab 301</td>
+                          <td>
                             <span class="label label-success">Active</span>
                           </td>
-                          <td class="actions-col">
-                            <div class="btn-group-vertical btn-group-sm d-md-none">
-
-                              <a href="instructor-add-material.html" class="btn btn-warning text-dark mb-1"><i
-                                  class="fa fa-plus"></i> Material</a>
-                              <a href="instructor-attendance.html" class="btn btn-info text-white"><i
-                                  class="fa fa-check"></i> Attendance</a>
-                            </div>
-                            <div class="btn-group btn-group-sm d-none d-md-inline-flex">
-
-                              <a href="instructor-add-material.html" class="btn btn-warning text-dark"><i
-                                  class="fa fa-plus"></i> Material</a>
-                              <a href="instructor-attendance.html" class="btn btn-info text-white"><i
-                                  class="fa fa-check"></i> Attendance</a>
-                            </div>
+                          <td>
+                            <a href="instructor-course-detail.html" class="btn btn-primary text-white">View</a>
+                            <a href="instructor-add-material.html" class="btn btn-warning text-dark">Add Material</a>
                           </td>
                         </tr>
                         <tr>
-                          <td class="course-name-col">
+                          <td>
                             <a href="instructor-course-detail.html">Database Systems</a>
                           </td>
-                          <td class="start-date-col">Sep 1, 2023</td>
-                          <td class="end-date-col d-none d-md-table-cell">Dec 15, 2023</td>
-                          <td class="duration-col d-none d-md-table-cell">15 weeks</td>
-                          <td class="students-col d-none d-lg-table-cell">18</td>
-                          <td class="room-col d-none d-lg-table-cell">Room 205</td>
-                          <td class="status-col">
+                          <td>Sep 1, 2023</td>
+                          <td>Dec 15, 2023</td>
+                          <td>15 weeks</td>
+                          <td>18</td>
+                          <td>Room 205</td>
+                          <td>
                             <span class="label label-success">Active</span>
                           </td>
-                          <td class="actions-col">
-                            <div class="btn-group-vertical btn-group-sm d-md-none">
-
-                              <a href="instructor-add-material.html" class="btn btn-warning text-dark mb-1"><i
-                                  class="fa fa-plus"></i> Material</a>
-                              <a href="instructor-attendance.html" class="btn btn-info text-white"><i
-                                  class="fa fa-check"></i> Attendance</a>
-                            </div>
-                            <div class="btn-group btn-group-sm d-none d-md-inline-flex">
-
-                              <a href="instructor-add-material.html" class="btn btn-warning text-dark"><i
-                                  class="fa fa-plus"></i> Material</a>
-                              <a href="instructor-attendance.html" class="btn btn-info text-white"><i
-                                  class="fa fa-check"></i> Attendance</a>
-                            </div>
+                          <td>
+                            <a href="instructor-course-detail.html" class="btn btn-primary text-white">View</a>
+                            <a href="instructor-add-material.html" class="btn btn-warning text-dark">Add Material</a>
                           </td>
                         </tr>
                         <tr>
-                          <td class="course-name-col">
+                          <td>
                             <a href="instructor-course-detail.html">Algorithms</a>
                           </td>
-                          <td class="start-date-col">Jan 15, 2023</td>
-                          <td class="end-date-col d-none d-md-table-cell">May 10, 2023</td>
-                          <td class="duration-col d-none d-md-table-cell">16 weeks</td>
-                          <td class="students-col d-none d-lg-table-cell">22</td>
-                          <td class="room-col d-none d-lg-table-cell">Room 310</td>
-                          <td class="status-col">
+                          <td>Jan 15, 2023</td>
+                          <td>May 10, 2023</td>
+                          <td>16 weeks</td>
+                          <td>22</td>
+                          <td>Room 310</td>
+                          <td>
                             <span class="label label-default">Not Active</span>
                           </td>
-                          <td class="actions-col">
-                            <div class="btn-group-vertical btn-group-sm d-md-none">
-
-                              <a href="instructor-add-material.html" class="btn btn-warning text-dark mb-1"><i
-                                  class="fa fa-plus"></i> Material</a>
-                              <a href="instructor-attendance.html" class="btn btn-info text-white"><i
-                                  class="fa fa-check"></i> Attendance</a>
-                            </div>
-                            <div class="btn-group btn-group-sm d-none d-md-inline-flex">
-
-                              <a href="instructor-add-material.html" class="btn btn-warning text-dark"><i
-                                  class="fa fa-plus"></i> Material</a>
-                              <a href="instructor-attendance.html" class="btn btn-info text-white"><i
-                                  class="fa fa-check"></i> Attendance</a>
-                            </div>
+                          <td>
+                            <a href="instructor-course-detail.html" class="btn btn-primary text-white">View</a>
+                            <a href="instructor-add-material.html" class="btn btn-warning text-dark">Add Material</a>
                           </td>
                         </tr>
                       </tbody>
@@ -271,12 +207,10 @@
         </div>
       </div>
     </div>
-  </div> <!-- Logout Button -->
-  <div class="container-fluid text-center footer-logout" style="margin-top: 20px; margin-bottom: 20px;">
-    <button class="btn btn-danger logout-btn d-none d-md-inline-block" style="padding: 10px 30px;">
-      <i class="bi bi-box-arrow-right"></i> Log Out
-    </button>
-    <button class="btn btn-danger btn-block logout-btn d-md-none" style="padding: 8px 15px;">
+  </div>
+  <!-- Logout Button -->
+  <div class="container-fluid text-center" style="margin-top: 20px; margin-bottom: 20px;">
+    <button class="btn btn-danger btn-lg logout-btn" style="padding: 10px 30px;">
       <i class="bi bi-box-arrow-right"></i> Log Out
     </button>
   </div>
@@ -285,6 +219,7 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/custom.js"></script>
+  <script src="js/main.js"></script>
   <!-- Logout Script -->
   <script src="js/logout.js"></script>
 
@@ -305,76 +240,6 @@
 
   <!-- Main JS File -->
   <script src="js/main.js"></script>
-  <!-- Sidebar Mobile Toggle Script -->
-  <script>    document.addEventListener('DOMContentLoaded', function () {
-      // Mobile sidebar toggle functionality
-      const menuToggle = document.getElementById('menu-toggle');
-      const headerMenuToggle = document.getElementById('header-menu-toggle');
-      const sidebarClose = document.getElementById('sidebar-close');
-      const sidebarMenu = document.getElementById('sidebar-menu');
-      const overlay = document.getElementById('sidebar-overlay');
-
-      // Function to open sidebar
-      function openSidebar() {
-        sidebarMenu.classList.add('mobile-sidebar-show');
-        if (overlay) overlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent body scrolling
-      }
-
-      // Function to close sidebar
-      function closeSidebar() {
-        sidebarMenu.classList.remove('mobile-sidebar-show');
-        if (overlay) overlay.classList.remove('active');
-        document.body.style.overflow = ''; // Restore body scrolling
-      }
-      // Toggle sidebar when menu button is clicked
-      if (menuToggle) {
-        menuToggle.addEventListener('click', function (e) {
-          e.stopPropagation();
-          openSidebar();
-        });
-      }
-
-      // Toggle sidebar when header menu icon is clicked
-      if (headerMenuToggle) {
-        headerMenuToggle.addEventListener('click', function (e) {
-          e.stopPropagation();
-          openSidebar();
-        });
-      }
-
-      // Close sidebar when close button is clicked
-      if (sidebarClose) {
-        sidebarClose.addEventListener('click', function () {
-          closeSidebar();
-        });
-      }
-
-      // Close sidebar when overlay is clicked
-      if (overlay) {
-        overlay.addEventListener('click', function () {
-          closeSidebar();
-        });
-      }
-
-      // Close sidebar when clicking outside (extra safety)
-      document.addEventListener('click', function (event) {
-        const isMobile = window.innerWidth < 768;
-        if (isMobile && sidebarMenu.classList.contains('mobile-sidebar-show')) {
-          if (!sidebarMenu.contains(event.target) && event.target !== menuToggle) {
-            closeSidebar();
-          }
-        }
-      });
-
-      // Handle window resize - close sidebar if transitioning to desktop
-      window.addEventListener('resize', function () {
-        if (window.innerWidth >= 768 && sidebarMenu.classList.contains('mobile-sidebar-show')) {
-          closeSidebar();
-        }
-      });
-    });
-  </script>
 </body>
 
 </html>
