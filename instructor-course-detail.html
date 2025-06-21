@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Course Details - Instructor Dashboard</title>
+  <!-- META TAGS -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- FAV ICON(BROWSER TAB ICON) -->
+  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+    rel="stylesheet" />
+  <!-- FONTAWESOME ICONS -->
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <!-- ALL CSS FILES -->
+  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+  <link href="css/style-mob.css" rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!--== MAIN CONTRAINER ==-->
+  <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
+    <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">UCCD</h1>
+      </a>
+      <nav id="navmenu" class="navmenu navmenu-user">
+        <ul>
+          <li>
+            <button class="btn btn-danger logout-btn" style="padding: 8px 15px; margin-right: 10px;">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log Out</span>
+            </button>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle bi bi-person-circle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!--== BODY CONTNAINER ==-->
+  <div class="container-fluid sb2">
+    <div class="row">
+      <div class="sb2-1" style="background-color: white; float: left; width: 19.5%">
+        <!--== LEFT MENU ==-->
+        <div class="sb2-13">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <a href="instructor.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                Dashboard</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header menu-active"><i class="fa fa-book" aria-hidden="true"></i> My
+                Courses</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="instructor-courses.html" class="menu-active">View Courses</a></li>
+                  <li>
+                    <a href="instructor-add-material.html">Add Material</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--== BODY INNER CONTAINER ==-->
+      <div class="sb2-2" style="padding: 40px; width: 80%">
+        <!--== breadcrumbs ==-->
+        <div class="sb2-2-2">
+          <ul>
+            <li>
+              <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li><a href="instructor.html">Instructor Dashboard</a></li>
+            <li class="active-bre"><a href="#"> Course Details</a></li>
+          </ul>
+        </div>
+
+        <!--== DASHBOARD INFO ==-->
+        <div class="sb2-2-1">
+          <h2 id="course-title">Course Details</h2>
+          <p id="course-description">Loading course details...</p>
+          
+          <!-- Course Details Card -->
+          <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+              <h4>Course Information</h4>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Start Date:</th>
+                      <td id="course-start-date">Loading...</td>
+                    </tr>
+                    <tr>
+                      <th>End Date:</th>
+                      <td id="course-end-date">Loading...</td>
+                    </tr>
+                    <tr>
+                      <th>Duration:</th>
+                      <td id="course-duration">Loading...</td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Number of Students:</th>
+                      <td id="course-students">Loading...</td>
+                    </tr>
+                    <tr>
+                      <th>Room Number:</th>
+                      <td id="course-room">Loading...</td>
+                    </tr>
+                    <tr>
+                      <th>Status:</th>
+                      <td id="course-status">Loading...</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <a href="#" id="add-material-link" class="btn btn-warning">
+                    <i class="fa fa-plus"></i> Add Material
+                  </a>
+                  <a href="#" id="attendance-link" class="btn btn-success">
+                    <i class="fa fa-check-square-o"></i> Attendance
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Materials Section -->
+          <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+              <h4>Course Materials</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Type</th>
+                      <th>Upload Date</th>
+                      <th>Size</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="materials-table">
+                    <tr>
+                      <td colspan="5" class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Students Section -->
+          <div class="card">
+            <div class="card-header bg-success text-white">
+              <h4>Enrolled Students</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Student ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="students-table">
+                    <tr>
+                      <td colspan="5" class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Import jQuery before materialize.js-->
+  <script src="js/main.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/main.js"></script>
+  <!-- Logout Script -->
+  <script src="js/logout.js"></script>
+  <!-- Course Detail Script -->
+  <script type="module" src="js/instructor-course-detail.js"></script>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -102,18 +102,17 @@
             courses, materials, and students.
           </p>
           <div class="db-2">
-            <ul>
-              <li>
+            <ul>              <li>
                 <div class="dash-book dash-b-1">
                   <h5>My Courses</h5>
-                  <h4>5</h4>
+                  <h4>-</h4>
                   <a href="instructor-courses.html">View courses</a>
                 </div>
               </li>
               <li>
                 <div class="dash-book dash-b-2">
                   <h5>Total Materials</h5>
-                  <h4>35</h4>
+                  <h4>-</h4>
                   <a href="instructor-add-material.html">Add material</a>
                 </div>
               </li>
@@ -144,57 +143,13 @@
                           <th>Status</th>
                           <th>Actions</th>
                         </tr>
-                      </thead>
-                      <tbody>
+                      </thead>                      <tbody>
+                        <!-- Course data will be loaded dynamically from Firebase -->
                         <tr>
-                          <td>
-                            <a href="instructor-course-detail.html">Web Development</a>
-                          </td>
-                          <td>Sep 1, 2023</td>
-                          <td>Dec 15, 2023</td>
-                          <td>15 weeks</td>
-                          <td>24</td>
-                          <td>Lab 301</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="instructor-course-detail.html" class="btn btn-primary text-white">View</a>
-                            <a href="instructor-add-material.html" class="btn btn-warning text-dark">Add Material</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="instructor-course-detail.html">Database Systems</a>
-                          </td>
-                          <td>Sep 1, 2023</td>
-                          <td>Dec 15, 2023</td>
-                          <td>15 weeks</td>
-                          <td>18</td>
-                          <td>Room 205</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="instructor-course-detail.html" class="btn btn-primary text-white">View</a>
-                            <a href="instructor-add-material.html" class="btn btn-warning text-dark">Add Material</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="instructor-course-detail.html">Algorithms</a>
-                          </td>
-                          <td>Jan 15, 2023</td>
-                          <td>May 10, 2023</td>
-                          <td>16 weeks</td>
-                          <td>22</td>
-                          <td>Room 310</td>
-                          <td>
-                            <span class="label label-default">Not Active</span>
-                          </td>
-                          <td>
-                            <a href="instructor-course-detail.html" class="btn btn-primary text-white">View</a>
-                            <a href="instructor-add-material.html" class="btn btn-warning text-dark">Add Material</a>
+                          <td colspan="8" class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
                           </td>
                         </tr>
                       </tbody>
@@ -222,6 +177,8 @@
   <script src="js/main.js"></script>
   <!-- Logout Script -->
   <script src="js/logout.js"></script>
+  <!-- Instructor Dashboard Script -->
+  <script type="module" src="js/instructor-dashboard.js"></script>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
