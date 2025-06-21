@@ -232,14 +232,13 @@ function loadCourseStudents(courseId) {
         const row = document.createElement('tr');
         row.dataset.studentId = student.id;
         row.className = index % 2 === 0 ? 'even-row' : 'odd-row';
-        
-        row.innerHTML = `
-            <td><span class="student-id-badge">${student.id}</span></td>
+          row.innerHTML = `
             <td>
                 <div class="student-name">${student.name}</div>
+                <span class="student-id-badge" style="display: none;">${student.id}</span>
             </td>
-            <td>${student.email}</td>
-            <td>                <div class="attendance-actions">
+            <td>
+                <div class="attendance-actions">
                     <button type="button" class="btn attendance-btn present" onclick="markAttendance('${student.id}', 'present')">
                         <i class="fa fa-check-circle"></i> Present
                     </button>
@@ -383,10 +382,34 @@ function updateAttendanceCounts() {
     const absentCount = document.querySelectorAll('#student-list .attendance-status.status-absent').length;
     const notMarkedCount = totalRows - presentCount - absentCount;
     
-    // Update the counters
-    document.getElementById('present-count').textContent = presentCount;
-    document.getElementById('absent-count').textContent = absentCount;
-    document.getElementById('not-marked-count').textContent = notMarkedCount;
+    // Update the counters with animation
+    const presentElement = document.getElementById('present-count');
+    const absentElement = document.getElementById('absent-count');
+    const notMarkedElement = document.getElementById('not-marked-count');
+    
+    // Add animation class if the values have changed
+    if (presentElement.textContent != presentCount) {
+        presentElement.classList.remove('count-highlight');
+        void presentElement.offsetWidth; // Trigger reflow
+        presentElement.classList.add('count-highlight');
+    }
+    
+    if (absentElement.textContent != absentCount) {
+        absentElement.classList.remove('count-highlight');
+        void absentElement.offsetWidth; // Trigger reflow
+        absentElement.classList.add('count-highlight');
+    }
+    
+    if (notMarkedElement.textContent != notMarkedCount) {
+        notMarkedElement.classList.remove('count-highlight');
+        void notMarkedElement.offsetWidth; // Trigger reflow
+        notMarkedElement.classList.add('count-highlight');
+    }
+    
+    // Update the text content
+    presentElement.textContent = presentCount;
+    absentElement.textContent = absentCount;
+    notMarkedElement.textContent = notMarkedCount;
 }
 
 function saveAttendance(courseId, date) {

@@ -148,22 +148,31 @@
                                     <p>Mark attendance for students</p>
                                 </div>
                                 <div class="attendance-summary">
-                                    <div class="summary-item">
-                                        <span class="badge bg-success">
-                                            <i class="fa fa-check-circle"></i> Present: <span
-                                                id="present-count">0</span>
-                                        </span>
-                                    </div>
-                                    <div class="summary-item">
-                                        <span class="badge bg-danger">
-                                            <i class="fa fa-times-circle "></i> Absent: <span id="absent-count">0</span>
-                                        </span>
-                                    </div>
-                                    <div class="summary-item">
-                                        <span class="badge bg-secondary">
-                                            <i class="fa fa-question-circle"></i> Not Marked: <span
-                                                id="not-marked-count">0</span>
-                                        </span>
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12 mb-3">
+                                            <div class="summary-item">
+                                                <span class="badge bg-success attendance-count-badge">
+                                                    <i class="fa fa-check-circle"></i> Present: <span
+                                                        id="present-count">0</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 mb-3">
+                                            <div class="summary-item">
+                                                <span class="badge bg-danger attendance-count-badge">
+                                                    <i class="fa fa-times-circle"></i> Absent: <span
+                                                        id="absent-count">0</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 mb-3">
+                                            <div class="summary-item">
+                                                <span class="badge bg-warning attendance-count-badge">
+                                                    <i class="fa fa-exclamation-circle"></i> Not Marked: <span
+                                                        id="not-marked-count">0</span>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-inn">
@@ -189,18 +198,23 @@
                                                                 JavaScript to use the attendance system.</strong>
                                                         </td>
                                                     </tr>
-                                                </noscript>
-                                                <!-- Fallback data in case JavaScript fails -->
+                                                </noscript> <!-- Fallback data in case JavaScript fails -->
                                                 <tr class="js-fallback" style="display: none;">
                                                     <td>
                                                         <div class="student-name">John Smith</div>
                                                     </td>
                                                     <td>
-                                                        <button class="btn attendance-btn present">Present</button>
-                                                        <button class="btn attendance-btn absent">Absent</button>
+                                                        <div class="attendance-actions">
+                                                            <button class="btn attendance-btn present">Present</button>
+                                                            <button class="btn attendance-btn absent">Absent</button>
+                                                        </div>
                                                     </td>
-                                                    <td class="attendance-status">Not marked</td>
-                                                    <td><input type="text" class="form-control notes-input"
+                                                    <td class="attendance-status status-not-marked">
+                                                        <span class="status-icon"><i
+                                                                class="fa fa-exclamation-circle"></i></span> Not marked
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control notes-input"
                                                             placeholder="Notes">
                                                     </td>
                                                 </tr>
