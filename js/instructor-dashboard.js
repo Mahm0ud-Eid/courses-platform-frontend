@@ -32,7 +32,6 @@ const db = getFirestore(app);
 // DOM elements
 const courseTableBody = document.querySelector('.table-desi tbody');
 const courseCountElement = document.querySelector('.dash-b-1 h4');
-const materialCountElement = document.querySelector('.dash-b-2 h4');
 const loadingIndicator = document.createElement('div');
 loadingIndicator.className = 'text-center p-5';
 loadingIndicator.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>';
@@ -126,10 +125,8 @@ async function fetchInstructorCourses() {
       courseCountElement.textContent = '0';
       return;
     }
-    
-    // Count courses and materials
+      // Count courses
     let courseCount = 0;
-    let materialCount = 0;
     
     // Clear previous content
     courseTableBody.innerHTML = '';
@@ -138,11 +135,6 @@ async function fetchInstructorCourses() {
     querySnapshot.forEach((doc) => {
       const course = doc.data();
       courseCount++;
-      
-      // If the course has materials, count them
-      if (course.materials && Array.isArray(course.materials)) {
-        materialCount += course.materials.length;
-      }
       
       // Determine course status
       const isActive = isCourseActive(course.courseStartDate, course.courseEndDate);
@@ -171,10 +163,8 @@ async function fetchInstructorCourses() {
       
       courseTableBody.appendChild(row);
     });
-    
-    // Update course and material counts in the dashboard
+      // Update course count in the dashboard
     courseCountElement.textContent = courseCount.toString();
-    materialCountElement.textContent = materialCount.toString();
     
   } catch (error) {
     console.error('Error fetching instructor courses:', error);
