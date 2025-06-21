@@ -335,10 +335,31 @@ function saveAttendanceRecords(courseId, date, records) {
             
             const studentData = doc.data();
             let absenceDates = studentData.absenceDates || [];
-            let attendanceDates = studentData.attendanceDates || [];
-              // Remove this date from both arrays (to avoid duplicates)
-            absenceDates = absenceDates.filter(d => d !== date);
-            attendanceDates = attendanceDates.filter(d => d !== date);
+            let attendanceDates = studentData.attendanceDates || [];            // Remove this date from both arrays (to avoid duplicates)
+            // Need to handle both string dates and Firestore timestamps
+            absenceDates = absenceDates.filter(d => {
+                if (typeof d === 'string') {
+                    return d !== date;
+                } else if (d && typeof d.toDate === 'function') {
+                    // For Firestore timestamp, compare the YYYY-MM-DD representation
+                    const dateObj = d.toDate();
+                    const dateStr = dateObj.toISOString().split('T')[0];
+                    return dateStr !== date;
+                }
+                return true; // Keep any unrecognized format
+            });
+            
+            attendanceDates = attendanceDates.filter(d => {
+                if (typeof d === 'string') {
+                    return d !== date;
+                } else if (d && typeof d.toDate === 'function') {
+                    // For Firestore timestamp, compare the YYYY-MM-DD representation
+                    const dateObj = d.toDate();
+                    const dateStr = dateObj.toISOString().split('T')[0];
+                    return dateStr !== date;
+                }
+                return true; // Keep any unrecognized format
+            });
             
             // Add to the appropriate array based on status
             if (record.status === 'present') {
@@ -831,8 +852,7 @@ function loadAttendanceForDate(courseId, date) {
             // Add a header to show the current attendance date in the desired format
             const formattedDate = formatDateForDisplay(date);
             console.log('Attendance date formatted:', formattedDate);
-            
-            // Process attendance data based on attendance and absence arrays
+              // Process attendance data based on attendance and absence arrays
             students.forEach(student => {
                 const studentId = student.id;
                 const absenceDates = student.absenceDates || [];
@@ -840,10 +860,26 @@ function loadAttendanceForDate(courseId, date) {
                 
                 console.log(`Student ${student.name} - absenceDates:`, absenceDates, 'attendanceDates:', attendanceDates);
                 
-                // Check if this date is in either array
-                if (absenceDates.includes(date)) {
+                // Helper function to check if a date is in an array that might contain either strings or Firestore timestamps
+                const isDateInArray = (array, dateString) => {
+                    return array.some(item => {
+                        if (typeof item === 'string') {
+                            // Direct string comparison
+                            return item === dateString;
+                        } else if (item && typeof item.toDate === 'function') {
+                            // It's a Firestore timestamp
+                            const dateObj = item.toDate();
+                            const formattedDate = dateObj.toISOString().split('T')[0]; // YYYY-MM-DD
+                            return formattedDate === dateString;
+                        }
+                        return false;
+                    });
+                };
+                
+                // Check if this date is in either array using our helper function
+                if (isDateInArray(absenceDates, date)) {
                     attendanceData[studentId] = { status: 'absent', notes: student.notes || '' };
-                } else if (attendanceDates.includes(date)) {
+                } else if (isDateInArray(attendanceDates, date)) {
                     attendanceData[studentId] = { status: 'present', notes: student.notes || '' };
                 } else {
                     attendanceData[studentId] = { status: 'not-marked', notes: '' };
