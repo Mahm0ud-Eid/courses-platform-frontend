@@ -1,4 +1,26 @@
-import { auth, db, validateToken, collection } from "../js/index.js"; // Import auth and db from index.js
+// import { auth, db, validateToken, collection } from "../js/index.js"; // Import auth and db from index.js
+let db;
+
+async function loadIndexModule() {
+  try {
+    const module = await import("../js/index.js");
+    db = module.db;
+    module.validateToken();
+  } catch (err) {
+    console.error("Failed to load login.js:", err);
+  }
+}
+await loadIndexModule();
+
+function loadValidate() {
+  import("../js/index.js")
+    .then((module) => {
+      module.validateToken(); // Call validateToken from index.js
+    })
+    .catch((err) => {
+      console.error("Failed to load index.js:", err);
+    });
+}
 
 import {
   doc,
@@ -7,7 +29,9 @@ import {
   getDocs,
   query,
   where,
+  collection,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+// import { validateToken } from "./manager.js";
 
 const userData = JSON.parse(sessionStorage.getItem("userData"));
 
@@ -19,11 +43,12 @@ if (userData) {
   Array.from(stdName).forEach((el) => {
     el.innerHTML = userData.name;
   });
-  stdId.textContent = userData.id;
+  stdId.textContent = userData.universityID;
 } else {
   console.error("No user data found in sessionStorage.");
 }
 
+// Display courses
 const container = document.querySelector(".enr-courses");
 
 if (Array.isArray(userData?.courses) && userData.courses.length) {
@@ -96,6 +121,7 @@ if (Array.isArray(userData?.courses) && userData.courses.length) {
   }
 }
 
+// Star rating functionality
 document.addEventListener("mouseover", (e) => {
   if (!e.target.classList.contains("star")) return;
   const rating = e.target.dataset.value;
@@ -143,5 +169,5 @@ document.addEventListener("mouseout", (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  validateToken();
+  loadValidate();
 });
