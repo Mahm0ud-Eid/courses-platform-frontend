@@ -128,7 +128,49 @@
                   </p>
                 </div>
                 <div class="tab-inn">
-                  <div class="table-responsive table-desi">
+                  <!-- Search and Filter -->
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search courses...">
+                        <button class="btn btn-primary" type="button" id="searchButton">
+                          <i class="fa fa-search"></i> Search
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <select class="form-control" id="statusFilter">
+                        <option value="all">All Courses</option>
+                        <option value="active">Active Courses</option>
+                        <option value="inactive">Inactive Courses</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Course Cards View -->
+                  <div class="row mb-4" id="courseCardsContainer">
+                    <!-- Course cards will be loaded dynamically -->
+                    <div class="col-12 text-center py-5">
+                      <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- View Toggle Buttons -->
+                  <div class="mb-3 text-right">
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-primary active" id="cardViewBtn">
+                        <i class="fa fa-th-large"></i> Card View
+                      </button>
+                      <button type="button" class="btn btn-outline-primary" id="listViewBtn">
+                        <i class="fa fa-list"></i> List View
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Course Table View -->
+                  <div class="table-responsive table-desi" id="courseTableContainer" style="display: none;">
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -143,55 +185,12 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <!-- Course data will be loaded dynamically -->
                         <tr>
-                          <td>
-                            <a href="instructor-course-detail.html">Web Development</a>
-                          </td>
-                          <td>Sep 1, 2023</td>
-                          <td>Dec 15, 2023</td>
-                          <td>15 weeks</td>
-                          <td>24</td>
-                          <td>Lab 301</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="instructor-add-material.html" class="btn btn-warning text-dark">Add Material</a>
-                            <a href="instructor-attendance.html" class="btn btn-info text-white">Attendance</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="instructor-course-detail.html">Database Systems</a>
-                          </td>
-                          <td>Sep 1, 2023</td>
-                          <td>Dec 15, 2023</td>
-                          <td>15 weeks</td>
-                          <td>18</td>
-                          <td>Room 205</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="instructor-add-material.html" class="btn btn-warning text-dark">Add Material</a>
-                            <a href="instructor-attendance.html" class="btn btn-info text-white">Attendance</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="instructor-course-detail.html">Algorithms</a>
-                          </td>
-                          <td>Jan 15, 2023</td>
-                          <td>May 10, 2023</td>
-                          <td>16 weeks</td>
-                          <td>22</td>
-                          <td>Room 310</td>
-                          <td>
-                            <span class="label label-default">Not Active</span>
-                          </td>
-                          <td>
-                            <a href="instructor-add-material.html" class="btn btn-warning text-dark">Add Material</a>
-                            <a href="instructor-attendance.html" class="btn btn-info text-white">Attendance</a>
+                          <td colspan="8" class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
                           </td>
                         </tr>
                       </tbody>
@@ -216,7 +215,6 @@
   </div>
 
   <!--Import jQuery before materialize.js-->
-  <script src="js/main.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/custom.js"></script>
@@ -295,7 +293,6 @@
       });
     });
   </script>
-
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
@@ -310,6 +307,9 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Instructor Courses Script -->
+  <script type="module" src="js/instructor-courses.js"></script>
 
   <!-- Main JS File -->
   <script src="js/main.js"></script>
