@@ -77,16 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeEventListeners() {
-    try {
-        // Course selection change
+    try {        // Course selection change
         const courseSelect = document.getElementById('course-select');
-        if (courseSelect) {
-            courseSelect.addEventListener('change', function() {
+        if (courseSelect) {            courseSelect.addEventListener('change', function() {
                 const courseId = this.value;
-                if (courseId) {
-                    loadCourseStudents(courseId);
-                    loadAttendanceHistory(courseId);
-                } else {
+                if (!courseId) {
                     clearStudentList();
                     clearAttendanceHistory();
                 }
@@ -104,14 +99,26 @@ function initializeEventListeners() {
         } else {
             console.error('Date select element not found');
         }
-        
-        // Load attendance button click
+          // Load attendance button click
         const loadButton = document.getElementById('load-attendance');
         if (loadButton) {
             loadButton.addEventListener('click', function() {
                 const courseId = document.getElementById('course-select').value;
-                if (courseId) {
+                if (courseId) {                    // First load the student list for the course
+                    loadCourseStudents(courseId);
+                    
+                    // Then load any existing attendance data for the selected date
                     loadAttendanceForDate(courseId, currentDate);
+                    
+                    // Also load the attendance history for the course
+                    loadAttendanceHistory(courseId);                    // Visual feedback that data is loading
+                    loadButton.innerHTML = '<i class="fa fa-refresh fa-spin" style="font-size: 14px; margin-right: 5px;"></i> Loading...';
+                    setTimeout(() => {
+                        loadButton.innerHTML = '<i class="fa fa-refresh" style="font-size: 14px; margin-right: 5px;"></i> Load Attendance';
+                    }, 800);
+                    
+                    // Show success toast
+                    showToast('Attendance data loaded successfully', 'success');
                 } else {
                     alert('Please select a course first');
                 }
@@ -261,12 +268,29 @@ function loadCourseStudents(courseId) {
 }
 
 function loadAttendanceForDate(courseId, date) {
+    // Format date for display
+    const formattedDate = new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+    
     // Check if attendance data exists for this course and date
     const courseAttendance = attendanceData[courseId] || {};
     const dateAttendance = courseAttendance[date] || {};
     
     // Get all student rows
     const studentRows = document.querySelectorAll('#student-list tr[data-student-id]');
+    
+    if (studentRows.length === 0) {
+        showToast("No students found for this course", "warning");
+        return;
+    }
+    
+    // Check if we have existing attendance data for this date
+    const hasExistingData = Object.keys(dateAttendance).length > 0;
+    
+    if (hasExistingData) {
+        showToast(`Loaded attendance data for ${formattedDate}`, "success");
+    } else {
+        showToast(`No existing attendance data for ${formattedDate}. Please mark attendance.`, "info");
+    }
     
     // Reset all rows first
     studentRows.forEach(row => {
@@ -593,7 +617,8 @@ function clearAttendanceHistory() {
             <td colspan="6" class="text-center">
                 <div class="empty-state">
                     <i class="fa fa-calendar fa-3x text-muted"></i>
-                    <p>Select a course to view attendance history</p>
+                    <p>Select a course and press "Load Attendance"</p>
+                    <small>Attendance history will appear here after loading</small>
                 </div>
             </td>
         </tr>`;
@@ -602,4 +627,25 @@ function clearAttendanceHistory() {
 function formatDate(dateString) {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
+}
+
+// Function to show toast notifications
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('toast-notification');
+    const toastMessage = document.getElementById('toast-message');
+    
+    toast.className = 'toast-notification';
+    if (type === 'error') {
+        toast.classList.add('error');
+    } else if (type === 'warning') {
+        toast.classList.add('warning');
+    }
+    
+    toastMessage.textContent = message;
+    toast.style.display = 'block';
+    
+    // Hide the toast after 4 seconds
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 4000);
 }

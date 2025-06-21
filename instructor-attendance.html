@@ -127,10 +127,11 @@
                                 <h4>Select Date</h4>
                             </div>
                             <div class="tab-inn">
-                                <div class="date-field">
-                                    <input type="date" class="form-control" id="attendance-date" value="">
-                                    <button class="btn btn-primary" id="load-attendance">
-                                        <i class="fa fa-refresh"></i> Load Attendance
+                                <div class="date-field"> <input type="date" class="form-control" id="attendance-date"
+                                        value=""> <button class="btn btn-primary w-100" id="load-attendance"
+                                        style="font-weight: 600; font-size: 14px; padding: 8px 12px;">
+                                        <i class="fa fa-refresh" style="font-size: 14px; margin-right: 5px;"></i> Load
+                                        Attendance
                                     </button>
                                 </div>
                             </div>
@@ -256,8 +257,14 @@
                                             </thead>
                                             <tbody id="history-list">
                                                 <tr>
-                                                    <td colspan="6" class="text-center">Select a course to view
-                                                        attendance history</td>
+                                                    <td colspan="6" class="text-center">
+                                                        <div class="empty-state">
+                                                            <i class="fa fa-calendar fa-3x text-muted"></i>
+                                                            <p>Select a course and press "Load Attendance"</p>
+                                                            <small>Attendance history will appear here after
+                                                                loading</small>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -270,6 +277,11 @@
             </div>
         </div>
     </div>
+    <!-- Toast notification -->
+    <div id="toast-notification" class="toast-notification">
+        <i class="fa fa-info-circle"></i> <span id="toast-message">Notification</span>
+    </div>
+
     <!-- Preloader -->
     <div id="preloader">
         <div

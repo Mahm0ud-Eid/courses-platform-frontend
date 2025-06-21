@@ -512,6 +512,56 @@
     box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
 }
 
+/* Load Attendance button styling */
+#load-attendance {
+    background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(13, 110, 253, 0.2);
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 5px rgba(13, 110, 253, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+    }
+}
+
+#load-attendance:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(13, 110, 253, 0.3);
+    background: linear-gradient(135deg, #0a58ca, #084298);
+    animation: none;
+}
+
+#load-attendance:active {
+    transform: translateY(0);
+}
+
+#load-attendance i.fa-spin {
+    animation: fa-spin 1s infinite linear;
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    #load-attendance {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+}
+
 /* Table cell styling for attendance table */
 #attendance-table th,
 #attendance-table td {
@@ -630,6 +680,51 @@ table#attendance-table th:nth-child(6) {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+/* Toast notification */
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 9999;
+    display: none;
+    animation: slideIn 0.5s, fadeOut 0.5s 3.5s;
+    max-width: 350px;
+}
+
+.toast-notification.error {
+    background-color: #dc3545;
+}
+
+.toast-notification.warning {
+    background-color: #ffc107;
+    color: #343a40;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
 
