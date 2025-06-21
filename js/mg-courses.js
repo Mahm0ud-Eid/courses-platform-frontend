@@ -1,12 +1,20 @@
-import {
-  db,
-  validateToken,
-  dir,
-  instDetails,
-  cDetails,
-  stdDetails,
-  dash,
-} from "../js/manager.js"; // Import db and other necessary variables
+// import { db, validateToken, dir, cDetails, stdDetails, dash } from ""; // Import db and other necessary variables
+let db, dir, stdDetails, dash;
+
+async function loadManagerModule() {
+  try {
+    const module = await import("../js/manager.js");
+    db = module.db;
+    dir = module.dir;
+    stdDetails = module.stdDetails;
+    dash = module.dash;
+    module.validateToken();
+  } catch (err) {
+    console.error("Failed to load login.js:", err);
+  }
+}
+await loadManagerModule();
+
 import {
   collection,
   getFirestore,
@@ -20,6 +28,7 @@ import {
   Timestamp,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
+let cDetails = document.querySelector(".c-details");
 let addCr = document.querySelector(".add-cr");
 
 let crName = document.querySelector(".cr-name");
@@ -48,7 +57,7 @@ crMgBtn.addEventListener("click", function () {
   dir.innerHTML = "Manage Courses";
   dash.style.display = "none";
   stdDetails.style.display = "none";
-  cDetails.style.display = "none";
+  // cDetails.style.display = "none";
   addCr.style.display = "block";
   populateDatalist("cat");
   populateDatalist("inst");

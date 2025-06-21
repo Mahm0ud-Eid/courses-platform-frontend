@@ -50,7 +50,7 @@ instMgBtn.addEventListener("click", function () {
   dir.innerHTML = "manage users";
   dash.style.display = "none";
   stdDetails.style.display = "none";
-  cDetails.style.display = "none";
+  // cDetails.style.display = "none";
   addInst.style.display = "block";
 });
 
@@ -170,7 +170,7 @@ addmissionBtn.addEventListener("click", function () {
   dir.innerHTML = "Student Admission";
   dash.style.display = "none";
   stdDetails.style.display = "none";
-  cDetails.style.display = "none";
+  // cDetails.style.display = "none";
   addInst.style.display = "none";
   stdAdmission.style.display = "block";
 
@@ -335,7 +335,7 @@ instDelBtn.addEventListener("click", async (event) => {
 instVAllBtn.addEventListener("click", function () {
   dir.innerHTML = "view All Instructors";
   dash.style.display = "none";
-  cDetails.style.display = "none";
+  // cDetails.style.display = "none";
   addInst.style.display = "none";
   instDetails.style.display = "block";
 
