@@ -221,14 +221,13 @@ function loadCourseStudents(courseId) {
     // Clear and populate the student list
     const studentListElement = document.getElementById('student-list');
     studentListElement.innerHTML = '';
-    
-    if (students.length === 0) {
+      if (students.length === 0) {
         studentListElement.innerHTML = `
             <tr>
                 <td colspan="6" class="text-center">
-                    <div class="empty-state">
-                        <i class="fa fa-users fa-3x text-muted"></i>
+                    <div class="empty-state">                        <i class="fa fa-users fa-4x text-muted"></i>
                         <p>No students found for this course</p>
+                        <small>Please select a different course</small>
                     </div>
                 </td>
             </tr>`;
@@ -504,8 +503,7 @@ function loadAttendanceHistory(courseId) {
         historyListElement.innerHTML = `
             <tr>
                 <td colspan="6" class="text-center">
-                    <div class="empty-state">
-                        <i class="fa fa-calendar fa-3x text-muted"></i>
+                    <div class="empty-state">                        <i class="fa fa-calendar fa-4x text-muted"></i>
                         <p>No attendance records found for this course</p>
                         <small>Records will appear here after you save attendance</small>
                     </div>
@@ -591,15 +589,13 @@ function deleteAttendanceRecord(courseId, date) {
     }
 }
 
-function clearStudentList() {
-    const studentListElement = document.getElementById('student-list');
+function clearStudentList() {    const studentListElement = document.getElementById('student-list');
     studentListElement.innerHTML = `
         <tr>
             <td colspan="6" class="text-center">
-                <div class="empty-state">
-                    <i class="fa fa-users fa-3x text-muted"></i>
-                    <p>Please select a course and date to view students</p>
-                    <small>Use the dropdown and date picker above to get started</small>
+                <div class="empty-state">                    <i class="fa fa-users fa-4x text-muted"></i>
+                    <p>Please select a course and press "Load Attendance"</p>
+                    <small>Students will appear here after loading</small>
                 </div>
             </td>
         </tr>`;
@@ -614,9 +610,8 @@ function clearAttendanceHistory() {
     const historyListElement = document.getElementById('history-list');
     historyListElement.innerHTML = `
         <tr>
-            <td colspan="6" class="text-center">
-                <div class="empty-state">
-                    <i class="fa fa-calendar fa-3x text-muted"></i>
+            <td colspan="6" class="text-center">                <div class="empty-state">
+                    <i class="fa fa-calendar fa-4x text-muted"></i>
                     <p>Select a course and press "Load Attendance"</p>
                     <small>Attendance history will appear here after loading</small>
                 </div>
