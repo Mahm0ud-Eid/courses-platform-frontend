@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Course Attendance | Instructor Dashboard</title>
+    <!-- META TAGS -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- FAV ICON(BROWSER TAB ICON) -->
+    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+        rel="stylesheet" />
+    <!-- FONTAWESOME ICONS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- ALL CSS FILES -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+    <link href="css/style-mob.css" rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <!-- Attendance CSS -->
+    <link href="css/attendance.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--== MAIN CONTRAINER ==-->
+    <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
+        <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <h1 class="sitename">UCCD</h1>
+            </a>
+            <nav id="navmenu" class="navmenu navmenu-user">
+                <ul>
+                    <li>
+                        <button class="btn btn-danger logout-btn" style="padding: 8px 15px; margin-right: 10px;">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Log Out</span>
+                        </button>
+                    </li>
+                </ul>
+                <i class="mobile-nav-toggle bi bi-person-circle"></i>
+            </nav>
+        </div>
+    </header>
+
+    <!--== BODY CONTNAINER ==-->
+    <div class="container-fluid sb2">
+        <div class="row">
+            <div class="sb2-1" style="background-color: white; float: left; width: 19.5%">
+                <!--== LEFT MENU ==-->
+                <div class="sb2-13">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <a href="instructor.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book"
+                                    aria-hidden="true"></i> My
+                                Courses</a>
+                            <div class="collapsible-body left-sub-menu">
+                                <ul>
+                                    <li><a href="instructor-courses.html">View Courses</a></li>
+                                    <li><a href="instructor-add-material.html">Add Material</a></li>
+                                    <li><a href="instructor-attendance.html" class="menu-active">Attendance</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--== BODY INNER CONTAINER ==-->
+            <div class="sb2-2" style="padding: 40px; width: 80%">
+                <!--== breadcrumbs ==-->
+                <div class="sb2-2-2">
+                    <ul>
+                        <li>
+                            <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        </li>
+                        <li><a href="instructor.html">Instructor Dashboard</a></li>
+                        <li class="active-bre"><a href="#"> Course Attendance</a></li>
+                    </ul>
+                </div>
+
+                <!--== DASHBOARD INFO ==-->
+                <div class="sb2-2-1">
+                    <h2>Course Attendance Management</h2>
+                    <p>
+                        Track and manage student attendance for your courses. Select a course and date to record
+                        attendance.
+                    </p>
+                </div> <!--== Course Selection and Attendance Date ==-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box-inn-sp">
+                            <div class="inn-title">
+                                <h4>Select Course</h4>
+                            </div>
+                            <div class="tab-inn">
+                                <div class="course-select">
+                                    <select class="form-control" id="course-select">
+                                        <option value="">-- Select Course --</option>
+                                        <option value="1">Web Development</option>
+                                        <option value="2">Database Systems</option>
+                                        <option value="3">Algorithms</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="attendance-date-selector box-inn-sp">
+                            <div class="inn-title">
+                                <h4>Select Date</h4>
+                            </div>
+                            <div class="tab-inn">
+                                <div class="date-field">
+                                    <input type="date" class="form-control" id="attendance-date" value="">
+                                    <button class="btn btn-primary" id="load-attendance">
+                                        <i class="fa fa-refresh"></i> Load Attendance
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== Student Attendance ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>Student Attendance</h4>
+                                    <p>Mark attendance for students</p>
+                                </div>
+                                <div class="attendance-summary">
+                                    <div class="summary-item">
+                                        <span class="badge bg-success">
+                                            <i class="fa fa-check-circle"></i> Present: <span
+                                                id="present-count">0</span>
+                                        </span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="badge bg-danger">
+                                            <i class="fa fa-times-circle"></i> Absent: <span id="absent-count">0</span>
+                                        </span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="badge bg-secondary">
+                                            <i class="fa fa-question-circle"></i> Not Marked: <span
+                                                id="not-marked-count">0</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table class="table table-hover" id="attendance-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Student ID</th>
+                                                    <th>Student Name</th>
+                                                    <th>Email</th>
+                                                    <th width="250">Attendance</th>
+                                                    <th>Status</th>
+                                                    <th>Notes</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="student-list">
+                                                <tr>
+                                                    <td colspan="6" class="text-center">Please select a course and date
+                                                        to view students</td>
+                                                </tr>
+                                                <noscript>
+                                                    <tr>
+                                                        <td colspan="6" class="text-center text-danger">
+                                                            <strong>JavaScript is disabled or not working. Please enable
+                                                                JavaScript to use the attendance system.</strong>
+                                                        </td>
+                                                    </tr>
+                                                </noscript>
+                                                <!-- Fallback data in case JavaScript fails -->
+                                                <tr class="js-fallback" style="display: none;">
+                                                    <td>S1001</td>
+                                                    <td>John Smith</td>
+                                                    <td>john.smith@example.com</td>
+                                                    <td>
+                                                        <button class="btn btn-success">Present</button>
+                                                        <button class="btn btn-danger">Absent</button>
+                                                    </td>
+                                                    <td>Not marked</td>
+                                                    <td><input type="text" class="form-control" placeholder="Notes">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="text-center" style="margin-top: 20px;">
+                                            <button id="save-attendance" class="btn btn-success btn-lg">
+                                                <i class="fa fa-save"></i> Save Attendance
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== Attendance History ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>Attendance History</h4>
+                                    <p>Previous attendance records for the selected course</p>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="attendance-history">
+                                        <table class="table table-hover" id="history-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Total Students</th>
+                                                    <th>Present</th>
+                                                    <th>Absent</th>
+                                                    <th>Percentage</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="history-list">
+                                                <tr>
+                                                    <td colspan="6" class="text-center">Select a course to view
+                                                        attendance history</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #0d6efd; font-size: 18px;">
+            Loading attendance system...
+        </div>
+    </div>
+
+    <!--Import jQuery before other scripts-->
+    <script src="js/main.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+
+    <!-- Attendance Script -->
+    <script src="js/attendance.js"></script>
+
+    <!-- Other scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/logout.js"></script>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Check if page is ready
+        document.addEventListener('readystatechange', function () {
+            console.log('Document readyState: ' + document.readyState);
+
+            if (document.readyState === 'complete') {
+                console.log('Page fully loaded');
+
+                // Verify critical elements exist
+                ['course-select', 'attendance-date', 'load-attendance', 'student-list'].forEach(id => {
+                    const element = document.getElementById(id);
+                    console.log(`Element #${id} exists: ${element ? 'Yes' : 'No'}`);
+                });
+
+                // Fallback to hide preloader if it's still showing after 2 seconds
+                setTimeout(function () {
+                    const preloader = document.getElementById('preloader');
+                    if (preloader && preloader.style.display !== 'none') {
+                        preloader.style.display = 'none';
+                        console.log('Preloader hidden by timeout fallback');
+                        alert('The page has loaded but some elements might not be functioning correctly. You may need to refresh the page.');
+                    }
+                }, 3000);
+            }
+        });
+
+        // Emergency reload if something goes wrong
+        window.addEventListener('error', function (e) {
+            console.error('Global error caught:', e.message);
+            // Log the error but don't reload automatically to avoid infinite loops
+        });
+    </script>
+</body>
+
+</html>
