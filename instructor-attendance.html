@@ -156,7 +156,7 @@
                                     </div>
                                     <div class="summary-item">
                                         <span class="badge bg-danger">
-                                            <i class="fa fa-times-circle"></i> Absent: <span id="absent-count">0</span>
+                                            <i class="fa fa-times-circle "></i> Absent: <span id="absent-count">0</span>
                                         </span>
                                     </div>
                                     <div class="summary-item">
@@ -171,22 +171,20 @@
                                         <table class="table table-hover" id="attendance-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Student ID</th>
-                                                    <th>Student Name</th>
-                                                    <th>Email</th>
-                                                    <th width="250">Attendance</th>
-                                                    <th>Status</th>
-                                                    <th>Notes</th>
+                                                    <th class="student-name-column">Student Name</th>
+                                                    <th width="250" class="attendance-column">Attendance</th>
+                                                    <th class="status-column">Status</th>
+                                                    <th class="notes-column">Notes</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="student-list">
                                                 <tr>
-                                                    <td colspan="6" class="text-center">Please select a course and date
+                                                    <td colspan="4" class="text-center">Please select a course and date
                                                         to view students</td>
                                                 </tr>
                                                 <noscript>
                                                     <tr>
-                                                        <td colspan="6" class="text-center text-danger">
+                                                        <td colspan="4" class="text-center text-danger">
                                                             <strong>JavaScript is disabled or not working. Please enable
                                                                 JavaScript to use the attendance system.</strong>
                                                         </td>
@@ -194,15 +192,16 @@
                                                 </noscript>
                                                 <!-- Fallback data in case JavaScript fails -->
                                                 <tr class="js-fallback" style="display: none;">
-                                                    <td>S1001</td>
-                                                    <td>John Smith</td>
-                                                    <td>john.smith@example.com</td>
                                                     <td>
-                                                        <button class="btn btn-success">Present</button>
-                                                        <button class="btn btn-danger">Absent</button>
+                                                        <div class="student-name">John Smith</div>
                                                     </td>
-                                                    <td>Not marked</td>
-                                                    <td><input type="text" class="form-control" placeholder="Notes">
+                                                    <td>
+                                                        <button class="btn attendance-btn present">Present</button>
+                                                        <button class="btn attendance-btn absent">Absent</button>
+                                                    </td>
+                                                    <td class="attendance-status">Not marked</td>
+                                                    <td><input type="text" class="form-control notes-input"
+                                                            placeholder="Notes">
                                                     </td>
                                                 </tr>
                                             </tbody>
