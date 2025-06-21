@@ -132,6 +132,7 @@
     box-shadow: 0 0 10px rgba(253, 126, 20, 0.2); /* Adding a subtle glow */
     transition: all 0.3s ease;
     padding: 12px 18px; /* Slightly bigger padding */
+    
 }
 
 /* Add a more noticeable animation to make it stand out */
@@ -359,7 +360,7 @@
 }
 
 #not-marked-count {
-    color: #ffeb3b;
+    color: #ffffff;
     font-weight: bold;
     font-size: 1.15em;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
