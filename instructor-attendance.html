@@ -26,17 +26,21 @@
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <!-- Main CSS File -->
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" /> <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
     <!-- Attendance CSS -->
     <link href="css/attendance.css" rel="stylesheet" />
+    <!-- Custom Responsive CSS -->
+    <link href="css/instructor-responsive.css" rel="stylesheet" />
 </head>
 
-<body>
-    <!--== MAIN CONTRAINER ==-->
+<body> <!--== MAIN CONTRAINER ==-->
     <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
-        <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+        <button id="header-menu-toggle" class="d-md-none border-0 bg-transparent">
+            <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="Menu" />
+        </button>
+        <img src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px; display: none;" class="d-none d-md-block"
+            alt="" />
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
             <a href="index.html" class="logo d-flex align-items-center me-auto">
                 <h1 class="sitename">UCCD</h1>
@@ -53,12 +57,27 @@
                 <i class="mobile-nav-toggle bi bi-person-circle"></i>
             </nav>
         </div>
-    </header>
-
-    <!--== BODY CONTNAINER ==-->
+    </header> <!--== BODY CONTNAINER ==-->
     <div class="container-fluid sb2">
         <div class="row">
-            <div class="sb2-1" style="background-color: white; float: left; width: 19.5%">
+            <!-- Mobile Menu Toggle Button (hidden since we use the header icon now) -->
+            <div class="d-none mobile-menu-toggle">
+                <button class="btn btn-primary position-fixed" id="menu-toggle"
+                    style="top: 70px; left: 15px; z-index: 999; padding: 8px 12px;">
+                    <i class="fa fa-bars"></i> Menu
+                </button>
+            </div>
+
+            <!-- Sidebar overlay for mobile -->
+            <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+            <div class="sb2-1" style="background-color: white; float: left; width: 19.5%" id="sidebar-menu">
+                <!-- Close button inside sidebar -->
+                <div class="d-block d-md-none p-3 text-right">
+                    <button class="btn btn-danger btn-sm mobile-close-btn" id="sidebar-close">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
                 <!--== LEFT MENU ==-->
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
@@ -80,10 +99,8 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-
-            <!--== BODY INNER CONTAINER ==-->
-            <div class="sb2-2" style="padding: 40px; width: 80%">
+            </div> <!--== BODY INNER CONTAINER ==-->
+            <div class="sb2-2" style="padding: 40px; width: 80%" id="main-content">
                 <!--== breadcrumbs ==-->
                 <div class="sb2-2-2">
                     <ul>
@@ -347,6 +364,79 @@
         window.addEventListener('error', function (e) {
             console.error('Global error caught:', e.message);
             // Log the error but don't reload automatically to avoid infinite loops
+        });
+    </script>
+
+    <!-- Sidebar Mobile Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile sidebar toggle functionality
+            const menuToggle = document.getElementById('menu-toggle');
+            const headerMenuToggle = document.getElementById('header-menu-toggle');
+            const sidebarClose = document.getElementById('sidebar-close');
+            const sidebarMenu = document.getElementById('sidebar-menu');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            // Function to open sidebar
+            function openSidebar() {
+                sidebarMenu.classList.add('mobile-sidebar-show');
+                if (overlay) overlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent body scrolling
+            }
+
+            // Function to close sidebar
+            function closeSidebar() {
+                sidebarMenu.classList.remove('mobile-sidebar-show');
+                if (overlay) overlay.classList.remove('active');
+                document.body.style.overflow = ''; // Restore body scrolling
+            }
+
+            // Toggle sidebar when menu button is clicked
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    openSidebar();
+                });
+            }
+
+            // Toggle sidebar when header menu icon is clicked
+            if (headerMenuToggle) {
+                headerMenuToggle.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    openSidebar();
+                });
+            }
+
+            // Close sidebar when close button is clicked
+            if (sidebarClose) {
+                sidebarClose.addEventListener('click', function () {
+                    closeSidebar();
+                });
+            }
+
+            // Close sidebar when overlay is clicked
+            if (overlay) {
+                overlay.addEventListener('click', function () {
+                    closeSidebar();
+                });
+            }
+
+            // Close sidebar when clicking outside (extra safety)
+            document.addEventListener('click', function (event) {
+                const isMobile = window.innerWidth < 768;
+                if (isMobile && sidebarMenu.classList.contains('mobile-sidebar-show')) {
+                    if (!sidebarMenu.contains(event.target) && event.target !== menuToggle && event.target !== headerMenuToggle) {
+                        closeSidebar();
+                    }
+                }
+            });
+
+            // Handle window resize - close sidebar if transitioning to desktop
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768 && sidebarMenu.classList.contains('mobile-sidebar-show')) {
+                    closeSidebar();
+                }
+            });
         });
     </script>
 </body>
