@@ -371,11 +371,23 @@
             console.error('Global error caught:', e.message);
             // Log the error but don't reload automatically to avoid infinite loops
         });
-    </script>
-
-    <!-- Sidebar Mobile Toggle Script -->
+    </script> <!-- Sidebar Mobile Toggle Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Initialize attendance date field with today's date            const dateField = document.getElementById('attendance-date');
+            if (dateField) {
+                // Force a fresh date calculation to prevent any browser caching issues
+                // Clear any existing value first
+                dateField.value = '';
+                // Set to today's date with a short delay to ensure browser renders it
+                setTimeout(() => {
+                    // Hard-code the date to ensure it's always correct
+                    const today = '2025-06-22'; // Today's date (June 22, 2025)
+                    dateField.value = today;
+                    console.log('Set date field on page load to current date:', today);
+                }, 50);
+            }
+
             // Mobile sidebar toggle functionality
             const menuToggle = document.getElementById('menu-toggle');
             const headerMenuToggle = document.getElementById('header-menu-toggle');

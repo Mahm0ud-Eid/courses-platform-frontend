@@ -270,8 +270,7 @@ function displayCourses(courses) {
             </a>
             <a href="instructor-add-material.html?id=${course.id}" class="btn btn-warning">
               <i class="fa fa-plus"></i> Add Material
-            </a>
-            <a href="instructor-attendance.html?id=${course.id}" class="btn btn-info">
+            </a>            <a href="instructor-attendance.html?id=${course.id}" class="btn btn-info">
               <i class="fa fa-check-square-o"></i>
             </a>
           </div>
@@ -326,6 +325,52 @@ function toggleView(viewType) {
 function redirectToLogin() {
   window.location.href = 'login.html';
 }
+
+// Function to update the attendance menu link with the current course ID
+function updateAttendanceLink(courseId) {
+  const attendanceMenuLink = document.getElementById('attendance-menu-link');
+  if (attendanceMenuLink) {
+    // Get today's date in YYYY-MM-DD format
+    const today = new Date().toISOString().split('T')[0];
+    attendanceMenuLink.href = `instructor-attendance.html?id=${courseId}`;
+  }
+}
+
+// Event listeners for course selection
+document.addEventListener('DOMContentLoaded', function() {
+  // Update links when a course card or row is clicked
+  document.addEventListener('click', function(event) {
+    // Check if the click was on a course link or button
+    const courseLink = event.target.closest('a[href^="instructor-course-detail.html?id="]');
+    if (courseLink) {
+      const href = courseLink.getAttribute('href');
+      const courseId = new URLSearchParams(href.split('?')[1]).get('id');
+      if (courseId) {
+        // Store the current course ID in localStorage for persistence
+        localStorage.setItem('currentCourseId', courseId);
+        // Update the attendance link
+        updateAttendanceLink(courseId);
+      }
+    }
+    
+    // Also update links when "Attendance" button is clicked
+    const attendanceButton = event.target.closest('a[href^="instructor-attendance.html?id="]');
+    if (attendanceButton) {
+      const href = attendanceButton.getAttribute('href');
+      const courseId = new URLSearchParams(href.split('?')[1]).get('id');
+      if (courseId) {
+        // Store the current course ID in localStorage
+        localStorage.setItem('currentCourseId', courseId);
+      }
+    }
+  });
+  
+  // When page loads, check if we have a stored course ID
+  const storedCourseId = localStorage.getItem('currentCourseId');
+  if (storedCourseId) {
+    updateAttendanceLink(storedCourseId);
+  }
+});
 
 // Set up event listeners
 document.addEventListener('DOMContentLoaded', () => {
