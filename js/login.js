@@ -1,4 +1,15 @@
-import { auth, db } from "../js/index.js"; // Import auth and db from index.js
+// import { auth, db } from "../js/index.js"; // Import auth and db from index.js
+function loadIndexModule() {
+  import("../js/index.js")
+    .then((module) => {
+      module.db; // Access db from index.js
+      module.auth; // Access auth from index.js
+    })
+    .catch((err) => {
+      console.error("Failed to load login.js:", err);
+    });
+}
+loadIndexModule();
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 import {
   collection,
