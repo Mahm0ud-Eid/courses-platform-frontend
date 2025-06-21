@@ -66,13 +66,13 @@ function afterSignIn() {
         .then(() => {
           sessionStorage.removeItem("token");
           sessionStorage.removeItem("userData");
-          window.location.href = "/login.html";
+          window.location.href = "login.html";
         })
         .catch((error) => {
           console.error("Sign out error:", error);
         });
     } else {
-      window.location.href = "/login.html";
+      window.location.href = "login.html";
     }
   });
 }
@@ -88,7 +88,7 @@ function validateToken() {
       icon: "warning",
       showCloseButton: true,
     }).then(() => {
-      window.location.href = "/login.html";
+      window.location.href = "login.html";
     });
     return null;
   }
@@ -110,7 +110,7 @@ function validateToken() {
         icon: "warning",
         showCloseButton: true,
       }).then(() => {
-        window.location.href = "/login.html";
+        window.location.href = "login.html";
       });
       return null;
     }
@@ -122,7 +122,7 @@ function validateToken() {
       icon: "error",
       showCloseButton: true,
     }).then(() => {
-      window.location.href = "/login.html";
+      window.location.href = "login.html";
     });
     return null;
   }
