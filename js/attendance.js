@@ -239,8 +239,7 @@ function loadCourseStudents(courseId) {
                 <div class="student-name">${student.name}</div>
             </td>
             <td>${student.email}</td>
-            <td>
-                <div class="attendance-actions">
+            <td>                <div class="attendance-actions">
                     <button type="button" class="btn attendance-btn present" onclick="markAttendance('${student.id}', 'present')">
                         <i class="fa fa-check-circle"></i> Present
                     </button>
@@ -249,7 +248,7 @@ function loadCourseStudents(courseId) {
                     </button>
                 </div>
             </td>
-            <td class="attendance-status">Not marked</td>
+            <td class="attendance-status status-not-marked"><span class="status-icon"><i class="fa fa-exclamation-circle"></i></span> Not marked</td>
             <td>
                 <input type="text" class="form-control notes-input" placeholder="Add notes (optional)">
             </td>
@@ -280,11 +279,10 @@ function loadAttendanceForDate(courseId, date) {
         
         // Remove active class from buttons
         presentBtn.classList.remove('active');
-        absentBtn.classList.remove('active');
-        
-        // Reset status
-        statusCell.textContent = 'Not marked';
+        absentBtn.classList.remove('active');        // Reset status
+        statusCell.innerHTML = '<span class="status-icon"><i class="fa fa-exclamation-circle"></i></span> Not marked';
         statusCell.classList.remove('status-present', 'status-absent');
+        statusCell.classList.add('status-not-marked');
         
         // Clear notes
         notesInput.value = '';
@@ -293,14 +291,13 @@ function loadAttendanceForDate(courseId, date) {
         if (dateAttendance[studentId]) {
             const status = dateAttendance[studentId].status;
             const notes = dateAttendance[studentId].notes || '';
-            
-            if (status === 'present') {
+              if (status === 'present') {
                 presentBtn.classList.add('active');
-                statusCell.textContent = 'Present';
+                statusCell.innerHTML = '<span class="status-icon"><i class="fa fa-check-circle"></i></span> Present';
                 statusCell.classList.add('status-present');
             } else if (status === 'absent') {
                 absentBtn.classList.add('active');
-                statusCell.textContent = 'Absent';
+                statusCell.innerHTML = '<span class="status-icon"><i class="fa fa-times-circle"></i></span> Absent';
                 statusCell.classList.add('status-absent');
             }
             
@@ -338,13 +335,11 @@ function markAttendance(studentId, status) {
         setTimeout(() => {
             studentRow.classList.remove('row-highlight');
         }, 500);
-        
-        // Reset button states
+          // Reset button states
         presentBtn.classList.remove('active');
         absentBtn.classList.remove('active');
-        statusCell.classList.remove('status-present', 'status-absent');
-        
-        // Set the new status
+        statusCell.classList.remove('status-present', 'status-absent', 'status-not-marked');
+          // Set the new status
         if (status === 'present') {
             presentBtn.classList.add('active');
             statusCell.innerHTML = '<span class="status-icon"><i class="fa fa-check-circle"></i></span> Present';
@@ -352,8 +347,10 @@ function markAttendance(studentId, status) {
             
             // Animation for visual feedback
             presentBtn.classList.add('btn-pulse');
+            statusCell.classList.add('btn-pulse');
             setTimeout(() => {
                 presentBtn.classList.remove('btn-pulse');
+                statusCell.classList.remove('btn-pulse');
             }, 700);
             
         } else if (status === 'absent') {
@@ -363,8 +360,10 @@ function markAttendance(studentId, status) {
             
             // Animation for visual feedback
             absentBtn.classList.add('btn-pulse');
+            statusCell.classList.add('btn-pulse');
             setTimeout(() => {
                 absentBtn.classList.remove('btn-pulse');
+                statusCell.classList.remove('btn-pulse');
             }, 700);
         }
         
@@ -374,6 +373,8 @@ function markAttendance(studentId, status) {
         console.error('Error marking attendance:', error);
     }
 }
+
+
 
 function updateAttendanceCounts() {
     // Get counts

@@ -45,12 +45,13 @@
 
 /* Buttons and UI Controls */
 .attendance-btn {
-    margin-right: 5px;
-    padding: 8px 16px;
-    border-radius: 4px;
+    margin-right: 10px;
+    padding: 12px 24px;
+    border-radius: 8px;
     transition: all 0.3s ease;
-    font-weight: 500;
+    font-weight: 600;
     border: none;
+    font-size: 1.2rem;
 }
 
 .attendance-btn.present {
@@ -85,12 +86,17 @@
     box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
 }
 
+
+
 /* Status and indicators */
 .attendance-status {
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 4px;
+    font-weight: 800; /* Increased font weight */
+    padding: 10px 18px; /* Larger padding */
+    border-radius: 8px; /* Increased border radius */
     display: inline-block;
+    font-size: 1.35rem; /* Increased font size */
+    text-align: center;
+    transition: all 0.3s ease-in-out; /* Added transition for smoother status changes */
 }
 
 .status-icon {
@@ -101,28 +107,98 @@
 
 .status-present {
     color: #28a745;
-    background: rgba(40, 167, 69, 0.1);
+    background: rgba(40, 167, 69, 0.15);
+    border: 2px solid rgba(40, 167, 69, 0.4);
+    font-weight: 800;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
 }
 
 .status-absent {
     color: #dc3545;
-    background: rgba(220, 53, 69, 0.1);
+    background: rgba(220, 53, 69, 0.15);
+    border: 2px solid rgba(220, 53, 69, 0.4);
+    font-weight: 800;
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.2);
+}
+
+/* Not marked status styling */
+.status-not-marked {
+    color: #fd7e14; /* Changed to orange for better visibility */
+    background: rgba(253, 126, 20, 0.15); /* Light orange background */
+    font-weight: 800; /* Increased font weight */
+    font-size: 1.4rem; /* Further increased font size */
+    letter-spacing: 0.5px;
+    border: 2px dashed rgba(253, 126, 20, 0.4); /* Thicker border with orange color */
+    box-shadow: 0 0 10px rgba(253, 126, 20, 0.2); /* Adding a subtle glow */
+    transition: all 0.3s ease;
+    padding: 12px 18px; /* Slightly bigger padding */
+}
+
+/* Add a more noticeable animation to make it stand out */
+@keyframes pulse-not-marked {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.04); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.9; }
+}
+
+.status-not-marked {
+    animation: pulse-not-marked 2s infinite ease-in-out;
+}
+
+/* Mobile styling for Not marked status */
+@media (max-width: 992px) {
+    .status-not-marked {
+        font-size: 1.3rem;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        margin: 0 auto; /* Center it on mobile */
+    }
+    
+    .status-not-marked .status-icon {
+        margin-right: 8px;
+        font-size: 1.5rem; /* Larger icon on mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .status-not-marked {
+        font-size: 1.2rem;
+        padding: 8px 12px;
+        border-width: 2px;
+    }
+}
+
+@media (max-width: 576px) {
+    .status-not-marked {
+        font-size: 1.1rem;
+        padding: 8px 10px;
+        font-weight: 700;
+    }
 }
 
 /* Table styling */
 #attendance-table, #history-table {
     border-collapse: separate;
-    border-spacing: 0 5px;
+    border-spacing: 0 8px;
 }
 
 #attendance-table th, #history-table th {
     background: #f8f9fa;
-    padding: 12px;
+    padding: 16px;
     font-weight: 600;
     border-top: none;
     text-transform: uppercase;
-    font-size: 0.85em;
-    color: #495057;
+    font-size: 1rem;
+    color: #333;
+}
+
+#attendance-table td, #history-table td {
+    padding: 14px;
+    font-size: 1rem;
+    vertical-align: middle;
 }
 
 .even-row, .odd-row {
@@ -149,14 +225,18 @@
 .student-id-badge {
     background: #e9ecef;
     color: #495057;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.9em;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.95rem;
     font-weight: 500;
 }
 
 .student-name {
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #333;
+    padding: 5px 0;
+    letter-spacing: 0.3px;
 }
 
 /* Attendance history */
@@ -190,10 +270,11 @@
 
 .percentage-badge {
     display: inline-block;
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 50px;
     font-weight: 600;
-    min-width: 60px;
+    min-width: 70px;
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -224,8 +305,10 @@
 }
 
 .view-btn, .delete-btn {
-    padding: 4px 10px;
+    padding: 6px 12px;
     transition: all 0.3s ease;
+    font-size: 0.95rem;
+    min-width: 80px;
 }
 
 /* Summary cards */
@@ -241,8 +324,9 @@
 }
 
 .attendance-summary .badge {
-    font-size: 0.9rem;
-    padding: 8px 12px;
+    font-size: 1.05rem;
+    padding: 10px 15px;
+    border-radius: 6px;
 }
 
 /* Form elements */
@@ -250,12 +334,35 @@
     margin-bottom: 20px;
 }
 
-.notes-input {
-    font-size: 14px;
-    padding: 8px 12px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+.course-select select {
+    font-size: 1.9rem;
+    padding: 10px 15px;
+    height: auto;
+    border-radius: 6px;
+    border-color: #ced4da;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    width: 100%;
     transition: all 0.3s ease;
+}
+
+.course-select select:hover {
+    border-color: #80bdff;
+}
+
+.course-select select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.notes-input {
+    font-size: 1.2rem;
+    padding: 10px 16px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    height: auto;
+    width: 100%;
 }
 
 .notes-input:focus {
@@ -267,6 +374,35 @@
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+.date-field input[type="date"] {
+    font-size: 1.9rem;
+    padding: 10px 15px;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    width: 100%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.date-field input[type="date"]:hover {
+    border-color: #80bdff;
+}
+
+.date-field input[type="date"]:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    outline: none;
+}
+
+.date-field button {
+    font-size: 1rem;
+    padding: 10px 15px;
+    min-width: 150px;
+    font-weight: 500;
 }
 
 /* Empty states */
@@ -289,6 +425,86 @@
 .empty-state small {
     font-size: 0.9rem;
     opacity: 0.7;
+}
+
+/* Empty state cell styling for mobile */
+.empty-state-cell {
+    padding-left: 10px !important; /* Override the padding-left for td cells in mobile view */
+}
+
+@media (max-width: 768px) {
+    .empty-state-cell {
+        padding-left: 10px !important; /* Override the padding-left for td cells in mobile view */
+    }
+    
+    .empty-state-cell:before {
+        display: none !important; /* Hide the data-title content */
+    }
+}
+
+/* Save attendance button styling */
+#save-attendance {
+    font-size: 1.15rem;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.25);
+    transition: all 0.3s ease;
+}
+
+#save-attendance:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Table cell styling for attendance table */
+#attendance-table th,
+#attendance-table td {
+    padding: 16px;
+    vertical-align: middle;
+}
+
+.student-name-column {
+    width: 35%;
+}
+
+.attendance-column {
+    width: 40%;
+}
+
+.status-column {
+    width: 25%;
+}
+
+.notes-column {
+    width: 25%;
+}
+
+/* Styling for table headers, emphasizing the visible columns */
+table#attendance-table th:nth-child(2), /* Student name */
+table#attendance-table th:nth-child(4), /* Attendance buttons */
+table#attendance-table th:nth-child(5), /* Status */
+table#attendance-table th:nth-child(6) { /* Notes */
+    font-weight: 700;
+    font-size: 1.1rem; 
+    color: #0d6efd;
+}
+
+/* Make sure visible columns take up appropriate space */
+table#attendance-table th:nth-child(2) {
+    width: 35%;
+}
+
+table#attendance-table th:nth-child(4) {
+    width: 30%;
+}
+
+table#attendance-table th:nth-child(5) {
+    width: 15%;
+}
+
+table#attendance-table th:nth-child(6) {
+    width: 20%;
 }
 
 /* Animations */
@@ -376,19 +592,44 @@
     
     .attendance-btn {
         width: 100%;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+        padding: 10px 15px;
     }
     
     .attendance-actions {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 8px;
     }
     
     #attendance-table td, #attendance-table th,
     #history-table td, #history-table th {
-        padding: 10px 5px;
-        font-size: 14px;
+        padding: 14px 10px;
+        font-size: 1.1rem;
+    }
+      .student-name {
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: #212529;
+    }
+    
+    .attendance-status {
+        font-size: 1.25rem;
+        padding: 8px 14px;
+        color: #212529;
+        font-weight: 700;
+    }
+    
+    .notes-input {
+        font-size: 1.1rem;
+        padding: 8px 12px;
+    }
+    
+    .course-select select,
+    .date-field input[type="date"] {
+        font-size: 1rem;
+        padding: 10px;
     }
     
     .action-buttons {
@@ -405,4 +646,600 @@
         align-items: flex-start;
         gap: 10px;
     }
+
+    .date-field {
+        flex-direction: column;
+    }
+
+    .date-field button {
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+/* Small devices (landscape phones) */
+@media (max-width: 768px) {
+    .sb2-2 {
+        padding: 15px !important;
+    }
+    
+    .box-inn-sp {
+        padding: 15px;
+    }
+    
+    .inn-title h4 {
+        font-size: 1.2rem;
+    }
+    
+    .inn-title p {
+        font-size: 0.9rem;
+    }
+    
+    .student-name {
+        font-size: 1.1rem;
+    }
+    
+    .attendance-btn {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+    
+    .attendance-status {
+        font-size: 1rem;
+        padding: 6px 10px;
+    }
+    
+    .notes-input {
+        font-size: 1rem;
+        padding: 6px 10px;
+    }
+    
+    #attendance-table th {
+        font-size: 0.9rem;
+        padding: 12px 8px;
+    }
+    
+    #attendance-table td {
+        padding: 10px 8px;
+    }
+    
+    .attendance-summary .badge {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .summary-item {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    /* Responsive table styles */
+    #attendance-table {
+        display: block;
+        width: 100%;
+    }
+    
+    .table-responsive {
+        overflow-x: hidden !important;
+    }
+    
+    /* Column width adjustments for mobile */
+    .student-name-column {
+        width: 30%;
+    }
+    
+    .attendance-column {
+        width: 30%;
+    }
+    
+    .status-column {
+        width: 20%;
+    }
+    
+    .notes-column {
+        width: 20%;
+    }
+    
+    /* Improve attendance buttons layout */
+    .attendance-actions {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .attendance-btn {
+        margin-bottom: 5px;
+        padding: 8px 5px;
+        font-size: 0.9rem;
+    }
+    
+    /* Adjust notes input for better mobile experience */
+    .notes-input {
+        font-size: 0.9rem;
+        padding: 5px;
+        width: 100%;
+    }
+    
+    .w-100-mob {
+        width: 100% !important;
+    }
+    
+    .summary-item {
+        margin-bottom: 10px;
+    }
+    
+    .summary-item .badge {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    
+    #attendance-table thead, 
+    #attendance-table tbody, 
+    #attendance-table th, 
+    #attendance-table td, 
+    #attendance-table tr {
+        display: block;
+    }
+    
+    #attendance-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    #attendance-table tr {
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    #attendance-table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+    
+    #attendance-table td:before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        content: attr(data-title);
+    }
+    
+    /* Hide the original header row */
+    #attendance-table .table-header {
+        display: none;
+    }
+    
+    /* History table responsive styles */
+    #history-table {
+        display: block;
+        width: 100%;
+    }
+    
+    #history-table thead, 
+    #history-table tbody, 
+    #history-table th, 
+    #history-table td, 
+    #history-table tr {
+        display: block;
+    }
+    
+    #history-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    #history-table tr {
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    #history-table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+    
+    #history-table td:before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+    
+    #history-table td:nth-of-type(1):before { content: "Date"; }
+    #history-table td:nth-of-type(2):before { content: "Total Students"; }
+    #history-table td:nth-of-type(3):before { content: "Present"; }
+    #history-table td:nth-of-type(4):before { content: "Absent"; }
+    #history-table td:nth-of-type(5):before { content: "Percentage"; }
+    #history-table td:nth-of-type(6):before { content: "Actions"; }
+    
+    .attendance-history {
+        max-height: none;
+        overflow-y: visible;
+    }
+}
+
+/* Extra small devices (portrait phones) */
+@media (max-width: 576px) {
+    .sb2-2-1 h2 {
+        font-size: 1.4rem;
+    }
+    
+    .sb2-2-1 p {
+        font-size: 0.9rem;
+    }
+    
+    .inn-title h4 {
+        font-size: 1.1rem;
+    }
+    
+    .box-inn-sp {
+        padding: 10px;
+    }
+    
+    #attendance-table th {
+        padding: 8px 5px;
+        font-size: 0.85rem;
+    }
+    
+    #attendance-table td {
+        padding: 8px 5px;
+        font-size: 0.9rem;
+    }
+      .student-name {
+        font-size: 1.15rem;
+        font-weight: 700;
+    }
+    
+    .attendance-btn {
+        font-size: 0.95rem;
+        padding: 8px 10px;
+    }
+    
+    .attendance-status {
+        font-size: 1.05rem;
+        padding: 6px 10px;
+        font-weight: 700;
+    }
+    
+    .notes-input {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+    }
+    
+    #save-attendance {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+    
+    .w-100-mob {
+        width: 100% !important;
+    }
+}
+
+/* Additional responsive styles for small screens */
+.w-100-mob {
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .w-100-mob {
+        width: 100% !important;
+    }
+    
+    .summary-item {
+        margin-bottom: 10px;
+    }
+    
+    .summary-item .badge {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    
+    #attendance-table thead, 
+    #attendance-table tbody, 
+    #attendance-table th, 
+    #attendance-table td, 
+    #attendance-table tr {
+        display: block;
+    }
+    
+    #attendance-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    #attendance-table tr {
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    #attendance-table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+    
+    #attendance-table td:before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        content: attr(data-title);
+    }
+    
+    /* Hide the original header row */
+    #attendance-table .table-header {
+        display: none;
+    }
+    
+    /* History table responsive styles */
+    #history-table {
+        display: block;
+        width: 100%;
+    }
+    
+    #history-table thead, 
+    #history-table tbody, 
+    #history-table th, 
+    #history-table td, 
+    #history-table tr {
+        display: block;
+    }
+    
+    #history-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    #history-table tr {
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    #history-table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+    
+    #history-table td:before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+    
+    #history-table td:nth-of-type(1):before { content: "Date"; }
+    #history-table td:nth-of-type(2):before { content: "Total Students"; }
+    #history-table td:nth-of-type(3):before { content: "Present"; }
+    #history-table td:nth-of-type(4):before { content: "Absent"; }
+    #history-table td:nth-of-type(5):before { content: "Percentage"; }
+    #history-table td:nth-of-type(6):before { content: "Actions"; }
+    
+    .attendance-history {
+        max-height: none;
+        overflow-y: visible;
+    }
+}
+
+/* Mobile specific overrides for hiding ID and email columns */
+@media (max-width: 992px) {
+    /* Reset the numbering for the td:nth-child selectors in the card view */
+    #attendance-table tr td:nth-child(2) {
+        /* This is the student name cell, now first visible column */
+        padding-top: 15px;
+    }
+    
+    #attendance-table tr td:nth-child(4) {
+        /* This is the attendance buttons cell, now second visible column */
+        padding-bottom: 0;
+    }
+    
+    #attendance-table tr td:nth-child(5) {
+        /* This is the status cell, now third visible column */
+        border-bottom: none;
+    }
+    
+    #attendance-table tr td:nth-child(6) {
+        /* This is the notes cell, now fourth visible column */
+        padding-bottom: 15px;
+    }
+    
+    /* Make sure the student name is prominently displayed */
+    .student-name {
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+        color: #0d6efd;
+    }
+}
+
+/* Responsive Header Styling */
+@media (max-width: 992px) {
+    header#header {
+        padding: 10px 0;
+    }
+    
+    header#header .container-fluid {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    .mobile-nav-toggle {
+        display: block;
+        font-size: 24px;
+    }
+    
+    .navmenu ul {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .logout-btn span {
+        display: none; /* Hide text, keep only icon on very small screens */
+    }
+    
+    .logout-btn {
+        padding: 6px 10px !important;
+    }
+    
+    .logout-btn i {
+        margin-right: 0 !important;
+    }
+    
+    header#header img.sd-tog {
+        margin: 0 8px !important;
+        width: 22px !important;
+    }
+}
+
+/* Improve overall spacing */
+.inn-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Additional Responsive Layout Improvements */
+@media (max-width: 992px) {
+    /* Fix for main container positioning */
+    .container-fluid.sb2 {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Improve initial load visibility */
+    .sb2-1:not(.active) {
+        visibility: hidden;
+    }
+    
+    .sb2-1.active {
+        visibility: visible;
+    }
+    
+    /* Prevent content overflow */
+    body {
+        overflow-x: hidden;
+    }
+}
+
+/* Fix for attendance selection row */
+.attendance-selector-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .attendance-selector-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .attendance-selector-row > div {
+        width: 100%;
+    }
+}
+
+/* Hide student ID and email columns */
+td:nth-child(1),
+td:nth-child(3),
+th:nth-child(1),
+th:nth-child(3) {
+    display: none !important;
+}
+
+/* Enhanced styling for student name and status */
+.student-name {
+    font-weight: 800; /* Increased font weight */
+    font-size: 1.45rem; /* Increased font size */
+    color: #212529; /* Slightly darker color for better readability */
+    padding: 8px 0;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7); /* Subtle text shadow for depth */
+    transition: all 0.3s ease;
+}
+
+/* Make attendance status more prominent */
+.attendance-status {
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.status-present {
+    background-color: rgba(40, 167, 69, 0.15);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.status-absent {
+    background-color: rgba(220, 53, 69, 0.15);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+/* Better button contrast now that we've removed some columns */
+.attendance-btn {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    min-width: 110px;
+}
+
+/* Make sure notes field has enough room */
+.notes-input {
+    width: 100%;
+    font-size: 1.1rem;
 }
