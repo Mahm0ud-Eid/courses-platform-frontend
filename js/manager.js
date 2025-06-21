@@ -173,7 +173,6 @@ addmissionBtn.addEventListener("click", function () {
   // cDetails.style.display = "none";
   addInst.style.display = "none";
   stdAdmission.style.display = "block";
-
   (async () => {
     // Fetch all courses with a "students" subcollection and display pending admissions
     const coursesRef = collection(db, "courses");
