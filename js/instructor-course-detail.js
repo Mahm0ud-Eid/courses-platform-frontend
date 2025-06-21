@@ -285,10 +285,30 @@ async function loadStudents(courseId, courseData) {
     if (!studentsSnapshot.empty) {
       // Display students from subcollection
       studentsTable.innerHTML = '';
-      studentsSnapshot.forEach((doc) => {
+      
+      // Process each student document
+      for (const doc of studentsSnapshot.docs) {
         const student = doc.data();
+        
+        // Ensure we have attendance data
+        if (!student.attendanceDates && !student.absenceDates) {
+          // Try to fetch detailed attendance data if not in the main record
+          try {
+            const attendanceRef = doc(db, 'courses', courseId, 'attendance', doc.id);
+            const attendanceSnapshot = await getDoc(attendanceRef);
+            
+            if (attendanceSnapshot.exists()) {
+              const attendanceData = attendanceSnapshot.data();
+              student.attendanceDates = attendanceData.attendanceDates || [];
+              student.absenceDates = attendanceData.absenceDates || [];
+            }
+          } catch (err) {
+            console.log('No separate attendance record for student:', doc.id);
+          }
+        }
+        
         addStudentRow(student, doc.id);
-      });
+      }
       return;
     }
     
@@ -300,19 +320,37 @@ async function loadStudents(courseId, courseData) {
     if (!allStudentsSnapshot.empty) {
       // Display students from main collection
       studentsTable.innerHTML = '';
-      allStudentsSnapshot.forEach((doc) => {
+      
+      // Process each student document
+      for (const doc of allStudentsSnapshot.docs) {
         const student = doc.data();
+        
+        // Try to fetch attendance data for this student in this course
+        try {
+          const attendanceRef = doc(db, 'courses', courseId, 'attendance', doc.id);
+          const attendanceSnapshot = await getDoc(attendanceRef);
+          
+          if (attendanceSnapshot.exists()) {
+            const attendanceData = attendanceSnapshot.data();
+            student.attendanceDates = attendanceData.attendanceDates || [];
+            student.absenceDates = attendanceData.absenceDates || [];
+          }
+        } catch (err) {
+          console.log('No attendance record for student:', doc.id);
+          student.attendanceDates = [];
+          student.absenceDates = [];
+        }
+        
         addStudentRow(student, doc.id);
-      });
+      }
       return;
     }
-    
-    // If no students found in either location
-    studentsTable.innerHTML = '<tr><td colspan="5" class="text-center">No students enrolled</td></tr>';
+      // If no students found in either location
+    studentsTable.innerHTML = '<tr><td colspan="6" class="text-center">No students enrolled</td></tr>';
     
   } catch (error) {
     console.error('Error loading students:', error);
-    studentsTable.innerHTML = '<tr><td colspan="5" class="text-center text-danger">Error loading students</td></tr>';
+    studentsTable.innerHTML = '<tr><td colspan="6" class="text-center text-danger">Error loading students</td></tr>';
   }
 }
 
@@ -320,16 +358,16 @@ async function loadStudents(courseId, courseData) {
 function addStudentRow(student, studentId) {
   const row = document.createElement('tr');
   
-  row.innerHTML = `
+  // Calculate attendance statistics
+  const attendanceDates = Array.isArray(student.attendanceDates) ? student.attendanceDates.length : 0;
+  const absenceDates = Array.isArray(student.absenceDates) ? student.absenceDates.length : 0;
+    row.innerHTML = `
     <td>${student.studentId || studentId}</td>
     <td>${student.name || 'Unknown'}</td>
     <td>${student.email || 'No email'}</td>
     <td>${student.phone || 'No phone'}</td>
-    <td>
-      <a href="admin-student-details.html?id=${studentId}" class="btn btn-sm btn-primary">
-        <i class="fa fa-eye"></i> View
-      </a>
-    </td>
+    <td><span class="badge bg-success">${attendanceDates}</span></td>
+    <td><span class="badge bg-danger text-white">${absenceDates}</span></td>
   `;
   
   studentsTable.appendChild(row);
@@ -340,11 +378,11 @@ function showError(message) {
   courseTitle.textContent = 'Error';
   courseDescription.textContent = message;
   courseDescription.classList.add('text-danger');
-  
-  // Hide loading indicators and show error message in tables
-  const errorRow = '<tr><td colspan="5" class="text-center text-danger">Error: ' + message + '</td></tr>';
-  materialsTable.innerHTML = errorRow;
-  studentsTable.innerHTML = errorRow;
+    // Hide loading indicators and show error message in tables
+  const materialsErrorRow = '<tr><td colspan="5" class="text-center text-danger">Error: ' + message + '</td></tr>';
+  const studentsErrorRow = '<tr><td colspan="6" class="text-center text-danger">Error: ' + message + '</td></tr>';
+  materialsTable.innerHTML = materialsErrorRow;
+  studentsTable.innerHTML = studentsErrorRow;
 }
 
 // Function to redirect to login page
