@@ -1280,6 +1280,7 @@ section,
   background-color: var(--surface-color);
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   border-radius: 5px;
+  margin-bottom: 30px;
 }
 
 .courses .course-content {
