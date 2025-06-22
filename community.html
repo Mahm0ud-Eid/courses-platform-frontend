@@ -48,6 +48,16 @@
       gap: 25px;
     }
 
+    /* Like button styling */
+    .post-action-btn.liked {
+      color: #1877f2;
+      font-weight: bold;
+    }
+
+    .post-action-btn.liked i {
+      color: #1877f2;
+    }
+
     .switcher-btn {
       background-color: var(--accent-color);
       color: var(--contrast-color);
@@ -608,9 +618,8 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script> <!-- Main JS File -->
   <script src="js/main.js"></script>
   <!-- Community Posts - Firebase Connected -->
-  <script type="module">    // Import Firebase functions
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import {
+  <script type="module">    // Import Firebase functions  
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"; import {
       getFirestore,
       collection,
       getDocs,
@@ -625,9 +634,11 @@
       serverTimestamp,
       addDoc,
       where,
-      setDoc
+      setDoc,
+      deleteDoc
     } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
     import { getStorage } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
     // Firebase configuration
     const firebaseConfig = {
@@ -638,22 +649,76 @@
       messagingSenderId: "1037776187244",
       appId: "1:1037776187244:web:7d02b5edc4908dad390d49",
       measurementId: "G-B95Y1W5QWP",
-    };
-
-    // Initialize Firebase
+    };    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const auth = getAuth(app);
 
     class CommunityPosts {
       constructor() {
         this.posts = [];
+        this.currentUser = null;
         this.init();
+
+        // Listen for authentication state changes
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            console.log('User is signed in:', user.email);
+            this.currentUser = user;
+            // Update UI elements that depend on user state
+            this.updateUserUI();
+          } else {
+            console.log('User is signed out');
+            this.currentUser = null;
+          }
+        });
       }
 
-      async init() {
+      updateUserUI() {
+        // Update user avatars and names in comments and posts
+        if (!this.currentUser) return;
+
+        // Update comment forms with current user info
+        document.querySelectorAll('.comment-avatar-container').forEach(container => {
+          const initialDiv = container.querySelector('.initial-avatar');
+          if (initialDiv) {
+            const userInitial = this.getUserDisplayName().charAt(0).toUpperCase();
+            initialDiv.textContent = userInitial;
+            initialDiv.style.backgroundColor = this.getColorFromInitial(userInitial);
+          }
+        });
+      } async init() {
         console.log('Initializing Community Posts...');
         await this.loadPosts();
+        this.checkUserLikes(); // Check which posts the current user has liked
         this.debugComments(); // Add debug method
+      }
+
+      async checkUserLikes() {
+        try {
+          const userId = this.getCurrentUserId();
+          console.log('Checking likes for user:', userId);
+
+          // For each post, check if the current user has liked it
+          for (const post of this.posts) {
+            const userLikeRef = doc(db, "posts", post.id, "likes", userId);
+            const userLikeDoc = await getDoc(userLikeRef);
+
+            post.userHasLiked = userLikeDoc.exists();
+            console.log(`Post ${post.id} liked by user: ${post.userHasLiked}`);
+
+            // Update the like button if it exists
+            const postContainer = document.querySelector(`[data-post-id="${post.id}"]`);
+            if (postContainer) {
+              const likeButton = postContainer.querySelector('.post-action-btn');
+              if (likeButton && post.userHasLiked) {
+                likeButton.classList.add('liked');
+              }
+            }
+          }
+        } catch (error) {
+          console.error("Error checking user likes:", error);
+        }
       } async debugComments() {
         try {
           console.log('=== DEBUG: Database Structure ===');
@@ -794,15 +859,16 @@
               console.error('Error processing individual post:', docSnap.id, error);
               errorCount++;
             }
-          });
-
-          console.log(`Processed ${processedCount} posts successfully, ${errorCount} errors`);
+          }); console.log(`Processed ${processedCount} posts successfully, ${errorCount} errors`);
 
           // Sort posts by date after loading (client-side sorting)
           this.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
           this.renderPosts();
           this.hideLoading();
+
+          // Check user likes after rendering posts
+          await this.checkUserLikes();
 
         } catch (error) {
           console.error('Error loading posts:', error);
@@ -1102,8 +1168,8 @@
                   <div class="text-muted text-center py-2">Loading comments...</div>
                 </div>                <div class="comment-form">
                   <div class="comment-avatar-container">
-                    <div class="initial-avatar" style="background-color: ${this.getColorFromInitial('Anonymous User'.charAt(0))}">
-                      ${'Anonymous User'.charAt(0).toUpperCase()}
+                    <div class="initial-avatar" style="background-color: ${this.getColorFromInitial(this.getUserDisplayName().charAt(0))}">
+                      ${this.getUserDisplayName().charAt(0).toUpperCase()}
                     </div>
                   </div>
                   <div class="comment-input-wrapper">
@@ -1146,54 +1212,130 @@
           const postRef = doc(db, "posts", postId);
           const postDoc = await getDoc(postRef);
 
-          if (postDoc.exists()) {
-            const postData = postDoc.data();
-            console.log('Current post data:', postData);
-
-            // Get current likes count from likesCount field
-            let currentLikesCount = postData.likesCount || 0;
-            console.log('Current likesCount:', currentLikesCount);
-
-            const isLiked = button.classList.contains("liked");
-            let newLikesCount;
-
-            if (isLiked) {
-              // Unlike: decrease the likesCount by 1
-              newLikesCount = Math.max(0, currentLikesCount - 1);
-              await updateDoc(postRef, {
-                likesCount: newLikesCount
-              });
-              button.classList.remove("liked");
-              console.log('Unliked - new likesCount:', newLikesCount);
-            } else {
-              // Like: increase the likesCount by 1
-              newLikesCount = currentLikesCount + 1;
-              await updateDoc(postRef, {
-                likesCount: newLikesCount
-              });
-              button.classList.add("liked");
-              console.log('Liked - new likesCount:', newLikesCount);
-            }
-
-            // Update the likes count in the UI
-            const likesSpan = button.closest('.post-container').querySelector('[data-key="likesCount"]');
-            if (likesSpan) {
-              likesSpan.setAttribute('data-count', newLikesCount);
-              likesSpan.textContent = `${newLikesCount} Like${newLikesCount !== 1 ? 's' : ''}`;
-            }
-
-            // Update local data
-            const post = this.posts.find(p => p.id === postId);
-            if (post) {
-              post.likes = newLikesCount;
-            }
-
-            console.log('Like toggle completed successfully');
+          if (!postDoc.exists()) {
+            console.error('Post not found');
+            return;
           }
+
+          const postData = postDoc.data();
+          console.log('Current post data:', postData);          // Get the user ID from Firebase Auth or fallback to local storage
+          const userId = this.getCurrentUserId();
+          console.log('Current user ID for likes:', userId);
+
+          // Check if this user has already liked the post
+          const userLikeRef = doc(db, "posts", postId, "likes", userId);
+          const userLikeDoc = await getDoc(userLikeRef);
+
+          const isLiked = userLikeDoc.exists();
+          console.log('User has already liked this post:', isLiked);
+
+          // Get current likes count from likesCount field
+          let currentLikesCount = postData.likesCount || 0;
+          console.log('Current likesCount:', currentLikesCount);
+
+          let newLikesCount;
+
+          if (isLiked) {
+            // User already liked the post, so unlike it
+            console.log('Removing like from subcollection');
+            // Delete the user's like document
+            await deleteDoc(userLikeRef);
+
+            // Decrement the likesCount by 1
+            newLikesCount = Math.max(0, currentLikesCount - 1);
+            await updateDoc(postRef, {
+              likesCount: newLikesCount
+            });
+
+            button.classList.remove("liked");
+            console.log('Unliked - new likesCount:', newLikesCount);
+          } else {
+            // User hasn't liked the post yet, so add a like
+            console.log('Adding like to subcollection');            // Create a like document for this user
+            await setDoc(userLikeRef, {
+              userId: userId,
+              likedAt: serverTimestamp(),
+              userName: this.getUserDisplayName(),
+              userEmail: this.getUserEmail()
+            });
+
+            // Increment the likesCount by 1
+            newLikesCount = currentLikesCount + 1;
+            await updateDoc(postRef, {
+              likesCount: newLikesCount
+            });
+
+            button.classList.add("liked");
+            console.log('Liked - new likesCount:', newLikesCount);
+          }
+
+          // Update the likes count in the UI
+          const likesSpan = button.closest('.post-container').querySelector('[data-key="likesCount"]');
+          if (likesSpan) {
+            likesSpan.setAttribute('data-count', newLikesCount);
+            likesSpan.textContent = `${newLikesCount} Like${newLikesCount !== 1 ? 's' : ''}`;
+          }
+
+          // Update local data
+          const post = this.posts.find(p => p.id === postId);
+          if (post) {
+            post.likes = newLikesCount;
+            // Mark button as liked/unliked when page loads
+            if (isLiked) {
+              post.userHasLiked = false;
+            } else {
+              post.userHasLiked = true;
+            }
+          }
+
+          console.log('Like toggle completed successfully');
         } catch (error) {
           console.error("Error toggling like:", error);
           this.showError("Failed to update like");
         }
+      }
+      // Helper method to get the current user ID
+      getCurrentUserId() {
+        // First check if we have a logged-in user
+        if (this.currentUser && this.currentUser.uid) {
+          console.log('Using authenticated user ID:', this.currentUser.uid);
+          return this.currentUser.uid;
+        }
+
+        // Fallback to localStorage for anonymous users
+        let userId = localStorage.getItem('community_user_id');
+
+        if (!userId) {
+          // Generate a new ID using timestamp and random number
+          userId = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+          // Store it for future use
+          localStorage.setItem('community_user_id', userId);
+        }
+
+        console.log('Using local storage user ID:', userId);
+        return userId;
+      }
+
+      // Helper method to get user display name
+      getUserDisplayName() {
+        // First check if we have a logged-in user
+        if (this.currentUser) {
+          // Use displayName if available, otherwise use email or part of email
+          if (this.currentUser.displayName) {
+            return this.currentUser.displayName;
+          } else if (this.currentUser.email) {
+            // Use email without domain as name
+            return this.currentUser.email.split('@')[0];
+          }
+        }
+
+        // Fallback for anonymous users
+        return "Anonymous User";
+      }
+
+      // Helper method to get user email
+      getUserEmail() {
+        return this.currentUser?.email || 'anonymous@example.com';
       } async addComment(postId, button) {
         const input = button.previousElementSibling;
         const commentText = input.value.trim();
@@ -1201,9 +1343,14 @@
         if (!commentText) return;
 
         try {
-          console.log('Adding comment to post:', postId);          // Get the username 
-          const userName = "Anonymous User"; // In a real app, get this from auth
+          console.log('Adding comment to post:', postId);
+
+          // Get the username from the authenticated user
+          const userName = this.getUserDisplayName();
           const userInitial = userName.charAt(0).toUpperCase();
+          const userEmail = this.getUserEmail();
+
+          console.log('Comment author:', userName, 'Email:', userEmail);
 
           // Create a data URL for SVG initial avatar
           const bgColor = this.getColorFromInitial(userInitial);
@@ -1213,14 +1360,18 @@
           </svg>`;
           const imageDataUrl = 'data:image/svg+xml;base64,' + btoa(svg);
 
+          // Use user's photoURL if available from Firebase Auth
+          const userImage = this.currentUser?.photoURL || imageDataUrl;
+
           // Create new comment document - using the exact field names from Firebase
           const newComment = {
             postId: postId,
             comment: commentText, // Using 'comment' as the specified field name
             commentAt: serverTimestamp(),
             commentID: Date.now().toString(), // Generate a unique ID
-            userImage: imageDataUrl,
-            userName: userName // You can get this from auth
+            userImage: userImage,
+            userName: userName,
+            userEmail: userEmail // Store email for reference
           };
 
           // Log the new comment object with the correct field structure

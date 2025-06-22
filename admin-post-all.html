@@ -257,7 +257,7 @@
   <div id="preloader"></div>
 
   <!-- Firebase SDK -->
-  <script type="module">    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";    import {
+  <script type="module">    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"; import {
       getFirestore,
       collection,
       getDocs,
@@ -396,11 +396,11 @@
 
         const postData = postDoc.data();
         console.log("Post data:", postData);
-        
+
         // Start by deleting all comments for this post
         console.log("Deleting comments for post:", postId);
         await deletePostComments(postId);
-        
+
         // Delete all likes for this post
         console.log("Deleting likes for post:", postId);
         await deletePostLikes(postId);
@@ -520,34 +520,34 @@
           }
         }
       });
-    }    function showAllPosts() {
+    } function showAllPosts() {
       const rows = document.querySelectorAll('#postsTableBody tr');
       rows.forEach(row => {
         row.style.display = '';
       });
     }
-    
+
     // Helper function to delete all comments associated with a post
     async function deletePostComments(postId) {
       try {
         // Get all comments for this post
         const commentsRef = collection(db, "posts", postId, "comments");
         const commentSnapshot = await getDocs(commentsRef);
-        
+
         if (commentSnapshot.empty) {
           console.log("No comments to delete");
           return;
         }
-        
+
         // Use a batch to delete up to 500 comments at once
         const batch = writeBatch(db);
         let count = 0;
-        
+
         commentSnapshot.forEach((commentDoc) => {
           batch.delete(commentDoc.ref);
           count++;
         });
-        
+
         if (count > 0) {
           await batch.commit();
           console.log(`${count} comments deleted successfully`);
@@ -557,28 +557,28 @@
         // Continue with post deletion even if comment deletion fails
       }
     }
-    
+
     // Helper function to delete all likes associated with a post
     async function deletePostLikes(postId) {
       try {
         // Get all likes for this post
         const likesRef = collection(db, "posts", postId, "likes");
         const likeSnapshot = await getDocs(likesRef);
-        
+
         if (likeSnapshot.empty) {
           console.log("No likes to delete");
           return;
         }
-        
+
         // Use a batch to delete up to 500 likes at once
         const batch = writeBatch(db);
         let count = 0;
-        
+
         likeSnapshot.forEach((likeDoc) => {
           batch.delete(likeDoc.ref);
           count++;
         });
-        
+
         if (count > 0) {
           await batch.commit();
           console.log(`${count} likes deleted successfully`);
