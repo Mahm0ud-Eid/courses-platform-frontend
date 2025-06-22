@@ -274,30 +274,23 @@ async function loadStudentDetails(db) {
       // Add each student to the table
       students.forEach(student => {
         const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${student.name}</td>
+        row.innerHTML = `          <td>${student.name}</td>
           <td>${student.department}</td>
           <td>${student.year}</td>
           <td>${student.phoneNumber}</td>
           <td>${student.universityID}</td>
           <td>${student.email}</td>
           <td>
-            <div class="btn-group" role="group">
-              <a href="admin-student-edit.html?id=${student.id}&source=${student.source}" class="btn btn-sm btn-primary">
-                <i class="fa fa-pencil"></i>
-              </a>
-              <button class="btn btn-sm btn-danger delete-student" data-id="${student.id}" data-source="${student.source}">
-                <i class="fa fa-trash"></i>
-              </button>
-            </div>
+            <a href="admin-student-edit.html?id=${student.id}&source=${student.source}" class="ad-st-view">Edit</a>
+            <a href="#" class="ad-st-view delete-student" data-id="${student.id}" data-source="${student.source}">Delete</a>
           </td>
         `;
         tableBody.appendChild(row);
       });
-      
-      // Add event listeners to delete buttons
-      document.querySelectorAll('.delete-student').forEach(button => {
-        button.addEventListener('click', function() {
+        // Add event listeners to delete links
+      document.querySelectorAll('.delete-student').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent default link behavior
           const studentId = this.getAttribute('data-id');
           const source = this.getAttribute('data-source');
           deleteStudent(db, studentId, source);
