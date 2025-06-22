@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function afterSignIn() {
-  token = validateToken();
+  token = sessionStorage.getItem("token");
   if (token) {
     signBtn.innerHTML = "Sign Out";
   }
