@@ -59,7 +59,7 @@ const translations = {
 
     // Courses Section
     coursesHeading: "Courses",
-    popularCourses: "Popular Courses", // Dashboard Navigation
+    popularCourses: "Available Courses", // Dashboard Navigation
     myDashboard: "Dashboard",
     myProfile: "My Profile",
     myCourses: "My Courses",
@@ -325,7 +325,7 @@ const translations = {
 
     // Courses Section
     coursesHeading: "الدورات",
-    popularCourses: "الدورات الشائعة", // Dashboard Navigation
+    popularCourses: "الدورات المتاحة", // Dashboard Navigation
     myDashboard: "لوحة التحكم",
     myProfile: "الملف الشخصي",
     myCourses: "دوراتي",
