@@ -173,46 +173,34 @@
                 </div>
                 <div class="tab-inn">
                   <div class="post-form-section mb-4">
-                    <form>
+                    <form id="postForm">
                       <div class="row mb-3">
                         <div class="col-md-12">
-                          <label for="postTitle" class="form-label">Post Title</label>
-                          <input type="text" class="form-control" id="postTitle" placeholder="Enter post title"
-                            required>
-                        </div>
-                      </div>
-                      <div class="row mb-3">
-                        <div class="col-md-12">
-                          <label for="postContent" class="form-label">Post Content</label>
+                          <label for="postContent" class="form-label">Post Content <span
+                              class="text-danger">*</span></label>
                           <textarea class="form-control" id="postContent" rows="8" placeholder="Enter post content"
                             required></textarea>
-                        </div>
-                      </div>
-                      <div class="row mb-3">
-                        <div class="col-md-6">
-                          <label for="postCategory" class="form-label">Category</label>
-                          <select class="form-control" id="postCategory" required>
-                            <option value="">Select Category</option>
-                            <option value="New Course">New Course</option>
-                            <option value="Event">Event</option>
-                            <option value="Announcement">Announcement</option>
-                          </select>
-                        </div>
-                        <div class="col-md-6">
-                          <label for="postDate" class="form-label">Publish Date</label>
-                          <input type="date" class="form-control" id="postDate" required>
+                          <div class="invalid-feedback">
+                            Please enter post content.
+                          </div>
                         </div>
                       </div>
                       <div class="row mb-3">
                         <div class="col-md-12">
                           <label for="featuredImage" class="form-label">Featured Image (Optional)</label>
-                          <input class="form-control" type="file" id="featuredImage">
+                          <input class="form-control" type="file" id="featuredImage" accept="image/*">
+                          <div class="form-text">Recommended image size: 1200 x 630 pixels (16:9 ratio)</div>
+                          <div class="mt-2">
+                            <img id="imagePreview" src="" alt="Image Preview"
+                              style="max-width: 300px; max-height: 200px; display: none;" class="img-thumbnail">
+                          </div>
                         </div>
                       </div>
                       <div class="row mt-4">
                         <div class="col-md-12 text-end">
-                          <button type="submit" class="btn btn-primary">Publish Post</button>
-                          <button type="button" class="btn btn-outline-secondary ms-2">Save Draft</button>
+                          <button type="button" class="btn btn-secondary me-2"
+                            onclick="window.location.href='admin-post-all.html'">Cancel</button>
+                          <button type="submit" id="submitButton" class="btn btn-primary">Publish Post</button>
                         </div>
                       </div>
                     </form>
@@ -246,6 +234,229 @@
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
   <script src="js/post-management.js"></script>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"; import {
+      getFirestore,
+      collection,
+      addDoc,
+      doc,
+      updateDoc,
+      getDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+    import {
+      getStorage,
+      ref,
+      uploadBytes,
+      getDownloadURL
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
+    import {
+      getAuth,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCaUETFsFnRgSmNFIwEgyGWugfrK9zHbM0",
+      authDomain: "uccd-f607e.firebaseapp.com",
+      projectId: "uccd-f607e",
+      storageBucket: "uccd-f607e.firebasestorage.app",
+      messagingSenderId: "1037776187244",
+      appId: "1:1037776187244:web:7d02b5edc4908dad390d49",
+      measurementId: "G-B95Y1W5QWP",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+    const auth = getAuth(app);
+
+    // Current user information
+    let currentUser = null;    // Check authentication state when the page loads
+    document.addEventListener('DOMContentLoaded', function () {
+      // Show loading state
+      const submitButton = document.getElementById('submitButton');
+      const originalButtonText = submitButton.textContent;
+
+      // Add form submission handler
+      document.getElementById('postForm').addEventListener('submit', handleFormSubmit);
+
+      // Add image preview functionality
+      const imageInput = document.getElementById('featuredImage');
+      const imagePreview = document.getElementById('imagePreview');
+
+      imageInput.addEventListener('change', function () {
+        if (this.files && this.files[0]) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+          };
+
+          reader.readAsDataURL(this.files[0]);
+        } else {
+          imagePreview.style.display = 'none';
+        }
+      });
+      // Check if user is logged in
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          // User is signed in
+          currentUser = user;
+          console.log("User is signed in:", user.email);
+
+          // Get user information from Firestore if needed
+          try {
+            // We can retrieve additional user data from Firestore
+            const userRef = doc(db, "users", user.uid);
+            const userDoc = await getDoc(userRef);
+
+            if (userDoc.exists()) {
+              // Add user data to currentUser object
+              currentUser.userData = userDoc.data();
+              console.log("User data retrieved:", currentUser.userData);
+            } else {
+              console.log("No user document found in Firestore");
+            }
+          } catch (error) {
+            console.warn("Error getting user data:", error);
+          }
+        } else {
+          // User is signed out, redirect to login
+          console.log("No user is signed in");
+          window.location.href = "login.html";
+        }
+      });
+    }); async function handleFormSubmit(event) {
+      event.preventDefault();
+
+      // Get form elements
+      const postContent = document.getElementById('postContent').value.trim();
+      const featuredImageInput = document.getElementById('featuredImage');
+      const submitButton = document.getElementById('submitButton');
+
+      // Form validation with visual feedback
+      let isValid = true;
+
+      if (!postContent) {
+        document.getElementById('postContent').classList.add('is-invalid');
+        isValid = false;
+      } else {
+        document.getElementById('postContent').classList.remove('is-invalid');
+      }
+
+      if (!isValid) {
+        return;
+      }
+
+      // Validate image if provided
+      if (featuredImageInput.files.length > 0) {
+        const file = featuredImageInput.files[0];
+        // Check if file is an image
+        if (!file.type.startsWith('image/')) {
+          alert('Please select a valid image file');
+          return;
+        }
+
+        // Check file size (max 5MB)
+        if (file.size > 5 * 1024 * 1024) {
+          alert('Image size should be less than 5MB');
+          return;
+        }
+      }
+
+      // Show loading state
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Publishing...</span>'; try {
+        // Check if user is logged in
+        if (!currentUser) {
+          alert('You must be logged in to create a post');
+          window.location.href = 'login.html';
+          return;
+        }
+        // Get the publisher name from the user's data
+        let publisherName;
+
+        // Check if we have user data from Firestore
+        if (currentUser.userData && currentUser.userData.name) {
+          publisherName = currentUser.userData.name;
+        }
+        // Try display name from auth
+        else if (currentUser.displayName) {
+          publisherName = currentUser.displayName;
+        }
+        // If we have a name in the provider data, use that
+        else if (currentUser.providerData &&
+          currentUser.providerData[0] &&
+          currentUser.providerData[0].displayName) {
+          publisherName = currentUser.providerData[0].displayName;
+        }
+        // Finally, fall back to email if we have nothing else
+        else {
+          publisherName = currentUser.email.split('@')[0];
+          publisherName = publisherName.charAt(0).toUpperCase() +
+            publisherName.slice(1).replace(/[._]/g, ' ');
+        }        // Initialize post data
+        const postData = {
+          publisherName: publisherName,
+          publisherEmail: currentUser.email,
+          publisherImage: currentUser.photoURL || '',
+          postDescription: postContent,
+          likesCount: 0,
+          commentsCount: 0,
+          publishedAt: serverTimestamp(),
+          postImageLink: '',
+          postImageName: ''
+        };
+
+        // Handle image upload if present
+        if (featuredImageInput.files.length > 0) {
+          const imageFile = featuredImageInput.files[0];
+          const imageExtension = imageFile.name.split('.').pop();
+          const imageName = `post_${Date.now()}.${imageExtension}`;
+          const storageRef = ref(storage, `posts/${imageName}`);
+
+          // Upload image to Firebase Storage
+          const uploadTask = await uploadBytes(storageRef, imageFile);
+          console.log('Image uploaded successfully');
+
+          // Get download URL
+          const downloadURL = await getDownloadURL(uploadTask.ref);
+
+          // Add image details to post data
+          postData.postImageLink = downloadURL;
+          postData.postImageName = imageName;
+        }
+        // Add document to Firestore
+        const docRef = await addDoc(collection(db, "posts"), postData);
+        console.log("Post added with ID:", docRef.id);
+
+        // Update the post with its ID using the Firestore document ID
+        const postRef = doc(db, "posts", docRef.id);
+        await updateDoc(postRef, {
+          postID: docRef.id
+        });
+
+        // Show success message
+        alert('Post published successfully!');
+
+        // Redirect to all posts page
+        window.location.href = 'admin-post-all.html';
+
+      } catch (error) {
+        console.error("Error adding post:", error);
+        alert(`Error publishing post: ${error.message}`);
+
+        // Reset button state
+        submitButton.disabled = false;
+        submitButton.textContent = 'Publish Post';
+      }
+    }
+  </script>
 </body>
 
 </html>

@@ -33,6 +33,26 @@
   <link href="assets/css/file-upload.css" rel="stylesheet" />
   <link href="css/admin-responsive.css" rel="stylesheet" />
   <link href="css/post-management.css" rel="stylesheet" />
+
+  <!-- Custom Styles for Table Alignment -->
+  <style>
+    .table th {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .table td,
+    .table th {
+      padding: 12px 15px;
+      vertical-align: middle;
+    }
+
+    .table th:first-child,
+    .table td:first-child {
+      padding-left: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -175,21 +195,12 @@
                   <div class="post-filter-section mb-4">
                     <div class="row">
                       <div class="col-md-6 mb-3">
-                        <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Search posts by title..."
-                            aria-label="Search posts">
-                          <button class="btn btn-primary" type="button">
+                        <div class="input-group"> <input type="text" class="form-control" id="searchInput"
+                            placeholder="Search by post description..." aria-label="Search posts">
+                          <button class="btn btn-primary" id="searchBtn" type="button">
                             <i class="fa fa-search"></i> Search
                           </button>
                         </div>
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <select class="form-control" id="categoryFilter">
-                          <option value="">All Categories</option>
-                          <option value="New Course">New Course</option>
-                          <option value="Event">Event</option>
-                          <option value="Announcement">Announcement</option>
-                        </select>
                       </div>
 
                     </div>
@@ -202,85 +213,26 @@
                     </div>
                   </div>
                   <!-- End Search and Filter Section -->
-
                   <div class="table-responsive table-desi">
-                    <table class="table table-hover">
+                    <table class="table table-hover" data-no-checkboxes="true">
                       <thead>
                         <tr>
-                          <th>Title</th>
-                          <th>Published Date</th>
-                          <th>Category</th>
-                          <th>Actions</th>
+                          <th>DESCRIPTION</th>
+                          <th>PUBLISHER</th>
+                          <th>PUBLISHED DATE</th>
+                          <th>ACTIONS</th>
                         </tr>
                       </thead>
-                      <tbody> <!-- Community Posts -->
+                      <tbody id="postsTableBody"> <!-- Will be populated from Firebase -->
+                        <!-- Posts will be loaded from Firebase -->
                         <tr>
-                          <td>Web Development Masterclass Starting Next Month</td>
-                          <td>18 May 2025</td>
-                          <td>New Course</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Data Science Fundamentals Course Registration Now Open</td>
-                          <td>15 May 2025</td>
-                          <td>New Course</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Upcoming Tech Career Fair</td>
-                          <td>12 May 2025</td>
-                          <td>Event</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Summer Registration Now Open</td>
-                          <td>10 May 2025</td>
-                          <td>Announcement</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>New Mobile App Development Course</td>
-                          <td>8 May 2025</td>
-                          <td>New Course</td>
-                          <td>
-                            <a href="admin-post-edit.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view bg-danger" style="margin-left: 5px;">Delete</a>
-                          </td>
+                          <td colspan="4" class="text-center">Loading posts from Firebase...</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
 
-                  <!-- Pagination and Bulk Actions -->
-                  <div class="row mt-4">
-                    <div class="col-md-6 mb-3">
-                      <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-end">
-                          <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                          </li>
-                          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                          </li>
-                        </ul>
-                      </nav>
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </div>
@@ -289,12 +241,13 @@
       </div>
     </div>
   </div> <!--Import jQuery before materialize.js-->
-  <script src="js/main.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/main.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="assets/js/sidebar-tog.js"></script>
   <script src="js/sidebar-init.js"></script>
+  <script src="js/post-management.js"></script>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
@@ -303,34 +256,344 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <!-- Firebase SDK -->
+  <script type="module">    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"; import {
+      getFirestore,
+      collection,
+      getDocs,
+      doc,
+      getDoc,
+      deleteDoc,
+      query,
+      orderBy,
+      writeBatch,
+      collectionGroup
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+    import {
+      getStorage,
+      ref,
+      deleteObject
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCaUETFsFnRgSmNFIwEgyGWugfrK9zHbM0",
+      authDomain: "uccd-f607e.firebaseapp.com",
+      projectId: "uccd-f607e",
+      storageBucket: "uccd-f607e.firebasestorage.com", // Fixed storage bucket URL format
+      messagingSenderId: "1037776187244",
+      appId: "1:1037776187244:web:7d02b5edc4908dad390d49",
+      measurementId: "G-B95Y1W5QWP",
+    };// Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    // Fetch and display posts when the page loads
+    document.addEventListener('DOMContentLoaded', async function () {
+      await loadPosts();
+
+      // Set up search functionality
+      document.getElementById('searchBtn').addEventListener('click', performSearch);
+      document.getElementById('searchInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+      document.getElementById('searchInput').addEventListener('input', function () {
+        if (this.value === '') {
+          showAllPosts();
+        }
+      });
+    });
+
+    async function loadPosts() {
+      try {
+        const tableBody = document.getElementById('postsTableBody');
+        tableBody.innerHTML = '<tr><td colspan="4" class="text-center">Loading posts...</td></tr>';
+
+        // Create a query to get posts ordered by publishedAt (most recent first)
+        const postsQuery = query(collection(db, "posts"), orderBy("publishedAt", "desc"));
+        const querySnapshot = await getDocs(postsQuery);
+
+        if (querySnapshot.empty) {
+          tableBody.innerHTML = '<tr><td colspan="4" class="text-center">No posts found</td></tr>';
+          return;
+        }
+
+        let postsHTML = '';
+        querySnapshot.forEach((doc) => {
+          const postData = doc.data();
+          const postId = doc.id;
+          // Extract the fields we want
+          const postDescription = postData.postDescription || postData.content || 'No description';
+
+          // Get the publisher name
+          const publisherName = postData.publisherName || postData.authorName || 'Anonymous';
+
+          // Format the date from Firebase Timestamp
+          let formattedDate = 'No date';
+          if (postData.publishedAt) {
+            if (typeof postData.publishedAt.toDate === 'function') {
+              const date = postData.publishedAt.toDate();
+              formattedDate = date.toLocaleString('en-GB', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              });
+            } else if (typeof postData.publishedAt === 'string') {
+              formattedDate = postData.publishedAt;
+            }
+          }          // Create table row for each post
+          postsHTML += `
+            <tr data-post-id="${postId}">
+              <td>${postDescription}</td>
+              <td>${publisherName}</td>
+              <td>${formattedDate}</td>
+              <td>
+                <a href="admin-post-edit.html?id=${postId}" class="ad-st-view">Edit</a>
+                <a href="#" class="ad-st-view bg-danger delete-post" data-post-id="${postId}" style="margin-left: 5px;">Delete</a>
+              </td>
+            </tr>
+          `;
+        });
+
+        tableBody.innerHTML = postsHTML;
+
+        // Add event listeners to delete buttons
+        document.querySelectorAll('.delete-post').forEach(button => {
+          button.addEventListener('click', function (e) {
+            e.preventDefault();
+            const postId = this.getAttribute('data-post-id');
+            if (confirm('Are you sure you want to delete this post?')) {
+              deletePost(postId);
+            }
+          });
+        });
+
+      } catch (error) {
+        console.error("Error loading posts:", error);
+        document.getElementById('postsTableBody').innerHTML = `
+          <tr>
+            <td colspan="4" class="text-center text-danger">
+              Error loading posts: ${error.message}
+            </td>
+          </tr>
+        `;
+      }
+    } async function deletePost(postId) {
+      try {
+        console.log(`Attempting to delete post: ${postId}`);
+
+        // First, get the post data to check if it exists and has an image
+        const postDocRef = doc(db, "posts", postId);
+        const postDoc = await getDoc(postDocRef);
+
+        if (!postDoc.exists()) {
+          console.warn("Post document does not exist");
+          alert('Post not found or already deleted');
+          await loadPosts(); // Refresh the list
+          return;
+        }
+
+        const postData = postDoc.data();
+        console.log("Post data:", postData);
+
+        // Start by deleting all comments for this post
+        console.log("Deleting comments for post:", postId);
+        await deletePostComments(postId);
+
+        // Delete all likes for this post
+        console.log("Deleting likes for post:", postId);
+        await deletePostLikes(postId);
+
+        // Check for image fields to delete from storage
+        let imageDeleted = false;
+        if (postData.postImageLink || postData.imageUrl) {
+          try {
+            const imageUrl = postData.postImageLink || postData.imageUrl;
+            const imageName = postData.postImageName || '';
+
+            console.log("Attempting to delete image:", imageUrl);
+            console.log("Image name:", imageName);
+
+            if (!imageUrl || imageUrl === '') {
+              console.log("No image URL to delete");
+            }
+            // First try with the specific image name path if available
+            else if (imageName && imageName !== '') {
+              try {
+                const imageRef = ref(storage, `posts/${imageName}`);
+                await deleteObject(imageRef);
+                imageDeleted = true;
+                console.log("Image deleted successfully using imageName");
+              } catch (nameError) {
+                console.warn("Failed to delete using imageName, trying URL parsing:", nameError);
+                // Continue to URL parsing approach
+              }
+            }
+
+            // If the first method didn't succeed and we have a URL, try URL parsing
+            if (!imageDeleted && imageUrl && imageUrl.startsWith('https://')) {
+              // For download URLs, we need to extract the storage path
+              const urlParts = imageUrl.split('?')[0]; // Remove query parameters
+              const pathParts = urlParts.split('/o/')[1]; // Get the path after /o/
+
+              if (pathParts) {
+                const decodedPath = decodeURIComponent(pathParts);
+                const imageRef = ref(storage, decodedPath);
+                await deleteObject(imageRef);
+                imageDeleted = true;
+                console.log("Image deleted successfully using URL parsing");
+              } else {            // Try direct reference as fallback
+                try {
+                  const imageRef = ref(storage, imageUrl);
+                  await deleteObject(imageRef);
+                  imageDeleted = true;
+                  console.log("Image deleted successfully using direct URL");
+                } catch (innerError) {
+                  console.warn("Could not delete with direct URL method:", innerError);
+                  // One final attempt - try using the storage bucket path directly
+                  try {
+                    const storageRef = ref(storage, `posts/${imageName}`);
+                    await deleteObject(storageRef);
+                    imageDeleted = true;
+                    console.log("Image deleted successfully using storage path");
+                  } catch (finalError) {
+                    console.warn("Final deletion attempt failed:", finalError);
+                    throw finalError; // Re-throw to be caught by outer catch
+                  }
+                }
+              }
+            }
+
+            if (imageDeleted) {
+              console.log("Image deleted successfully");
+            }
+          } catch (storageError) {
+            console.warn("Error deleting image (continuing with post deletion):", storageError);
+            console.log("Storage error code:", storageError.code, "Error message:", storageError.message);
+            // Continue with document deletion even if image deletion fails
+          }
+        } else {
+          console.log("Post has no image to delete");
+        }
+
+        // Delete the document from Firestore
+        console.log("Deleting document from Firestore...");
+        await deleteDoc(postDocRef);
+        console.log("Document deleted successfully");
+
+        // Remove the row from the UI
+        const row = document.querySelector(`tr[data-post-id="${postId}"]`);
+        if (row) {
+          row.remove();
+        }
+
+        alert('Post deleted successfully');// Reload posts to ensure the list is fresh
+        console.log("Reloading posts...");
+        await loadPosts();
+
+      } catch (error) {
+        console.error("Error deleting post:", error);
+        alert(`Failed to delete post: ${error.message}\n\nCheck console for details.`);
+      }
+    } function performSearch() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('#postsTableBody tr');
+
+      rows.forEach(row => {
+        // Skip rows that don't have enough cells (like loading rows)
+        if (!row.cells || row.cells.length < 3) return;
+
+        const description = row.cells[0]?.textContent.toLowerCase() || '';
+
+        if (searchTerm === '') {
+          row.style.display = '';
+        } else {
+          // Split description into words and check if any word starts with the search term
+          const words = description.split(/\s+/);
+          const found = words.some(word => word.startsWith(searchTerm));
+
+          if (found) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        }
+      });
+    } function showAllPosts() {
+      const rows = document.querySelectorAll('#postsTableBody tr');
+      rows.forEach(row => {
+        row.style.display = '';
+      });
+    }
+
+    // Helper function to delete all comments associated with a post
+    async function deletePostComments(postId) {
+      try {
+        // Get all comments for this post
+        const commentsRef = collection(db, "posts", postId, "comments");
+        const commentSnapshot = await getDocs(commentsRef);
+
+        if (commentSnapshot.empty) {
+          console.log("No comments to delete");
+          return;
+        }
+
+        // Use a batch to delete up to 500 comments at once
+        const batch = writeBatch(db);
+        let count = 0;
+
+        commentSnapshot.forEach((commentDoc) => {
+          batch.delete(commentDoc.ref);
+          count++;
+        });
+
+        if (count > 0) {
+          await batch.commit();
+          console.log(`${count} comments deleted successfully`);
+        }
+      } catch (error) {
+        console.error("Error deleting comments:", error);
+        // Continue with post deletion even if comment deletion fails
+      }
+    }
+
+    // Helper function to delete all likes associated with a post
+    async function deletePostLikes(postId) {
+      try {
+        // Get all likes for this post
+        const likesRef = collection(db, "posts", postId, "likes");
+        const likeSnapshot = await getDocs(likesRef);
+
+        if (likeSnapshot.empty) {
+          console.log("No likes to delete");
+          return;
+        }
+
+        // Use a batch to delete up to 500 likes at once
+        const batch = writeBatch(db);
+        let count = 0;
+
+        likeSnapshot.forEach((likeDoc) => {
+          batch.delete(likeDoc.ref);
+          count++;
+        });
+
+        if (count > 0) {
+          await batch.commit();
+          console.log(`${count} likes deleted successfully`);
+        }
+      } catch (error) {
+        console.error("Error deleting likes:", error);
+        // Continue with post deletion even if like deletion fails
+      }
+    }
+  </script>
   <!-- Main JS File -->
   <script src="js/image-upload.js"></script>
   <script src="js/main.js"></script>
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
-  <script src="js/post-management.js"></script>
-  <script>
-    // Category filtering script
-    $(document).ready(function () {
-      // Filter by category
-      $("#categoryFilter").change(function () {
-        let selectedCategory = $(this).val();
-        filterPosts();
-      }); function filterPosts() {
-        let selectedCategory = $("#categoryFilter").val();
-
-        $("tbody tr").each(function () {
-          let categoryMatch = selectedCategory === "" || $(this).find("td:nth-child(3)").text().trim() === selectedCategory;
-
-          if (categoryMatch) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        });
-      }
-    });
-  </script>
 </body>
 
 </html>

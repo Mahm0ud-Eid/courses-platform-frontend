@@ -230,11 +230,11 @@ function addComment(inputElement) {
     inputElement.value = '';
     inputElement.nextElementSibling.disabled = true;    // Update comment count
     const postStats = commentsContainer.closest('.post-container').querySelector('.post-stats');
-    const commentCount = postStats.querySelector('div:last-child');
-    const currentCount = parseInt(commentCount.getAttribute('data-count'));
+    const commentsCountEl = postStats.querySelector('div:last-child');
+    const currentCount = parseInt(commentsCountEl.getAttribute('data-count'));
     const newCount = currentCount + 1;
-    commentCount.setAttribute('data-count', newCount);
-    updateTranslatedCount(commentCount, newCount, 'commentsCount');
+    commentsCountEl.setAttribute('data-count', newCount);
+    updateTranslatedCount(commentsCountEl, newCount, 'commentsCount');
 }
 
 // Update translated count function

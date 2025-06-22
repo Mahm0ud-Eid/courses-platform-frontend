@@ -2,15 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>EEducation Master Template</title>
+  <title>Edit Post</title>
   <!-- META TAGS -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-    content="EEducation master is one of the best eEducational html template, it's suitable for all eEducation websites like university,college,school,online eEducation,tution center,distance eEducation,computer eEducation" />
-  <meta name="keyword"
-    content="eEducation html template, university template, college template, school template, online eEducation template, tution center template" />
   <!-- FAV ICON(BROWSER TAB ICON) -->
   <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
   <!-- GOOGLE FONT -->
@@ -18,82 +14,59 @@
     rel="stylesheet" />
   <!-- FONTAWESOME ICONS -->
   <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
   <!-- ALL CSS FILES -->
-  <link href="css/materialize.css" rel="stylesheet" />
-  <link href="css/bootstrap.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
   <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
   <link href="css/style-mob.css" rel="stylesheet" />
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+  <link rel="stylesheet" href="assets/css/input-group.css" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <link href="assets/css/file-upload.css" rel="stylesheet" />
+  <link href="css/admin-responsive.css" rel="stylesheet" />
+  <link href="css/post-management.css" rel="stylesheet" />
+
 </head>
 
 <body>
-  <!--== MAIN CONTRAINER ==-->
-  <div class="container-fluid sb1">
-    <div class="row">
-      <!--== LOGO ==-->
-      <div class="col-md-2 col-sm-3 col-xs-6 sb1-1">
-        <a href="#" class="btn-close-menu"><i class="fa fa-times" aria-hidden="true"></i></a>
-        <a href="#" class="atab-menu"><i class="fa fa-bars tab-menu" aria-hidden="true"></i></a>
-        <a href=" index.html" class="logo"><img src="images/logo1.png" alt="" />
-        </a>
-      </div>
-      <!--== SEARCH ==-->
-      <div class="col-md-6 col-sm-6 mob-hide">
-        <form class="app-search">
-          <input type="text" placeholder="Search..." class="form-control" />
-          <a href="#"><i class="fa fa-search"></i></a>
-        </form>
-      </div>
-      <!--== NOTIFICATION ==-->
-      <div class="col-md-2 tab-hide"></div>
-      <!--== MY ACCCOUNT ==-->
-      <div class="col-md-2 col-sm-3 col-xs-6">
-        <!-- Dropdown Trigger -->
-        <a class="waves-effect dropdown-button top-user-pro" href="#" data-activates="top-menu"><img
-            src="images/user/6.png" alt="" />My Account
-          <i class="fa fa-angle-down" aria-hidden="true"></i>
-        </a>
+  <!-- MAIN CONTRAINER -->
+  <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
+    <img class="sd-tog" src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">UCCD</h1>
+      </a>
 
-        <!-- Dropdown Structure -->
-        <ul id="top-menu" class="dropdown-content top-menu-sty">
+      <nav id="navmenu" class="navmenu navmenu-user">
+        <ul>
           <li>
-            <a href="admin-panel-setting.html" class="waves-effect"><i class="fa fa-cogs" aria-hidden="true"></i>Admin
-              Setting</a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="#" class="ho-dr-con-last waves-effect"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
+            <a class="logout-btn">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log Out</span>
+            </a>
           </li>
         </ul>
-      </div>
+        <i class="mobile-nav-toggle bi bi-person-circle"></i>
+      </nav>
     </div>
-  </div>
-
+  </header>
   <!--== BODY CONTNAINER ==-->
   <div class="container-fluid sb2">
     <div class="row">
-      <div class="sb2-1">
-        <!--== USER INFO ==-->
-        <div class="sb2-12">
-          <ul>
-            <li><img src="images/placeholder.jpg" alt="" /></li>
-            <li>
-              <h5>Victoria Baker <span> Santa Ana, CA</span></h5>
-            </li>
-            <li></li>
-          </ul>
-        </div>
+      <div class="sb2-1" style="background-color: white;">
         <!--== LEFT MENU ==-->
         <div class="sb2-13">
           <ul class="collapsible" data-collapsible="accordion">
             <li>
-              <a href="admin.html" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+              <a href="admin.html"><i class="fa fa-bar-chart" aria-hidden="true"></i>
                 Dashboard</a>
             </li>
 
@@ -110,35 +83,26 @@
             </li>
             <li>
               <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>
-                Users</a>
+                Instructors</a>
               <div class="collapsible-body left-sub-menu">
                 <ul>
-                  <li><a href="admin-user-all.html">All Users</a></li>
-                  <li><a href="admin-user-add.html">Add New user</a></li>
+                  <li>
+                    <a class="inst-mg-btn" href="#">Manage</a>
+                  </li>
+
+                  <li><a class="inst-v-all" href="#">All Users</a></li>
                 </ul>
               </div>
             </li>
             <li>
-              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-file-text" aria-hidden="true"></i>
+              <a href="javascript:void(0)" class="collapsible-header menu-active"><i class="fa fa-newspaper-o"
+                  aria-hidden="true"></i>
                 Posts</a>
               <div class="collapsible-body left-sub-menu">
                 <ul>
                   <li><a href="admin-post-all.html">All Posts</a></li>
-                  <li>
-                    <a href="admin-post-add.html">Create New Post</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-bullhorn" aria-hidden="true"></i>
-                Seminar</a>
-              <div class="collapsible-body left-sub-menu">
-                <ul>
-                  <li><a href="admin-seminar-all.html">All Seminar</a></li>
-                  <li>
-                    <a href="admin-seminar-add.html">Create New Seminar</a>
-                  </li>
+                  <li><a href="admin-post-add.html">Create New Post</a></li>
+                  <li><a href="admin-post-edit.html" class="menu-active">Edit Post</a></li>
                 </ul>
               </div>
             </li>
@@ -172,16 +136,16 @@
       </div>
 
       <!--== BODY INNER CONTAINER ==-->
-      <div class="sb2-2">
-        <!--== breadcrumbs ==-->
+      <div class="sb2-2"> <!--== breadcrumbs ==-->
         <div class="sb2-2-2">
           <ul>
             <li>
               <a href=" index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
             </li>
-            <li class="active-bre"><a href="#"> Edit Event</a></li>
+            <li class="active-bre"><a href="#"> Edit Post</a>
+            </li>
             <li class="page-back">
-              <a href=" index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+              <a href="admin-post-all.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
             </li>
           </ul>
         </div>
@@ -190,69 +154,50 @@
         <div class="sb2-2-3">
           <div class="row">
             <div class="col-md-12">
-              <div class="box-inn-sp admin-form">
+              <div class="box-inn-sp">
                 <div class="inn-title">
-                  <h4>Edit Event</h4>
+                  <h4>Edit Post</h4>
                   <p>
-                    Here you can edit your website basic details URL, Phone,
-                    Email, Address, User and password and more
+                    Update the post content and settings
                   </p>
                 </div>
                 <div class="tab-inn">
-                  <form>
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input type="text" value="Latinoo College Expo 2018 - DONATION" class="validate" required />
-                        <label class="">Event name</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <textarea>
-Fusce purus mauris, blandit vitae purus eget, viverra volutpat nibh. Nam in elementum nisi, a placerat nisi. Quisque ullamcorper magna in odio rhoncus semper.Sed nec ultricies velit. Aliquam non massa id enim ultrices aliquet a ac tortor.
-
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</textarea>
-                        <label class="">Event Descriptions</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s6">
-                        <input type="text" value="Jan 01, 2018" class="validate" required />
-                        <label class="">Date</label>
-                      </div>
-                      <div class="input-field col s6">
-                        <input type="text" class="validate" value="02:00 PM GMT" required />
-                        <label class="">Time</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s6">
-                        <input type="text" value="New york" class="validate" />
-                        <label class="">City</label>
-                      </div>
-                      <div class="input-field col s6">
-                        <input type="text" value="United states" class="validate" />
-                        <label class="">Country</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="file-field input-field col s12">
-                        <div class="btn admin-upload-btn">
-                          <span>File</span>
-                          <input type="file" />
-                        </div>
-                        <div class="file-path-wrapper">
-                          <input class="file-path validate" type="text" placeholder="Event image" />
+                  <div class="post-form-section mb-4">
+                    <form id="editPostForm">
+                      <div class="row mb-3">
+                        <div class="col-md-12">
+                          <label for="postContent" class="form-label">Post Content</label>
+                          <textarea class="form-control" id="postContent" rows="8" placeholder="Enter post content"
+                            required></textarea>
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <i class="waves-effect waves-light btn-large waves-input-wrapper" style=""><input type="submit"
-                            class="waves-button-input" /></i>
+                      <div class="row mb-3">
+                        <div class="col-md-12">
+                          <label for="featuredImage" class="form-label">Featured Image (Optional)</label>
+                          <input class="form-control" type="file" id="featuredImage"
+                            accept="image/jpeg,image/jpg,image/png,image/webp" onchange="validateImageFile(this)">
+                          <small class="text-muted">Supported formats: JPG, PNG, WebP. Max size: 5MB. Images will be
+                            automatically optimized.</small>
+                          <div class="progress mt-2" id="uploadProgress" style="display: none; height: 25px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                              style="width: 0%; font-size: 12px; line-height: 25px;"></div>
+                          </div>
+                          <small class="text-muted" id="currentImageText">Current image: None</small>
+                          <div id="currentImagePreview" class="mt-2" style="display: none;">
+                            <img id="currentImage" src="" alt="Current image"
+                              style="max-width: 200px; max-height: 150px; border: 1px solid #ddd; border-radius: 4px;">
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </form>
+                      <div class="row mt-4">
+                        <div class="col-md-12 text-end">
+                          <button type="button" class="btn btn-secondary me-2"
+                            onclick="window.location.href='admin-post-all.html'">Cancel</button>
+                          <button type="submit" class="btn btn-primary" id="updateBtn">Update Post</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -261,12 +206,414 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
       </div>
     </div>
   </div>
-
   <!--Import jQuery before materialize.js-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/main.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/materialize.min.js"></script>
   <script src="js/custom.js"></script>
+  <script src="assets/js/sidebar-tog.js"></script>
+  <script src="js/sidebar-init.js"></script>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Main JS File -->
+  <script src="js/image-upload.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/manager.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/post-management.js"></script> <!-- Firebase SDK -->
+  <script type="module">    // Image compression function
+    function compressImage(file, maxWidth = 1200, maxHeight = 800, quality = 0.8) {
+      return new Promise((resolve) => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+
+        img.onload = () => {
+          // Calculate new dimensions
+          let { width, height } = img;
+
+          if (width > maxWidth || height > maxHeight) {
+            const ratio = Math.min(maxWidth / width, maxHeight / height);
+            width *= ratio;
+            height *= ratio;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          // Draw and compress
+          ctx.drawImage(img, 0, 0, width, height);
+
+          canvas.toBlob((blob) => {
+            // Create new file with compressed data
+            const compressedFile = new File([blob], file.name, {
+              type: 'image/jpeg',
+              lastModified: Date.now()
+            });
+            resolve(compressedFile);
+          }, 'image/jpeg', quality);
+        };
+
+        // If file is already small, return as is
+        if (file.size < 1024 * 1024) { // Less than 1MB
+          resolve(file);
+          return;
+        }
+
+        img.src = URL.createObjectURL(file);
+      });
+    }    // File validation function
+    function validateImageFile(input) {
+      const file = input.files[0];
+      if (!file) return;
+
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+
+      if (!allowedTypes.includes(file.type)) {
+        alert('Please select a valid image file (JPG, PNG, or WebP).');
+        input.value = '';
+        return;
+      }
+
+      if (file.size > maxSize) {
+        alert('Image file is too large. Please select an image smaller than 5MB.');
+        input.value = '';
+        return;
+      }
+
+      // Show file info
+      const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+      console.log(`Selected image: ${file.name} (${sizeInMB}MB)`);
+
+      // Show preview of new image
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const currentImage = document.getElementById('currentImage');
+        const currentImagePreview = document.getElementById('currentImagePreview');
+        const currentImageText = document.getElementById('currentImageText');
+
+        currentImage.src = e.target.result;
+        currentImagePreview.style.display = 'block';
+        currentImageText.textContent = `New image selected: ${file.name} (${sizeInMB}MB)`;
+      };
+      reader.readAsDataURL(file);
+    }    // Progress tracking function with better logging
+    function updateProgress(percent) {
+      const progressBar = document.querySelector('#uploadProgress .progress-bar');
+      const progressContainer = document.getElementById('uploadProgress');
+
+      console.log(`Progress update: ${percent}%`);
+
+      if (percent > 0) {
+        progressContainer.style.display = 'block';
+        progressBar.style.width = percent + '%';
+        progressBar.textContent = Math.round(percent) + '%';
+        progressBar.setAttribute('aria-valuenow', percent);
+      } else {
+        progressContainer.style.display = 'none';
+      }
+    }
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"; import {
+      getFirestore,
+      collection,
+      getDocs,
+      doc,
+      getDoc,
+      updateDoc,
+      query,
+      orderBy,
+      Timestamp
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+    import {
+      getStorage,
+      ref,
+      uploadBytesResumable,
+      getDownloadURL
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
+    import {
+      getAuth,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";// Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCaUETFsFnRgSmNFIwEgyGWugfrK9zHbM0",
+      authDomain: "uccd-f607e.firebaseapp.com",
+      projectId: "uccd-f607e",
+      storageBucket: "uccd-f607e.appspot.com",
+      messagingSenderId: "1037776187244",
+      appId: "1:1037776187244:web:7d02b5edc4908dad390d49",
+      measurementId: "G-B95Y1W5QWP",
+    };    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+    const auth = getAuth(app);
+
+    let currentPostId = null;
+    let currentUser = null;
+
+    // Check authentication state
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        currentUser = user;
+        console.log("User is signed in:", user.email);
+      } else {
+        // User is signed out, redirect to login
+        console.log("No user is signed in");
+        window.location.href = "login.html";
+      }
+    });
+
+    // Load post data when page loads
+    document.addEventListener('DOMContentLoaded', async function () {
+      // Get post ID from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const postId = urlParams.get('id');
+
+      if (postId) {
+        currentPostId = postId;
+        await loadPostData(postId);
+      } else {
+        alert('No post ID provided');
+        window.location.href = 'admin-post-all.html';
+        return;
+      }
+
+      // Set up form submission
+      document.getElementById('editPostForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        await updatePost();
+      });
+    }); async function loadPostData(postId) {
+      try {
+        const postDoc = await getDoc(doc(db, "posts", postId));
+
+        if (postDoc.exists()) {
+          const postData = postDoc.data();
+
+          // Fill the form fields
+          document.getElementById('postContent').value = postData.postDescription || postData.content || '';          // Update image info
+          if (postData.postImageLink || postData.imageUrl) {
+            const imageUrl = postData.postImageLink || postData.imageUrl;
+            const imageName = postData.postImageName || 'Image loaded';
+            document.getElementById('currentImageText').textContent = `Current image: ${imageName}`;
+            document.getElementById('currentImage').src = imageUrl;
+            document.getElementById('currentImagePreview').style.display = 'block';
+          } else {
+            document.getElementById('currentImageText').textContent = 'Current image: None';
+            document.getElementById('currentImagePreview').style.display = 'none';
+          }
+
+          console.log('Post data loaded successfully');
+        } else {
+          alert('Post not found');
+          window.location.href = 'admin-post-all.html';
+        }
+      } catch (error) {
+        console.error("Error loading post:", error);
+        alert(`Failed to load post: ${error.message}`);
+      }
+    } async function updatePost() {
+      if (!currentPostId) {
+        alert('No post ID available');
+        return;
+      }
+
+      try {
+        const updateBtn = document.getElementById('updateBtn');
+        updateBtn.disabled = true;
+        updateBtn.textContent = 'Updating...';        // Get form data
+        const postContent = document.getElementById('postContent').value.trim();
+        const imageFile = document.getElementById('featuredImage').files[0];
+
+        console.log('Form data:', { postContent: postContent.substring(0, 50) + '...', hasImageFile: !!imageFile });
+
+        if (!postContent) {
+          alert('Please fill in the post content');
+          updateBtn.disabled = false;
+          updateBtn.textContent = 'Update Post';
+          return;
+        }        // Get the current post data to preserve existing image fields if no new image is uploaded
+        const postDoc = await getDoc(doc(db, "posts", currentPostId));
+        const currentPostData = postDoc.exists() ? postDoc.data() : {};
+
+        // Prepare update data with image fields preserved
+        const updateData = {
+          postDescription: postContent,
+          // Preserve existing image fields or set to empty strings if they don't exist
+          postImageLink: currentPostData.postImageLink || '',
+          postImageName: currentPostData.postImageName || ''
+        };
+
+        console.log('Initial update data:', updateData);// Handle image upload if a new image is selected
+        if (imageFile) {
+          console.log('Image file selected:', imageFile.name, 'Size:', imageFile.size);
+
+          // Validate file size (max 5MB)
+          const maxSize = 5 * 1024 * 1024; // 5MB
+          if (imageFile.size > maxSize) {
+            alert('Image file is too large. Please select an image smaller than 5MB.');
+            updateBtn.disabled = false;
+            updateBtn.textContent = 'Update Post';
+            return;
+          } updateBtn.textContent = 'Preparing image...';
+          updateProgress(10);
+
+          try {
+            // Compress image if it's too large
+            const processedFile = await compressImage(imageFile);
+            console.log('Image processed. Original size:', imageFile.size, 'New size:', processedFile.size);
+            updateProgress(25);
+
+            // Add a small delay for very small files to show progress
+            if (processedFile.size < 500000) { // Less than 500KB
+              await new Promise(resolve => setTimeout(resolve, 300));
+            }
+            updateProgress(30);
+
+            // Create a unique filename with timestamp
+            const timestamp = Date.now();
+            const fileName = `${timestamp}_${processedFile.name}`;
+            const imageRef = ref(storage, `posts/${currentPostId}/${fileName}`);
+            console.log('Image reference created:', imageRef); updateBtn.textContent = 'Uploading image...';
+            updateProgress(35);
+
+            // Upload the image with progress tracking
+            console.log('Starting image upload...');
+            const uploadTask = uploadBytesResumable(imageRef, processedFile);
+            // Listen for state changes, errors, and completion of the upload
+            const uploadPromise = new Promise((resolve, reject) => {
+              let lastProgress = 35;
+              let hasReceivedProgress = false;
+
+              // For very small files, simulate progress
+              if (processedFile.size < 200000) { // Less than 200KB
+                console.log('Small file detected, using simulated progress');
+                let simulatedProgress = 35;
+                const progressInterval = setInterval(() => {
+                  simulatedProgress += Math.random() * 15;
+                  if (simulatedProgress > 75) simulatedProgress = 75;
+                  updateProgress(simulatedProgress);
+                }, 100);
+
+                // Clear interval after a short time
+                setTimeout(() => {
+                  clearInterval(progressInterval);
+                  updateProgress(80);
+                }, 800);
+              }
+
+              uploadTask.on('state_changed',
+                (snapshot) => {
+                  hasReceivedProgress = true;
+                  // Progress function - get real upload progress
+                  const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  const adjustedProgress = Math.min(35 + (progress * 0.45), 80); // 35% to 80% range
+
+                  // Only update if progress actually increased and file is not too small
+                  if (adjustedProgress > lastProgress && processedFile.size >= 200000) {
+                    lastProgress = adjustedProgress;
+                    updateProgress(adjustedProgress);
+                    console.log(`Upload progress: ${progress.toFixed(1)}% (displayed: ${adjustedProgress.toFixed(1)}%)`);
+                  }
+
+                  switch (snapshot.state) {
+                    case 'paused':
+                      console.log('Upload is paused');
+                      break;
+                    case 'running':
+                      console.log('Upload is running');
+                      break;
+                  }
+                },
+                (error) => {
+                  // Error function
+                  console.error('Upload failed:', error);
+                  reject(error);
+                }, async () => {
+                  // Complete function
+                  console.log('Upload completed successfully');
+                  updateProgress(80);
+
+                  // For small files, add a brief delay to show progress
+                  if (processedFile.size < 500000) { // Less than 500KB
+                    await new Promise(resolve => setTimeout(resolve, 300));
+                  }
+
+                  resolve(uploadTask.snapshot);
+                }
+              );
+            });
+            const snapshot = await uploadPromise;
+            console.log('Image uploaded successfully:', snapshot);
+            updateProgress(85);
+
+            updateBtn.textContent = 'Getting image URL...';
+            await new Promise(resolve => setTimeout(resolve, 200)); // Small delay for UI
+            updateProgress(90);
+
+            // Get the download URL
+            console.log('Getting download URL...');
+            const imageUrl = await getDownloadURL(snapshot.ref);
+            console.log('Download URL obtained:', imageUrl);
+            updateProgress(95);
+
+            // Add image URL and name to update data
+            updateData.postImageLink = imageUrl;
+            updateData.postImageName = imageFile.name;
+            console.log('Added image data to update:', { postImageLink: imageUrl, postImageName: imageFile.name });
+
+            updateProgress(100);
+            await new Promise(resolve => setTimeout(resolve, 500)); // Show 100% briefly
+            updateProgress(0); // Hide progress bar
+            updateBtn.textContent = 'Updating post...';
+          } catch (imageError) {
+            console.error('Error uploading image:', imageError);
+            updateProgress(0);
+
+            let errorMessage = 'Failed to upload image. ';
+            if (imageError.code === 'storage/unauthorized') {
+              errorMessage += 'You do not have permission to upload files.';
+            } else if (imageError.code === 'storage/quota-exceeded') {
+              errorMessage += 'Storage quota exceeded.';
+            } else if (imageError.code === 'storage/invalid-argument') {
+              errorMessage += 'Invalid file format.';
+            } else {
+              errorMessage += 'Please check your internet connection and try again.';
+            }
+
+            alert(errorMessage);
+            updateBtn.disabled = false;
+            updateBtn.textContent = 'Update Post';
+            return;
+          }
+        }        // Update the post in Firebase
+        console.log('Final update data:', updateData);
+        console.log('Updating post with ID:', currentPostId);
+        await updateDoc(doc(db, "posts", currentPostId), updateData);
+
+        console.log('Post updated successfully in Firebase');
+        alert('Post updated successfully!');
+        window.location.href = 'admin-post-all.html';
+
+      } catch (error) {
+        console.error("Error updating post:", error);
+        alert(`Failed to update post: ${error.message}`);
+
+        const updateBtn = document.getElementById('updateBtn');
+        updateBtn.disabled = false;
+        updateBtn.textContent = 'Update Post';
+      }
+    }
+  </script>
 </body>
 
 </html>

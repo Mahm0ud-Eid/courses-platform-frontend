@@ -1,167 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>admin dashboard</title>
-    <!-- META TAGS -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- FAV ICON(BROWSER TAB ICON) -->
-    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
-    <!-- GOOGLE FONT -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
-      rel="stylesheet"
-    />
-    <!-- FONTAWESOME ICONS -->
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
 
-    <!-- DATEPICKER LIBRARY -->
-    <script src="/assets/dist/datera.min.js"></script>
-    <!-- Datepicker CSS -->
-    <link rel="stylesheet" href="/assets/dist/datera.min.css" />
+<head>
+  <title>admin dashboard</title>
+  <!-- META TAGS -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- FAV ICON(BROWSER TAB ICON) -->
+  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
+    rel="stylesheet" />
+  <!-- FONTAWESOME ICONS -->
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-    <!-- ALL CSS FILES -->
-    <!-- <link href="css/bootstrap.css" rel="stylesheet" /> -->
-    <link href="css/style.css" rel="stylesheet" />
-    <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
-    <link href="css/style-mob.css" rel="stylesheet" />
+  <!-- DATEPICKER LIBRARY -->
+  <script src="/assets/dist/datera.min.js"></script>
+  <!-- Datepicker CSS -->
+  <link rel="stylesheet" href="/assets/dist/datera.min.css" />
 
-    <link rel="stylesheet" href="assets/css/input-group.css" />
+  <!-- ALL CSS FILES -->
+  <!-- <link href="css/bootstrap.css" rel="stylesheet" /> -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
+  <link href="css/style-mob.css" rel="stylesheet" />
 
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <!--  <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
+  <link rel="stylesheet" href="assets/css/input-group.css" />
 
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <!--  <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
 
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
-    <link href="assets/css/file-upload.css" rel="stylesheet" />
-    <link href="css/admin-responsive.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="js/manager.js" type="module"></script>
-    <script src="js/mg-courses.js" type="module"></script>
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <link href="assets/css/file-upload.css" rel="stylesheet" />
+  <link href="css/admin-responsive.css" rel="stylesheet" />
 
-    <style>
-      /* Center the form and adjust its width */
-      .form-section {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
+  <script src="js/manager.js" type="module"></script>
+  <script src="js/mg-courses.js" type="module"></script>
 
-      .form-section h4 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 24px;
-        color: #333;
-      }
+  <style>
+    /* Center the form and adjust its width */
+    .form-section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-      .form-section p {
-        text-align: center;
-        color: #666;
-        margin-bottom: 20px;
-      }
+    .form-section h4 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
 
-      .input-field {
-        margin-bottom: 20px;
-      }
+    .form-section p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+    }
 
-      .input-field label {
-        /* font-size: 14px; */
-        color: #555;
-      }
+    .input-field {
+      margin-bottom: 20px;
+    }
 
-      .input-field input,
-      .input-field select,
-      .input-field textarea {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
+    .input-field label {
+      /* font-size: 14px; */
+      color: #555;
+    }
 
-      .file-field .btn {
-        background-color: #007bff;
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 4px;
-      }
+    .input-field input,
+    .input-field select,
+    .input-field textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-      .file-path-wrapper input {
-        font-size: 16px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
+    .file-field .btn {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
 
-      .form-section button {
-        padding: 0 10px;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
-      }
+    .file-path-wrapper input {
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-      .form-section button[type="submit"] {
-        background-color: #28a745;
-        color: #fff;
-        padding: 10px;
-        border: none;
-      }
+    .form-section button {
+      padding: 0 10px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-      .form-section button[type="reset"] {
-        background-color: #dc3545;
-        color: #fff;
-        margin-top: 10px;
-        padding: 10px;
-        float: right;
-        border: none;
-      }
-    </style>
-  </head>
+    .form-section button[type="submit"] {
+      background-color: #28a745;
+      color: #fff;
+      padding: 10px;
+      border: none;
+    }
 
-  <body>
-    <!-- MAIN CONTRAINER -->
-    <header
-      id="header"
-      style="border-bottom: 2px solid #e3e8ea"
-      class="header d d-flex align-items-center sticky-top"
-    >
-      <img
-        class="sd-tog"
-        src="assets/img/side-bar.png"
-        style="margin: 0 15px; width: 29px"
-        alt=""
-      />
-      <div
-        class="container-fluid container-xl position-relative d-flex align-items-center"
-      >
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <!-- <img src="images/uccd-logo.png" alt="" /> -->
-          <h1 class="sitename">UCCD</h1>
-        </a>
+    .form-section button[type="reset"] {
+      background-color: #dc3545;
+      color: #fff;
+      margin-top: 10px;
+      padding: 10px;
+      float: right;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- MAIN CONTRAINER -->
+  <header id="header" style="border-bottom: 2px solid #e3e8ea" class="header d d-flex align-items-center sticky-top">
+    <img class="sd-tog" src="assets/img/side-bar.png" style="margin: 0 15px; width: 29px" alt="" />
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- <img src="images/uccd-logo.png" alt="" /> -->
+        <h1 class="sitename">UCCD</h1>
+      </a>
 
         <nav id="navmenu" class="navmenu navmenu-user">
           <ul>
@@ -182,6 +158,25 @@
         <div class="sb2-1" style="background-color: white">
           <!--== USER INFO ==-->
           <!-- <div class="sb2-12">
+      <nav id="navmenu" class="navmenu navmenu-user">
+        <ul>
+          <li>
+            <a class="logout-btn">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Log Out</span>
+            </a>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle bi bi-person-circle"></i>
+      </nav>
+    </div>
+  </header>
+  <!--== BODY CONTNAINER ==-->
+  <div class="container-fluid sb2">
+    <div class="row">
+      <div class="sb2-1" style="background-color: white">
+        <!--== USER INFO ==-->
+        <!-- <div class="sb2-12">
             <ul>
               <li><img src="images/placeholder.jpg" alt="" /></li>
               <li>
@@ -191,6 +186,26 @@
             </ul>
           </div> -->
 
+        <!--== LEFT MENU ==-->
+        <div class="sb2-13">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <a href="admin.html" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i>
+                Dashboard</a>
+            </li>
+
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i>
+                Courses</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a class="cr-mg-btn" href="#">Manage</a></li>
+                  <li><a class="cr-v-all" href="#">All Users</a></li>
+                  <li><a href="admin-add-courses.html">Add New Course</a></li>
+                  <li><a href="admin-trash-courses.html">Trash Course</a></li>
+                </ul>
+              </div>
+            </li>
           <!--== LEFT MENU ==-->
           <div class="sb2-13">
             <ul class="collapsible" data-collapsible="accordion">
@@ -219,6 +234,16 @@
                   </ul>
                 </div>
               </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>
+                users</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a class="inst-mg-btn" href="#">Manage</a></li>
+                  <li><a class="inst-v-all" href="#">All Users</a></li>
+                </ul>
+              </div>
+            </li>
 
               <li>
                 <a href="javascript:void(0)" class="collapsible-header"
@@ -267,47 +292,89 @@
               </li>
             </ul>
           </div>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar" aria-hidden="true"></i>
+                Posts</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-post-all.html">All Posts</a></li>
+                  <li>
+                    <a href="admin-post-add.html">Create New Post</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i>
+                Students</a>
+              <div class="collapsible-body left-sub-menu">
+                <ul>
+                  <li><a href="admin-user-all.html">All Students</a></li>
+                  <li><a href="admin-user-add.html">Add New Students</a></li>
+                </ul>
+              </div>
+            </li>
 
-          <!--== DASHBOARD INFO ==-->
-          <div class="dash sb2-2-1">
-            <h2>Admin Dashboard</h2>
-            <p>
-              The .table class adds basic styling (light padding and only
-              horizontal dividers) to a table:
-            </p>
-            <div class="db-2">
-              <ul>
-                <li>
-                  <div class="dash-book dash-b-1">
-                    <h5>Courses</h5>
-                    <h4>948</h4>
-                    <a href="#">View more</a>
-                  </div>
-                </li>
-                <li>
-                  <div class="dash-book dash-b-2">
-                    <h5>Admission</h5>
-                    <h4>672</h4>
-                    <a href="#">View more</a>
-                  </div>
-                </li>
-                <li>
-                  <div class="dash-book dash-b-3">
-                    <h5>Students</h5>
-                    <h4>689</h4>
-                    <a href="#">View more</a>
-                  </div>
-                </li>
-                <li>
-                  <div class="dash-book dash-b-4">
-                    <h5>Enquiry</h5>
-                    <h4>24</h4>
-                    <a href="#">View more</a>
-                  </div>
-                </li>
-              </ul>
-            </div>
+          </ul>
+        </div>
+      </div>
+      <!--== BODY INNER CONTAINER ==-->
+      <div class="sb2-2">
+        <!--== breadcrumbs ==-->
+        <div class="sb2-2-2 path">
+          <ul>
+            <li>
+              <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="active-bre">
+              <a class="curr-path" href="#"> Dashboard</a>
+            </li>
+            <li class="page-back">
+              <a href="index.html"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+            </li>
+          </ul>
+        </div>
+
+        <!--== DASHBOARD INFO ==-->
+        <div class="dash sb2-2-1">
+          <h2>Admin Dashboard</h2>
+          <p>
+            The .table class adds basic styling (light padding and only
+            horizontal dividers) to a table:
+          </p>
+          <div class="db-2">
+            <ul>
+              <li>
+                <div class="dash-book dash-b-1">
+                  <h5>Courses</h5>
+                  <h4>948</h4>
+                  <a href="#">View more</a>
+                </div>
+              </li>
+              <li>
+                <div class="dash-book dash-b-2">
+                  <h5>Admission</h5>
+                  <h4>672</h4>
+                  <a href="#">View more</a>
+                </div>
+              </li>
+              <li>
+                <div class="dash-book dash-b-3">
+                  <h5>Students</h5>
+                  <h4>689</h4>
+                  <a href="#">View more</a>
+                </div>
+              </li>
+              <li>
+                <div class="dash-book dash-b-4">
+                  <h5>Enquiry</h5>
+                  <h4>24</h4>
+                  <a href="#">View more</a>
+                </div>
+              </li>
+            </ul>
           </div>
+        </div>
 
           <!-- manage users -->
           <div class="form-section add-inst">
@@ -593,6 +660,7 @@
               </table>
             </div>
           </div>
+
 
           <!--== User Details ==-->
           <!-- <div class="c-details sb2-2-3">
@@ -942,11 +1010,58 @@
               </div>
             </div>
           </div> -->
+        <!--== User Details ==-->
+        <div class="c-details sb2-2-3">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="box-inn-sp">
+                <div class="inn-title">
+                  <h4>Course Details</h4>
+                  <p>
+                    All about courses, program structure, fees, best course
+                    lists (ranking), syllabus, teaching techniques and other
+                    details.
+                  </p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive table-desi">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Course Name</th>
+                          <th>Category</th>
+                          <th>Instructor</th>
+                          <th>Start Date</th>
+                          <th>End Date</th>
+                          <th>Duration</th>
+                          <th>Room Number</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Course data will be loaded dynamically from Firebase -->
+                        <tr>
+                          <td colspan="9" class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p>Loading courses...</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <div class="sb2-2-3">
-            <div class="row">
-              <!--== Country Campaigns ==-->
-              <!-- <div class="col-md-6">
+        <div class="sb2-2-3">
+          <div class="row">
+            <!--== Country Campaigns ==-->
+            <!-- <div class="col-md-6">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Job Openings</h4>
@@ -1023,8 +1138,8 @@
                 </div>
               </div> -->
 
-              <!--== Country Campaigns ==-->
-              <!-- <div class="col-md-6">
+            <!--== Country Campaigns ==-->
+            <!-- <div class="col-md-6">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Event Details</h4>
@@ -1161,13 +1276,13 @@
                   </div>
                 </div>
               </div> -->
-            </div>
           </div>
+        </div>
 
-          <div class="sb2-2-3">
-            <div class="row">
-              <!--== Listing Enquiry ==-->
-              <!-- <div class="col-md-12">
+        <div class="sb2-2-3">
+          <div class="row">
+            <!--== Listing Enquiry ==-->
+            <!-- <div class="col-md-12">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Exam Time Tables</h4>
@@ -1325,14 +1440,14 @@
                   </div>
                 </div>
               </div> -->
-            </div>
           </div>
+        </div>
 
-          <!--== Latest Activity ==-->
-          <div class="sb2-2-3">
-            <div class="row">
-              <!--== Latest Activity ==-->
-              <!-- <div class="col-md-6">
+        <!--== Latest Activity ==-->
+        <div class="sb2-2-3">
+          <div class="row">
+            <!--== Latest Activity ==-->
+            <!-- <div class="col-md-6">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Latest Activity</h4>
@@ -1399,8 +1514,8 @@
                 </div>
               </div> -->
 
-              <!--== Social Media ==-->
-              <!-- <div class="col-md-6">
+            <!--== Social Media ==-->
+            <!-- <div class="col-md-6">
                 <div class="box-inn-sp">
                   <div class="inn-title">
                     <h4>Social Media</h4>
@@ -1572,11 +1687,11 @@
                   </div>
                 </div>
               </div> -->
-            </div>
           </div>
+        </div>
 
-          <!--== User Details ==-->
-          <!-- <div class="sb2-2-3">
+        <!--== User Details ==-->
+        <!-- <div class="sb2-2-3">
             <div class="row">
               <div class="col-md-12">
                 <div class="box-inn-sp">
@@ -1599,35 +1714,40 @@
               </div>
             </div>
           </div> -->
-        </div>
       </div>
     </div>
+  </div>
 
-    <!--Import jQuery before materialize.js-->
-    <script src="js/main.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- <script src="js/materialize.min.js"></script> -->
-    <script src="js/custom.js"></script>
-    <script src="assets/js/sidebar-tog.js"></script>
+  <!--Import jQuery before materialize.js-->
+  <script src="js/main.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- <script src="js/materialize.min.js"></script> -->
+  <script src="js/custom.js"></script>
+  <script src="assets/js/sidebar-tog.js"></script>
 
-    <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+  <!-- Preloader -->
+  <div id="preloader"></div>
 
-    <!-- Main JS File -->
-    <script src="assets/js/sidebar-tog.js"></script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/image-upload.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/logout.js"></script>
-  </body>
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
+
+  <!-- JS Files (in order) -->
+  <script src="js/main.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="assets/js/sidebar-tog.js"></script>
+  <script src="js/image-upload.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/manager.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/admin-courses.js"></script>
+
+</body>
+
 </html>

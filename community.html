@@ -1,1531 +1,1624 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Community - UCCD</title>
-    <meta
-      name="description"
-      content="UCCD Community Posts and Course Announcements"
-    />
-    <meta
-      name="keywords"
-      content="UCCD, community, courses, announcements, education"
-    />
-
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
-    <!-- RTL Support for Arabic -->
-    <link href="assets/css/rtl.css" rel="stylesheet" />
-    <!-- Dark Mode Support -->
-    <link href="assets/css/dark-mode.css" rel="stylesheet" />
-    <style>
-      :root {
-        --accent-color: #ffd400;
-        --contrast-color: #2a3546;
-        --bg-light: #f9f9f9;
-        --text-main: #2a3546;
-        --text-secondary: #6a6a6a;
-        --border-color: #e4e6eb;
-        --reaction-hover: #f0f2f5;
-        --post-bg: #ffffff;
-        --comment-bg: #f0f2f5;
-      }
-
-      .switchers-container {
-        display: flex;
-        gap: 25px;
-      }
-
-      .switcher-btn {
-        background-color: var(--accent-color);
-        color: var(--contrast-color);
-        border: none;
-        padding: 8px 15px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 600;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .switcher-btn:hover {
-        opacity: 0.9;
-      }
-
-      /* Community Posts Section Styling */
-      .community-section {
-        padding: 60px 0;
-        background-color: var(--bg-light);
-      }
-
-      /* Post Styling */
-      .post-container {
-        background-color: var(--post-bg);
-        border-radius: 10px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin-bottom: 30px;
-        transition: all 0.3s ease;
-      }
-
-      .post-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-      }
-
-      .post-avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        margin-right: 12px;
-        object-fit: cover;
-      }
-
-      .post-author-info {
-        flex-grow: 1;
-      }
-
-      .post-author {
-        font-weight: 700;
-        color: var(--text-main);
-        margin-bottom: 3px;
-        font-size: 16px;
-      }
-
-      .post-author-type {
-        font-size: 12px;
-        font-weight: 500;
-        padding: 2px 8px;
-        border-radius: 10px;
-        background-color: var(--accent-color);
-        color: var(--contrast-color);
-        display: inline-block;
-        margin-left: 5px;
-      }
-
-      .post-date {
-        color: var(--text-secondary);
-        font-size: 12px;
-      }
-
-      .post-category {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 12px;
-        padding: 3px 10px;
-        border-radius: 15px;
-        background-color: #e9f0fd;
-        color: #4267b2;
-      }
-
-      .post-category.announcement {
-        background-color: #fef9e7;
-        color: #f39c12;
-      }
-
-      .post-category.new-course {
-        background-color: #ebf5eb;
-        color: #27ae60;
-      }
-
-      .post-category.event {
-        background-color: #f9ebff;
-        color: #8e44ad;
-      }
-
-      .post-content {
-        margin-bottom: 20px;
-      }
-
-      .post-text {
-        font-size: 15px;
-        line-height: 1.5;
-        color: var(--text-main);
-        margin-bottom: 15px;
-      }
-
-      .post-image {
-        width: 100%;
-        border-radius: 8px;
-        margin-bottom: 15px;
-      }
-
-      .post-stats {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-top: 1px solid var(--border-color);
-        border-bottom: 1px solid var(--border-color);
-        margin-bottom: 15px;
-        font-size: 14px;
-        color: var(--text-secondary);
-      }
-
-      .post-reactions {
-        display: flex;
-        gap: 5px;
-        align-items: center;
-      }
-
-      .reaction-icon {
-        width: 18px;
-        height: 18px;
-      }
-
-      /* Advanced Reaction Feature removed */
-
-      .post-actions {
-        display: flex;
-        justify-content: space-around;
-        padding: 5px 0;
-      }
-
-      .post-action-btn {
-        background: none;
-        border: none;
-        color: var(--text-secondary);
-        font-weight: 600;
-        padding: 8px;
-        border-radius: 5px;
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-      }
-
-      .post-action-btn:hover {
-        background-color: var(--reaction-hover);
-      }
-
-      .post-action-btn.liked {
-        color: #1877f2;
-      }
-
-      .post-action-btn.liked i {
-        color: #1877f2;
-      }
-
-      /* Share menu styling removed */
-
-      /* Comments Section */
-      .comments-container {
-        margin-top: 15px;
-      }
-
-      .comment-form {
-        display: flex;
-        margin-bottom: 15px;
-        gap: 10px;
-      }
-
-      .comment-avatar {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-
-      .comment-input-wrapper {
-        flex-grow: 1;
-        position: relative;
-      }
-
-      .comment-input {
-        width: 100%;
-        border: 1px solid var(--border-color);
-        border-radius: 20px;
-        padding: 8px 15px;
-        font-size: 14px;
-        background-color: var(--comment-bg);
-      }
-
-      .comment-input:focus {
-        outline: none;
-        border-color: var(--accent-color);
-      }
-
-      .comment-submit {
-        position: absolute;
-        right: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        color: #1877f2;
-        cursor: pointer;
-      }
-
-      .comment-submit:disabled {
-        color: #bcc0c4;
-        cursor: not-allowed;
-      }
-
-      .comment {
-        margin-bottom: 10px;
-        display: flex;
-        gap: 10px;
-      }
-
-      .comment-content {
-        background-color: var(--comment-bg);
-        border-radius: 18px;
-        padding: 8px 12px;
-        flex-grow: 1;
-      }
-
-      .comment-author {
-        font-weight: 600;
-        font-size: 13px;
-        margin-bottom: 2px;
-      }
-
-      .comment-text {
-        font-size: 13px;
-        margin-bottom: 2px;
-      }
-
-      .comment-actions {
-        font-size: 12px;
-        color: var(--text-secondary);
-        display: flex;
-        gap: 10px;
-      }
-
-      .comment-action {
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      .comment-action:hover {
-        text-decoration: underline;
-      }
-
-      /* Filter Styles */
-      .post-filter-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 30px;
-        background-color: var(--post-bg);
-        border-radius: 10px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-      }
-
-      .post-filter-btn {
-        background: none;
-        border: none;
-        padding: 15px 20px;
-        font-weight: 600;
-        color: var(--text-secondary);
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .post-filter-btn.active {
-        color: var(--accent-color);
-      }
-
-      .post-filter-btn.active:after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background-color: var(--accent-color);
-      }
-
-      .post-filter-btn:hover:not(.active) {
-        background-color: var(--reaction-hover);
-      }
-
-      /* Section Title */
-      .section-title h2 {
-        font-size: 32px;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 15px;
-        color: var(--text-main);
-      }
-
-      .section-title p {
-        margin-bottom: 30px;
-        color: var(--text-secondary);
-      }
-
-      /* Dark mode styles */
-      .dark-mode {
-        --bg-light: #18191a;
-        --text-main: #e4e6eb;
-        --text-secondary: #b0b3b8;
-        --border-color: #3e4042;
-        --reaction-hover: #3a3b3c;
-        --post-bg: #242526;
-        --comment-bg: #3a3b3c;
-      }
-
-      .dark-mode .section-title h2 {
-        color: #ffffff;
-      }
-
-      .dark-mode .section-title p {
-        color: #cccccc;
-      }
-
-      .dark-mode .post-author {
-        color: #e4e6eb;
-      }
-
-      .dark-mode .post-text {
-        color: #e4e6eb;
-      }
-
-      .dark-mode .post-stats {
-        color: #b0b3b8;
-        border-color: #3e4042;
-      }
-
-      .dark-mode .comment-input {
-        background-color: #3a3b3c;
-        color: #e4e6eb;
-        border-color: #3e4042;
-      }
-
-      /* No posts message */
-      .no-posts {
-        text-align: center;
-        padding: 40px 20px;
-        font-size: 18px;
-        color: var(--text-secondary);
-        background-color: var(--post-bg);
-        border-radius: 10px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Dark mode styles for page title */
-      .dark-mode .page-title .heading {
-        background-color: #222;
-      }
-
-      .dark-mode .page-title h1 {
-        color: #fff;
-      }
-
-      .dark-mode .page-title p {
-        color: #ddd;
-      }
-
-      .dark-mode .breadcrumbs {
-        background-color: #333;
-      }
-
-      .dark-mode .breadcrumbs a,
-      .dark-mode .breadcrumbs .current {
-        color: #fff;
-      }
-    </style>
-  </head>
-
-  <body class="index-page">
-    <!-- ======= Header ======= -->
-    <header id="header" class="header d-flex align-items-center sticky-top">
-      <div
-        class="container-fluid container-xl position-relative d-flex align-items-center"
-      >
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <h1 class="sitename">UCCD</h1>
-        </a>
-        <nav id="navmenu" class="navmenu">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Community - UCCD</title>
+  <meta name="description" content="UCCD Community Posts and Course Announcements" />
+  <meta name="keywords" content="UCCD, community, courses, announcements, education" />
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="images/uccd-logo.png" type="image/x-icon" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet" /> -->
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <!-- RTL Support for Arabic -->
+  <link href="assets/css/rtl.css" rel="stylesheet" />
+  <!-- Dark Mode Support -->
+  <link href="assets/css/dark-mode.css" rel="stylesheet" />
+  <style>
+    :root {
+      --accent-color: #ffd400;
+      --contrast-color: #2a3546;
+      --bg-light: #f9f9f9;
+      --text-main: #2a3546;
+      --text-secondary: #6a6a6a;
+      --border-color: #e4e6eb;
+      --reaction-hover: #f0f2f5;
+      --post-bg: #ffffff;
+      --comment-bg: #f0f2f5;
+    }
+
+    .switchers-container {
+      display: flex;
+      gap: 25px;
+    }
+
+    /* Like button styling */
+    .post-action-btn.liked {
+      color: #1877f2;
+      font-weight: bold;
+    }
+
+    .post-action-btn.liked i {
+      color: #1877f2;
+    }
+
+    .switcher-btn {
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .switcher-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Community Posts Section Styling */
+    .community-section {
+      padding: 60px 0;
+      background-color: var(--bg-light);
+    }
+
+    /* Post Styling */
+    .post-container {
+      background-color: var(--post-bg);
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .post-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 12px;
+      object-fit: cover;
+    }
+
+    .post-author-info {
+      flex-grow: 1;
+    }
+
+    .post-author {
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 3px;
+      font-size: 16px;
+    }
+
+    .post-author-type {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      display: inline-block;
+      margin-left: 5px;
+    }
+
+    .post-date {
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    .post-category {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 15px;
+      background-color: #e9f0fd;
+      color: #4267b2;
+    }
+
+    .post-category.announcement {
+      background-color: #fef9e7;
+      color: #f39c12;
+    }
+
+    .post-category.new-course {
+      background-color: #ebf5eb;
+      color: #27ae60;
+    }
+
+    .post-category.event {
+      background-color: #f9ebff;
+      color: #8e44ad;
+    }
+
+    .post-content {
+      margin-bottom: 20px;
+    }
+
+    .post-text {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-main);
+      margin-bottom: 15px;
+    }
+
+    .post-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .post-stats {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .post-reactions {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .reaction-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Advanced Reaction Feature removed */
+
+    .post-actions {
+      display: flex;
+      justify-content: space-around;
+      padding: 5px 0;
+    }
+
+    .post-action-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-weight: 600;
+      padding: 8px;
+      border-radius: 5px;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .post-action-btn:hover {
+      background-color: var(--reaction-hover);
+    }
+
+    .post-action-btn.liked {
+      color: #1877f2;
+    }
+
+    .post-action-btn.liked i {
+      color: #1877f2;
+    }
+
+    /* Share menu styling removed */
+
+    /* Comments Section */
+    .comments-container {
+      margin-top: 15px;
+    }
+
+    .comment-form {
+      display: flex;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+
+    .comment-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .comment-avatar-container {
+      width: 36px;
+      height: 36px;
+      margin-right: 10px;
+    }
+
+    /* Initial avatar styling for consistent display across the site */
+    .initial-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+      font-size: 18px;
+      overflow: hidden;
+      text-transform: uppercase;
+    }
+
+    .post-avatar.initial-avatar {
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+    }
+
+    .comment-input-wrapper {
+      flex-grow: 1;
+      position: relative;
+    }
+
+    .comment-input {
+      width: 100%;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 14px;
+      background-color: var(--comment-bg);
+    }
+
+    .comment-input:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+
+    .comment-submit {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #1877f2;
+      cursor: pointer;
+    }
+
+    .comment-submit:disabled {
+      color: #bcc0c4;
+      cursor: not-allowed;
+    }
+
+    .comment {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .comment-content {
+      background-color: var(--comment-bg);
+      border-radius: 18px;
+      padding: 8px 12px;
+      flex-grow: 1;
+    }
+
+    .comment-author {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .comment-text {
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .comment-actions {
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 10px;
+    }
+
+    .comment-action {
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .comment-action:hover {
+      text-decoration: underline;
+    }
+
+    /* Section Title */
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      color: var(--text-main);
+    }
+
+    .section-title p {
+      margin-bottom: 30px;
+      color: var(--text-secondary);
+    }
+
+    /* Dark mode styles */
+    .dark-mode {
+      --bg-light: #18191a;
+      --text-main: #e4e6eb;
+      --text-secondary: #b0b3b8;
+      --border-color: #3e4042;
+      --reaction-hover: #3a3b3c;
+      --post-bg: #242526;
+      --comment-bg: #3a3b3c;
+    }
+
+    .dark-mode .section-title h2 {
+      color: #ffffff;
+    }
+
+    .dark-mode .section-title p {
+      color: #cccccc;
+    }
+
+    .dark-mode .post-author {
+      color: #e4e6eb;
+    }
+
+    .dark-mode .post-text {
+      color: #e4e6eb;
+    }
+
+    .dark-mode .post-stats {
+      color: #b0b3b8;
+      border-color: #3e4042;
+    }
+
+    .dark-mode .comment-input {
+      background-color: #3a3b3c;
+      color: #e4e6eb;
+      border-color: #3e4042;
+    }
+
+    /* No posts message */
+    .no-posts {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 18px;
+      color: var(--text-secondary);
+      background-color: var(--post-bg);
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Dark mode styles for page title */
+    .dark-mode .page-title .heading {
+      background-color: #222;
+    }
+
+    .dark-mode .page-title h1 {
+      color: #fff;
+    }
+
+    .dark-mode .page-title p {
+      color: #ddd;
+    }
+
+    .dark-mode .breadcrumbs {
+      background-color: #333;
+    }
+
+    .dark-mode .breadcrumbs a,
+    .dark-mode .breadcrumbs .current {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">UCCD</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="trainers.html">Trainers</a></li>
+          <li><a href="community.html" class="active">Community</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="switchers-container me-3">
+        <button id="language-toggle" class="switcher-btn" title="Switch to Arabic">
+          العربية
+        </button>
+        <button id="theme-toggle" class="switcher-btn" title="Switch to Dark Mode">
+          <i class="bi bi-moon"></i>
+        </button>
+      </div>
+
+      <a class="btn-getstarted" href="login.html">Sign In</a>
+    </div>
+  </header>
+  <!-- End Header -->
+  <main class="main">
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 data-key="communityTitle">Community</h1>
+              <p class="mb-0" data-key="communityDesc">
+                Stay updated with our latest course announcements and
+                community posts. Discover new learning opportunities, read
+                about course highlights, and join our educational community to
+                enhance your knowledge and skills.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="index.html" data-key="home">Home</a></li>
+            <li class="current" data-key="community">Community</li>
+          </ol>
+        </div>
+      </nav>
+    </div>
+    <!-- End Page Title -->
+    <!-- ======= Community Posts Section ======= -->
+    <section id="community-posts" class="community-section">
+      <div class="container">
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+          <h2 data-key="communityPosts">Community Posts</h2>
+          <p data-key="communitySubtitle">
+            Join the conversation and stay updated with the latest
+            announcements
+          </p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8" id="posts-container">
+            <!-- Posts will be loaded dynamically from Firebase -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Community Posts Section -->
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">UCCD</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p class="mt-3">
+              <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+            </p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html">About us</a></li>
             <li><a href="courses.html">Courses</a></li>
             <li><a href="trainers.html">Trainers</a></li>
-            <li><a href="community.html" class="active">Community</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
           </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
-
-        <div class="switchers-container me-3">
-          <button
-            id="language-toggle"
-            class="switcher-btn"
-            title="Switch to Arabic"
-          >
-            العربية
-          </button>
-          <button
-            id="theme-toggle"
-            class="switcher-btn"
-            title="Switch to Dark Mode"
-          >
-            <i class="bi bi-moon"></i>
-          </button>
         </div>
 
-        <a class="btn-getstarted" href="login.html">Sign In</a>
-      </div>
-    </header>
-    <!-- End Header -->
-    <main class="main">
-      <!-- Page Title -->
-      <div class="page-title" data-aos="fade">
-        <div class="heading">
-          <div class="container">
-            <div class="row d-flex justify-content-center text-center">
-              <div class="col-lg-8">
-                <h1 data-key="communityTitle">Community</h1>
-                <p class="mb-0" data-key="communityDesc">
-                  Stay updated with our latest course announcements and
-                  community posts. Discover new learning opportunities, read
-                  about course highlights, and join our educational community to
-                  enhance your knowledge and skills.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Courses</h4>
+          <ul>
+            <li><a href="course-details.html">Web Design</a></li>
+            <li><a href="course-details.html">Web Development</a></li>
+            <li><a href="course-details.html">Graphic Design</a></li>
+            <li><a href="course-details.html">Marketing</a></li>
+            <li><a href="course-details.html">SEO</a></li>
+          </ul>
         </div>
-        <nav class="breadcrumbs">
-          <div class="container">
-            <ol>
-              <li><a href="index.html" data-key="home">Home</a></li>
-              <li class="current" data-key="community">Community</li>
-            </ol>
-          </div>
-        </nav>
-      </div>
-      <!-- End Page Title -->
-      <!-- ======= Community Posts Section ======= -->
-      <section id="community-posts" class="community-section">
-        <div class="container">
-          <div class="section-title text-center mb-5" data-aos="fade-up">
-            <h2 data-key="communityPosts">Community Posts</h2>
-            <p data-key="communitySubtitle">
-              Join the conversation and stay updated with the latest
-              announcements
-            </p>
-          </div>
 
-          <!-- Post Filter Tabs -->
-          <div class="row mb-4 justify-content-center" data-aos="fade-up">
-            <div class="col-lg-8">
-              <div class="post-filter-container">
-                <button
-                  class="post-filter-btn active"
-                  data-filter="all"
-                  data-key="all"
-                >
-                  All Posts
-                </button>
-                <button
-                  class="post-filter-btn"
-                  data-filter="announcement"
-                  data-key="announcements"
-                >
-                  Announcements
-                </button>
-                <button
-                  class="post-filter-btn"
-                  data-filter="new-course"
-                  data-key="newCourses"
-                >
-                  New Courses
-                </button>
-                <button
-                  class="post-filter-btn"
-                  data-filter="event"
-                  data-key="events"
-                >
-                  Events
-                </button>
-              </div>
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+          <h4>Our Newsletter</h4>
+          <p>
+            Subscribe to our newsletter and receive the latest news about our
+            courses and events!
+          </p>
+          <form action="forms/newsletter.php" method="post" class="php-email-form">
+            <div class="newsletter-form">
+              <input type="email" name="email" /><input type="submit" value="Subscribe" />
             </div>
-          </div>
-
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <!-- No posts message (hidden by default) -->
-              <div
-                id="no-posts-message"
-                class="no-posts"
-                style="display: none"
-                data-key="noPostsMessage"
-              >
-                No posts found in this category. Please check back later.
-              </div>
-              <!-- Web Development Course Post -->
-              <div
-                class="post-container"
-                data-category="new-course"
-                data-aos="fade-up"
-              >
-                <span class="post-category new-course" data-key="newCourse"
-                  >New Course</span
-                >
-                <div class="post-header">
-                  <img
-                    src="images/user.jpg"
-                    alt="Prof. Sarah Johnson"
-                    class="post-avatar"
-                  />
-                  <div class="post-author-info">
-                    <div class="post-author">
-                      Prof. Sarah Johnson
-                      <span class="post-author-type" data-key="instructor"
-                        >Instructor</span
-                      >
-                    </div>
-                    <div class="post-date">May 18, 2025 at 9:30 AM</div>
-                  </div>
-                </div>
-                <div class="post-content">
-                  <div class="post-text">
-                    I'm excited to announce our new Web Development Masterclass
-                    starting next month! 🚀
-                    <br /><br />
-                    In this comprehensive course, you'll learn:
-                    <br />• HTML5, CSS3 and modern JavaScript <br />• React and
-                    other popular frameworks <br />• Building responsive web
-                    applications <br />• Deployment and best practices
-                    <br /><br />
-                    Perfect for beginners and those looking to level up their
-                    skills. Limited spots available, enroll now!
-                  </div>
-                  <img
-                    src="images/course/web-dev.jpg"
-                    alt="Web Development Course"
-                    class="post-image"
-                  />
-                </div>
-                <div class="post-stats">
-                  <div class="post-reactions">
-                    <i
-                      class="bi bi-hand-thumbs-up-fill"
-                      style="color: #1877f2; font-size: 16px"
-                    ></i>
-                    <span data-key="likesCount" data-count="24">24 likes</span>
-                  </div>
-                  <div data-key="commentsCount" data-count="8">8 comments</div>
-                </div>
-                <div class="post-actions">
-                  <button class="post-action-btn" onclick="toggleLike(this)">
-                    <i class="bi bi-hand-thumbs-up"></i>
-                    <span data-key="likePost">Like</span>
-                  </button>
-                  <button
-                    class="post-action-btn"
-                    onclick="focusCommentInput(this)"
-                  >
-                    <i class="bi bi-chat"></i>
-                    <span data-key="commentPost">Comment</span>
-                  </button>
-                </div>
-                <div class="comments-container">
-                  <div class="comment">
-                    <img
-                      src="images/user/1.jpg"
-                      alt="Student"
-                      class="comment-avatar"
-                    />
-                    <div class="comment-content">
-                      <div class="comment-author">Ahmed Hassan</div>
-                      <div class="comment-text">
-                        Is this suitable for complete beginners?
-                      </div>
-                      <div class="comment-actions">
-                        <span class="comment-action" data-key="likePost"
-                          >Like</span
-                        >
-                        <span class="comment-action" data-key="reply"
-                          >Reply</span
-                        >
-                        <span>2d</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="comment">
-                    <img
-                      src="images/user.jpg"
-                      alt="Prof Sarah"
-                      class="comment-avatar"
-                    />
-                    <div class="comment-content">
-                      <div class="comment-author">
-                        Prof. Sarah Johnson
-                        <span class="post-author-type" data-key="instructor"
-                          >Instructor</span
-                        >
-                      </div>
-                      <div class="comment-text">
-                        Absolutely! We start from the basics and gradually move
-                        to advanced concepts.
-                      </div>
-                      <div class="comment-actions">
-                        <span class="comment-action" data-key="likePost"
-                          >Like</span
-                        >
-                        <span class="comment-action" data-key="reply"
-                          >Reply</span
-                        >
-                        <span>2d</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="comment-form">
-                    <img
-                      src="images/user/2.jpg"
-                      alt="Current User"
-                      class="comment-avatar"
-                    />
-                    <div class="comment-input-wrapper">
-                      <input
-                        type="text"
-                        placeholder="Write a comment..."
-                        class="comment-input"
-                        data-key="commentPlaceholder"
-                      />
-                      <button class="comment-submit" disabled>
-                        <i class="bi bi-send"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Data Science Course Post -->
-              <div
-                class="post-container"
-                data-category="new-course"
-                data-aos="fade-up"
-              >
-                <span class="post-category new-course" data-key="newCourse"
-                  >New Course</span
-                >
-                <div class="post-header">
-                  <img
-                    src="images/user/3.jpg"
-                    alt="Dr. Michael Chen"
-                    class="post-avatar"
-                  />
-                  <div class="post-author-info">
-                    <div class="post-author">
-                      Dr. Michael Chen
-                      <span class="post-author-type" data-key="instructor"
-                        >Instructor</span
-                      >
-                    </div>
-                    <div class="post-date">May 15, 2025 at 2:45 PM</div>
-                  </div>
-                </div>
-                <div class="post-content">
-                  <div class="post-text">
-                    Data Science Fundamentals course registration is now open!
-                    📊
-                    <br /><br />
-                    This course covers essential topics in data analysis and
-                    machine learning:
-                    <br />• Python and R programming for data science <br />•
-                    Data visualization techniques <br />• Statistical analysis
-                    methods <br />• Machine learning algorithms <br />•
-                    Real-world projects and case studies <br /><br />
-                    Join us to start your journey in one of today's most
-                    in-demand fields!
-                  </div>
-                  <img
-                    src="images/course/data-science.jpg"
-                    alt="Data Science Course"
-                    class="post-image"
-                  />
-                </div>
-                <div class="post-stats">
-                  <div class="post-reactions">
-                    <i
-                      class="bi bi-hand-thumbs-up-fill"
-                      style="color: #1877f2; font-size: 16px"
-                    ></i>
-                    <span data-key="likesCount" data-count="18">18 likes</span>
-                  </div>
-                  <div data-key="commentsCount" data-count="5">5 comments</div>
-                </div>
-                <div class="post-actions">
-                  <button class="post-action-btn" onclick="toggleLike(this)">
-                    <i class="bi bi-hand-thumbs-up"></i>
-                    <span data-key="likePost">Like</span>
-                  </button>
-                  <button
-                    class="post-action-btn"
-                    onclick="focusCommentInput(this)"
-                  >
-                    <i class="bi bi-chat"></i>
-                    <span data-key="commentPost">Comment</span>
-                  </button>
-                </div>
-                <div class="comments-container">
-                  <div class="comment-form">
-                    <img
-                      src="images/user/2.jpg"
-                      alt="Current User"
-                      class="comment-avatar"
-                    />
-                    <div class="comment-input-wrapper">
-                      <input
-                        type="text"
-                        placeholder="Write a comment..."
-                        class="comment-input"
-                        data-key="commentPlaceholder"
-                      />
-                      <button class="comment-submit" disabled>
-                        <i class="bi bi-send"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Campus Event Post -->
-              <div
-                class="post-container"
-                data-category="event"
-                data-aos="fade-up"
-              >
-                <span class="post-category event" data-key="event">Event</span>
-                <div class="post-header">
-                  <img
-                    src="images/uccd-logo.png"
-                    alt="UCCD Admin"
-                    class="post-avatar"
-                  />
-                  <div class="post-author-info">
-                    <div class="post-author">
-                      UCCD Admin
-                      <span class="post-author-type" data-key="official"
-                        >Official</span
-                      >
-                    </div>
-                    <div class="post-date">May 12, 2025 at 11:15 AM</div>
-                  </div>
-                </div>
-                <div class="post-content">
-                  <div class="post-text">
-                    📢 Upcoming Tech Career Fair! 📢
-                    <br /><br />
-                    Join us for our annual Tech Career Fair where you'll meet
-                    representatives from leading technology companies:
-                    <br />• Networking opportunities <br />• On-the-spot
-                    interviews <br />• Resume workshops <br />• Industry panel
-                    discussions <br /><br />
-                    📅 Date: June 5, 2025
-                    <br />⏰ Time: 10:00 AM - 4:00 PM <br />📍 Location: Main
-                    Campus Conference Center <br /><br />
-                    Bring your resume and business cards. Professional attire
-                    recommended.
-                  </div>
-                  <img
-                    src="images/event/career-fair.jpg"
-                    alt="Tech Career Fair"
-                    class="post-image"
-                  />
-                </div>
-                <div class="post-stats">
-                  <div class="post-reactions">
-                    <i
-                      class="bi bi-hand-thumbs-up-fill"
-                      style="color: #1877f2; font-size: 16px"
-                    ></i>
-                    <span data-key="likesCount" data-count="32">32 likes</span>
-                  </div>
-                  <div data-key="commentsCount" data-count="12">
-                    12 comments
-                  </div>
-                </div>
-                <div class="post-actions">
-                  <button class="post-action-btn" onclick="toggleLike(this)">
-                    <i class="bi bi-hand-thumbs-up"></i>
-                    <span data-key="likePost">Like</span>
-                  </button>
-                  <button
-                    class="post-action-btn"
-                    onclick="focusCommentInput(this)"
-                  >
-                    <i class="bi bi-chat"></i>
-                    <span data-key="commentPost">Comment</span>
-                  </button>
-                </div>
-                <div class="comments-container">
-                  <div class="comment">
-                    <img
-                      src="images/user/4.jpg"
-                      alt="Student"
-                      class="comment-avatar"
-                    />
-                    <div class="comment-content">
-                      <div class="comment-author">Fatima Ali</div>
-                      <div class="comment-text">
-                        Do we need to register in advance for the career fair?
-                      </div>
-                      <div class="comment-actions">
-                        <span class="comment-action" data-key="likePost"
-                          >Like</span
-                        >
-                        <span class="comment-action" data-key="reply"
-                          >Reply</span
-                        >
-                        <span>1w</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="comment">
-                    <img
-                      src="images/uccd-logo.png"
-                      alt="UCCD Admin"
-                      class="comment-avatar"
-                    />
-                    <div class="comment-content">
-                      <div class="comment-author">
-                        UCCD Admin
-                        <span class="post-author-type" data-key="official"
-                          >Official</span
-                        >
-                      </div>
-                      <div class="comment-text">
-                        No registration needed, but arriving early is
-                        recommended as it gets crowded quickly!
-                      </div>
-                      <div class="comment-actions">
-                        <span class="comment-action" data-key="likePost"
-                          >Like</span
-                        >
-                        <span class="comment-action" data-key="reply"
-                          >Reply</span
-                        >
-                        <span>1w</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="comment-form">
-                    <img
-                      src="images/user/2.jpg"
-                      alt="Current User"
-                      class="comment-avatar"
-                    />
-                    <div class="comment-input-wrapper">
-                      <input
-                        type="text"
-                        placeholder="Write a comment..."
-                        class="comment-input"
-                        data-key="commentPlaceholder"
-                      />
-                      <button class="comment-submit" disabled>
-                        <i class="bi bi-send"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Important Announcement -->
-              <div
-                class="post-container"
-                data-category="announcement"
-                data-aos="fade-up"
-              >
-                <span class="post-category announcement" data-key="announcement"
-                  >Announcement</span
-                >
-                <div class="post-header">
-                  <img
-                    src="images/uccd-logo.png"
-                    alt="UCCD Admin"
-                    class="post-avatar"
-                  />
-                  <div class="post-author-info">
-                    <div class="post-author">
-                      UCCD Admin
-                      <span class="post-author-type" data-key="official"
-                        >Official</span
-                      >
-                    </div>
-                    <div class="post-date">May 10, 2025 at 9:00 AM</div>
-                  </div>
-                </div>
-                <div class="post-content">
-                  <div class="post-text">
-                    🎓 Important Announcement: Summer Registration Now Open 🎓
-                    <br /><br />
-                    Registration for summer semester courses is now open! Please
-                    note:
-                    <br />• Early registration ends May 30 <br />• Class size is
-                    limited for most courses <br />• Payment deadline is June 15
-                    <br />• New scholarships available for eligible students
-                    <br /><br />
-                    Log in to the student portal to view available courses and
-                    register. Contact the registrar's office if you have any
-                    questions.
-                  </div>
-                </div>
-                <div class="post-stats">
-                  <div class="post-reactions">
-                    <i
-                      class="bi bi-hand-thumbs-up-fill"
-                      style="color: #1877f2; font-size: 16px"
-                    ></i>
-                    <span data-key="likesCount" data-count="45">45 likes</span>
-                  </div>
-                  <div data-key="commentsCount" data-count="9">9 comments</div>
-                </div>
-                <div class="post-actions">
-                  <button class="post-action-btn" onclick="toggleLike(this)">
-                    <i class="bi bi-hand-thumbs-up"></i>
-                    <span data-key="likePost">Like</span>
-                  </button>
-                  <button
-                    class="post-action-btn"
-                    onclick="focusCommentInput(this)"
-                  >
-                    <i class="bi bi-chat"></i>
-                    <span data-key="commentPost">Comment</span>
-                  </button>
-                </div>
-                <div class="comments-container">
-                  <div class="comment-form">
-                    <img
-                      src="images/user/2.jpg"
-                      alt="Current User"
-                      class="comment-avatar"
-                    />
-                    <div class="comment-input-wrapper">
-                      <input
-                        type="text"
-                        placeholder="Write a comment..."
-                        class="comment-input"
-                        data-key="commentPlaceholder"
-                      />
-                      <button class="comment-submit" disabled>
-                        <i class="bi bi-send"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Mobile App Development Course Post -->
-              <div
-                class="post-container"
-                data-category="new-course"
-                data-aos="fade-up"
-              >
-                <span class="post-category new-course" data-key="newCourse"
-                  >New Course</span
-                >
-                <div class="post-header">
-                  <img
-                    src="images/user/5.jpg"
-                    alt="Prof. Alex Rodriguez"
-                    class="post-avatar"
-                  />
-                  <div class="post-author-info">
-                    <div class="post-author">
-                      Prof. Alex Rodriguez
-                      <span class="post-author-type" data-key="instructor"
-                        >Instructor</span
-                      >
-                    </div>
-                    <div class="post-date">May 8, 2025 at 3:20 PM</div>
-                  </div>
-                </div>
-                <div class="post-content">
-                  <div class="post-text">
-                    New Mobile App Development course starting next month! 📱
-                    <br /><br />
-                    Learn how to build cross-platform mobile applications using
-                    React Native that work on both iOS and Android. This
-                    hands-on course will cover:
-                    <br />• JavaScript and React fundamentals <br />• React
-                    Native components and APIs <br />• Navigation and state
-                    management <br />• Integrating with backend services <br />•
-                    Publishing to app stores <br /><br />
-                    By the end of the course, you'll have built several apps for
-                    your portfolio!
-                  </div>
-                  <img
-                    src="images/course/mobile-app.jpg"
-                    alt="Mobile App Development"
-                    class="post-image"
-                  />
-                </div>
-                <div class="post-stats">
-                  <div class="post-reactions">
-                    <i
-                      class="bi bi-hand-thumbs-up-fill"
-                      style="color: #1877f2; font-size: 16px"
-                    ></i>
-                    <span data-key="likesCount" data-count="21">21 likes</span>
-                  </div>
-                  <div data-key="commentsCount" data-count="6">6 comments</div>
-                </div>
-                <div class="post-actions">
-                  <button class="post-action-btn" onclick="toggleLike(this)">
-                    <i class="bi bi-hand-thumbs-up"></i>
-                    <span data-key="likePost">Like</span>
-                  </button>
-                  <button
-                    class="post-action-btn"
-                    onclick="focusCommentInput(this)"
-                  >
-                    <i class="bi bi-chat"></i>
-                    <span data-key="commentPost">Comment</span>
-                  </button>
-                </div>
-                <div class="comments-container">
-                  <div class="comment-form">
-                    <img
-                      src="images/user/2.jpg"
-                      alt="Current User"
-                      class="comment-avatar"
-                    />
-                    <div class="comment-input-wrapper">
-                      <input
-                        type="text"
-                        placeholder="Write a comment..."
-                        class="comment-input"
-                        data-key="commentPlaceholder"
-                      />
-                      <button class="comment-submit" disabled>
-                        <i class="bi bi-send"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- No Posts Message -->
-          <div
-            class="row justify-content-center"
-            id="no-posts-message"
-            style="display: none"
-          >
-            <div class="col-lg-8">
-              <div class="no-posts">
-                <i
-                  class="bi bi-search"
-                  style="font-size: 2rem; display: block; margin-bottom: 10px"
-                ></i>
-                <span data-key="noPostsMessage"
-                  >No posts match your current filter.</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- End Community Posts Section -->
-    </main>
-    <!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer position-relative light-background">
-      <div class="container footer-top">
-        <div class="row gy-4">
-          <div class="col-lg-4 col-md-6 footer-about">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <span class="sitename">UCCD</span>
-            </a>
-            <div class="footer-contact pt-3">
-              <p>A108 Adam Street</p>
-              <p>New York, NY 535022</p>
-              <p class="mt-3">
-                <strong>Phone:</strong> <span>+1 5589 55488 55</span>
-              </p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
-            </div>
-            <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About us</a></li>
-              <li><a href="courses.html">Courses</a></li>
-              <li><a href="trainers.html">Trainers</a></li>
-              <li><a href="community.html">Community</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Our Courses</h4>
-            <ul>
-              <li><a href="course-details.html">Web Design</a></li>
-              <li><a href="course-details.html">Web Development</a></li>
-              <li><a href="course-details.html">Graphic Design</a></li>
-              <li><a href="course-details.html">Marketing</a></li>
-              <li><a href="course-details.html">SEO</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-12 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>
-              Subscribe to our newsletter and receive the latest news about our
-              courses and events!
-            </p>
-            <form
-              action="forms/newsletter.php"
-              method="post"
-              class="php-email-form"
-            >
-              <div class="newsletter-form">
-                <input type="email" name="email" /><input
-                  type="submit"
-                  value="Subscribe"
-                />
-              </div>
-            </form>
-          </div>
+          </form>
         </div>
       </div>
+    </div>
 
-      <div class="container copyright text-center mt-4">
-        <p>
-          © <span>Copyright</span> <strong class="px-1 sitename">UCCD</strong>
-          <span>All Rights Reserved</span>
-        </p>
-      </div>
-    </footer>
-    <!-- End Footer -->
+    <div class="container copyright text-center mt-4">
+      <p>
+        © <span>Copyright</span> <strong class="px-1 sitename">UCCD</strong>
+        <span>All Rights Reserved</span>
+      </p>
+    </div>
+  </footer>
+  <!-- End Footer -->
 
-    <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <!-- Preloader -->
+  <div id="preloader"></div>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
 
-    <!-- Translations -->
-    <script src="js/translations.js"></script>
-    <!-- Language and Theme Switcher -->
-    <script src="js/language-theme-switcher.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <!-- Main JS File -->
-    <script src="js/main.js"></script>
-    <!-- Social Media Features Script -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const filterBtns = document.querySelectorAll(".post-filter-btn");
-        const posts = document.querySelectorAll(".post-container");
-        const noPostsMessage = document.getElementById("no-posts-message");
+  <!-- Translations -->
+  <script src="js/translations.js"></script>
+  <!-- Language and Theme Switcher -->
+  <script src="js/language-theme-switcher.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script> <!-- Main JS File -->
+  <script src="js/main.js"></script>
+  <!-- Community Posts - Firebase Connected -->
+  <script type="module">    // Import Firebase functions  
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"; import {
+      getFirestore,
+      collection,
+      getDocs,
+      query,
+      orderBy,
+      limit,
+      doc,
+      getDoc,
+      updateDoc,
+      increment,
+      arrayUnion,
+      serverTimestamp,
+      addDoc,
+      where,
+      setDoc,
+      deleteDoc
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+    import { getStorage } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
-        // Initialize all like and comment counts with proper translations
-        document
-          .querySelectorAll('[data-key="likesCount"]')
-          .forEach((element) => {
-            const count = parseInt(element.getAttribute("data-count"));
-            updateTranslatedCount(element, count, "likesCount");
-          });
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCaUETFsFnRgSmNFIwEgyGWugfrK9zHbM0",
+      authDomain: "uccd-f607e.firebaseapp.com",
+      projectId: "uccd-f607e",
+      storageBucket: "uccd-f607e.appspot.com", // Fixed storage bucket URL format
+      messagingSenderId: "1037776187244",
+      appId: "1:1037776187244:web:7d02b5edc4908dad390d49",
+      measurementId: "G-B95Y1W5QWP",
+    };    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
 
-        document
-          .querySelectorAll('[data-key="commentsCount"]')
-          .forEach((element) => {
-            const count = parseInt(element.getAttribute("data-count"));
-            updateTranslatedCount(element, count, "commentsCount");
-          });
+    class CommunityPosts {
+      constructor() {
+        this.posts = [];
+        this.currentUser = null;
+        this.init();
 
-        // Apply translations to comment placeholders
-        const lang = localStorage.getItem("language") || "en";
-        if (
-          translations &&
-          translations[lang] &&
-          translations[lang].commentPlaceholder
-        ) {
-          document.querySelectorAll(".comment-input").forEach((input) => {
-            input.placeholder = translations[lang].commentPlaceholder;
-          });
+        // Listen for authentication state changes
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            console.log('User is signed in:', user.email);
+            this.currentUser = user;
+            // Update UI elements that depend on user state
+            this.updateUserUI();
+          } else {
+            console.log('User is signed out');
+            this.currentUser = null;
+          }
+        });
+      }
+
+      updateUserUI() {
+        // Update user avatars and names in comments and posts
+        if (!this.currentUser) return;
+
+        // Update comment forms with current user info
+        document.querySelectorAll('.comment-avatar-container').forEach(container => {
+          const initialDiv = container.querySelector('.initial-avatar');
+          if (initialDiv) {
+            const userInitial = this.getUserDisplayName().charAt(0).toUpperCase();
+            initialDiv.textContent = userInitial;
+            initialDiv.style.backgroundColor = this.getColorFromInitial(userInitial);
+          }
+        });
+      } async init() {
+        console.log('Initializing Community Posts...');
+        await this.loadPosts();
+        this.checkUserLikes(); // Check which posts the current user has liked
+        this.debugComments(); // Add debug method
+      }
+
+      async checkUserLikes() {
+        try {
+          const userId = this.getCurrentUserId();
+          console.log('Checking likes for user:', userId);
+
+          // For each post, check if the current user has liked it
+          for (const post of this.posts) {
+            const userLikeRef = doc(db, "posts", post.id, "likes", userId);
+            const userLikeDoc = await getDoc(userLikeRef);
+
+            post.userHasLiked = userLikeDoc.exists();
+            console.log(`Post ${post.id} liked by user: ${post.userHasLiked}`);
+
+            // Update the like button if it exists
+            const postContainer = document.querySelector(`[data-post-id="${post.id}"]`);
+            if (postContainer) {
+              const likeButton = postContainer.querySelector('.post-action-btn');
+              if (likeButton && post.userHasLiked) {
+                likeButton.classList.add('liked');
+              }
+            }
+          }
+        } catch (error) {
+          console.error("Error checking user likes:", error);
+        }
+      } async debugComments() {
+        try {
+          console.log('=== DEBUG: Database Structure ===');
+
+          // Get a few post IDs to check their subcollections
+          const postsSnapshot = await getDocs(query(collection(db, "posts"), limit(5)));
+          console.log('Found posts to check:', postsSnapshot.size);
+          let debugInfo = '';
+
+          for (const postDoc of postsSnapshot.docs) {
+            const postId = postDoc.id;
+            console.log(`\nChecking post: ${postId}`);
+            debugInfo += `<h4>Post ID: ${postId}</h4>`;
+
+            // Try to access comments subcollection
+            try {
+              const subCommentsSnapshot = await getDocs(collection(db, "posts", postId, "comments"));
+              console.log(`- Subcollection "posts/${postId}/comments" exists:`, subCommentsSnapshot !== null);
+              console.log(`- Comments in subcollection:`, subCommentsSnapshot.size);
+
+              debugInfo += `<p>Subcollection comments: ${subCommentsSnapshot.size}</p>`;
+
+              if (subCommentsSnapshot.size > 0) {
+                debugInfo += '<ul>'; subCommentsSnapshot.forEach((doc, index) => {
+                  const commentData = doc.data();
+                  console.log(`- Subcollection comment ${index + 1}:`, doc.id, commentData);
+                  console.log(`- Comment field:`, commentData.comment);
+                  console.log(`- userName field:`, commentData.userName);
+                  console.log(`- commentAt field:`, commentData.commentAt);
+                  console.log(`- All fields:`, Object.keys(commentData));
+
+                  debugInfo += `<li>
+                    <strong>Comment ${index + 1}</strong>: 
+                    <br>ID: "${doc.id || commentData.commentID || '[No ID]'}"
+                    <br>Comment: "${commentData.comment || '[No comment field]'}"
+                    <br>User: "${commentData.userName || '[No userName field]'}"
+                    <br>Date: "${commentData.commentAt ? (commentData.commentAt.toDate ? commentData.commentAt.toDate().toLocaleString() : commentData.commentAt) : '[No date]'}"
+                    <br>Fields: ${Object.keys(commentData).join(', ')}
+                  </li>`;
+                });
+                debugInfo += '</ul>';
+              }
+            } catch (e) {
+              console.error(`- Error checking subcollection:`, e.message);
+              debugInfo += `<p>Error checking subcollection: ${e.message}</p>`;
+            }
+
+            // Check if post has proper commentsCount field
+            const postData = postDoc.data();
+            console.log('- Post document fields:');
+            console.log('  - commentsCount:', postData.commentsCount);
+            console.log('  - likesCount:', postData.likesCount);
+
+            debugInfo += `
+              <p><strong>Post Fields:</strong><br>
+              commentsCount: ${postData.commentsCount || 'undefined'}<br>
+              likesCount: ${postData.likesCount || 'undefined'}</p>
+              <hr>
+            `;
+          }
+
+          // Show debug info in a modal
+          const debugModal = document.createElement('div');
+          debugModal.className = 'modal';
+          debugModal.style.position = 'fixed';
+          debugModal.style.top = '10%';
+          debugModal.style.left = '10%';
+          debugModal.style.width = '80%';
+          debugModal.style.height = '80%';
+          debugModal.style.backgroundColor = '#fff';
+          debugModal.style.zIndex = '10000';
+          debugModal.style.padding = '20px';
+          debugModal.style.overflow = 'auto';
+          debugModal.style.border = '1px solid #ccc';
+          debugModal.style.boxShadow = '0 0 10px rgba(0,0,0,0.5)';
+
+          debugModal.innerHTML = `
+            <button style="position: absolute; top: 10px; right: 10px; z-index: 10001;" 
+                    onclick="this.parentElement.remove()">Close</button>
+            <h3>Database Structure Debug</h3>
+            ${debugInfo}
+          `;
+
+          document.body.appendChild(debugModal);
+
+        } catch (error) {
+          console.error('Error in debugComments:', error);
+          alert('Error in debug function. See console.');
+        }
+      }
+
+      async loadPosts() {
+        try {
+          console.log('Loading posts from Firebase...');
+          this.showLoading();
+
+          const postsRef = collection(db, 'posts');
+          let querySnapshot;
+          try {
+            // Try to get posts ordered by publishedAt first, then createdAt
+            console.log('Trying to fetch posts with publishedAt ordering...');
+            const postsQuery = query(postsRef, orderBy("publishedAt", "desc"), limit(20));
+            querySnapshot = await getDocs(postsQuery);
+            console.log('PublishedAt query successful, found', querySnapshot.size, 'posts');
+          } catch (publishedAtError) {
+            console.log('PublishedAt query failed, trying createdAt:', publishedAtError);
+            try {
+              const postsQuery = query(postsRef, orderBy("createdAt", "desc"), limit(20));
+              querySnapshot = await getDocs(postsQuery);
+              console.log('CreatedAt query successful, found', querySnapshot.size, 'posts');
+            } catch (createdAtError) {
+              console.log('CreatedAt query failed, trying without ordering:', createdAtError);
+              // Fallback: get all posts without ordering
+              querySnapshot = await getDocs(postsRef);
+              console.log('Fallback query successful, found', querySnapshot.size, 'posts');
+            }
+          }
+
+          this.posts = [];
+          let processedCount = 0;
+          let errorCount = 0;
+          querySnapshot.forEach((docSnap) => {
+            try {
+              const postData = docSnap.data();
+              console.log(`Processing post ${processedCount + 1}:`, docSnap.id);
+              console.log('Raw post data:', postData);
+
+              const adaptedPost = this.adaptPostForCommunity(docSnap.id, postData);
+              console.log('Adapted post:', adaptedPost);
+
+              if (adaptedPost) {
+                this.posts.push(adaptedPost);
+                processedCount++;
+              } else {
+                console.warn('Post adaptation returned null for:', docSnap.id);
+              }
+            } catch (error) {
+              console.error('Error processing individual post:', docSnap.id, error);
+              errorCount++;
+            }
+          }); console.log(`Processed ${processedCount} posts successfully, ${errorCount} errors`);
+
+          // Sort posts by date after loading (client-side sorting)
+          this.posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+          this.renderPosts();
+          this.hideLoading();
+
+          // Check user likes after rendering posts
+          await this.checkUserLikes();
+
+        } catch (error) {
+          console.error('Error loading posts:', error);
+          this.hideLoading();
+          this.showError(`Firebase Error: ${error.message}`);
+        }
+      } adaptPostForCommunity(docId, firebaseData) {
+        try {
+          console.log('=== ADAPTING POST:', docId, '===');            // Parse comments - ONLY using commentsCount field
+          let comments = [];
+          let commentsCount = 0;
+
+          if (firebaseData.commentsCount !== undefined && firebaseData.commentsCount !== null) {
+            commentsCount = parseInt(firebaseData.commentsCount) || 0;
+            console.log('Using commentsCount:', commentsCount);
+          } else if (firebaseData.comments) {
+            if (Array.isArray(firebaseData.comments)) {
+              comments = firebaseData.comments;
+              commentsCount = comments.length;
+            } else if (typeof firebaseData.comments === 'object') {
+              comments = Object.values(firebaseData.comments);
+              commentsCount = comments.length;
+            }
+            console.log('Using comments array length:', commentsCount);
+          }// Parse likes - use likesCount field directly
+          let likes = 0;
+
+          console.log('=== LIKES PARSING ===');
+          console.log('firebaseData.likesCount:', firebaseData.likesCount);
+          console.log('firebaseData.likes (array):', firebaseData.likes);
+
+          // Use likesCount field directly since it's a number
+          if (firebaseData.likesCount !== undefined && firebaseData.likesCount !== null) {
+            likes = Number(firebaseData.likesCount) || 0;
+            console.log('✅ Using likesCount field:', likes);
+          }
+          // Fallback: if likesCount doesn't exist, count the likes array
+          else if (firebaseData.likes && Array.isArray(firebaseData.likes)) {
+            likes = firebaseData.likes.length;
+            console.log('✅ Using likes array length:', likes);
+          }
+          else {
+            console.log('❌ No valid likes found');
+          }
+
+          console.log('Final likes value:', likes);
+          console.log('======================');
+          const adaptedPost = {
+            id: docId,
+            title: firebaseData.postTitle || firebaseData.title || 'Community Post',
+            content: firebaseData.postDescription || firebaseData.content || firebaseData.postContent || 'No content available',
+            category: this.mapCategory(firebaseData.category),
+            createdAt: this.parseDate(firebaseData.publishedAt || firebaseData.createdAt || firebaseData.publishDate),
+            authorName: firebaseData.publisherName || firebaseData.authorName || 'Anonymous',
+            authorType: firebaseData.authorType || 'instructor', authorAvatar: firebaseData.publisherImage || firebaseData.authorAvatar || 'images/user.jpg',
+            likes: likes,
+            comments: comments,
+            commentsCount: commentsCount,
+            imageUrl: firebaseData.postImageLink || firebaseData.imageUrl,
+            publisherEmail: firebaseData.publisherEmail || '',
+            rawData: firebaseData
+          };
+
+          console.log('Final adapted post - Likes:', adaptedPost.likes, 'Comments:', adaptedPost.commentsCount);
+          console.log('=====================================');
+          return adaptedPost;
+        } catch (error) {
+          console.error('Error adapting post:', error, firebaseData);
+          return null;
+        }
+      }
+
+      mapCategory(category) {
+        if (!category) return 'announcement';
+
+        const categoryMap = {
+          'course': 'new-course',
+          'new-course': 'new-course',
+          'event': 'event',
+          'announcement': 'announcement',
+          'news': 'announcement'
+        };
+
+        return categoryMap[category.toLowerCase()] || 'announcement';
+      } parseDate(dateField) {
+        if (!dateField) return new Date();
+
+        console.log('Parsing date:', dateField, typeof dateField);
+
+        // Handle Firestore timestamp
+        if (dateField.toDate && typeof dateField.toDate === 'function') {
+          return dateField.toDate();
         }
 
-        // We've removed the share buttons and complex reactions
-        // Only keeping simple like and comment functionality
+        // Handle string dates like "9 June 2025 at 18:44:31 UTC+3"
+        if (typeof dateField === 'string') {
+          // Try to parse the date string
+          const parsedDate = new Date(dateField);
+          if (!isNaN(parsedDate.getTime())) {
+            return parsedDate;
+          }
 
-        // Enable comment input functionality
+          // If that fails, try to clean up the format
+          const cleanedDate = dateField.replace(' at ', ' ').replace(' UTC+3', '');
+          const secondParsedDate = new Date(cleanedDate);
+          if (!isNaN(secondParsedDate.getTime())) {
+            return secondParsedDate;
+          }
+        }
+
+        // Handle number timestamps
+        if (typeof dateField === 'number') {
+          return new Date(dateField);
+        }
+
+        console.warn('Could not parse date:', dateField);
+        return new Date();
+      } parseLikes(postData) {
+        console.log('Parsing likes:', postData.likes, 'Type:', typeof postData.likes);
+
+        // Handle likes as object with likesCount
+        if (postData.likes && typeof postData.likes === 'object') {
+          if (postData.likes.likesCount !== undefined) {
+            console.log('Found likesCount:', postData.likes.likesCount);
+            return postData.likes.likesCount;
+          }
+          // Handle case where likes object has a count property
+          if (postData.likes.count !== undefined) {
+            console.log('Found count:', postData.likes.count);
+            return postData.likes.count;
+          }
+          // If it's an array, return the length
+          if (Array.isArray(postData.likes)) {
+            console.log('Likes is array, length:', postData.likes.length);
+            return postData.likes.length;
+          }
+          // If it's an object, try to count properties
+          const likeCount = Object.keys(postData.likes).length;
+          console.log('Likes object keys count:', likeCount);
+          return likeCount;
+        }
+
+        // Handle direct number values
+        if (typeof postData.likes === 'number') {
+          console.log('Likes is number:', postData.likes);
+          return postData.likes;
+        }
+
+        // Handle other field names
+        if (postData.likesCount !== undefined) {
+          console.log('Found likesCount field:', postData.likesCount);
+          return postData.likesCount;
+        }
+
+        console.log('No likes found, returning 0');
+        return 0;
+      } formatDate(timestamp) {
+        if (!timestamp) return "Just now";
+
+        // Handle Firebase Timestamp objects
+        let date;
+        if (timestamp && typeof timestamp.toDate === 'function') {
+          // Firebase Timestamp
+          date = timestamp.toDate();
+        } else if (timestamp instanceof Date) {
+          date = timestamp;
+        } else if (typeof timestamp === 'object' && timestamp.seconds) {
+          // Firebase Timestamp-like object
+          date = new Date(timestamp.seconds * 1000);
+        } else {
+          // Try to parse as string
+          date = new Date(timestamp);
+        }
+
+        console.log('Timestamp:', timestamp, 'Converted date:', date);
+
+        if (isNaN(date.getTime())) {
+          console.error('Invalid date', timestamp);
+          return "Invalid date";
+        }
+
+        const now = new Date();
+
+        // Calculate the time difference in milliseconds
+        const diffTime = now - date;
+        const diffMinutes = Math.floor(diffTime / (1000 * 60));
+        const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+
+        // Check if the date is today
+        const isToday = date.getDate() === now.getDate() &&
+          date.getMonth() === now.getMonth() &&
+          date.getFullYear() === now.getFullYear();
+
+        // Check if the date was yesterday
+        const yesterday = new Date(now);
+        yesterday.setDate(now.getDate() - 1);
+        const isYesterday = date.getDate() === yesterday.getDate() &&
+          date.getMonth() === yesterday.getMonth() &&
+          date.getFullYear() === yesterday.getFullYear();
+
+        if (isToday) {
+          if (diffMinutes < 1) {
+            return "Just now";
+          } else if (diffMinutes < 60) {
+            return diffMinutes + " minute" + (diffMinutes !== 1 ? "s" : "") + " ago";
+          } else {
+            return diffHours + " hour" + (diffHours !== 1 ? "s" : "") + " ago";
+          }
+        } else if (isYesterday) {
+          return "Yesterday at " + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        } else if (diffTime < 7 * 24 * 60 * 60 * 1000) { // Less than 7 days
+          const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+          return diffDays + " days ago";
+        } else {
+          return date.toLocaleDateString() + " at " + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+      } getCategoryDisplayName(category) {
+        const categoryMap = {
+          'announcement': 'Announcement',
+          'new-course': 'New Course',
+          'event': 'Event',
+          'news': 'News'
+        };
+        return categoryMap[category] || 'General';
+      } getColorFromInitial(initial) {
+        // Array of colors to use for initial avatars - using the same colors across the site
+        const colors = [
+          '#F44336', '#E91E63', '#9C27B0', '#673AB7',
+          '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4',
+          '#009688', '#4CAF50', '#8BC34A', '#CDDC39'
+        ];
+
+        // Ensure we have a valid initial character
+        const char = initial ? initial.toUpperCase() : 'A';
+
+        // Get a consistent color based on the character code
+        const charCode = char.charCodeAt(0);
+        const colorIndex = charCode % colors.length;
+
+        return colors[colorIndex];
+      } createPostHTML(post) {
+        const formattedDate = this.formatDate(post.createdAt);
+
+        console.log('=== CREATING HTML ===');
+        console.log('Post ID:', post.id);
+        console.log('Post likes value:', post.likes, 'Type:', typeof post.likes);
+        console.log('Post commentsCount:', post.commentsCount);
+        console.log('=====================');
+
+        return `
+            <div class="post-container" data-post-id="${post.id}" data-aos="fade-up">
+              <span class="post-category ${post.category}" data-key="${post.category}">
+                ${this.getCategoryDisplayName(post.category)}
+              </span>              <div class="post-header">
+                ${post.authorAvatar && post.authorAvatar !== 'images/user.jpg' ?
+            `<img src="${post.authorAvatar}" alt="${post.authorName}" class="post-avatar" />` :
+            `<div class="post-avatar initial-avatar" style="background-color: ${this.getColorFromInitial(post.authorName.charAt(0))}">
+                     ${post.authorName.charAt(0).toUpperCase()}
+                   </div>`
+          }
+                <div class="post-author-info">
+                  <div class="post-author">
+                    ${post.authorName}
+                  </div>
+                  <div class="post-date">${formattedDate}</div>
+                </div>
+              </div>
+              <div class="post-content">
+                <div class="post-text">
+                  ${post.content}
+                </div>
+                ${post.imageUrl ? `
+                  <img src="${post.imageUrl}" alt="Post image" class="post-image" />
+                ` : ''}
+              </div>              <div class="post-stats">
+                <div class="post-reactions">
+                  <i class="bi bi-hand-thumbs-up-fill" style="color: #1877f2; font-size: 16px"></i>
+                  <span data-key="likesCount" data-count="${post.likes || 0}">
+                    ${post.likes || 0} Like${(post.likes || 0) !== 1 ? 's' : ''}
+                  </span>
+                </div>                <div data-key="commentsCount" data-count="${post.commentsCount || (post.comments ? post.comments.length : 0)}">
+                  ${post.commentsCount || (post.comments ? post.comments.length : 0)} Comment${(post.commentsCount || (post.comments ? post.comments.length : 0)) !== 1 ? 's' : ''}
+                </div>
+              </div>
+              <div class="post-actions">
+                <button class="post-action-btn" onclick="communityPosts.toggleLike('${post.id}', this)">
+                  <i class="bi bi-hand-thumbs-up"></i>
+                  <span data-key="likePost">Like</span>
+                </button>
+                <button class="post-action-btn" onclick="communityPosts.toggleComments('${post.id}')">
+                  <i class="bi bi-chat"></i>
+                  <span data-key="commentPost">Comment</span>
+                </button>
+              </div>              <div class="comments-container" style="display: none;">
+                <div class="comments-list">
+                  <!-- Comments will be loaded dynamically -->
+                  <div class="text-muted text-center py-2">Loading comments...</div>
+                </div>                <div class="comment-form">
+                  <div class="comment-avatar-container">
+                    <div class="initial-avatar" style="background-color: ${this.getColorFromInitial(this.getUserDisplayName().charAt(0))}">
+                      ${this.getUserDisplayName().charAt(0).toUpperCase()}
+                    </div>
+                  </div>
+                  <div class="comment-input-wrapper">
+                    <input type="text" class="comment-input" placeholder="Write a comment..." data-key="commentPlaceholder" />
+                    <button class="comment-submit" onclick="communityPosts.addComment('${post.id}', this)" disabled>
+                      <i class="bi bi-send"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+      }
+
+      renderPosts() {
+        const postsContainer = document.getElementById('posts-container');
+        if (!postsContainer) {
+          console.error('Posts container not found');
+          return;
+        }
+
+        if (this.posts.length === 0) {
+          postsContainer.innerHTML = `
+              <div class="no-posts text-center py-5">
+                <i class="bi bi-chat-dots" style="font-size: 3rem; color: #6c757d; margin-bottom: 1rem;"></i>
+                <h4>No posts available</h4>
+                <p>Check back later for updates from the community.</p>
+              </div>
+            `;
+          return;
+        }
+
+        postsContainer.innerHTML = this.posts.map(post => this.createPostHTML(post)).join('');
+
+        console.log('Posts rendered successfully');
+        this.initializeCommentInputs();
+      } async toggleLike(postId, button) {
+        try {
+          console.log('Toggling like for post:', postId);
+          const postRef = doc(db, "posts", postId);
+          const postDoc = await getDoc(postRef);
+
+          if (!postDoc.exists()) {
+            console.error('Post not found');
+            return;
+          }
+
+          const postData = postDoc.data();
+          console.log('Current post data:', postData);          // Get the user ID from Firebase Auth or fallback to local storage
+          const userId = this.getCurrentUserId();
+          console.log('Current user ID for likes:', userId);
+
+          // Check if this user has already liked the post
+          const userLikeRef = doc(db, "posts", postId, "likes", userId);
+          const userLikeDoc = await getDoc(userLikeRef);
+
+          const isLiked = userLikeDoc.exists();
+          console.log('User has already liked this post:', isLiked);
+
+          // Get current likes count from likesCount field
+          let currentLikesCount = postData.likesCount || 0;
+          console.log('Current likesCount:', currentLikesCount);
+
+          let newLikesCount;
+
+          if (isLiked) {
+            // User already liked the post, so unlike it
+            console.log('Removing like from subcollection');
+            // Delete the user's like document
+            await deleteDoc(userLikeRef);
+
+            // Decrement the likesCount by 1
+            newLikesCount = Math.max(0, currentLikesCount - 1);
+            await updateDoc(postRef, {
+              likesCount: newLikesCount
+            });
+
+            button.classList.remove("liked");
+            console.log('Unliked - new likesCount:', newLikesCount);
+          } else {
+            // User hasn't liked the post yet, so add a like
+            console.log('Adding like to subcollection');            // Create a like document for this user
+            await setDoc(userLikeRef, {
+              userId: userId,
+              likedAt: serverTimestamp(),
+              userName: this.getUserDisplayName(),
+              userEmail: this.getUserEmail()
+            });
+
+            // Increment the likesCount by 1
+            newLikesCount = currentLikesCount + 1;
+            await updateDoc(postRef, {
+              likesCount: newLikesCount
+            });
+
+            button.classList.add("liked");
+            console.log('Liked - new likesCount:', newLikesCount);
+          }
+
+          // Update the likes count in the UI
+          const likesSpan = button.closest('.post-container').querySelector('[data-key="likesCount"]');
+          if (likesSpan) {
+            likesSpan.setAttribute('data-count', newLikesCount);
+            likesSpan.textContent = `${newLikesCount} Like${newLikesCount !== 1 ? 's' : ''}`;
+          }
+
+          // Update local data
+          const post = this.posts.find(p => p.id === postId);
+          if (post) {
+            post.likes = newLikesCount;
+            // Mark button as liked/unliked when page loads
+            if (isLiked) {
+              post.userHasLiked = false;
+            } else {
+              post.userHasLiked = true;
+            }
+          }
+
+          console.log('Like toggle completed successfully');
+        } catch (error) {
+          console.error("Error toggling like:", error);
+          this.showError("Failed to update like");
+        }
+      }
+      // Helper method to get the current user ID
+      getCurrentUserId() {
+        // First check if we have a logged-in user
+        if (this.currentUser && this.currentUser.uid) {
+          console.log('Using authenticated user ID:', this.currentUser.uid);
+          return this.currentUser.uid;
+        }
+
+        // Fallback to localStorage for anonymous users
+        let userId = localStorage.getItem('community_user_id');
+
+        if (!userId) {
+          // Generate a new ID using timestamp and random number
+          userId = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+          // Store it for future use
+          localStorage.setItem('community_user_id', userId);
+        }
+
+        console.log('Using local storage user ID:', userId);
+        return userId;
+      }
+
+      // Helper method to get user display name
+      getUserDisplayName() {
+        // First check if we have a logged-in user
+        if (this.currentUser) {
+          // Use displayName if available, otherwise use email or part of email
+          if (this.currentUser.displayName) {
+            return this.currentUser.displayName;
+          } else if (this.currentUser.email) {
+            // Use email without domain as name
+            return this.currentUser.email.split('@')[0];
+          }
+        }
+
+        // Fallback for anonymous users
+        return "Anonymous User";
+      }
+
+      // Helper method to get user email
+      getUserEmail() {
+        return this.currentUser?.email || 'anonymous@example.com';
+      } async addComment(postId, button) {
+        const input = button.previousElementSibling;
+        const commentText = input.value.trim();
+
+        if (!commentText) return;
+
+        try {
+          console.log('Adding comment to post:', postId);
+
+          // Get the username from the authenticated user
+          const userName = this.getUserDisplayName();
+          const userInitial = userName.charAt(0).toUpperCase();
+          const userEmail = this.getUserEmail();
+
+          console.log('Comment author:', userName, 'Email:', userEmail);
+
+          // Create a data URL for SVG initial avatar
+          const bgColor = this.getColorFromInitial(userInitial);
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="50" fill="${bgColor}" />
+            <text x="50" y="50" font-size="50" text-anchor="middle" dy=".3em" fill="white" font-family="Arial, sans-serif">${userInitial}</text>
+          </svg>`;
+          const imageDataUrl = 'data:image/svg+xml;base64,' + btoa(svg);
+
+          // Use user's photoURL if available from Firebase Auth
+          const userImage = this.currentUser?.photoURL || imageDataUrl;
+
+          // Create new comment document - using the exact field names from Firebase
+          const newComment = {
+            postId: postId,
+            comment: commentText, // Using 'comment' as the specified field name
+            commentAt: serverTimestamp(),
+            commentID: Date.now().toString(), // Generate a unique ID
+            userImage: userImage,
+            userName: userName,
+            userEmail: userEmail // Store email for reference
+          };
+
+          // Log the new comment object with the correct field structure
+          console.log('New comment object with correct fields:', newComment);
+          console.log('Comment text to be saved in "comment" field:', newComment.comment);
+          // Add comment ONLY to the subcollection
+          let commentId = null;
+          try {
+            const subCommentRef = await addDoc(collection(db, "posts", postId, "comments"), newComment);
+            commentId = subCommentRef.id;
+            console.log('Comment added to post subcollection with ID:', commentId);
+          } catch (e) {
+            console.error('Error adding comment to subcollection:', e);
+          }          // Update ONLY commentsCount field in the post document
+          const postRef = doc(db, "posts", postId);
+          const postDoc = await getDoc(postRef);
+
+          if (postDoc.exists()) {
+            const postData = postDoc.data();
+            const currentCommentsCount = postData.commentsCount || 0;
+            const newCount = currentCommentsCount + 1;
+
+            // Update only commentsCount field
+            await updateDoc(postRef, {
+              commentsCount: newCount
+            });
+
+            console.log('Updated commentsCount from', currentCommentsCount, 'to', newCount);
+
+            // Update UI
+            const postContainer = button.closest('.post-container');
+            const commentsCountElement = postContainer.querySelector('[data-key="commentsCount"]');
+            if (commentsCountElement) {
+              commentsCountElement.setAttribute('data-count', newCount);
+              commentsCountElement.textContent = `${newCount} Comment${newCount !== 1 ? 's' : ''}`;
+            }
+
+            // Update local data - only set commentsCount
+            const post = this.posts.find(p => p.id === postId);
+            if (post) {
+              post.commentsCount = newCount;
+            }
+          }
+
+          // Clear the input
+          input.value = '';
+          button.disabled = true;
+
+          // Reload comments if they are currently visible
+          const commentsContainer = button.closest('.post-container').querySelector('.comments-container');
+          if (commentsContainer.style.display !== 'none') {
+            await this.loadComments(postId);
+          }
+
+        } catch (error) {
+          console.error("Error adding comment:", error);
+          this.showError("Failed to add comment");
+        }
+      } async toggleComments(postId) {
+        const postContainer = document.querySelector(`[data-post-id="${postId}"]`);
+        const commentsContainer = postContainer.querySelector('.comments-container');
+
+        if (commentsContainer.style.display === 'none') {
+          commentsContainer.style.display = 'block';
+          // Load comments when showing for the first time
+          await this.loadComments(postId);
+        } else {
+          commentsContainer.style.display = 'none';
+        }
+      } async loadComments(postId) {
+        try {
+          console.log('Loading comments for post:', postId);
+
+          let comments = [];
+
+          // Only load from subcollection
+          try {
+            console.log('Loading comments from subcollection...');
+            const subCollectionQuery = collection(db, "posts", postId, "comments");
+            const subCollectionSnapshot = await getDocs(subCollectionQuery); console.log('Subcollection comments found:', subCollectionSnapshot.size);
+            subCollectionSnapshot.forEach((doc) => {
+              const commentData = doc.data();
+              console.log('Subcollection comment:', doc.id, commentData);
+              console.log('Comment field value:', commentData.comment);
+              console.log('Comment fields available:', Object.keys(commentData));
+
+              // Normalize comment data to ensure it has consistent field names
+              const normalizedComment = {
+                id: doc.id || commentData.commentID,
+                ...commentData,
+                // Ensure text is available for rendering (using the 'comment' field as the source)
+                text: commentData.comment || '',
+                // Map other fields to consistent names
+                publishedAt: commentData.commentAt,
+                publisherName: commentData.userName,
+                publisherImage: commentData.userImage
+              };
+
+              console.log('Normalized comment with text field:', normalizedComment);
+              comments.push(normalizedComment);
+            });            // Sort by commentAt (most recent first)
+            comments.sort((a, b) => {
+              const dateA = a.commentAt?.toDate?.() || new Date(a.commentAt) || new Date(0);
+              const dateB = b.commentAt?.toDate?.() || new Date(b.commentAt) || new Date(0);
+              return dateB - dateA;
+            });
+
+          } catch (error) {
+            console.error('Error loading comments from subcollection:', error);
+          }
+
+          console.log('Total comments loaded:', comments.length);
+          console.log('Comments array:', comments);
+
+          // Update the comments display
+          const postContainer = document.querySelector(`[data-post-id="${postId}"]`);
+          const commentsList = postContainer.querySelector('.comments-list');
+
+          if (!commentsList) {
+            console.error('Comments list container not found!');
+            return;
+          }
+
+          if (comments.length > 0) {
+            console.log('Rendering comments...');
+            const commentsHTML = comments.map(comment => {
+              console.log('Comment object to render:', comment);              // Debug all fields to ensure we know what's available
+              console.log('Available fields in comment:', Object.keys(comment));
+              console.log('comment field:', comment.comment);
+              console.log('text field (normalized):', comment.text);
+
+              // Get comment text from the normalized structure (which uses the 'comment' field as source)
+              const commentText = comment.text || comment.comment || 'No comment text available';
+              console.log('Selected comment text to display:', commentText, typeof commentText);
+
+              // Handle Firebase timestamp objects 
+              const timestamp = comment.commentAt || comment.publishedAt;
+              const formattedDate = this.formatDate(timestamp); const userName = comment.userName || 'Anonymous';
+              const initial = userName.charAt(0).toUpperCase();
+              const hasValidImage = comment.userImage && comment.userImage !== 'images/user.jpg';
+
+              return `
+                <div class="comment">
+                  ${hasValidImage ?
+                  `<img src="${comment.userImage}" alt="${userName}" class="comment-avatar" />` :
+                  `<div class="comment-avatar initial-avatar" style="background-color: ${this.getColorFromInitial(initial)}">
+                       ${initial}
+                     </div>`
+                }
+                  <div class="comment-content">
+                    <div class="comment-author">${userName}</div>
+                    <div class="comment-text">${commentText}</div>
+                    <div class="comment-actions">
+                      <span class="comment-action" data-key="likePost">Like</span>
+                      <span class="comment-action" data-key="reply">Reply</span>
+                      <span>${formattedDate}</span>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('');
+
+            commentsList.innerHTML = commentsHTML;
+            console.log('Comments rendered successfully');
+          } else {
+            console.log('No comments found, showing placeholder');
+            commentsList.innerHTML = '<div class="text-muted text-center py-2">No comments yet</div>';
+          }
+
+        } catch (error) {
+          console.error("Error loading comments:", error);
+          console.error("Error details:", error.message, error.code);
+          const postContainer = document.querySelector(`[data-post-id="${postId}"]`);
+          const commentsList = postContainer.querySelector('.comments-list');
+          if (commentsList) {
+            commentsList.innerHTML = `<div class="text-muted text-center py-2">Failed to load comments: ${error.message}</div>`;
+          }
+        }
+      }
+
+      initializeCommentInputs() {
         const commentInputs = document.querySelectorAll(".comment-input");
         commentInputs.forEach((input) => {
           const submitBtn = input.nextElementSibling;
 
-          input.addEventListener("input", function () {
-            submitBtn.disabled = !this.value.trim();
+          // Remove existing event listeners to avoid duplicates
+          const newInput = input.cloneNode(true);
+          input.parentNode.replaceChild(newInput, input);
+          const newSubmitBtn = newInput.nextElementSibling;
+
+          newInput.addEventListener("input", function () {
+            newSubmitBtn.disabled = !this.value.trim();
           });
 
-          input.addEventListener("keypress", function (e) {
+          newInput.addEventListener("keypress", function (e) {
             if (e.key === "Enter" && this.value.trim()) {
-              addComment(this);
-            }
-          });
-
-          submitBtn.addEventListener("click", function () {
-            addComment(input);
-          });
-        });
-
-        // Add click event to filter buttons
-        filterBtns.forEach((btn) => {
-          btn.addEventListener("click", function () {
-            // Remove active class from all buttons
-            filterBtns.forEach((btn) => btn.classList.remove("active"));
-
-            // Add active class to clicked button
-            this.classList.add("active");
-
-            // Get filter value
-            const filterValue = this.getAttribute("data-filter");
-            let visiblePosts = 0;
-
-            // Filter posts
-            posts.forEach((post) => {
-              if (
-                filterValue === "all" ||
-                post.getAttribute("data-category") === filterValue
-              ) {
-                post.style.display = "block";
-                visiblePosts++;
-              } else {
-                post.style.display = "none";
-              }
-            });
-
-            // Show/hide no posts message
-            if (visiblePosts === 0) {
-              noPostsMessage.style.display = "block";
-            } else {
-              noPostsMessage.style.display = "none";
+              const postId = this.closest('.post-container').getAttribute('data-post-id');
+              communityPosts.addComment(postId, newSubmitBtn);
             }
           });
         });
-      }); // Toggle like function
-      function toggleLike(button) {
-        button.classList.toggle("liked");
-        const likesCount = button
-          .closest(".post-actions")
-          .previousElementSibling.querySelector(".post-reactions span");
-        let count = parseInt(likesCount.getAttribute("data-count"));
-
-        if (button.classList.contains("liked")) {
-          count++;
-        } else {
-          count--;
-        }
-
-        likesCount.setAttribute("data-count", count);
-        updateTranslatedCount(likesCount, count, "likesCount");
       }
 
-      // Show reaction options
-      function showReactionOptions(button) {
-        const reactionOptions = button.nextElementSibling;
-        if (reactionOptions) {
-          reactionOptions.classList.add("active");
-
-          // Add event listener to hide when mouse leaves
-          const container = button.closest(".post-reaction-container");
-          container.addEventListener("mouseleave", function () {
-            reactionOptions.classList.remove("active");
-          });
+      showLoading() {
+        const postsContainer = document.getElementById('posts-container');
+        if (postsContainer) {
+          postsContainer.innerHTML = `
+              <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2 mb-0">Loading posts from Firebase...</p>
+              </div>
+            `;
         }
       }
 
-      // Add reaction
-      function addReaction(element, reactionType) {
-        // Find the button
-        const container = element.closest(".post-reaction-container");
-        const button = container.querySelector(".post-action-btn");
-
-        // Close the reaction options
-        element.closest(".reaction-options").classList.remove("active");
-
-        // Update button text and icon based on reaction type
-        let iconHtml = "";
-        let buttonText = "";
-
-        switch (reactionType) {
-          case "like":
-            iconHtml = '<i class="bi bi-hand-thumbs-up"></i>';
-            buttonText = "Like";
-            break;
-          case "love":
-            iconHtml =
-              '<img src="https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/8JhHGv7_7rX.png" class="reaction-icon" alt="Love">';
-            buttonText = "Love";
-            break;
-          case "wow":
-            iconHtml =
-              '<img src="https://static.xx.fbcdn.net/rsrc.php/v3/yu/r/GYBZeNs2_3j.png" class="reaction-icon" alt="Wow">';
-            buttonText = "Wow";
-            break;
-          case "clap":
-            iconHtml =
-              '<img src="https://static.xx.fbcdn.net/rsrc.php/v3/y3/r/j_zhj6R2tuU.png" class="reaction-icon" alt="Clap">';
-            buttonText = "Clap";
-            break;
-        }
-
-        // Update button
-        button.innerHTML = `${iconHtml} ${buttonText}`;
-        button.classList.add("liked");
-        button.style.color = "#1877f2"; // Update reaction count
-        const likesCount = button
-          .closest(".post-actions")
-          .previousElementSibling.querySelector(".post-reactions span");
-        let count = parseInt(likesCount.getAttribute("data-count"));
-        count++;
-        likesCount.setAttribute("data-count", count);
-        updateTranslatedCount(likesCount, count, "likesCount");
+      hideLoading() {
+        // Loading will be replaced by actual content
       }
 
-      // Focus comment input function
-      function focusCommentInput(button) {
-        const commentInput = button
-          .closest(".post-container")
-          .querySelector(".comment-input");
-        commentInput.focus();
-      }
-
-      // Add comment function
-      function addComment(inputElement) {
-        const commentText = inputElement.value.trim();
-        if (!commentText) return;
-
-        const commentsContainer = inputElement.closest(".comments-container");
-        const commentForm = inputElement.closest(".comment-form");
-        const currentUserAvatar =
-          commentForm.querySelector(".comment-avatar").src;
-
-        // Create new comment
-        const newComment = document.createElement("div");
-        newComment.className = "comment";
-        newComment.innerHTML = `
-        <img src="${currentUserAvatar}" alt="You" class="comment-avatar">
-        <div class="comment-content">
-          <div class="comment-author">You</div>
-          <div class="comment-text">${commentText}</div>
-          <div class="comment-actions">
-            <span class="comment-action">Like</span>
-            <span class="comment-action">Reply</span>
-            <span>Just now</span>
-          </div>
-        </div>
-      `;
-
-        // Insert before the comment form
-        commentsContainer.insertBefore(newComment, commentForm);
-
-        // Clear the input
-        inputElement.value = "";
-        inputElement.nextElementSibling.disabled = true; // Update comment count
-        const postStats = commentsContainer
-          .closest(".post-container")
-          .querySelector(".post-stats");
-        const commentCount = postStats.querySelector("div:last-child");
-        const currentCount = parseInt(commentCount.getAttribute("data-count"));
-        const newCount = currentCount + 1;
-        commentCount.setAttribute("data-count", newCount);
-        updateTranslatedCount(commentCount, newCount, "commentsCount");
-      } // Share functions removed
-      // Update translated count function
-      function updateTranslatedCount(element, count, translationKey) {
-        const lang = localStorage.getItem("language") || "en";
-        if (
-          translations &&
-          translations[lang] &&
-          translations[lang][translationKey]
-        ) {
-          // Replace "%n" with the actual count number
-          let translation = translations[lang][translationKey];
-          translation = translation.replace("%n", count);
-          element.textContent = translation;
-        } else {
-          // Fallback if translation is not found
-          element.textContent =
-            count + (translationKey === "likesCount" ? " likes" : " comments");
+      showError(message) {
+        const postsContainer = document.getElementById('posts-container');
+        if (postsContainer) {
+          postsContainer.innerHTML = `
+              <div class="error-message text-center py-5">
+                <i class="bi bi-exclamation-triangle" style="font-size: 3rem; color: #dc3545; margin-bottom: 1rem;"></i>
+                <h4>Error loading posts</h4>
+                <p>${message}</p>
+                <button class="btn btn-primary" onclick="location.reload()">Retry</button>
+              </div>
+            `;
         }
       }
-      // Share on social media function
-      function shareOnSocial(element, platform) {
-        const postElement = element.closest(".post-container");
-        const postText = postElement
-          .querySelector(".post-text")
-          .textContent.trim();
-        const postTitle = postText.split("\n")[0]; // Get the first line as title
-        const url = encodeURIComponent(window.location.href);
-        const title = encodeURIComponent(postTitle);
-        let shareUrl = "";
-
-        switch (platform) {
-          case "facebook":
-            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-            break;
-          case "twitter":
-            shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
-            break;
-          case "linkedin":
-            shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-            break;
-        } // Share functionality removed
-      }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        // Share button initialization removed
-        // Continue with the rest of the initialization
+    }    // Initialize when DOM is loaded
+    let communityPosts;
+    document.addEventListener("DOMContentLoaded", function () {
+      communityPosts = new CommunityPosts();
+      communityPosts.init().then(() => {
+        communityPosts.addDebugButton(); // Add debug button for easier troubleshooting
+      }).catch(error => {
+        console.error('Failed to initialize community posts:', error);
       });
-    </script>
-  </body>
+      window.communityPosts = communityPosts; // Make it globally accessible
+    });
+
+  </script>
+</body>
+
 </html>

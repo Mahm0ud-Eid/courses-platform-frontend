@@ -121,21 +121,25 @@ function setupBulkActions() {
     const bulkActionSelect = document.querySelector(".bulk-actions select");
     const bulkActionButton = document.querySelector(".bulk-actions button");
     
-    // Add checkboxes to the table
+    // Add checkboxes to the table only if not explicitly disabled
     const table = document.querySelector(".table");
-    if (table) {
+    console.log("Table has data-no-checkboxes attribute:", !!table?.getAttribute('data-no-checkboxes'));
+    
+    // Skip adding checkboxes if the table has the data-no-checkboxes attribute
+    if (table && table.getAttribute('data-no-checkboxes') !== "true") {
         // Add checkbox to header
         const headerRow = table.querySelector("thead tr");
         const checkboxHeader = document.createElement("th");
         checkboxHeader.innerHTML = '<input type="checkbox" id="selectAll">';
         headerRow.insertBefore(checkboxHeader, headerRow.firstChild);
-        
-        // Add checkboxes to each row
+          // Add checkboxes to each row (skip any row with colspan attributes as those are likely headers/messages)
         const rows = table.querySelectorAll("tbody tr");
         rows.forEach((row, index) => {
-            const checkboxCell = document.createElement("td");
-            checkboxCell.innerHTML = `<input type="checkbox" class="post-checkbox" data-id="${index + 1}">`;
-            row.insertBefore(checkboxCell, row.firstChild);
+            if (!row.querySelector('td[colspan]')) {
+                const checkboxCell = document.createElement("td");
+                checkboxCell.innerHTML = `<input type="checkbox" class="post-checkbox" data-id="${index + 1}">`;
+                row.insertBefore(checkboxCell, row.firstChild);
+            }
         });
         
         // Select all checkbox functionality

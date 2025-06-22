@@ -23,9 +23,12 @@ const translations = {
     password: "Password",
     passwordPlaceholder: "Enter password",
     rememberMe: "Remember me",
-    forgotPassword: "Forgot password?",
-    invalidEmail: "Invalid email format!",
+    forgotPassword: "Forgot password?",    invalidEmail: "Invalid email format!",
     loginFailed: "Login failed! Please check your credentials.",
+    invalidCredentials: "Invalid email or password. Please try again.",
+    accountDisabled: "This account has been disabled. Please contact an administrator.",
+    tooManyAttempts: "Too many failed login attempts. Please try again later.",
+    accountNotConfigured: "Your account exists but is not properly configured in the system. Please contact an administrator.",
 
     // Trainers Page
     trainersTitle: "Trainers",
@@ -273,9 +276,12 @@ const translations = {
     password: "كلمة المرور",
     passwordPlaceholder: "أدخل كلمة المرور",
     rememberMe: "تذكرني",
-    forgotPassword: "نسيت كلمة المرور؟",
-    invalidEmail: "صيغة البريد الإلكتروني غير صحيحة!",
+    forgotPassword: "نسيت كلمة المرور؟",    invalidEmail: "صيغة البريد الإلكتروني غير صحيحة!",
     loginFailed: "فشل تسجيل الدخول! يرجى التحقق من بيانات الاعتماد الخاصة بك.",
+    invalidCredentials: "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.",
+    accountDisabled: "تم تعطيل هذا الحساب. يرجى الاتصال بمسؤول النظام.",
+    tooManyAttempts: "محاولات تسجيل دخول فاشلة كثيرة. يرجى المحاولة مرة أخرى لاحقًا.",
+    accountNotConfigured: "حسابك موجود ولكنه غير مكتمل الإعداد في النظام. يرجى الاتصال بمسؤول النظام.",
 
     // Trainers Page
     trainersTitle: "المدربون",

@@ -7,8 +7,19 @@ function logout() {
   localStorage.removeItem("userInfo");
 
   // Redirect to login page
-  window.location.href = "/login.html";
+  window.location.href = "login.html";
 }
 
-// Attach logout functionality to a button (if needed)
-document.querySelector(".logout-btn").addEventListener("click", logout);
+// Add event listener when DOM is loaded to ensure all elements are available
+document.addEventListener('DOMContentLoaded', function() {
+  // Find all logout buttons
+  const logoutButtons = document.querySelectorAll(".logout-btn");
+  
+  // Add click event to each logout button
+  logoutButtons.forEach(button => {
+    button.addEventListener("click", function(e) {
+      e.preventDefault();
+      logout();
+    });
+  });
+});
