@@ -31,9 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Setup search functionality
   setupSearchFunctionality();
-  
-  // Setup add student modal functionality
+    // Setup add student modal functionality
   setupAddStudentModal();
+  
+  // Setup edit student modal functionality
+  setupEditStudentModal();
+  
+  // Setup modal event listeners for default values
+  setupModalEventListeners();
 });
 
 // Load all students from Firebase
@@ -131,16 +136,22 @@ async function loadAllStudents() {
           <td>${student.year}</td>
           <td>${student.phoneNumber}</td>
           <td>${student.universityID}</td>
-          <td>${student.email}</td>
-          <td>
-            <a href="admin-student-edit.html?id=${student.id}&source=${student.source}" class="ad-st-view">Edit</a>
+          <td>${student.email}</td>          <td>
+            <a href="#" class="ad-st-view edit-student" data-id="${student.id}" data-source="${student.source}">Edit</a>
             <a href="#" class="ad-st-view delete-student" data-id="${student.id}" data-source="${student.source}">Delete</a>
           </td>
         `;
         tableBody.appendChild(row);
+      });      // Add event listeners to edit and delete links
+      document.querySelectorAll('.edit-student').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const studentId = this.getAttribute('data-id');
+          const source = this.getAttribute('data-source');
+          openEditStudentModal(studentId, source);
+        });
       });
       
-      // Add event listeners to delete links
       document.querySelectorAll('.delete-student').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -452,9 +463,144 @@ function setupAddStudentModal() {
         loadAllStudents();
         
       } catch (error) {
-        console.error('Error adding student:', error);
-        Swal.fire('Error!', `Error adding student: ${error.message}`, 'error');
+        console.error('Error adding student:', error);        Swal.fire('Error!', `Error adding student: ${error.message}`, 'error');
       }
+    });
+  }
+}
+
+// Setup edit student modal functionality
+function setupEditStudentModal() {
+  const updateStudentBtn = document.getElementById('updateStudentBtn');
+  const editStudentForm = document.getElementById('editStudentForm');
+  
+  if (updateStudentBtn && editStudentForm) {
+    updateStudentBtn.addEventListener('click', async function() {
+      const formData = new FormData(editStudentForm);
+      
+      // Validate required fields
+      const requiredFields = ['name', 'department', 'email', 'phone', 'id', 'year'];
+      let isValid = true;
+      
+      for (const field of requiredFields) {
+        if (!formData.get(field)) {
+          isValid = false;
+          break;
+        }
+      }
+      
+      if (!isValid) {
+        Swal.fire('Error!', 'Please fill in all required fields.', 'error');
+        return;
+      }
+      
+      const studentId = formData.get('docId');
+      const source = formData.get('source');
+      
+      if (!studentId || !source) {
+        Swal.fire('Error!', 'Student ID or source is missing.', 'error');
+        return;
+      }
+      
+      try {
+        const db = firebase.firestore();
+        
+        // Create updated student data object
+        const updatedData = {
+          name: formData.get('name'),
+          department: formData.get('department'),
+          email: formData.get('email'),
+          phoneNumber: formData.get('phone'),
+          universityID: formData.get('id'),
+          year: formData.get('year'),
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        
+        // Update in appropriate collection based on source
+        const collection = source === 'users' ? 'users' : 'students';
+        await db.collection(collection).doc(studentId).update(updatedData);
+        
+        // Show success message
+        Swal.fire('Success!', 'Student updated successfully.', 'success');
+        
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('editStudentModal'));
+        modal.hide();
+        
+        // Reset form
+        editStudentForm.reset();
+        
+        // Reload students
+        loadAllStudents();
+        
+      } catch (error) {
+        console.error('Error updating student:', error);
+        Swal.fire('Error!', `Error updating student: ${error.message}`, 'error');
+      }
+    });
+  }
+}
+
+// Open edit student modal with pre-filled data
+async function openEditStudentModal(studentId, source) {
+  try {
+    const db = firebase.firestore();
+    const collection = source === 'users' ? 'users' : 'students';
+    
+    // Get student data from Firebase
+    const doc = await db.collection(collection).doc(studentId).get();
+    
+    if (!doc.exists) {
+      Swal.fire('Error!', 'Student not found.', 'error');
+      return;
+    }
+      const data = doc.data();
+    
+    // Fill the edit form with current data
+    document.getElementById('editStudentName').value = data.name || data.displayName || data.fullName || '';
+    document.getElementById('editStudentDepartment').value = data.department || '';
+    document.getElementById('editStudentEmail').value = data.email || '';
+    document.getElementById('editStudentPhone').value = data.phoneNumber || data.phone || '';
+    document.getElementById('editStudentId').value = data.universityID || data.studentID || data.id || '';
+      // Set year value - if student has a year, use it; otherwise default to "1st Year"
+    const studentYear = data.year || data.academicYear;
+    if (studentYear && studentYear !== '') {
+      document.getElementById('editStudentYear').value = studentYear;
+    } else {
+      // Default to "1st Year" if no year is found
+      document.getElementById('editStudentYear').value = '1st Year';
+    }
+    
+    document.getElementById('editStudentDocId').value = studentId;
+    document.getElementById('editStudentSource').value = source;
+    
+    // Open the modal
+    const modal = new bootstrap.Modal(document.getElementById('editStudentModal'));
+    modal.show();
+    
+  } catch (error) {
+    console.error('Error loading student data:', error);
+    Swal.fire('Error!', `Error loading student data: ${error.message}`, 'error');
+  }
+}
+
+// Setup modal event listeners for default values
+function setupModalEventListeners() {
+  // Add Student Modal
+  const addModal = document.getElementById('addStudentModal');
+  if (addModal) {
+    addModal.addEventListener('hidden.bs.modal', function() {
+      // Reset form when modal closes
+      document.getElementById('addStudentForm').reset();
+    });
+  }
+  
+  // Edit Student Modal
+  const editModal = document.getElementById('editStudentModal');
+  if (editModal) {
+    editModal.addEventListener('hidden.bs.modal', function() {
+      // Reset form when modal closes
+      document.getElementById('editStudentForm').reset();
     });
   }
 }
