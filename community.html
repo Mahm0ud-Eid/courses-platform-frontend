@@ -959,7 +959,7 @@
 
         console.log('No likes found, returning 0');
         return 0;
-      }      formatDate(timestamp) {
+      } formatDate(timestamp) {
         if (!timestamp) return "Just now";
 
         // Handle Firebase Timestamp objects
@@ -985,23 +985,23 @@
         }
 
         const now = new Date();
-        
+
         // Calculate the time difference in milliseconds
         const diffTime = now - date;
         const diffMinutes = Math.floor(diffTime / (1000 * 60));
         const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
-        
+
         // Check if the date is today
-        const isToday = date.getDate() === now.getDate() && 
-                        date.getMonth() === now.getMonth() && 
-                        date.getFullYear() === now.getFullYear();
-        
+        const isToday = date.getDate() === now.getDate() &&
+          date.getMonth() === now.getMonth() &&
+          date.getFullYear() === now.getFullYear();
+
         // Check if the date was yesterday
         const yesterday = new Date(now);
         yesterday.setDate(now.getDate() - 1);
-        const isYesterday = date.getDate() === yesterday.getDate() && 
-                            date.getMonth() === yesterday.getMonth() && 
-                            date.getFullYear() === yesterday.getFullYear();
+        const isYesterday = date.getDate() === yesterday.getDate() &&
+          date.getMonth() === yesterday.getMonth() &&
+          date.getFullYear() === yesterday.getFullYear();
 
         if (isToday) {
           if (diffMinutes < 1) {
