@@ -346,11 +346,10 @@ async function loadStudents(courseId, courseData) {
       return;
     }
       // If no students found in either location
-    studentsTable.innerHTML = '<tr><td colspan="6" class="text-center">No students enrolled</td></tr>';
-    
-  } catch (error) {
+    studentsTable.innerHTML = '<tr><td colspan="5" class="text-center">No students enrolled</td></tr>';
+      } catch (error) {
     console.error('Error loading students:', error);
-    studentsTable.innerHTML = '<tr><td colspan="6" class="text-center text-danger">Error loading students</td></tr>';
+    studentsTable.innerHTML = '<tr><td colspan="5" class="text-center text-danger">Error loading students</td></tr>';
   }
 }
 
@@ -362,7 +361,6 @@ function addStudentRow(student, studentId) {
   const attendanceDates = Array.isArray(student.attendanceDates) ? student.attendanceDates.length : 0;
   const absenceDates = Array.isArray(student.absenceDates) ? student.absenceDates.length : 0;
     row.innerHTML = `
-    <td>${student.studentId || studentId}</td>
     <td>${student.name || 'Unknown'}</td>
     <td>${student.email || 'No email'}</td>
     <td>${student.phone || 'No phone'}</td>
@@ -380,7 +378,7 @@ function showError(message) {
   courseDescription.classList.add('text-danger');
     // Hide loading indicators and show error message in tables
   const materialsErrorRow = '<tr><td colspan="5" class="text-center text-danger">Error: ' + message + '</td></tr>';
-  const studentsErrorRow = '<tr><td colspan="6" class="text-center text-danger">Error: ' + message + '</td></tr>';
+  const studentsErrorRow = '<tr><td colspan="5" class="text-center text-danger">Error: ' + message + '</td></tr>';
   materialsTable.innerHTML = materialsErrorRow;
   studentsTable.innerHTML = studentsErrorRow;
 }
