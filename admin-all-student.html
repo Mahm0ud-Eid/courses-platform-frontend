@@ -246,18 +246,20 @@
                       <thead>
                         <tr>
                           <th>Name</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>University ID</th>
+                          <th>National ID</th>
                           <th>Department</th>
                           <th>Year</th>
-                          <th>Phone Number</th>
-                          <th>University ID</th>
-                          <th>Email</th>
+                          <th>Disability</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         <!-- Student data will be loaded dynamically from Firebase -->
                         <tr>
-                          <td colspan="7" class="text-center">
+                          <td colspan="9" class="text-center">
                             <div class="spinner-border text-primary" role="status">
                               <span class="visually-hidden">Loading...</span>
                             </div>
@@ -318,17 +320,38 @@
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
+                <label for="studentPassword" class="form-label">Password <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="studentPassword" name="password" required
+                  placeholder="Enter password">
+              </div>
+              <div class="col-md-6 mb-3">
                 <label for="studentId" class="form-label">University ID <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="studentId" name="id" required placeholder="e.g., ST12345">
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="studentYear" class="form-label">Year <span class="text-danger">*</span></label> <select
-                  class="form-control" id="studentYear" name="year" required>
-                  <option value="">Select Year</option>
+                <label for="studentNationalId" class="form-label">National ID <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="studentNationalId" name="nationalId" required
+                  placeholder="e.g., 12345678901234">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="studentYear" class="form-label">Year <span class="text-danger">*</span></label>
+                <select class="form-control" id="studentYear" name="year" required>
+                  <option value="" selected disabled>Select Year</option>
                   <option value="1st Year">1st Year</option>
                   <option value="2nd Year">2nd Year</option>
                   <option value="3rd Year">3rd Year</option>
                   <option value="4th Year">4th Year</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="studentDisability" class="form-label">Disability</label>
+                <select class="form-control" id="studentDisability" name="disability">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
                 </select>
               </div>
             </div>
@@ -389,13 +412,26 @@
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
+                <label for="editStudentPassword" class="form-label">Password <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="editStudentPassword" name="password" required
+                  placeholder="Enter password">
+              </div>
+              <div class="col-md-6 mb-3">
                 <label for="editStudentId" class="form-label">University ID <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="editStudentId" name="id" required
                   placeholder="e.g., ST12345">
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="editStudentYear" class="form-label">Year <span class="text-danger">*</span></label> <select
-                  class="form-control" id="editStudentYear" name="year" required>
+                <label for="editStudentNationalId" class="form-label">National ID <span
+                    class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="editStudentNationalId" name="nationalId" required
+                  placeholder="e.g., 12345678901234">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="editStudentYear" class="form-label">Year <span class="text-danger">*</span></label>
+                <select class="form-control" id="editStudentYear" name="year" required>
                   <option value="1st Year">1st Year</option>
                   <option value="2nd Year">2nd Year</option>
                   <option value="3rd Year">3rd Year</option>
@@ -403,21 +439,32 @@
                 </select>
               </div>
             </div>
-            <!-- Hidden field to store student ID -->
-            <input type="hidden" id="editStudentDocId" name="docId">
-            <input type="hidden" id="editStudentSource" name="source">
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            <i class="fa fa-times"></i> Cancel
-          </button>
-          <button type="button" class="btn btn-primary" id="updateStudentBtn">
-            <i class="fa fa-save"></i> Update Student
-          </button>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="editStudentDisability" class="form-label">Disability</label>
+                <select class="form-control" id="editStudentDisability" name="disability">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </div>
+            </div>
         </div>
       </div>
+      <!-- Hidden field to store student ID -->
+      <input type="hidden" id="editStudentDocId" name="docId">
+      <input type="hidden" id="editStudentSource" name="source">
+      </form>
     </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <i class="fa fa-times"></i> Cancel
+      </button>
+      <button type="button" class="btn btn-primary" id="updateStudentBtn">
+        <i class="fa fa-save"></i> Update Student
+      </button>
+    </div>
+  </div>
+  </div>
   </div>
 
   </div> <!--Import jQuery before materialize.js-->

@@ -49,11 +49,10 @@ async function loadAllStudents() {
   
   const tableBody = studentsTable.querySelector('tbody');
   
-  try {
-    // Show loading state
+  try {    // Show loading state
     tableBody.innerHTML = `
       <tr>
-        <td colspan="7" class="text-center">
+        <td colspan="9" class="text-center">
           <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
@@ -71,17 +70,18 @@ async function loadAllStudents() {
       
       console.log(`Found ${usersSnapshot.size} users with role="Student"`);
       
-      if (!usersSnapshot.empty) {
-        usersSnapshot.forEach(doc => {
+      if (!usersSnapshot.empty) {        usersSnapshot.forEach(doc => {
           const data = doc.data();
           students.push({
-            id: doc.id,
+            id: doc.id, // This will be the Firebase Auth UID
             name: data.name || data.displayName || data.fullName || 'N/A',
+            email: data.email || 'N/A',
+            universityID: data.universityID || data.studentID || 'N/A',
+            nationalID: data.nationalID || 'N/A',
+            phoneNumber: data.phoneNumber || data.phone || 'N/A',
             department: data.department || 'N/A',
             year: data.year || data.academicYear || 'N/A',
-            phoneNumber: data.phoneNumber || data.phone || 'N/A',
-            universityID: data.universityID || data.studentID || data.id || 'N/A',
-            email: data.email || 'N/A',
+            disability: data.disability || 'No',
             source: 'users'
           });
         });
@@ -97,17 +97,18 @@ async function loadAllStudents() {
         
         console.log(`Found ${studentsSnapshot.size} students in students collection`);
         
-        if (!studentsSnapshot.empty) {
-          studentsSnapshot.forEach(doc => {
+        if (!studentsSnapshot.empty) {          studentsSnapshot.forEach(doc => {
             const data = doc.data();
             students.push({
               id: doc.id,
               name: data.name || data.displayName || data.fullName || 'N/A',
+              email: data.email || 'N/A',
+              universityID: data.universityID || data.studentID || 'N/A',
+              nationalID: data.nationalID || 'N/A',
+              phoneNumber: data.phoneNumber || data.phone || 'N/A',
               department: data.department || 'N/A',
               year: data.year || data.academicYear || 'N/A',
-              phoneNumber: data.phoneNumber || data.phone || 'N/A',
-              universityID: data.universityID || data.studentID || data.id || 'N/A',
-              email: data.email || 'N/A',
+              disability: data.disability || 'No',
               source: 'students'
             });
           });
@@ -124,25 +125,26 @@ async function loadAllStudents() {
       
       // Clear loading message
       tableBody.innerHTML = '';
-      
-      // Add each student to the table
+        // Add each student to the table
       students.forEach(student => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
+        const row = document.createElement('tr');        row.innerHTML = `
           <td>
             <span class="list-enq-name">${student.name}</span>
           </td>
-          <td>${student.department}</td>
-          <td>${student.year}</td>
+          <td>${student.email}</td>
           <td>${student.phoneNumber}</td>
           <td>${student.universityID}</td>
-          <td>${student.email}</td>          <td>
+          <td>${student.nationalID}</td>
+          <td>${student.department}</td>
+          <td>${student.year}</td>
+          <td>${student.disability}</td>
+          <td>
             <a href="#" class="ad-st-view edit-student" data-id="${student.id}" data-source="${student.source}">Edit</a>
             <a href="#" class="ad-st-view delete-student" data-id="${student.id}" data-source="${student.source}">Delete</a>
           </td>
         `;
         tableBody.appendChild(row);
-      });      // Add event listeners to edit and delete links
+      });// Add event listeners to edit and delete links
       document.querySelectorAll('.edit-student').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -161,23 +163,20 @@ async function loadAllStudents() {
         });
       });
       
-      console.log(`Loaded ${students.length} students successfully`);
-      
-    } else {
+      console.log(`Loaded ${students.length} students successfully`);        } else {
       tableBody.innerHTML = `
         <tr>
-          <td colspan="7" class="text-center">
+          <td colspan="9" class="text-center">
             <p>No students found</p>
             <p class="text-muted">Students with role "Student" will appear here</p>
           </td>
         </tr>
       `;
-    }
-  } catch (error) {
+    }  } catch (error) {
     console.error("Error loading student details:", error);
     tableBody.innerHTML = `
       <tr>
-        <td colspan="7" class="text-center text-danger">
+        <td colspan="9" class="text-center text-danger">
           Error loading students: ${error.message}
         </td>
       </tr>
@@ -332,16 +331,14 @@ function performFilter() {
   console.log(`Filtering by first letter(s): "${searchTerm}" and department: "${selectedDepartment}"`);
   
   let visibleCount = 0;
-  
   tableRows.forEach(row => {
     // Skip loading/error rows or rows with only one cell (colspan)
-    if (row.querySelector('.spinner-border') || row.cells.length < 7) {
+    if (row.querySelector('.spinner-border') || row.cells.length < 9) {
       return;
     }
-    
-    // Get name and department from cells
+      // Get name and department from cells (Name is cell 0, Department is cell 5)
     const name = (row.cells[0]?.textContent || '').toLowerCase().trim();
-    const department = (row.cells[1]?.textContent || '').trim();
+    const department = (row.cells[5]?.textContent || '').trim();
     
     // Check if name STARTS WITH the search term (first letter search)
     const matchesName = searchTerm === '' || name.startsWith(searchTerm);
@@ -375,10 +372,9 @@ function performSearch() {
   console.log(`Found ${tableRows.length} rows to search through`);
   
   let visibleCount = 0;
-  
   tableRows.forEach(row => {
     // Skip loading/error rows or rows with only one cell (colspan)
-    if (row.querySelector('.spinner-border') || row.cells.length < 7) {
+    if (row.querySelector('.spinner-border') || row.cells.length < 9) {
       return;
     }
     
@@ -410,12 +406,10 @@ function setupAddStudentModal() {
   const saveStudentBtn = document.getElementById('saveStudentBtn');
   const addStudentForm = document.getElementById('addStudentForm');
   
-  if (saveStudentBtn && addStudentForm) {
-    saveStudentBtn.addEventListener('click', async function() {
+  if (saveStudentBtn && addStudentForm) {    saveStudentBtn.addEventListener('click', async function() {
       const formData = new FormData(addStudentForm);
-      
-      // Validate required fields
-      const requiredFields = ['name', 'department', 'email', 'phone', 'id', 'year'];
+        // Validate required fields
+      const requiredFields = ['name', 'email', 'password', 'id', 'nationalId', 'phone', 'department', 'year'];
       let isValid = true;
       
       for (const field of requiredFields) {
@@ -428,26 +422,50 @@ function setupAddStudentModal() {
       if (!isValid) {
         Swal.fire('Error!', 'Please fill in all required fields.', 'error');
         return;
-      }
-      
-      try {
+      }      try {
         const db = firebase.firestore();
         
-        // Create student data object
+        // First, create Firebase Authentication user
+        const userCredential = await firebase.auth().createUserWithEmailAndPassword(
+          formData.get('email'),
+          formData.get('password')
+        );
+        
+        const user = userCredential.user;
+        
+        // Create student data object with all required fields
         const studentData = {
-          name: formData.get('name'),
-          department: formData.get('department'),
-          email: formData.get('email'),
-          phoneNumber: formData.get('phone'),
-          universityID: formData.get('id'),
-          year: formData.get('year'),
-          role: 'Student',
+          agreeOnTerms: true,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+          department: formData.get('department'),
+          disability: formData.get('disability') || 'No',
+          email: formData.get('email'),
+          enrolledCategories: [],
+          favouriteCategories: [],
+          graduationYear: '',
+          id: user.uid, // Firebase Auth UID
+          isEnrolled: null,
+          isFirstRegister: true,
+          name: formData.get('name'),
+          nationalID: formData.get('nationalId'),
+          notificationID: '',
+          password: formData.get('password'),
+          phoneNumber: formData.get('phone'),
+          role: 'Student',
+          universityID: formData.get('id'),
+          year: formData.get('year')
         };
         
-        // Add to users collection with role="Student"
-        await db.collection('users').add(studentData);
+        // Add to users collection using Firebase Auth UID as document ID
+        await db.collection('users').doc(user.uid).set(studentData);
+        
+        // Update the user's display name in Firebase Auth
+        await user.updateProfile({
+          displayName: formData.get('name')
+        });
+        
+        // Sign out the newly created user so admin stays logged in
+        await firebase.auth().signOut();
         
         // Show success message
         Swal.fire('Success!', 'Student added successfully.', 'success');
@@ -460,10 +478,22 @@ function setupAddStudentModal() {
         addStudentForm.reset();
         
         // Reload students
-        loadAllStudents();
+        loadAllStudents();      } catch (error) {
+        console.error('Error adding student:', error);
         
-      } catch (error) {
-        console.error('Error adding student:', error);        Swal.fire('Error!', `Error adding student: ${error.message}`, 'error');
+        // Handle specific Firebase Auth errors
+        let errorMessage = 'Error adding student: ';
+        if (error.code === 'auth/email-already-in-use') {
+          errorMessage += 'This email is already registered.';
+        } else if (error.code === 'auth/weak-password') {
+          errorMessage += 'Password should be at least 6 characters.';
+        } else if (error.code === 'auth/invalid-email') {
+          errorMessage += 'Invalid email address.';
+        } else {
+          errorMessage += error.message;
+        }
+        
+        Swal.fire('Error!', errorMessage, 'error');
       }
     });
   }
@@ -474,12 +504,9 @@ function setupEditStudentModal() {
   const updateStudentBtn = document.getElementById('updateStudentBtn');
   const editStudentForm = document.getElementById('editStudentForm');
   
-  if (updateStudentBtn && editStudentForm) {
-    updateStudentBtn.addEventListener('click', async function() {
-      const formData = new FormData(editStudentForm);
-      
-      // Validate required fields
-      const requiredFields = ['name', 'department', 'email', 'phone', 'id', 'year'];
+  if (updateStudentBtn && editStudentForm) {    updateStudentBtn.addEventListener('click', async function() {
+      const formData = new FormData(editStudentForm);      // Validate required fields
+      const requiredFields = ['name', 'email', 'password', 'id', 'nationalId', 'phone', 'department', 'year'];
       let isValid = true;
       
       for (const field of requiredFields) {
@@ -503,16 +530,17 @@ function setupEditStudentModal() {
       }
       
       try {
-        const db = firebase.firestore();
-        
-        // Create updated student data object
+        const db = firebase.firestore();        // Create updated student data object
         const updatedData = {
           name: formData.get('name'),
-          department: formData.get('department'),
           email: formData.get('email'),
-          phoneNumber: formData.get('phone'),
+          password: formData.get('password'),
           universityID: formData.get('id'),
+          nationalID: formData.get('nationalId'),
+          phoneNumber: formData.get('phone'),
+          department: formData.get('department'),
           year: formData.get('year'),
+          disability: formData.get('disability') || 'No',
           updatedAt: firebase.firestore.FieldValue.serverTimestamp()
         };
         
@@ -554,15 +582,17 @@ async function openEditStudentModal(studentId, source) {
       Swal.fire('Error!', 'Student not found.', 'error');
       return;
     }
-      const data = doc.data();
-    
-    // Fill the edit form with current data
+      const data = doc.data();    // Fill the edit form with current data
     document.getElementById('editStudentName').value = data.name || data.displayName || data.fullName || '';
-    document.getElementById('editStudentDepartment').value = data.department || '';
     document.getElementById('editStudentEmail').value = data.email || '';
+    document.getElementById('editStudentPassword').value = data.password || '';
+    document.getElementById('editStudentId').value = data.universityID || data.studentID || '';
+    document.getElementById('editStudentNationalId').value = data.nationalID || '';
     document.getElementById('editStudentPhone').value = data.phoneNumber || data.phone || '';
-    document.getElementById('editStudentId').value = data.universityID || data.studentID || data.id || '';
-      // Set year value - if student has a year, use it; otherwise default to "1st Year"
+    document.getElementById('editStudentDepartment').value = data.department || '';
+    document.getElementById('editStudentDisability').value = data.disability || 'No';
+    
+    // Set year value - if student has a year, use it; otherwise default to "1st Year"
     const studentYear = data.year || data.academicYear;
     if (studentYear && studentYear !== '') {
       document.getElementById('editStudentYear').value = studentYear;
