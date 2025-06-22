@@ -321,7 +321,7 @@
       }
     }
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";    import {
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"; import {
       getFirestore,
       collection,
       getDocs,
@@ -331,7 +331,7 @@
       query,
       orderBy,
       Timestamp
-    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"; 
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
     import {
       getStorage,
       ref,
@@ -358,7 +358,7 @@
 
     let currentPostId = null;
     let currentUser = null;
-    
+
     // Check authentication state
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -444,7 +444,7 @@
         }        // Get the current post data to preserve existing image fields if no new image is uploaded
         const postDoc = await getDoc(doc(db, "posts", currentPostId));
         const currentPostData = postDoc.exists() ? postDoc.data() : {};
-        
+
         // Prepare update data with image fields preserved
         const updateData = {
           postDescription: postContent,
