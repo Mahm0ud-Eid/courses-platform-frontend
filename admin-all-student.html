@@ -27,6 +27,7 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet" />
@@ -163,7 +164,7 @@
                     <div class="row">
                       <div class="col-md-6 mb-3">
                         <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Search students by name or department..."
+                          <input type="text" class="form-control" placeholder="Search by student name..."
                             aria-label="Search students">
                           <button class="btn btn-primary" type="button">
                             <i class="fa fa-search"></i> Search
@@ -181,9 +182,8 @@
                     </div>
                   </div>
                   <!-- End Search and Filter Section -->
-
                   <div class="table-responsive table-desi">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="students-table">
                       <thead>
                         <tr>
                           <th>Name</th>
@@ -196,116 +196,13 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <!-- Student data will be loaded dynamically from Firebase -->
                         <tr>
-                          <td>
-                            <span class="list-enq-name">Marsha Hogan</span>
-                          </td>
-                          <td>Computer Science</td>
-                          <td>3rd Year</td>
-                          <td>+01 3214 6522</td>
-                          <td>ST17241</td>
-                          <td>chadengle@dummy.com</td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view delete-student">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-enq-name">Lucas Caden</span>
-                          </td>
-                          <td>Business Administration</td>
-                          <td>2nd Year</td>
-                          <td>+01 8574 6854</td>
-                          <td>ST10231</td>
-                          <td>lucas@gmail.com</td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view delete-student">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-enq-name">Ethan Oliver</span>
-                          </td>
-                          <td>Engineering</td>
-                          <td>4th Year</td>
-                          <td>+01 8574 6854</td>
-                          <td>ST32168</td>
-                          <td>Ethan@gmail.com</td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view delete-student">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-enq-name">Emma Williams</span>
-                          </td>
-                          <td>Arts & Design</td>
-                          <td>1st Year</td>
-                          <td>+01 9574 6854</td>
-                          <td>ST12368</td>
-                          <td>emma@gmail.com</td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view delete-student">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-enq-name">James Wilson</span>
-                          </td>
-                          <td>Computer Science</td>
-                          <td>4th Year</td>
-                          <td>+01 3214 6522</td>
-                          <td>ST17242</td>
-                          <td>james@example.com</td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view delete-student">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-enq-name">Sophia Roberts</span>
-                          </td>
-                          <td>Mathematics</td>
-                          <td>2nd Year</td>
-                          <td>+01 8574 6854</td>
-                          <td>ST10232</td>
-                          <td>sophia@example.com</td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view delete-student">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-enq-name">Noah Brown</span>
-                          </td>
-                          <td>Physics</td>
-                          <td>3rd Year</td>
-                          <td>+01 8597 6854</td>
-                          <td>ST32169</td>
-                          <td>noah@example.com</td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view delete-student">Delete</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-enq-name">Olivia Johnson</span>
-                          </td>
-                          <td>English Literature</td>
-                          <td>1st Year</td>
-                          <td>+01 8578 6854</td>
-                          <td>ST32170</td>
-                          <td>olivia@example.com</td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                            <a href="#" class="ad-st-view delete-student">Delete</a>
+                          <td colspan="7" class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p>Loading students...</p>
                           </td>
                         </tr>
                       </tbody>
@@ -342,13 +239,11 @@
                 <label for="studentDepartment" class="form-label">Department <span class="text-danger">*</span></label>
                 <select class="form-control" id="studentDepartment" name="department" required>
                   <option value="">Select Department</option>
-                  <option value="Computer Science">Computer Science</option>
-                  <option value="Business Administration">Business Administration</option>
-                  <option value="Engineering">Engineering</option>
-                  <option value="Arts & Design">Arts & Design</option>
-                  <option value="Mathematics">Mathematics</option>
-                  <option value="Physics">Physics</option>
-                  <option value="English Literature">English Literature</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Mechatronics">Mechatronics</option>
+                  <option value="Autotronics">Autotronics</option>
+                  <option value="Renewable Energy">Renewable Energy</option>
+                  <option value="O&P">O&P</option>
                 </select>
               </div>
             </div>
@@ -407,12 +302,16 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
-
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
   <!-- Main JS File -->
   <script src="js/image-upload.js"></script>
   <script src="js/main.js"></script>
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
+  <script src="js/admin-all-students.js"></script>
 
 </body>
 
