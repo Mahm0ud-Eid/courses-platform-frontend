@@ -27,6 +27,26 @@ function loadDashboardData() {
   
   // Load admission count
   updateAdmissionCount(db);
+  
+  // Load student details table
+  loadStudentDetails(db);
+  
+  // Setup smooth scroll to student table
+  setupSmoothScroll();
+}
+
+// Setup smooth scrolling to student table
+function setupSmoothScroll() {
+  const scrollToStudentsBtn = document.querySelector('.scroll-to-students');
+  if (scrollToStudentsBtn) {
+    scrollToStudentsBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const studentsTable = document.getElementById('students-table');
+      if (studentsTable) {
+        studentsTable.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
 }
 
 // Update the course count from Firebase
@@ -169,5 +189,161 @@ async function updateAdmissionCount(db) {
     if (admissionCounter) {
       admissionCounter.textContent = "Error";
     }
+  }
+}
+
+// Load student details from Firebase
+async function loadStudentDetails(db) {
+  const studentsTable = document.getElementById('students-table');
+  if (!studentsTable) return; // If table doesn't exist, exit
+  
+  const tableBody = studentsTable.querySelector('tbody');
+  
+  try {
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="7" class="text-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p>Loading students...</p>
+        </td>
+      </tr>
+    `;
+    
+    let students = [];
+    
+    // Get students from users collection with role="Student"
+    try {
+      const usersQuery = db.collection("users").where("role", "==", "Student");
+      const usersSnapshot = await usersQuery.get();
+      
+      if (!usersSnapshot.empty) {
+        usersSnapshot.forEach(doc => {
+          const data = doc.data();
+          students.push({
+            id: doc.id,
+            name: data.name || data.displayName || 'N/A',
+            department: data.department || 'N/A',
+            year: data.year || 'N/A',
+            phoneNumber: data.phoneNumber || data.phone || 'N/A',
+            universityID: data.universityID || data.studentID || 'N/A',
+            email: data.email || 'N/A',
+            source: 'users'
+          });
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching students from users collection:", error);
+    }
+    
+    // If no students found in users collection, or we want to include both sources,
+    // also check the students collection
+    if (students.length === 0) {
+      try {
+        const studentsSnapshot = await db.collection("students").get();
+        
+        if (!studentsSnapshot.empty) {
+          studentsSnapshot.forEach(doc => {
+            const data = doc.data();
+            students.push({
+              id: doc.id,
+              name: data.name || data.displayName || 'N/A',
+              department: data.department || 'N/A',
+              year: data.year || 'N/A',
+              phoneNumber: data.phoneNumber || data.phone || 'N/A',
+              universityID: data.universityID || data.studentID || 'N/A',
+              email: data.email || 'N/A',
+              source: 'students'
+            });
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching from students collection:", error);
+      }
+    }
+    
+    // Display students or show "No students found" message
+    if (students.length > 0) {
+      // Sort students by name
+      students.sort((a, b) => a.name.localeCompare(b.name));
+      
+      // Clear loading message
+      tableBody.innerHTML = '';
+      
+      // Add each student to the table
+      students.forEach(student => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${student.name}</td>
+          <td>${student.department}</td>
+          <td>${student.year}</td>
+          <td>${student.phoneNumber}</td>
+          <td>${student.universityID}</td>
+          <td>${student.email}</td>
+          <td>
+            <div class="btn-group" role="group">
+              <a href="admin-student-edit.html?id=${student.id}&source=${student.source}" class="btn btn-sm btn-primary">
+                <i class="fa fa-pencil"></i>
+              </a>
+              <button class="btn btn-sm btn-danger delete-student" data-id="${student.id}" data-source="${student.source}">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+      
+      // Add event listeners to delete buttons
+      document.querySelectorAll('.delete-student').forEach(button => {
+        button.addEventListener('click', function() {
+          const studentId = this.getAttribute('data-id');
+          const source = this.getAttribute('data-source');
+          deleteStudent(db, studentId, source);
+        });
+      });
+      
+    } else {
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="7" class="text-center">No students found</td>
+        </tr>
+      `;
+    }
+  } catch (error) {
+    console.error("Error loading student details:", error);
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="7" class="text-center">Error loading students: ${error.message}</td>
+      </tr>
+    `;
+  }
+}
+
+// Function to delete a student
+async function deleteStudent(db, studentId, source) {
+  if (!studentId || !source) return;
+  
+  // Confirm deletion
+  if (!confirm('Are you sure you want to delete this student?')) {
+    return;
+  }
+  
+  try {
+    // Delete from appropriate collection based on source
+    const collection = source === 'users' ? 'users' : 'students';
+    await db.collection(collection).doc(studentId).delete();
+    
+    // Reload student data
+    loadStudentDetails(db);
+    
+    // Also update the counter
+    updateStudentCount(db);
+    
+    alert('Student deleted successfully');
+  } catch (error) {
+    console.error("Error deleting student:", error);
+    alert(`Error deleting student: ${error.message}`);
   }
 }

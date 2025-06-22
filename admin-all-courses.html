@@ -221,26 +221,12 @@
                 Students</a>
               <div class="collapsible-body left-sub-menu">
                 <ul>
-                  <li><a href="admin-user-all.html">All Students</a></li>
-                  <li><a href="admin-user-add.html">Add New Students</a></li>
+                  <li><a href="admin-all-student.html">All Students</a></li>
+                  <li><a href="admin-add-student.html">Add New Students</a></li>
                 </ul>
               </div>
             </li>
-            <li>
-              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-cloud-download"
-                  aria-hidden="true"></i>
-                Import & Export</a>
-              <div class="collapsible-body left-sub-menu">
-                <ul>
-                  <li>
-                    <a href="admin-export-data.html">Export all datas</a>
-                  </li>
-                  <li>
-                    <a href="admin-import-data.html">Import all datas</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+
           </ul>
         </div>
       </div>
@@ -274,7 +260,8 @@
               </p>
             </div>
             <div class="card-body">
-              <div class="table-responsive table-desi">                <table class="table table-hover">
+              <div class="table-responsive table-desi">
+                <table class="table table-hover">
                   <thead>
                     <tr>
                       <th>Course Name</th>
@@ -318,18 +305,19 @@
   <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
-  
+
   <!-- JS Files (in order) -->
   <script src="js/main.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="assets/js/sidebar-tog.js"></script>
-  <script src="js/image-upload.js"></script>  <script src="js/main.js"></script>
+  <script src="js/image-upload.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/manager.js"></script>
   <script src="js/logout.js"></script>
   <script src="js/admin-courses.js"></script>
-  
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -340,13 +328,13 @@
 
   <!-- Bootstrap JS Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
+
   <!-- Custom Firebase integration for this page -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Show loading spinner
       document.getElementById('preloader').style.display = 'block';
-      
+
       // Firebase auth state will be handled by admin-courses.js
     });
   </script>
