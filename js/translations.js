@@ -40,8 +40,15 @@ const translations = {
 
     // About Us Page
     aboutUsTitle: "About Us",
-    aboutUsDesc:
-      "Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.",
+    aboutUsDesc: `UCCD is a modern Learning Management System dedicated to
+                  empowering students, educators, and institutions with
+                  innovative tools for online education. Our platform offers a
+                  seamless experience for course creation, interactive learning,
+                  and progress tracking, making education accessible and
+                  engaging for everyone. We are committed to fostering a
+                  collaborative community and supporting lifelong learning
+                  through technology.
+`,
     ourAcademy: "Our Academy",
     discoverUnique: "Discover what makes us unique",
 
@@ -169,47 +176,47 @@ const translations = {
     // About Features Section
     awards: "Awards",
     awardsDesc:
-      "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi bibendum imperdiet bibendum.",
+      "We have received numerous local and international awards in recognition of our excellence and innovation in education and training.",
     recognition: "Recognition:",
     since: "Since:",
     research: "Research",
     researchDesc:
-      "Etiam eget enim non magna vestibulum malesuada ut et lectus. Curabitur egestas risus massa, a malesuada erat ultrices non.",
+      "We conduct advanced scientific research in various fields to develop knowledge and provide innovative solutions to modern challenges.",
     projects: "Projects:",
     funding: "Funding:",
-    educations: "Educations",
+    educations: "Educational Programs",
     educationsDesc:
-      "Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.",
+      "We offer a diverse range of educational programs that meet the needs of students and trainees across different disciplines.",
     programs: "Programs:",
     alumni: "Alumni",
     alumniDesc:
-      "Aliquam malesuada commodo lectus, at fermentum ligula finibus eu. Morbi nisi neque, suscipit non pulvinar vitae.",
+      "Our graduates possess high levels of competence and skills, working in prestigious institutions both locally and globally.",
     network: "Network:",
     successRate: "Success Rate:",
     facilities: "Facilities",
     facilitiesDesc:
-      "Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.",
+      "Our academy features modern and advanced facilities that help students learn in a comfortable and motivating environment.",
     campus: "Campus:",
     labs: "Labs:",
     departments: "Departments",
     departmentsDesc:
-      "Maecenas venenatis, turpis ac tincidunt convallis, leo enim ultrices tortor, at faucibus neque sapien ac elit. Curabitur ut ipsum odio.",
+      "Our academy includes a variety of departments covering different scientific and literary specializations.",
     deptCount: "Departments:",
     faculty: "Faculty:",
-    testimonials: "Testimonials",
+    testimonials: "Student Testimonials",
     whatTheySaying: "What are they saying",
     testimonial1Name: "Saul Goodman",
     testimonial1Position: "CEO & Founder",
     testimonial1Text:
-      "Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.",
+      "I am very pleased with the outstanding educational experience provided by the academy. I gained deep knowledge and practical skills that greatly helped me advance my career.",
     testimonial2Name: "Sara Wilsson",
     testimonial2Position: "Designer",
     testimonial2Text:
-      "Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.",
+      "My experience with the academy was excellent in every aspect. The trainers are professional and the curricula are modern and advanced. I highly recommend joining this distinguished academy.",
     testimonial3Name: "Jena Karlis",
     testimonial3Position: "Store Owner",
     testimonial3Text:
-      "Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.",
+      "The training courses at the academy gave me the opportunity to develop my practical skills and increase my expertise in my field. I thank everyone involved in this outstanding educational institution.",
 
     // Why Us Section
     whyTitle: "Why Choose Our LMS?",
