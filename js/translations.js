@@ -14,7 +14,7 @@ const translations = {
     community: "Community",
     signIn: "Sign In",
     signOut: "Sign out",
-    getStarted: "Get Started",
+    getStarted: "Sign In",
 
     // Login Page
     loginTitle: "Log In",
