@@ -23,12 +23,15 @@ const translations = {
     password: "Password",
     passwordPlaceholder: "Enter password",
     rememberMe: "Remember me",
-    forgotPassword: "Forgot password?",    invalidEmail: "Invalid email format!",
+    forgotPassword: "Forgot password?",
+    invalidEmail: "Invalid email format!",
     loginFailed: "Login failed! Please check your credentials.",
     invalidCredentials: "Invalid email or password. Please try again.",
-    accountDisabled: "This account has been disabled. Please contact an administrator.",
+    accountDisabled:
+      "This account has been disabled. Please contact an administrator.",
     tooManyAttempts: "Too many failed login attempts. Please try again later.",
-    accountNotConfigured: "Your account exists but is not properly configured in the system. Please contact an administrator.",
+    accountNotConfigured:
+      "Your account exists but is not properly configured in the system. Please contact an administrator.",
 
     // Trainers Page
     trainersTitle: "Trainers",
@@ -49,7 +52,7 @@ const translations = {
 
     // Courses Section
     coursesHeading: "Courses",
-    popularCourses: "Popular Courses",    // Dashboard Navigation
+    popularCourses: "Popular Courses", // Dashboard Navigation
     myDashboard: "Dashboard",
     myProfile: "My Profile",
     myCourses: "My Courses",
@@ -105,8 +108,12 @@ const translations = {
     accountStatus: "Account Status",
     accountSecurity: "Account Security",
     lastLogin: "Last Login",
-    password: "Password",    twoFactorAuth: "Two-Factor Auth",    changePassword: "Change Password",    enable2FA: "Enable 2FA",    changePhoto: "Change photo",
-    
+    password: "Password",
+    twoFactorAuth: "Two-Factor Auth",
+    changePassword: "Change Password",
+    enable2FA: "Enable 2FA",
+    changePhoto: "Change photo",
+
     // Change Photo Modal
     changeProfilePhoto: "Change Profile Photo",
     selectNewPhoto: "Select a new photo",
@@ -115,9 +122,10 @@ const translations = {
     photoRequirements: "Please select a JPG, PNG, or GIF image under 5MB.",
     photoUpdated: "Profile photo updated successfully!",
     photoError: "Error uploading photo. Please try again.",
-    invalidFileType: "Invalid file type. Please select a JPG, PNG, or GIF image.",
+    invalidFileType:
+      "Invalid file type. Please select a JPG, PNG, or GIF image.",
     fileTooLarge: "File size too large. Please select an image under 5MB.",
-    
+
     // Change Password Modal
     currentPassword: "Current Password",
     newPassword: "New Password",
@@ -126,26 +134,31 @@ const translations = {
     passwordRequirements: "Password must be at least 8 characters long.",
     passwordChanged: "Password changed successfully!",
     passwordMismatch: "Passwords do not match.",
-    currentPasswordIncorrect: "Current password is required.",    passwordTooShort: "Password must be at least 8 characters long.",
-    newPasswordDifferent: "New password must be different from current password.",
-    lastChangedNow: "Last changed just now",// Materials Page
+    currentPasswordIncorrect: "Current password is required.",
+    passwordTooShort: "Password must be at least 8 characters long.",
+    newPasswordDifferent:
+      "New password must be different from current password.",
+    lastChangedNow: "Last changed just now", // Materials Page
     totalMaterials: "Total Materials",
     downloaded: "Downloaded",
-    materialsInfo: "Access all your course materials in one place. You can preview, download, and organize materials by course or file type.",
+    materialsInfo:
+      "Access all your course materials in one place. You can preview, download, and organize materials by course or file type.",
 
     // Hero Section
-    heroTitle: "Learning Today,<br />Leading Tomorrow",
+    heroTitle: "Empowering Education, <br />Enabling Success",
     heroSubtitle:
-      "We are team of talented designers making websites with Bootstrap",
+      "Your gateway to smarter, simpler, and more effective learning management.",
 
     // About Section
-    aboutTitle: "Voluptatem dignissimos provident quasi corporis",
+    aboutTitle: "A Modern Approach to Learning and Professional Growth",
     aboutDesc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    aboutItem1: "Ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    aboutItem2: "Duis aute irure dolor in reprehenderit in voluptate velit.",
+      "Our Learning Management System empowers students and educators with innovative tools for seamless course delivery, progress tracking, and interactive learning experiences.",
+    aboutItem1:
+      "Personalized dashboards help you monitor your learning journey and achievements.",
+    aboutItem2:
+      "Access a wide variety of courses, resources, and assessments anytime, anywhere.",
     aboutItem3:
-      "Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.",
+      "Collaborate with peers and instructors, participate in discussions, and receive instant feedback to enhance your skills.",
     readMore: "Read More",
     // Stats Section
     students: "Students",
@@ -199,10 +212,9 @@ const translations = {
       "Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.",
 
     // Why Us Section
-    whyTitle: "Why Choose Our Products?",
+    whyTitle: "Why Choose Our LMS?",
     whyDesc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.",
-    learnMore: "Learn More",
+      "Our Learning Management System offers a seamless, user-friendly experience for both learners and instructors. Benefit from interactive courses, real-time progress tracking, and a supportive community—all designed to help you achieve your educational goals efficiently.",
 
     // Footer
     usefulLinks: "Useful Links",
@@ -276,12 +288,16 @@ const translations = {
     password: "كلمة المرور",
     passwordPlaceholder: "أدخل كلمة المرور",
     rememberMe: "تذكرني",
-    forgotPassword: "نسيت كلمة المرور؟",    invalidEmail: "صيغة البريد الإلكتروني غير صحيحة!",
+    forgotPassword: "نسيت كلمة المرور؟",
+    invalidEmail: "صيغة البريد الإلكتروني غير صحيحة!",
     loginFailed: "فشل تسجيل الدخول! يرجى التحقق من بيانات الاعتماد الخاصة بك.",
-    invalidCredentials: "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.",
+    invalidCredentials:
+      "البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.",
     accountDisabled: "تم تعطيل هذا الحساب. يرجى الاتصال بمسؤول النظام.",
-    tooManyAttempts: "محاولات تسجيل دخول فاشلة كثيرة. يرجى المحاولة مرة أخرى لاحقًا.",
-    accountNotConfigured: "حسابك موجود ولكنه غير مكتمل الإعداد في النظام. يرجى الاتصال بمسؤول النظام.",
+    tooManyAttempts:
+      "محاولات تسجيل دخول فاشلة كثيرة. يرجى المحاولة مرة أخرى لاحقًا.",
+    accountNotConfigured:
+      "حسابك موجود ولكنه غير مكتمل الإعداد في النظام. يرجى الاتصال بمسؤول النظام.",
 
     // Trainers Page
     trainersTitle: "المدربون",
@@ -302,7 +318,7 @@ const translations = {
 
     // Courses Section
     coursesHeading: "الدورات",
-    popularCourses: "الدورات الشائعة",    // Dashboard Navigation
+    popularCourses: "الدورات الشائعة", // Dashboard Navigation
     myDashboard: "لوحة التحكم",
     myProfile: "الملف الشخصي",
     myCourses: "دوراتي",
@@ -359,8 +375,11 @@ const translations = {
     accountSecurity: "أمان الحساب",
     lastLogin: "آخر تسجيل دخول",
     password: "كلمة المرور",
-    twoFactorAuth: "المصادقة الثنائية",    changePassword: "تغيير كلمة المرور",    enable2FA: "تفعيل المصادقة الثنائية",    changePhoto: "تغيير الصورة",
-    
+    twoFactorAuth: "المصادقة الثنائية",
+    changePassword: "تغيير كلمة المرور",
+    enable2FA: "تفعيل المصادقة الثنائية",
+    changePhoto: "تغيير الصورة",
+
     // Change Photo Modal
     changeProfilePhoto: "تغيير صورة الملف الشخصي",
     selectNewPhoto: "اختر صورة جديدة",
@@ -371,7 +390,7 @@ const translations = {
     photoError: "خطأ في رفع الصورة. يرجى المحاولة مرة أخرى.",
     invalidFileType: "نوع ملف غير صالح. يرجى اختيار صورة JPG أو PNG أو GIF.",
     fileTooLarge: "حجم الملف كبير جداً. يرجى اختيار صورة أقل من 5 ميجابايت.",
-    
+
     // Change Password Modal
     currentPassword: "كلمة المرور الحالية",
     newPassword: "كلمة المرور الجديدة",
@@ -380,12 +399,14 @@ const translations = {
     passwordRequirements: "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
     passwordChanged: "تم تغيير كلمة المرور بنجاح!",
     passwordMismatch: "كلمات المرور غير متطابقة.",
-    currentPasswordIncorrect: "كلمة المرور الحالية مطلوبة.",    passwordTooShort: "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+    currentPasswordIncorrect: "كلمة المرور الحالية مطلوبة.",
+    passwordTooShort: "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
     newPasswordDifferent: "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية.",
-    lastChangedNow: "تم التغيير للتو",// Materials Page
+    lastChangedNow: "تم التغيير للتو", // Materials Page
     totalMaterials: "إجمالي المواد",
     downloaded: "تم التحميل",
-    materialsInfo: "الوصول إلى جميع مواد الدورة الخاصة بك في مكان واحد. يمكنك معاينة وتحميل وتنظيم المواد حسب الدورة أو نوع الملف.",
+    materialsInfo:
+      "الوصول إلى جميع مواد الدورة الخاصة بك في مكان واحد. يمكنك معاينة وتحميل وتنظيم المواد حسب الدورة أو نوع الملف.",
 
     // Hero Section
     heroTitle: "التعلم اليوم،<br />القيادة غداً",
