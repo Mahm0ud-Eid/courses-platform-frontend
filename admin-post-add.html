@@ -400,44 +400,17 @@
           publisherName = currentUser.email.split('@')[0];
           publisherName = publisherName.charAt(0).toUpperCase() +
             publisherName.slice(1).replace(/[._]/g, ' ');
-        }
-        // Generate default image URL for users without a profile photo
-        let publisherImage = '';
-        if (currentUser.photoURL) {
-          // Use the user's actual profile photo if available
-          publisherImage = currentUser.photoURL;
-        } else {
-          // Get the first character of the name for the profile initial
-          const initial = publisherName.charAt(0).toUpperCase();
-          // Create a data URL for a simple SVG with the initial
-          const colors = [
-            '#F44336', '#E91E63', '#9C27B0', '#673AB7',
-            '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4',
-            '#009688', '#4CAF50', '#8BC34A', '#CDDC39'
-          ];
-          // Generate a consistent color based on the initial
-          const colorIndex = initial.charCodeAt(0) % colors.length;
-          const bgColor = colors[colorIndex];
-
-          // Create SVG with the initial
-          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="50" fill="${bgColor}" />
-            <text x="50" y="50" font-size="50" text-anchor="middle" dy=".3em" fill="white" font-family="Arial, sans-serif">${initial}</text>
-          </svg>`;
-
-          // Convert SVG to data URL
-          publisherImage = 'data:image/svg+xml;base64,' + btoa(svg);
-        }
-
-        // Initialize post data
+        }        // Initialize post data
         const postData = {
           publisherName: publisherName,
           publisherEmail: currentUser.email,
-          publisherImage: publisherImage,
+          publisherImage: currentUser.photoURL || '',
           postDescription: postContent,
           likesCount: 0,
           commentsCount: 0,
-          publishedAt: serverTimestamp()
+          publishedAt: serverTimestamp(),
+          postImageLink: '',
+          postImageName: ''
         };
 
         // Handle image upload if present

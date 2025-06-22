@@ -272,18 +272,16 @@
       getStorage,
       ref,
       deleteObject
-    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
-
-    // Firebase configuration
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyCaUETFsFnRgSmNFIwEgyGWugfrK9zHbM0",
       authDomain: "uccd-f607e.firebaseapp.com",
       projectId: "uccd-f607e",
-      storageBucket: "uccd-f607e.firebasestorage.app",
+      storageBucket: "uccd-f607e.firebasestorage.com", // Fixed storage bucket URL format
       messagingSenderId: "1037776187244",
       appId: "1:1037776187244:web:7d02b5edc4908dad390d49",
       measurementId: "G-B95Y1W5QWP",
-    };    // Initialize Firebase
+    };// Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const storage = getStorage(app);
@@ -398,16 +396,35 @@
         const postData = postDoc.data();
         console.log("Post data:", postData);
 
-        // If the post has an image, try to delete it from Storage
+        // Check for image fields to delete from storage
+        let imageDeleted = false;
         if (postData.postImageLink || postData.imageUrl) {
           try {
             const imageUrl = postData.postImageLink || postData.imageUrl;
-            console.log("Attempting to delete image:", imageUrl);
+            const imageName = postData.postImageName || '';
 
-            // Check if the URL is a full storage URL or a download URL
-            if (imageUrl && imageUrl.startsWith('https://')) {
+            console.log("Attempting to delete image:", imageUrl);
+            console.log("Image name:", imageName);
+
+            if (!imageUrl || imageUrl === '') {
+              console.log("No image URL to delete");
+            }
+            // First try with the specific image name path if available
+            else if (imageName && imageName !== '') {
+              try {
+                const imageRef = ref(storage, `posts/${imageName}`);
+                await deleteObject(imageRef);
+                imageDeleted = true;
+                console.log("Image deleted successfully using imageName");
+              } catch (nameError) {
+                console.warn("Failed to delete using imageName, trying URL parsing:", nameError);
+                // Continue to URL parsing approach
+              }
+            }
+
+            // If the first method didn't succeed and we have a URL, try URL parsing
+            if (!imageDeleted && imageUrl && imageUrl.startsWith('https://')) {
               // For download URLs, we need to extract the storage path
-              // This is a simplified approach - may need adjustments based on your URL format
               const urlParts = imageUrl.split('?')[0]; // Remove query parameters
               const pathParts = urlParts.split('/o/')[1]; // Get the path after /o/
 
@@ -415,22 +432,40 @@
                 const decodedPath = decodeURIComponent(pathParts);
                 const imageRef = ref(storage, decodedPath);
                 await deleteObject(imageRef);
-              } else {
-                // Try direct reference as fallback
-                const imageRef = ref(storage, imageUrl);
-                await deleteObject(imageRef);
+                imageDeleted = true;
+                console.log("Image deleted successfully using URL parsing");
+              } else {            // Try direct reference as fallback
+                try {
+                  const imageRef = ref(storage, imageUrl);
+                  await deleteObject(imageRef);
+                  imageDeleted = true;
+                  console.log("Image deleted successfully using direct URL");
+                } catch (innerError) {
+                  console.warn("Could not delete with direct URL method:", innerError);
+                  // One final attempt - try using the storage bucket path directly
+                  try {
+                    const storageRef = ref(storage, `posts/${imageName}`);
+                    await deleteObject(storageRef);
+                    imageDeleted = true;
+                    console.log("Image deleted successfully using storage path");
+                  } catch (finalError) {
+                    console.warn("Final deletion attempt failed:", finalError);
+                    throw finalError; // Re-throw to be caught by outer catch
+                  }
+                }
               }
-            } else {
-              // If it's already a storage path
-              const imageRef = ref(storage, imageUrl);
-              await deleteObject(imageRef);
             }
 
-            console.log("Image deleted successfully");
+            if (imageDeleted) {
+              console.log("Image deleted successfully");
+            }
           } catch (storageError) {
             console.warn("Error deleting image (continuing with post deletion):", storageError);
+            console.log("Storage error code:", storageError.code, "Error message:", storageError.message);
             // Continue with document deletion even if image deletion fails
           }
+        } else {
+          console.log("Post has no image to delete");
         }
 
         // Delete the document from Firestore
@@ -444,7 +479,7 @@
           row.remove();
         }
 
-        alert('Post deleted successfully');        // Reload posts to ensure the list is fresh
+        alert('Post deleted successfully');// Reload posts to ensure the list is fresh
         console.log("Reloading posts...");
         await loadPosts();
 

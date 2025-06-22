@@ -321,8 +321,7 @@
       }
     }
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import {
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";    import {
       getFirestore,
       collection,
       getDocs,
@@ -332,19 +331,22 @@
       query,
       orderBy,
       Timestamp
-    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"; import {
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"; 
+    import {
       getStorage,
       ref,
       uploadBytesResumable,
       getDownloadURL
     } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
-
-    // Firebase configuration
+    import {
+      getAuth,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";// Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyCaUETFsFnRgSmNFIwEgyGWugfrK9zHbM0",
       authDomain: "uccd-f607e.firebaseapp.com",
       projectId: "uccd-f607e",
-      storageBucket: "uccd-f607e.firebasestorage.app",
+      storageBucket: "uccd-f607e.appspot.com",
       messagingSenderId: "1037776187244",
       appId: "1:1037776187244:web:7d02b5edc4908dad390d49",
       measurementId: "G-B95Y1W5QWP",
@@ -352,8 +354,23 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const storage = getStorage(app);
+    const auth = getAuth(app);
 
     let currentPostId = null;
+    let currentUser = null;
+    
+    // Check authentication state
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        currentUser = user;
+        console.log("User is signed in:", user.email);
+      } else {
+        // User is signed out, redirect to login
+        console.log("No user is signed in");
+        window.location.href = "login.html";
+      }
+    });
 
     // Load post data when page loads
     document.addEventListener('DOMContentLoaded', async function () {
@@ -424,14 +441,19 @@
           updateBtn.disabled = false;
           updateBtn.textContent = 'Update Post';
           return;
-        }
-
-        // Prepare update data
+        }        // Get the current post data to preserve existing image fields if no new image is uploaded
+        const postDoc = await getDoc(doc(db, "posts", currentPostId));
+        const currentPostData = postDoc.exists() ? postDoc.data() : {};
+        
+        // Prepare update data with image fields preserved
         const updateData = {
-          postDescription: postContent
+          postDescription: postContent,
+          // Preserve existing image fields or set to empty strings if they don't exist
+          postImageLink: currentPostData.postImageLink || '',
+          postImageName: currentPostData.postImageName || ''
         };
 
-        console.log('Initial update data:', updateData);        // Handle image upload if a new image is selected
+        console.log('Initial update data:', updateData);// Handle image upload if a new image is selected
         if (imageFile) {
           console.log('Image file selected:', imageFile.name, 'Size:', imageFile.size);
 
