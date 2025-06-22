@@ -139,6 +139,25 @@
         <h1 class="sitename">UCCD</h1>
       </a>
 
+        <nav id="navmenu" class="navmenu navmenu-user">
+          <ul>
+            <li>
+              <a class="logout-btn" href="login.html">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Log Out</span>
+              </a>
+            </li>
+          </ul>
+          <i class="mobile-nav-toggle bi bi-person-circle"></i>
+        </nav>
+      </div>
+    </header>
+    <!--== BODY CONTNAINER ==-->
+    <div class="container-fluid sb2">
+      <div class="row">
+        <div class="sb2-1" style="background-color: white">
+          <!--== USER INFO ==-->
+          <!-- <div class="sb2-12">
       <nav id="navmenu" class="navmenu navmenu-user">
         <ul>
           <li>
@@ -186,7 +205,34 @@
                 </ul>
               </div>
             </li>
+          <!--== LEFT MENU ==-->
+          <div class="sb2-13">
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <a href="javascript:void(0)" class="collapsible-header"
+                  ><i class="fa fa-book" aria-hidden="true"></i> Courses</a
+                >
+                <div class="collapsible-body left-sub-menu">
+                  <ul>
+                    <li><a class="cr-mg-btn" href="#">Manage</a></li>
+                    <!-- <li><a class="cr-v-all" href="#">All Users</a></li>
+                    <li><a href="admin-add-courses.html">Add New Course</a></li>
+                    <li><a href="admin-trash-courses.html">Trash Course</a></li> -->
+                  </ul>
+                </div>
+              </li>
 
+              <li>
+                <a href="javascript:void(0)" class="collapsible-header"
+                  ><i class="fa fa-user" aria-hidden="true"></i> users</a
+                >
+                <div class="collapsible-body left-sub-menu">
+                  <ul>
+                    <li><a class="inst-mg-btn" href="#">Manage</a></li>
+                    <!-- <li><a class="inst-v-all" href="#">All Users</a></li> -->
+                  </ul>
+                </div>
+              </li>
             <li>
               <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>
                 users</a>
@@ -198,6 +244,53 @@
               </div>
             </li>
 
+              <li>
+                <a href="javascript:void(0)" class="collapsible-header"
+                  ><i class="fa fa-calendar" aria-hidden="true"></i> Posts</a
+                >
+                <div class="collapsible-body left-sub-menu">
+                  <ul>
+                    <li><a href="admin-post-all.html">All Posts</a></li>
+                    <li>
+                      <a href="admin-post-add.html">Create New Post</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="collapsible-header"
+                  ><i class="fa fa-users" aria-hidden="true"></i> Students</a
+                >
+                <div class="collapsible-body left-sub-menu">
+                  <ul>
+                    <li class="admission-btn"><a>Admission</a></li>
+                    <!-- <li><a href="admin-user-add.html">Add New Students</a></li> -->
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--== BODY INNER CONTAINER ==-->
+        <div class="sb2-2">
+          <!--== breadcrumbs ==-->
+          <div class="sb2-2-2 path">
+            <ul>
+              <li>
+                <a href="index.html"
+                  ><i class="fa fa-home" aria-hidden="true"></i> Home</a
+                >
+              </li>
+              <li class="active-bre">
+                <a class="curr-path" href="#"> Dashboard</a>
+              </li>
+              <li class="page-back">
+                <a href="index.html"
+                  ><i class="fa fa-backward" aria-hidden="true"></i> Back</a
+                >
+              </li>
+            </ul>
+          </div>
             <li>
               <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar" aria-hidden="true"></i>
                 Posts</a>
@@ -274,8 +367,640 @@
           </div>
         </div>
 
+          <!-- manage users -->
+          <div class="form-section add-inst">
+            <h4>Manage users</h4>
+            <p>View, Add, Update or Delete user</p>
+
+            <form id="addMaterialForm">
+              <div class="input-group mb-3">
+                <input
+                  type="email"
+                  class="form-control inst-email"
+                  placeholder="example@email.com"
+                  aria-label="email"
+                />
+                <button
+                  class="btn btn-outline-secondary inst-view"
+                  type="button"
+                  id="button-addon2"
+                >
+                  View
+                </button>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control inst-name"
+                  id="instAddName"
+                  placeholder="Name"
+                />
+                <label for="instAddName">Name</label>
+              </div>
+
+              <select
+                id="userRole"
+                class="form-select browser-default user-role"
+                aria-label="Default select example"
+                style="margin-bottom: 15px"
+              >
+                <option value="instructor">instructor</option>
+                <option value="student">student</option>
+              </select>
+
+              <div class="form-floating" style="margin-bottom: 15px">
+                <input
+                  type="password"
+                  class="form-control inst-pass"
+                  id="instPass"
+                  placeholder="Password"
+                />
+                <label for="instPass">Password</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input
+                  type="tel"
+                  class="form-control inst-phone"
+                  id="instPhone"
+                />
+                <label for="instPhone">Phone number</label>
+              </div>
+
+              <div class="form-floating">
+                <textarea
+                  class="form-control inst-desc"
+                  placeholder="Add a description"
+                  id="instDesc"
+                  style="height: 100px"
+                ></textarea>
+                <label for="instDesc">Description</label>
+              </div>
+
+              <div class="file-container">
+                <input type="file" id="file-input" class="inst-img" />
+                <label for="file-input">
+                  <i class="bi bi-file-earmark-image"></i> Image To Upload
+                </label>
+                <div id="num-of-files">No Image Choosen</div>
+                <ul id="files-list"></ul>
+              </div>
+
+              <button type="submit" create="false" class="inst-save">
+                Update user
+              </button>
+              <button type="reset" class="inst-del">Delete user</button>
+            </form>
+          </div>
+
+          <!-- Manage Courses -->
+          <div class="form-section add-cr">
+            <h4>Manage Courses</h4>
+            <p>View, Add, Update or Delete Course</p>
+
+            <form>
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control cr-name"
+                  id="crAddName"
+                  placeholder="Course Name"
+                />
+                <button
+                  class="btn btn-outline-secondary cr-view"
+                  type="button"
+                  id="crViewBtn"
+                >
+                  View
+                </button>
+              </div>
+
+              <!-- <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control inst-name"
+                  id="instAddName"
+                  placeholder="Name"
+                />
+                <label for="instAddName">Name</label>
+              </div> -->
+
+              <label for="instList" class="form-label">Course Instructor</label>
+              <input
+                class="form-control cr-inst"
+                list="instlistOptions"
+                id="instList"
+                placeholder="Choose Instructor..."
+                style="margin-bottom: 15px"
+              />
+              <datalist id="instlistOptions"> </datalist>
+
+              <label for="catList" class="form-label">Course Category</label>
+              <input
+                class="form-control cat"
+                list="catlistOptions"
+                id="catList"
+                placeholder="Choose Category..."
+                style="margin-bottom: 15px"
+              />
+              <datalist id="catlistOptions"> </datalist>
+
+              <div class="mb-3">
+                <label for="courseDates" class="form-label"
+                  >Course Dates (Start - End):</label
+                >
+                <input
+                  type="text"
+                  id="courseDates"
+                  class="form-control datepicker1 cr-dates"
+                />
+              </div>
+              <script>
+                new window.Datera("datepicker1", {
+                  minYear: 2000,
+                  selectionType: "range",
+                }).mount();
+              </script>
+
+              <div class="mb-3">
+                <label for="interviewDates" class="form-label"
+                  >Interview Dates (Start - End):</label
+                >
+                <input
+                  type="text"
+                  id="interviewDates"
+                  class="form-control datepicker2 intr-dates"
+                />
+              </div>
+              <script>
+                new window.Datera("datepicker2", {
+                  minYear: 2000,
+                  selectionType: "range",
+                }).mount();
+              </script>
+
+              <div class="form-floating mb-3">
+                <input
+                  type="number"
+                  class="form-control cr-seats"
+                  id="seatsNum"
+                />
+                <label for="seatsNum">Available Seats</label>
+              </div>
+
+              <div class="form-floating">
+                <textarea
+                  class="form-control cr-desc"
+                  placeholder="Add a description"
+                  id="crDesc"
+                  style="height: 100px"
+                ></textarea>
+                <label for="crDesc">Course Description</label>
+              </div>
+
+              <div class="file-container">
+                <input type="file" id="course-file-input" class="cr-img" />
+                <label for="course-file-input">
+                  <i class="bi bi-file-earmark-image"></i> Image To Upload
+                </label>
+                <div id="num-of-cr-files">No Image Choosen</div>
+                <ul id="cr-files-list"></ul>
+              </div>
+
+              <button type="submit" create="false" class="cr-save">
+                Update Course
+              </button>
+              <button type="reset" class="cr-del">Delete Course</button>
+            </form>
+          </div>
+
+          <!--== All users ==-->
+          <div class="form-section inst-details std-details">
+            <h4>Manage users</h4>
+            <p>View, Add, Update or Delete user</p>
+            <div class="tab-inn">
+              <div class="table-responsive table-desi">
+                <table class="table table-hover instructors-table">
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Name</th>
+                      <th>Phone</th>
+                      <th>Email</th>
+                      <th>View</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <!-- image -->
+                      <td>
+                        <span class="list-img"
+                          ><img src="images/user/1.png" alt=""
+                        /></span>
+                      </td>
+
+                      <!-- name -->
+                      <td>
+                        <a href="#"
+                          ><span class="list-enq-name">Marsha Hogan</span>
+                          <!-- <span class="list-enq-city"
+                            >Illunois, United States
+                          </span> -->
+                        </a>
+                      </td>
+                      <!-- phone -->
+                      <td>+01 3214 6522</td>
+                      <!-- mail -->
+                      <td>chadengle@dummy.com</td>
+                      <!-- <td>united states</td>
+                      <td>ST17241</td>
+                      <td>03 Jun 1990</td> -->
+                      <!-- <td>
+                        <span class="label label-success">Active</span>
+                      </td> -->
+                      <td>
+                        <a href="admin-student-details.html" class="ad-st-view"
+                          >View</a
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Status Section -->
+          <div class="dashboard-section animate-fade delay-3 std-admission">
+            <div class="section-header">
+              <h4><i class="bi bi-list-check"></i> Courses Admission</h4>
+            </div>
+
+            <div class="table-responsive">
+              <table class="status-table admission-table">
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Student Name</th>
+                    <th>Student ID</th>
+                    <th colspan="2" style="text-align: center">Decision</th>
+                  </tr>
+                </thead>
+                <tbody class=""></tbody>
+              </table>
+            </div>
+          </div>
 
 
+          <!--== User Details ==-->
+          <!-- <div class="c-details sb2-2-3">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="box-inn-sp">
+                  <div class="inn-title">
+                    <h4>Course Details</h4>
+                    <p>
+                      All about courses, program structure, fees, best course
+                      lists (ranking), syllabus, teaching techniques and other
+                      details.
+                    </p>
+                  </div>
+                  <div class="tab-inn">
+                    <div class="table-responsive table-desi">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Image</th>
+                            <th>Course Name</th>
+                            <th>Category</th>
+                            <th>Durations</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Total Seats</th>
+                            <th>Status</th>
+                            <th>View</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-1.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Aerospace Engineering</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Engineering</td>
+                            <td>60 Days(420hrs)</td>
+                            <td>03 Jun 2018</td>
+                            <td>12 Aug 2018</td>
+                            <td>74</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-5.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Fashion Technology</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Fashion</td>
+                            <td>30 Days(420hrs)</td>
+                            <td>01 Nov 2018</td>
+                            <td>01 Dec 2018</td>
+                            <td>30</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-2.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Agriculture Courses</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Agriculture</td>
+                            <td>25 Days(420hrs)</td>
+                            <td>05 Jan 2018</td>
+                            <td>25 Jan 2018</td>
+                            <td>25</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-3.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Marine Engineering</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Ocean / Marine</td>
+                            <td>06 Months</td>
+                            <td>12 Feb 2018</td>
+                            <td>14 Aug 2018</td>
+                            <td>68</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-4.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Building, Construction Management</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Construction</td>
+                            <td>1 Year</td>
+                            <td>05 Mar 2018</td>
+                            <td>16 Mar 2018</td>
+                            <td>72</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-1.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Aerospace Engineering</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Engineering</td>
+                            <td>60 Days(420hrs)</td>
+                            <td>03 Jun 2018</td>
+                            <td>12 Aug 2018</td>
+                            <td>74</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-5.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Fashion Technology</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Fashion</td>
+                            <td>30 Days(420hrs)</td>
+                            <td>01 Nov 2018</td>
+                            <td>01 Dec 2018</td>
+                            <td>30</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-2.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Agriculture Courses</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Agriculture</td>
+                            <td>25 Days(420hrs)</td>
+                            <td>05 Jan 2018</td>
+                            <td>25 Jan 2018</td>
+                            <td>25</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-3.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Marine Engineering</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Ocean / Marine</td>
+                            <td>06 Months</td>
+                            <td>12 Feb 2018</td>
+                            <td>14 Aug 2018</td>
+                            <td>68</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <span class="list-img"
+                                ><img src="images/course/sm-4.jpg" alt=""
+                              /></span>
+                            </td>
+                            <td>
+                              <a href="admin-student-details.html"
+                                ><span class="list-enq-name"
+                                  >Building, Construction Management</span
+                                ><span class="list-enq-city"
+                                  >Illunois, United States</span
+                                ></a
+                              >
+                            </td>
+                            <td>Construction</td>
+                            <td>1 Year</td>
+                            <td>05 Mar 2018</td>
+                            <td>16 Mar 2018</td>
+                            <td>72</td>
+                            <td>
+                              <span class="label label-success">Active</span>
+                            </td>
+                            <td>
+                              <a
+                                href="admin-student-details.html"
+                                class="ad-st-view"
+                                >View</a
+                              >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
         <!--== User Details ==-->
         <div class="c-details sb2-2-3">
           <div class="row">
