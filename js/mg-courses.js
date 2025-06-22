@@ -1,17 +1,12 @@
-// import { db, validateToken, dir, cDetails, stdDetails, dash } from ""; // Import db and other necessary variables
-let db;
-
-async function loadManagerModule() {
-  try {
-    const module = await import("../js/index.js");
-    db = module.db;
-    module.validateToken();
-  } catch (err) {
-    console.error("Failed to load manager.js:", err);
-  }
-}
-await loadManagerModule();
-
+import {
+  db,
+  validateToken,
+  dir,
+  instDetails,
+  cDetails,
+  stdDetails,
+  dash,
+} from "../js/manager.js"; // Import db and other necessary variables
 import {
   collection,
   getFirestore,
@@ -25,12 +20,7 @@ import {
   Timestamp,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
-let dir = document.querySelector(".curr-path");
-let dash = document.querySelector(".dash");
-let stdDetails = document.querySelector(".std-details");
-let cDetails = document.querySelector(".c-details");
 let addCr = document.querySelector(".add-cr");
-let stdAdmission = document.querySelector(".std-admission");
 
 let crName = document.querySelector(".cr-name");
 let catNameSel = document.querySelector(".cat");
@@ -41,7 +31,6 @@ let crDates = document.querySelector(".cr-dates");
 let intrDates = document.querySelector(".intr-dates");
 let crStartDate, crEndDate, intrStartDate, intrEndDate;
 
-let addmissionBtn = document.querySelector(".admission-btn");
 let crMgBtn = document.querySelector(".cr-mg-btn");
 let crViewBtn = document.querySelector(".cr-view");
 let crSaveBtn = document.querySelector(".cr-save");
@@ -59,19 +48,10 @@ crMgBtn.addEventListener("click", function () {
   dir.innerHTML = "Manage Courses";
   dash.style.display = "none";
   stdDetails.style.display = "none";
-  // cDetails.style.display = "none";
+  cDetails.style.display = "none";
   addCr.style.display = "block";
   populateDatalist("cat");
   populateDatalist("inst");
-});
-
-addmissionBtn.addEventListener("click", function () {
-  dir.innerHTML = "Student Admission";
-  dash.style.display = "none";
-  stdDetails.style.display = "none";
-  // cDetails.style.display = "none";
-  addCr.style.display = "none";
-  stdAdmission.style.display = "block";
 });
 
 crViewBtn.addEventListener("click", async function () {

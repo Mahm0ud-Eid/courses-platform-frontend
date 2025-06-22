@@ -1,4 +1,4 @@
-import { auth, db, validateToken } from "../js/index.js"; // Import auth and db from index.js
+import { auth, db } from "../js/index.js"; // Import auth and db from index.js
 import {
   collection,
   getFirestore,
@@ -9,23 +9,19 @@ import {
   where,
   doc,
   deleteDoc,
-  arrayUnion,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
 let dir = document.querySelector(".curr-path");
 let instMgBtn = document.querySelector(".inst-mg-btn");
 let instVAllBtn = document.querySelector(".inst-v-all");
-let addmissionBtn = document.querySelector(".admission-btn");
 let dash = document.querySelector(".dash");
 let stdDetails = document.querySelector(".std-details");
 let cDetails = document.querySelector(".c-details");
 let addInst = document.querySelector(".add-inst");
 let instDetails = document.querySelector(".inst-details");
-let stdAdmission = document.querySelector(".std-admission");
 
 instDetails.style.display = "none";
 addInst.style.display = "none";
-stdAdmission.style.display = "none";
 
 let instViewBtn = document.querySelector(".inst-view");
 let instSaveBtn = document.querySelector(".inst-save");
@@ -42,6 +38,59 @@ let instImg = document.querySelector(".inst-img");
 
 const usersRef = collection(db, "users");
 
+function validateToken() {
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    Swal.fire({
+      title: "No token found",
+      text: "Please log in.",
+      icon: "warning",
+      showCloseButton: true,
+    }).then(() => {
+      window.location.href = "/login.html";
+    });
+    return null;
+  }
+
+  // If token is not a JWT, skip decoding logic
+  if (!token.includes(".")) {
+    console.log("Token is not a JWT. Skipping verification");
+    return token;
+  }
+
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    const isExpired = payload.exp * 1000 < Date.now();
+
+    if (isExpired) {
+      Swal.fire({
+        title: "Session Expired",
+        text: "Your session has expired. Please log in again.",
+        icon: "warning",
+        showCloseButton: true,
+      }).then(() => {
+        window.location.href = "/login.html";
+      });
+      return null;
+    }
+  } catch (error) {
+    console.error("Invalid token format:", error);
+    Swal.fire({
+      title: "Invalid token format",
+      text: "Please log in again.",
+      icon: "error",
+      showCloseButton: true,
+    }).then(() => {
+      window.location.href = "/login.html";
+    });
+    return null;
+  }
+
+  console.log("Token is valid and not expired.");
+  return token;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   validateToken();
 });
@@ -50,7 +99,7 @@ instMgBtn.addEventListener("click", function () {
   dir.innerHTML = "manage users";
   dash.style.display = "none";
   stdDetails.style.display = "none";
-  // cDetails.style.display = "none";
+  cDetails.style.display = "none";
   addInst.style.display = "block";
 });
 
@@ -58,6 +107,16 @@ instViewBtn.addEventListener("click", async function () {
   dir.innerHTML = "view user";
   // const token = validateToken();
 
+  // // Initialize Firebase if not already initialized
+  // if (!firebase.apps.length) {
+  //   firebase.initializeApp({
+  //     apiKey: "YOUR_API_KEY",
+  //     authDomain: "YOUR_AUTH_DOMAIN",
+  //     projectId: "YOUR_PROJECT_ID",
+  //     // ...other config
+  //   });
+  // }
+  // const db = firebase.firestore();
   const qSnap = await getDocs(
     query(usersRef, where("email", "==", instEmail.value))
   );
@@ -102,119 +161,6 @@ instViewBtn.addEventListener("click", async function () {
     // instPass.value = "";
     // instImg.src = "images/user/1.png";
   }
-});
-
-async function acceptAdmission(courseId, studentId, courseTitle) {
-  try {
-    const studentRef = doc(db, "courses", courseId, "students", studentId);
-    await updateDoc(studentRef, { isAccepted: true });
-
-    // Find the user document by studentId (assuming studentId is the user's document ID in "users" collection)
-    const userRef = doc(db, "users", studentId);
-    await updateDoc(userRef, {
-      courses: arrayUnion(courseTitle),
-    });
-
-    Swal.fire({
-      title: "Admission Accepted",
-      text: "The student has been accepted into the course.",
-      icon: "success",
-      showCloseButton: true,
-    });
-
-    // Refresh the admission table
-    addmissionBtn.click();
-  } catch (error) {
-    console.error("Error accepting admission:", error);
-    Swal.fire({
-      title: "Error",
-      text: error.message,
-      icon: "error",
-      showCloseButton: true,
-    });
-  }
-}
-window.acceptAdmission = acceptAdmission;
-
-function rejectAdmission(courseId, studentId) {
-  const token = validateToken();
-
-  (async () => {
-    try {
-      const studentRef = doc(db, "courses", courseId, "students", studentId);
-      await updateDoc(studentRef, { isAccepted: false });
-
-      Swal.fire({
-        title: "Admission Rejected",
-        text: "The student has been rejected from the course.",
-        icon: "success",
-        showCloseButton: true,
-      });
-
-      // Refresh the admission table
-      addmissionBtn.click();
-    } catch (error) {
-      console.error("Error rejecting admission:", error);
-      Swal.fire({
-        title: "Error",
-        text: error.message,
-        icon: "error",
-        showCloseButton: true,
-      });
-    }
-  })();
-}
-window.rejectAdmission = rejectAdmission;
-
-addmissionBtn.addEventListener("click", function () {
-  dir.innerHTML = "Student Admission";
-  dash.style.display = "none";
-  stdDetails.style.display = "none";
-  // cDetails.style.display = "none";
-  addInst.style.display = "none";
-  stdAdmission.style.display = "block";
-  (async () => {
-    // Fetch all courses with a "students" subcollection and display pending admissions
-    const coursesRef = collection(db, "courses");
-    const coursesSnap = await getDocs(coursesRef);
-
-    const tableBody = document.querySelector(".admission-table tbody");
-    tableBody.innerHTML = ""; // Clear previous rows
-
-    for (const courseDoc of coursesSnap.docs) {
-      const courseId = courseDoc.id;
-      const courseTitle = courseDoc.data().title || "Unknown Course";
-      const studentsRef = collection(db, "courses", courseId, "students");
-      const studentsSnap = await getDocs(studentsRef);
-
-      studentsSnap.forEach((studentDoc) => {
-        const studentData = studentDoc.data();
-        if (studentData.isAccepted === null) {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-            <td>${courseTitle}</td>
-            <td>${studentData.name || "Unknown"}</td>
-            <td>${studentData.universityID || ""}</td>
-            <td>
-              <button type="button" class="btn btn-outline-success" onclick="acceptAdmission('${courseId}', '${
-            studentDoc.id
-          }', '${courseTitle}')">
-                Accept
-              </button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-outline-danger" onclick="rejectAdmission('${courseId}', '${
-            studentDoc.id
-          }')">
-                Reject
-              </button>
-            </td>
-          `;
-          tableBody.appendChild(row);
-        }
-      });
-    }
-  })();
 });
 
 document.getElementById("file-input").addEventListener("change", (event) => {
@@ -334,7 +280,7 @@ instDelBtn.addEventListener("click", async (event) => {
 instVAllBtn.addEventListener("click", function () {
   dir.innerHTML = "view All Instructors";
   dash.style.display = "none";
-  // cDetails.style.display = "none";
+  cDetails.style.display = "none";
   addInst.style.display = "none";
   instDetails.style.display = "block";
 
