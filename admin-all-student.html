@@ -163,29 +163,16 @@
                     <div class="row">
                       <div class="col-md-6 mb-3">
                         <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Search students by name..."
+                          <input type="text" class="form-control" placeholder="Search students by name or department..."
                             aria-label="Search students">
                           <button class="btn btn-primary" type="button">
                             <i class="fa fa-search"></i> Search
                           </button>
                         </div>
                       </div>
-                      <div class="col-md-3 mb-3">
-                        <select class="form-control" id="statusFilter">
-                          <option value="">All Status</option>
-                          <option value="Active">Active</option>
-                          <option value="Inactive">Inactive</option>
-                        </select>
-                      </div>
                     </div>
                     <div class="row">
                       <div class="col-12 text-end">
-                        <button type="button" class="btn btn-info me-2" id="importStudentsBtn">
-                          <i class="fa fa-upload"></i> Import Students
-                        </button>
-                        <button type="button" class="btn btn-warning me-2" id="exportStudentsBtn">
-                          <i class="fa fa-download"></i> Export Students
-                        </button>
                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
                           data-bs-target="#addStudentModal">
                           <i class="fa fa-plus"></i> Add New Student
@@ -199,175 +186,126 @@
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>User</th>
                           <th>Name</th>
-                          <th>Phone</th>
-                          <th>Email</th>
                           <th>Department</th>
-                          <th>Id</th>
-                          <th>Date of birth</th>
-                          <th>Edit</th>
+                          <th>Year</th>
+                          <th>Phone Number</th>
+                          <th>University ID</th>
+                          <th>Email</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>
-                            <span class="list-img"><img src="images/user/1.png" alt="" /></span>
+                            <span class="list-enq-name">Marsha Hogan</span>
                           </td>
-                          <td>
-                            <a href="#"><span class="list-enq-name">Marsha Hogan</span><span
-                                class="list-enq-city">Illunois, United States</span></a>
-                          </td>
-                          <td>+01 3214 6522</td>
-                          <td>chadengle@dummy.com</td>
                           <td>Computer Science</td>
+                          <td>3rd Year</td>
+                          <td>+01 3214 6522</td>
                           <td>ST17241</td>
-                          <td>03 Jun 1990</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
+                          <td>chadengle@dummy.com</td>
                           <td>
                             <a href="admin-student-details.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view delete-student">Delete</a>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="list-img"><img src="images/user/2.png" alt="" /></span>
+                            <span class="list-enq-name">Lucas Caden</span>
                           </td>
-                          <td>
-                            <a href="#"><span class="list-enq-name">Lucas Caden</span><span
-                                class="list-enq-city">Illunois, United States</span></a>
-                          </td>
-                          <td>+01 8574 6854</td>
-                          <td>lucas@gmail.com</td>
                           <td>Business Administration</td>
+                          <td>2nd Year</td>
+                          <td>+01 8574 6854</td>
                           <td>ST10231</td>
-                          <td>16 Feb 1987</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-img"><img src="images/user/4.png" alt="" /></span>
-                          </td>
-                          <td>
-                            <a href="#"><span class="list-enq-name">Ethan Oliver</span><span
-                                class="list-enq-city">Illunois, United States</span></a>
-                          </td>
-                          <td>+01 8574 6854</td>
-                          <td>Ethan@gmail.com</td>
-                          <td>Engineering</td>
-                          <td>ST32168</td>
-                          <td>21 Jun 1992</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-img"><img src="images/user/5.png" alt="" /></span>
-                          </td>
-                          <td>
-                            <a href="#"><span class="list-enq-name">Ethan Oliver</span><span
-                                class="list-enq-city">Illunois, United States</span></a>
-                          </td>
-                          <td>+01 8574 6854</td>
-                          <td>Ethan@gmail.com</td>
-                          <td>Arts & Design</td>
-                          <td>ST32168</td>
-                          <td>21 Jun 1992</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-img"><img src="images/user/1.png" alt="" /></span>
-                          </td>
-                          <td>
-                            <a href="#"><span class="list-enq-name">Marsha Hogan</span><span
-                                class="list-enq-city">Illunois, United States</span></a>
-                          </td>
-                          <td>+01 3214 6522</td>
-                          <td>chadengle@dummy.com</td>
-                          <td>Computer Science</td>
-                          <td>ST17241</td>
-                          <td>03 Jun 1990</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
-                          <td>
-                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="list-img"><img src="images/user/2.png" alt="" /></span>
-                          </td>
-                          <td>
-                            <a href="#"><span class="list-enq-name">Lucas Caden</span><span
-                                class="list-enq-city">Illunois, United States</span></a>
-                          </td>
-                          <td>+01 8574 6854</td>
                           <td>lucas@gmail.com</td>
+                          <td>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view delete-student">Delete</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="list-enq-name">Ethan Oliver</span>
+                          </td>
+                          <td>Engineering</td>
+                          <td>4th Year</td>
+                          <td>+01 8574 6854</td>
+                          <td>ST32168</td>
+                          <td>Ethan@gmail.com</td>
+                          <td>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view delete-student">Delete</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="list-enq-name">Emma Williams</span>
+                          </td>
+                          <td>Arts & Design</td>
+                          <td>1st Year</td>
+                          <td>+01 9574 6854</td>
+                          <td>ST12368</td>
+                          <td>emma@gmail.com</td>
+                          <td>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view delete-student">Delete</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="list-enq-name">James Wilson</span>
+                          </td>
+                          <td>Computer Science</td>
+                          <td>4th Year</td>
+                          <td>+01 3214 6522</td>
+                          <td>ST17242</td>
+                          <td>james@example.com</td>
+                          <td>
+                            <a href="admin-student-details.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view delete-student">Delete</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="list-enq-name">Sophia Roberts</span>
+                          </td>
                           <td>Mathematics</td>
-                          <td>ST10231</td>
-                          <td>16 Feb 1987</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
+                          <td>2nd Year</td>
+                          <td>+01 8574 6854</td>
+                          <td>ST10232</td>
+                          <td>sophia@example.com</td>
                           <td>
                             <a href="admin-student-details.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view delete-student">Delete</a>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="list-img"><img src="images/user/4.png" alt="" /></span>
+                            <span class="list-enq-name">Noah Brown</span>
                           </td>
-                          <td>
-                            <a href="#"><span class="list-enq-name">Ethan Oliver</span><span
-                                class="list-enq-city">Illunois, United States</span></a>
-                          </td>
-                          <td>+01 8574 6854</td>
-                          <td>Ethan@gmail.com</td>
                           <td>Physics</td>
-                          <td>ST32168</td>
-                          <td>21 Jun 1992</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
+                          <td>3rd Year</td>
+                          <td>+01 8597 6854</td>
+                          <td>ST32169</td>
+                          <td>noah@example.com</td>
                           <td>
                             <a href="admin-student-details.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view delete-student">Delete</a>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="list-img"><img src="images/user/5.png" alt="" /></span>
+                            <span class="list-enq-name">Olivia Johnson</span>
                           </td>
-                          <td>
-                            <a href="#"><span class="list-enq-name">Ethan Oliver</span><span
-                                class="list-enq-city">Illunois, United States</span></a>
-                          </td>
-                          <td>+01 8574 6854</td>
-                          <td>Ethan@gmail.com</td>
                           <td>English Literature</td>
-                          <td>ST32168</td>
-                          <td>21 Jun 1992</td>
-                          <td>
-                            <span class="label label-success">Active</span>
-                          </td>
+                          <td>1st Year</td>
+                          <td>+01 8578 6854</td>
+                          <td>ST32170</td>
+                          <td>olivia@example.com</td>
                           <td>
                             <a href="admin-student-details.html" class="ad-st-view">Edit</a>
+                            <a href="#" class="ad-st-view delete-student">Delete</a>
                           </td>
                         </tr>
                       </tbody>
@@ -381,9 +319,7 @@
       </div>
     </div>
   </div>
-
-  <!-- Hidden file input for importing students -->
-  <input type="file" id="importFileInput" accept=".csv,.xlsx,.xls" style="display: none;">
+  <!-- No hidden inputs needed -->
 
   <!-- Add Student Modal -->
   <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
@@ -428,23 +364,20 @@
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="studentId" class="form-label">Student ID <span class="text-danger">*</span></label>
+                <label for="studentId" class="form-label">University ID <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="studentId" name="id" required placeholder="e.g., ST12345">
               </div>
               <div class="col-md-6 mb-3">
-                <label for="studentStatus" class="form-label">Status <span class="text-danger">*</span></label>
-                <select class="form-control" id="studentStatus" name="status" required>
-                  <option value="">Select Status</option>
-                  <option value="Active">Active</option>
-                  <option value="Inactive">Inactive</option>
+                <label for="studentYear" class="form-label">Year <span class="text-danger">*</span></label>
+                <select class="form-control" id="studentYear" name="year" required>
+                  <option value="">Select Year</option>
+                  <option value="1st Year">1st Year</option>
+                  <option value="2nd Year">2nd Year</option>
+                  <option value="3rd Year">3rd Year</option>
+                  <option value="4th Year">4th Year</option>
+                  <option value="5th Year">5th Year</option>
+                  <option value="Graduate">Graduate</option>
                 </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 mb-3">
-                <label for="studentCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="studentCity" name="city"
-                  placeholder="e.g., Illinois, United States">
               </div>
             </div>
           </form>
@@ -505,20 +438,24 @@
         if (e.which === 13) { // Enter key
           filterStudents();
         }
-      });
-
-      function filterStudents() {
-        let selectedStatus = $("#statusFilter").val();
+      }); function filterStudents() {
         let searchTerm = $(".input-group input").val().toLowerCase();
 
         $("tbody tr").each(function () {
-          let studentName = $(this).find("td:nth-child(2) .list-enq-name").text().toLowerCase();
-          let status = $(this).find("td:nth-child(8) .label").text().trim();
+          let studentName = $(this).find("td:nth-child(1) .list-enq-name").text().toLowerCase();
+          let department = $(this).find("td:nth-child(2)").text().toLowerCase();
+          let year = $(this).find("td:nth-child(3)").text().toLowerCase();
+          let email = $(this).find("td:nth-child(6)").text().toLowerCase();
+          let universityID = $(this).find("td:nth-child(5)").text().toLowerCase();
 
-          let statusMatch = selectedStatus === "" || status === selectedStatus;
-          let searchMatch = searchTerm === "" || studentName.includes(searchTerm);
+          let searchMatch = searchTerm === "" ||
+            studentName.includes(searchTerm) ||
+            department.includes(searchTerm) ||
+            year.includes(searchTerm) ||
+            email.includes(searchTerm) ||
+            universityID.includes(searchTerm);
 
-          if (statusMatch && searchMatch) {
+          if (searchMatch) {
             $(this).show();
           } else {
             $(this).hide();
@@ -551,27 +488,20 @@
         const randomDate = generateRandomDate();
 
         // Get status label class
-        const statusClass = studentData.status === 'Active' ? 'label-success' : 'label-warning';
-
-        // Create new table row
+        const statusClass = studentData.status === 'Active' ? 'label-success' : 'label-warning';        // Create new table row
         const newRow = `
           <tr>
             <td>
-              <span class="list-img"><img src="${imageSrc}" alt="" /></span>
+              <span class="list-enq-name">${studentData.name}</span>
             </td>
-            <td>
-              <a href="#"><span class="list-enq-name">${studentData.name}</span><span class="list-enq-city">${studentData.city || 'N/A'}</span></a>
-            </td>
-            <td>${studentData.phone}</td>
-            <td>${studentData.email}</td>
             <td>${studentData.department}</td>
+            <td>${studentData.year}</td>
+            <td>${studentData.phone}</td>
             <td>${studentData.id}</td>
-            <td>${randomDate}</td>
+            <td>${studentData.email}</td>
             <td>
-              <span class="label ${statusClass}">${studentData.status}</span>
-            </td>
-            <td>
-              <a href="admin-student-details.html" class="ad-st-view">View</a>
+              <a href="admin-student-details.html" class="ad-st-view">Edit</a>
+              <a href="#" class="ad-st-view delete-student">Delete</a>
             </td>
           </tr>
         `;
@@ -612,177 +542,10 @@
         setTimeout(function () {
           $('.alert').fadeOut();
         }, 3000);
-      }
-
-      // Reset form when modal is closed
+      }      // Reset form when modal is closed
       $('#addStudentModal').on('hidden.bs.modal', function () {
         document.getElementById('addStudentForm').reset();
-      });      // Import Students functionality
-      console.log("Setting up import button handler");
-      console.log("Import button found:", $("#importStudentsBtn").length);
-      console.log("Export button found:", $("#exportStudentsBtn").length);
-      console.log("File input found:", $("#importFileInput").length);
-
-      $("#importStudentsBtn").click(function () {
-        console.log("Import button clicked!");
-        $("#importFileInput").click();
       });
-
-      $("#importFileInput").change(function (e) {
-        console.log("File input changed");
-        const file = e.target.files[0];
-        if (file) {
-          const fileName = file.name;
-          const fileExtension = fileName.split('.').pop().toLowerCase();
-
-          if (!['csv', 'xlsx', 'xls'].includes(fileExtension)) {
-            alert('Please select a valid file format (CSV, XLSX, or XLS)');
-            return;
-          }
-
-          // For demo purposes, we'll simulate importing students
-          simulateImport(fileName);
-
-          // Reset file input
-          this.value = '';
-        }
-      });
-
-      // Export Students functionality
-      console.log("Setting up export button handler");
-      $("#exportStudentsBtn").click(function () {
-        console.log("Export button clicked!");
-        exportStudentsToCSV();
-      });
-
-      // Simulate import functionality (in real app, you'd parse the actual file)
-      function simulateImport(fileName) {
-        // Sample imported students
-        const importedStudents = [
-          {
-            name: "Sarah Johnson",
-            department: "Computer Science",
-            email: "sarah.johnson@example.com",
-            phone: "+01 5551234",
-            id: "ST90001",
-            status: "Active",
-            city: "New York, United States"
-          },
-          {
-            name: "Michael Chen",
-            department: "Engineering",
-            email: "michael.chen@example.com",
-            phone: "+01 5555678",
-            id: "ST90002",
-            status: "Active",
-            city: "California, United States"
-          },
-          {
-            name: "Emma Davis",
-            department: "Business Administration",
-            email: "emma.davis@example.com",
-            phone: "+01 5559876",
-            id: "ST90003",
-            status: "Inactive",
-            city: "Texas, United States"
-          }
-        ];
-
-        // Add imported students to table
-        importedStudents.forEach(function (student) {
-          const randomImageNum = Math.floor(Math.random() * 5) + 1;
-          const imageSrc = `images/user/${randomImageNum}.png`;
-          const randomDate = generateRandomDate();
-          const statusClass = student.status === 'Active' ? 'label-success' : 'label-warning';
-
-          const newRow = `
-            <tr style="background-color: #e8f5e8;">
-              <td>
-                <span class="list-img"><img src="${imageSrc}" alt="" /></span>
-              </td>
-              <td>
-                <a href="#"><span class="list-enq-name">${student.name}</span><span class="list-enq-city">${student.city}</span></a>
-              </td>
-              <td>${student.phone}</td>
-              <td>${student.email}</td>
-              <td>${student.department}</td>
-              <td>${student.id}</td>
-              <td>${randomDate}</td>
-              <td>
-                <span class="label ${statusClass}">${student.status}</span>
-              </td>
-              <td>
-                <a href="admin-student-details.html" class="ad-st-view">View</a>
-              </td>
-            </tr>
-          `;
-          $("tbody").prepend(newRow);
-        });
-
-        showSuccessMessage(`Successfully imported ${importedStudents.length} students from ${fileName}`);
-
-        // Remove highlight after 3 seconds
-        setTimeout(function () {
-          $("tr[style*='background-color: #e8f5e8']").css('background-color', '');
-        }, 3000);
-      }
-
-      // Export students to CSV
-      function exportStudentsToCSV() {
-        const students = [];
-
-        // Get all visible students from table
-        $("tbody tr:visible").each(function () {
-          const row = $(this);
-          const student = {
-            name: row.find('.list-enq-name').text().trim(),
-            city: row.find('.list-enq-city').text().trim(),
-            phone: row.find('td:nth-child(3)').text().trim(),
-            email: row.find('td:nth-child(4)').text().trim(),
-            department: row.find('td:nth-child(5)').text().trim(),
-            id: row.find('td:nth-child(6)').text().trim(),
-            dateOfBirth: row.find('td:nth-child(7)').text().trim(),
-            status: row.find('td:nth-child(8) .label').text().trim()
-          };
-          students.push(student);
-        });
-
-        if (students.length === 0) {
-          alert('No students to export');
-          return;
-        }
-
-        // Create CSV content
-        const headers = ['Name', 'City', 'Phone', 'Email', 'Department', 'Student ID', 'Date of Birth', 'Status'];
-        let csvContent = headers.join(',') + '\n';
-
-        students.forEach(function (student) {
-          const row = [
-            `"${student.name}"`,
-            `"${student.city}"`,
-            `"${student.phone}"`,
-            `"${student.email}"`,
-            `"${student.department}"`,
-            `"${student.id}"`,
-            `"${student.dateOfBirth}"`,
-            `"${student.status}"`
-          ];
-          csvContent += row.join(',') + '\n';
-        });
-
-        // Create and download file
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement('a');
-        const url = URL.createObjectURL(blob);
-        link.setAttribute('href', url);
-        link.setAttribute('download', `students_export_${new Date().toISOString().split('T')[0]}.csv`);
-        link.style.visibility = 'hidden';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        showSuccessMessage(`Successfully exported ${students.length} students to CSV file`);
-      }
     });
   </script>
 </body>
