@@ -245,6 +245,25 @@
       object-fit: cover;
     }
 
+    .comment-avatar-container {
+      width: 36px;
+      height: 36px;
+      margin-right: 10px;
+    }
+
+    .initial-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+      background-color: #3F51B5;
+      font-size: 18px;
+    }
+
     .comment-input-wrapper {
       flex-grow: 1;
       position: relative;
@@ -967,9 +986,7 @@
         } else {
           return date.toLocaleDateString() + " at " + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         }
-      }
-
-      getCategoryDisplayName(category) {
+      } getCategoryDisplayName(category) {
         const categoryMap = {
           'announcement': 'Announcement',
           'new-course': 'New Course',
@@ -977,6 +994,22 @@
           'news': 'News'
         };
         return categoryMap[category] || 'General';
+      }
+
+      getColorFromInitial(initial) {
+        // Array of colors to use for initial avatars
+        const colors = [
+          '#F44336', '#E91E63', '#9C27B0', '#673AB7',
+          '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4',
+          '#009688', '#4CAF50', '#8BC34A', '#CDDC39'
+        ];
+
+        // Get a consistent color based on the character code
+        const char = initial.toUpperCase();
+        const charCode = char.charCodeAt(0);
+        const colorIndex = charCode % colors.length;
+
+        return colors[colorIndex];
       } createPostHTML(post) {
         const formattedDate = this.formatDate(post.createdAt);
 
@@ -990,9 +1023,14 @@
             <div class="post-container" data-post-id="${post.id}" data-aos="fade-up">
               <span class="post-category ${post.category}" data-key="${post.category}">
                 ${this.getCategoryDisplayName(post.category)}
-              </span>
-              <div class="post-header">
-                <img src="${post.authorAvatar}" alt="${post.authorName}" class="post-avatar" />                <div class="post-author-info">
+              </span>              <div class="post-header">
+                ${post.authorAvatar && post.authorAvatar !== 'images/user.jpg' ?
+            `<img src="${post.authorAvatar}" alt="${post.authorName}" class="post-avatar" />` :
+            `<div class="post-avatar initial-avatar" style="background-color: ${this.getColorFromInitial(post.authorName.charAt(0))}">
+                     ${post.authorName.charAt(0).toUpperCase()}
+                   </div>`
+          }
+                <div class="post-author-info">
                   <div class="post-author">
                     ${post.authorName}
                   </div>
@@ -1029,9 +1067,10 @@
                 <div class="comments-list">
                   <!-- Comments will be loaded dynamically -->
                   <div class="text-muted text-center py-2">Loading comments...</div>
-                </div>
-                <div class="comment-form">
-                  <img src="images/user/2.jpg" alt="Current User" class="comment-avatar" />
+                </div>                <div class="comment-form">
+                  <div class="comment-avatar-container">
+                    <div class="initial-avatar">${'Anonymous User'.charAt(0).toUpperCase()}</div>
+                  </div>
                   <div class="comment-input-wrapper">
                     <input type="text" class="comment-input" placeholder="Write a comment..." data-key="commentPlaceholder" />
                     <button class="comment-submit" onclick="communityPosts.addComment('${post.id}', this)" disabled>
@@ -1127,14 +1166,26 @@
         if (!commentText) return;
 
         try {
-          console.log('Adding comment to post:', postId);          // Create new comment document - using the exact field names from Firebase
+          console.log('Adding comment to post:', postId);          // Get the username 
+          const userName = "Anonymous User"; // In a real app, get this from auth
+          const userInitial = userName.charAt(0).toUpperCase();
+
+          // Create a data URL for SVG initial avatar
+          const bgColor = this.getColorFromInitial(userInitial);
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="50" fill="${bgColor}" />
+            <text x="50" y="50" font-size="50" text-anchor="middle" dy=".3em" fill="white" font-family="Arial, sans-serif">${userInitial}</text>
+          </svg>`;
+          const imageDataUrl = 'data:image/svg+xml;base64,' + btoa(svg);
+
+          // Create new comment document - using the exact field names from Firebase
           const newComment = {
             postId: postId,
             comment: commentText, // Using 'comment' as the specified field name
             commentAt: serverTimestamp(),
             commentID: Date.now().toString(), // Generate a unique ID
-            userImage: "images/user.jpg",
-            userName: "Anonymous User" // You can get this from auth
+            userImage: imageDataUrl,
+            userName: userName // You can get this from auth
           };
 
           // Log the new comment object with the correct field structure
@@ -1272,11 +1323,20 @@
 
               // Handle Firebase timestamp objects 
               const timestamp = comment.commentAt || comment.publishedAt;
-              const formattedDate = this.formatDate(timestamp); return `
+              const formattedDate = this.formatDate(timestamp); const userName = comment.userName || 'Anonymous';
+              const initial = userName.charAt(0).toUpperCase();
+              const hasValidImage = comment.userImage && comment.userImage !== 'images/user.jpg';
+
+              return `
                 <div class="comment">
-                  <img src="${comment.userImage || 'images/user.jpg'}" alt="${comment.userName || 'User'}" class="comment-avatar" />
+                  ${hasValidImage ?
+                  `<img src="${comment.userImage}" alt="${userName}" class="comment-avatar" />` :
+                  `<div class="comment-avatar initial-avatar" style="background-color: ${this.getColorFromInitial(initial)}">
+                       ${initial}
+                     </div>`
+                }
                   <div class="comment-content">
-                    <div class="comment-author">${comment.userName || 'Anonymous'}</div>
+                    <div class="comment-author">${userName}</div>
                     <div class="comment-text">${commentText}</div>
                     <div class="comment-actions">
                       <span class="comment-action" data-key="likePost">Like</span>
