@@ -89,7 +89,7 @@ function loadCourses() {
       })
       .catch((error) => {
         console.error("Error loading courses:", error);
-        showNotification("Error loading courses. Please try again later.", "error");
+        showNotification("");
       });
   } catch (error) {
     console.error("Error setting up Firestore:", error);
