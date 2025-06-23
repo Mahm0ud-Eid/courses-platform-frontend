@@ -9,7 +9,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- FAV ICON(BROWSER TAB ICON) -->
   <link rel="shortcut icon" href="hrefimages/uccd-logo.png" type="image/x-icon" />
-  <!-- GOOGLE FONT -->
+  <!--             <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="studentEmail" class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="studentEmail" name="email" required>
+              </div>
+            </div>T -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700"
     rel="stylesheet" />
   <!-- FONTAWESOME ICONS -->
@@ -239,19 +244,17 @@
                         <tr>
                           <th>Name</th>
                           <th>Email</th>
-                          <th>Phone</th>
                           <th>University ID</th>
                           <th>National ID</th>
                           <th>Department</th>
                           <th>Year</th>
-                          <th>Disability</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         <!-- Student data will be loaded dynamically from Firebase -->
                         <tr>
-                          <td colspan="9" class="text-center">
+                          <td colspan="7" class="text-center">
                             <div class="spinner-border text-primary" role="status">
                               <span class="visually-hidden">Loading...</span>
                             </div>
@@ -306,19 +309,9 @@
                 <input type="email" class="form-control" id="studentEmail" name="email" required>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="studentPhone" class="form-label">Phone <span class="text-danger">*</span></label>
-                <input type="tel" class="form-control" id="studentPhone" name="phone" required>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
                 <label for="studentPassword" class="form-label">Password <span class="text-danger">*</span></label>
                 <input type="password" class="form-control" id="studentPassword" name="password" required
                   placeholder="Enter password">
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="studentId" class="form-label">University ID <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="studentId" name="id" required placeholder="e.g., ST12345">
               </div>
             </div>
             <div class="row">
@@ -328,6 +321,13 @@
                   placeholder="e.g., 12345678901234">
               </div>
               <div class="col-md-6 mb-3">
+                <label for="studentId" class="form-label">University ID <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="studentId" name="id" required placeholder="e.g., ST12345">
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-6 mb-3">
                 <label for="studentYear" class="form-label">Year <span class="text-danger">*</span></label>
                 <select class="form-control" id="studentYear" name="year" required>
                   <option value="" selected disabled>Select Year</option>
@@ -335,15 +335,6 @@
                   <option value="2nd Year">2nd Year</option>
                   <option value="3rd Year">3rd Year</option>
                   <option value="4th Year">4th Year</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="studentDisability" class="form-label">Disability</label>
-                <select class="form-control" id="studentDisability" name="disability">
-                  <option value="No">No</option>
-                  <option value="Yes">Yes</option>
                 </select>
               </div>
             </div>
@@ -422,8 +413,8 @@
                   placeholder="e.g., 12345678901234">
               </div>
               <div class="col-md-6 mb-3">
-                <label for="editStudentYear" class="form-label">Year <span class="text-danger">*</span></label>
-                <select class="form-control" id="editStudentYear" name="year" required>
+                <label for="editStudentYear" class="form-label">Year <span class="text-danger">*</span></label> <select
+                  class="form-control" id="editStudentYear" name="year" required>
                   <option value="1st Year">1st Year</option>
                   <option value="2nd Year">2nd Year</option>
                   <option value="3rd Year">3rd Year</option>

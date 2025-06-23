@@ -71,17 +71,14 @@ async function loadAllStudents() {
       console.log(`Found ${usersSnapshot.size} users with role="Student"`);
       
       if (!usersSnapshot.empty) {        usersSnapshot.forEach(doc => {
-          const data = doc.data();
-          students.push({
+          const data = doc.data();          students.push({
             id: doc.id, // This will be the Firebase Auth UID
             name: data.name || data.displayName || data.fullName || 'N/A',
             email: data.email || 'N/A',
             universityID: data.universityID || data.studentID || 'N/A',
             nationalID: data.nationalID || 'N/A',
-            phoneNumber: data.phoneNumber || data.phone || 'N/A',
             department: data.department || 'N/A',
             year: data.year || data.academicYear || 'N/A',
-            disability: data.disability || 'No',
             source: 'users'
           });
         });
@@ -99,16 +96,13 @@ async function loadAllStudents() {
         
         if (!studentsSnapshot.empty) {          studentsSnapshot.forEach(doc => {
             const data = doc.data();
-            students.push({
-              id: doc.id,
+            students.push({              id: doc.id,
               name: data.name || data.displayName || data.fullName || 'N/A',
               email: data.email || 'N/A',
               universityID: data.universityID || data.studentID || 'N/A',
               nationalID: data.nationalID || 'N/A',
-              phoneNumber: data.phoneNumber || data.phone || 'N/A',
               department: data.department || 'N/A',
               year: data.year || data.academicYear || 'N/A',
-              disability: data.disability || 'No',
               source: 'students'
             });
           });
@@ -126,18 +120,15 @@ async function loadAllStudents() {
       // Clear loading message
       tableBody.innerHTML = '';
         // Add each student to the table
-      students.forEach(student => {
-        const row = document.createElement('tr');        row.innerHTML = `
+      students.forEach(student => {        const row = document.createElement('tr');        row.innerHTML = `
           <td>
             <span class="list-enq-name">${student.name}</span>
           </td>
           <td>${student.email}</td>
-          <td>${student.phoneNumber}</td>
           <td>${student.universityID}</td>
           <td>${student.nationalID}</td>
           <td>${student.department}</td>
           <td>${student.year}</td>
-          <td>${student.disability}</td>
           <td>
             <a href="#" class="ad-st-view edit-student" data-id="${student.id}" data-source="${student.source}">Edit</a>
             <a href="#" class="ad-st-view delete-student" data-id="${student.id}" data-source="${student.source}">Delete</a>
@@ -430,27 +421,24 @@ function setupAddStudentModal() {
           formData.get('email'),
           formData.get('password')
         );
-        
-        const user = userCredential.user;
+          const user = userCredential.user;
         
         // Create student data object with all required fields
         const studentData = {
-          agreeOnTerms: true,
+          agreeOnTerms: null,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           department: formData.get('department'),
-          disability: formData.get('disability') || 'No',
           email: formData.get('email'),
-          enrolledCategories: [],
-          favouriteCategories: [],
-          graduationYear: '',
+          enrolledCategories: null,
+          favouriteCategories: null,
+          graduationYear: null,
           id: user.uid, // Firebase Auth UID
           isEnrolled: null,
           isFirstRegister: true,
           name: formData.get('name'),
           nationalID: formData.get('nationalId'),
-          notificationID: '',
+          notificationID: null,
           password: formData.get('password'),
-          phoneNumber: formData.get('phone'),
           role: 'Student',
           universityID: formData.get('id'),
           year: formData.get('year')
@@ -583,8 +571,7 @@ async function openEditStudentModal(studentId, source) {
       return;
     }
       const data = doc.data();    // Fill the edit form with current data
-    document.getElementById('editStudentName').value = data.name || data.displayName || data.fullName || '';
-    document.getElementById('editStudentEmail').value = data.email || '';
+    document.getElementById('editStudentName').value = data.name || data.displayName || data.fullName || '';    document.getElementById('editStudentEmail').value = data.email || '';
     document.getElementById('editStudentPassword').value = data.password || '';
     document.getElementById('editStudentId').value = data.universityID || data.studentID || '';
     document.getElementById('editStudentNationalId').value = data.nationalID || '';
