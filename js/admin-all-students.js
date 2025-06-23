@@ -71,12 +71,12 @@ async function loadAllStudents() {
       console.log(`Found ${usersSnapshot.size} users with role="Student"`);
       
       if (!usersSnapshot.empty) {        usersSnapshot.forEach(doc => {
-          const data = doc.data();          students.push({
-            id: doc.id, // This will be the Firebase Auth UID
+          const data = doc.data();          students.push({            id: doc.id, // This will be the Firebase Auth UID
             name: data.name || data.displayName || data.fullName || 'N/A',
             email: data.email || 'N/A',
             universityID: data.universityID || data.studentID || 'N/A',
             nationalID: data.nationalID || 'N/A',
+            phone: data.phoneNumber || data.phone || 'N/A',
             department: data.department || 'N/A',
             year: data.year || data.academicYear || 'N/A',
             source: 'users'
@@ -95,12 +95,12 @@ async function loadAllStudents() {
         console.log(`Found ${studentsSnapshot.size} students in students collection`);
         
         if (!studentsSnapshot.empty) {          studentsSnapshot.forEach(doc => {
-            const data = doc.data();
-            students.push({              id: doc.id,
+            const data = doc.data();            students.push({              id: doc.id,
               name: data.name || data.displayName || data.fullName || 'N/A',
               email: data.email || 'N/A',
               universityID: data.universityID || data.studentID || 'N/A',
               nationalID: data.nationalID || 'N/A',
+              phone: data.phoneNumber || data.phone || 'N/A',
               department: data.department || 'N/A',
               year: data.year || data.academicYear || 'N/A',
               source: 'students'
@@ -127,6 +127,7 @@ async function loadAllStudents() {
           <td>${student.email}</td>
           <td>${student.universityID}</td>
           <td>${student.nationalID}</td>
+          <td>${student.phone}</td>
           <td>${student.department}</td>
           <td>${student.year}</td>
           <td>
@@ -221,7 +222,13 @@ async function deleteStudent(db, studentId, source) {
 function setupSearchFunctionality() {
   const searchInput = document.querySelector('input[placeholder*="Search by student name"]');
   const searchButton = document.querySelector('.btn-primary');
-    if (searchInput && searchButton) {
+  
+  console.log('Search elements:', { 
+    searchInput: searchInput ? 'Found' : 'Not found', 
+    searchButton: searchButton ? 'Found' : 'Not found' 
+  });
+    
+  if (searchInput && searchButton) {
     // Search on button click
     searchButton.addEventListener('click', performFilter);
     
@@ -266,6 +273,8 @@ function setupDepartmentFilter() {
 // Create department filter dropdown
 function createDepartmentFilter() {
   const searchSection = document.querySelector('.post-filter-section .row');
+  
+  console.log('Creating department filter, search section found:', searchSection ? 'Yes' : 'No');
   
   if (searchSection) {
     // Add department filter column
@@ -314,22 +323,32 @@ function performFilter() {
   const searchInput = document.querySelector('input[placeholder*="Search by student name"]');
   const departmentFilter = document.getElementById('departmentFilter');
   
+  console.log('Filter elements:', { 
+    searchInput: searchInput ? 'Found' : 'Not found', 
+    departmentFilter: departmentFilter ? 'Found' : 'Not found' 
+  });
+  
   const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
   const selectedDepartment = departmentFilter ? departmentFilter.value : '';
   
-  const tableRows = document.querySelectorAll('#students-table tbody tr');
+  const tableRows = document.querySelectorAll('#students-table tbody tr');  console.log(`Filtering by first letter(s): "${searchTerm}" and department: "${selectedDepartment}"`);
+  console.log(`Total rows in table: ${tableRows.length}`);
   
-  console.log(`Filtering by first letter(s): "${searchTerm}" and department: "${selectedDepartment}"`);
-  
-  let visibleCount = 0;
-  tableRows.forEach(row => {
+  let visibleCount = 0;  tableRows.forEach((row, index) => {
     // Skip loading/error rows or rows with only one cell (colspan)
-    if (row.querySelector('.spinner-border') || row.cells.length < 9) {
+    if (row.querySelector('.spinner-border') || row.cells.length <= 1) {
+      console.log(`Row ${index} skipped: has spinner or too few cells (${row.cells.length})`);
       return;
     }
-      // Get name and department from cells (Name is cell 0, Department is cell 5)
-    const name = (row.cells[0]?.textContent || '').toLowerCase().trim();
-    const department = (row.cells[5]?.textContent || '').trim();
+    console.log(`Processing row ${index} with ${row.cells.length} cells`);    // Get name and department from cells (Name is cell 0, Department is cell 5 after adding Phone)
+    const nameCell = row.cells[0];
+    const departmentCell = row.cells[5];
+    
+    // Extract text and log what we found
+    const name = nameCell ? nameCell.textContent.toLowerCase().trim() : '';
+    const department = departmentCell ? departmentCell.textContent.trim() : '';
+    
+    console.log(`Row data - Name: "${name}", Department: "${department}"`);
     
     // Check if name STARTS WITH the search term (first letter search)
     const matchesName = searchTerm === '' || name.startsWith(searchTerm);
@@ -349,7 +368,7 @@ function performFilter() {
 
 // Perform search operation
 function performSearch() {
-  const searchInput = document.querySelector('input[placeholder*="Search students"]');
+  const searchInput = document.querySelector('input[placeholder*="Search by student name"]');
   
   if (!searchInput) {
     console.error('Search input not found');
@@ -359,21 +378,20 @@ function performSearch() {
   const searchTerm = searchInput.value.toLowerCase().trim();
   const tableRows = document.querySelectorAll('#students-table tbody tr');
   
-  console.log(`Searching by name for: "${searchTerm}"`);
-  console.log(`Found ${tableRows.length} rows to search through`);
+  console.log(`Searching by first letter(s): "${searchTerm}"`);  console.log(`Found ${tableRows.length} rows to search through`);
   
   let visibleCount = 0;
   tableRows.forEach(row => {
     // Skip loading/error rows or rows with only one cell (colspan)
-    if (row.querySelector('.spinner-border') || row.cells.length < 9) {
+    if (row.querySelector('.spinner-border') || row.cells.length <= 1) {
       return;
     }
+      // Get name from first cell only
+    const nameCell = row.cells[0];
+    const name = nameCell ? nameCell.textContent.toLowerCase().trim() : '';
     
-    // Get name from first cell only
-    const name = (row.cells[0]?.textContent || '').toLowerCase();
-    
-    // Search ONLY by name
-    const matchesSearch = searchTerm === '' || name.includes(searchTerm);
+    // Search ONLY by name - match by first letter(s)
+    const matchesSearch = searchTerm === '' || name.startsWith(searchTerm);
     
     // Show/hide row based on search term
     if (matchesSearch) {
