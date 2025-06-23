@@ -336,18 +336,41 @@
                   </p>
                 </div>
                 <div class="bor">
-                  <form id="coursesForm">
-                    <!-- Course Basic Information -->
+                  <form id="coursesForm"> <!-- Course Basic Information -->
                     <div class="section-heading">
                       <h5><i class="fa fa-info-circle"></i> Basic Information</h5>
                     </div>
                     <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group mb-3">
+                          <label class="form-label">Course Title <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control" name="courseTitle" required
+                            placeholder="Enter course title" />
+                          <div class="invalid-feedback">Please enter a course title</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                      <label class="form-label">Course Description <span class="text-danger">*</span></label>
+                      <textarea class="form-control" name="description" rows="4" required
+                        placeholder="Provide detailed course description"></textarea>
+                      <div class="invalid-feedback">Please enter a course description</div>
+                    </div>
+
+                    <div class="row">
                       <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label class="form-label">Course Name <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" name="courseName" required
-                            placeholder="Enter course name" />
-                          <div class="invalid-feedback">Please enter a course name</div>
+                          <label class="form-label">Instructors <span class="text-danger">*</span></label>
+                          <select class="form-control" name="instructor" required>
+                            <option value="" disabled selected>Select Instructor</option>
+                            <option value="instructor1">Dr. John Smith</option>
+                            <option value="instructor2">Prof. Sarah Johnson</option>
+                            <option value="instructor3">Dr. Michael Brown</option>
+                            <option value="instructor4">Prof. Emily Davis</option>
+                            <option value="instructor5">Dr. David Wilson</option>
+                          </select>
+                          <div class="invalid-feedback">Please select an instructor</div>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -369,65 +392,59 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-md-12">
+                      <div class="col-md-6">
                         <div class="form-group mb-3">
-                          <label class="form-label">Instructor Name <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" name="instructorName" required
-                            placeholder="Enter instructor name" />
-                          <div class="invalid-feedback">Please enter instructor name</div>
+                          <label class="form-label">Room Number <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control" name="roomNumber" required
+                            placeholder="Enter room number (e.g., A-101)" />
+                          <div class="invalid-feedback">Please enter a room number</div>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="form-group mb-3">
-                      <label class="form-label">Course Description <span class="text-danger">*</span></label>
-                      <textarea class="form-control" name="description" rows="4" required
-                        placeholder="Provide detailed course description"></textarea>
-                      <div class="invalid-feedback">Please enter a course description</div>
-                    </div>
-
-                    <div class="row">
                       <div class="col-md-6">
                         <div class="form-group mb-3">
                           <label class="form-label">Duration <span class="text-danger">*</span></label>
                           <div class="input-group">
                             <input type="number" class="form-control" name="duration" required min="1"
                               placeholder="Duration" />
-                            <select class="form-select" name="durationType">
-                              <option value="days">Days</option>
-                              <option value="weeks">Weeks</option>
-                              <option value="months">Months</option>
-                              <option value="years">Years</option>
-                            </select>
+
                           </div>
                           <div class="invalid-feedback">Please enter the duration</div>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
                         <div class="form-group mb-3">
-                          <label class="form-label">Total Seats <span class="text-danger">*</span></label>
-                          <input type="number" class="form-control" name="totalSeats" required min="1"
-                            placeholder="Number of available seats" />
-                          <div class="invalid-feedback">Please enter total number of seats</div>
+                          <label class="form-label">Maximum Accepted Students <span class="text-danger">*</span></label>
+                          <input type="number" class="form-control" name="maxStudents" required min="1"
+                            placeholder="Enter maximum number of students" />
+                          <div class="invalid-feedback">Please enter maximum number of students</div>
                         </div>
                       </div>
                     </div>
 
                     <!-- Course Prerequisites -->
                     <div class="section-heading mt-4">
-                      <h5><i class="fa fa-check-circle"></i> Course Prerequisites</h5>
+                      <h5><i class="fa fa-check-circle"></i> Prerequisites and Goals</h5>
                     </div>
 
                     <div class="form-group mb-4">
-                      <label class="form-label">Prerequisites <span class="text-danger">*</span></label>
+                      <label class="form-label">Prerequisites & Skills <span class="text-danger">*</span></label>
                       <textarea class="form-control" name="prerequisites" rows="3" required
-                        placeholder="List any prerequisites or requirements for this course"></textarea>
+                        placeholder="List any prerequisites, skills or requirements for this course"></textarea>
                       <small class="text-muted">Specify any academic prerequisites, technical requirements, or skill
                         levels needed</small>
-                      <div class="invalid-feedback">Please specify course prerequisites</div>
+                      <div class="invalid-feedback">Please specify course prerequisites and skills</div>
                     </div>
 
-                    <!-- Course Schedule -->
+                    <div class="form-group mb-4">
+                      <label class="form-label">Course Goals <span class="text-danger">*</span></label>
+                      <textarea class="form-control" name="goals" rows="3" required
+                        placeholder="List the learning objectives and goals of this course"></textarea>
+                      <small class="text-muted">Specify what students will achieve by completing this course</small>
+                      <div class="invalid-feedback">Please specify course goals</div>
+                    </div> <!-- Course Schedule -->
                     <div class="section-heading mt-4">
                       <h5><i class="fa fa-calendar"></i> Course Schedule</h5>
                     </div>
@@ -445,6 +462,28 @@
                           <label class="form-label">End Date <span class="text-danger">*</span></label>
                           <input type="date" class="form-control" name="endDate" required />
                           <div class="invalid-feedback">Please select an end date</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Interview Schedule -->
+                    <div class="section-heading mt-4">
+                      <h5><i class="fa fa-comments"></i> Interview Schedule</h5>
+                    </div>
+
+                    <div class="row mb-4">
+                      <div class="col-md-6">
+                        <div class="form-group mb-3">
+                          <label class="form-label">Interview Start Date <span class="text-danger">*</span></label>
+                          <input type="date" class="form-control" name="interviewStartDate" required />
+                          <div class="invalid-feedback">Please select an interview start date</div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group mb-3">
+                          <label class="form-label">Interview End Date <span class="text-danger">*</span></label>
+                          <input type="date" class="form-control" name="interviewEndDate" required />
+                          <div class="invalid-feedback">Please select an interview end date</div>
                         </div>
                       </div>
                     </div>
@@ -495,6 +534,7 @@
   <!-- JavaScript -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     $(document).ready(function () {
       // Initialize collapsible sidebar menu
@@ -502,11 +542,7 @@
 
       $(".collapsible-header").click(function (e) {
         e.preventDefault();
-
-        // Toggle visibility of the collapsible body
         $(this).next(".collapsible-body").slideToggle();
-
-        // Optionally, close other open collapsible sections
         $(".collapsible-body").not($(this).next()).slideUp();
       });
 
@@ -532,8 +568,30 @@
         e.preventDefault();
 
         if (validateForm(this)) {
-          // Handle successful validation - in a real app, you'd submit to server
+          // Form data collection
+          const formData = {
+            courseTitle: $('input[name="courseTitle"]').val(),
+            description: $('textarea[name="description"]').val(),
+            instructor: $('select[name="instructor"]').val(),
+            category: $('select[name="category"]').val(),
+            roomNumber: $('input[name="roomNumber"]').val(),
+            duration: $('input[name="duration"]').val(),
+            maxStudents: $('input[name="maxStudents"]').val(),
+            prerequisites: $('textarea[name="prerequisites"]').val(),
+            goals: $('textarea[name="goals"]').val(),
+            startDate: $('input[name="startDate"]').val(),
+            endDate: $('input[name="endDate"]').val(),
+            interviewStartDate: $('input[name="interviewStartDate"]').val(),
+            interviewEndDate: $('input[name="interviewEndDate"]').val()
+          };
+
+          console.log('Form data:', formData);
+          // In a real application, you would send this data to the server
           alert('Course added successfully!');
+
+          // Uncomment to reset the form after successful submission
+          // this.reset();
+          // $('.gallery-preview').html('');
         }
       });
 
@@ -575,6 +633,7 @@
       });
     });
   </script>
+
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
     <i class="bi bi-arrow-up-short"></i>
