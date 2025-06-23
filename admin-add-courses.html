@@ -232,6 +232,34 @@
       font-size: 0.95rem;
       color: #6c757d;
     }
+
+    /* Tag styles for prerequisites and goals */
+    .tag-item {
+      display: inline-block;
+      background-color: #e9ecef;
+      border: 1px solid #dee2e6;
+      border-radius: 3px;
+      padding: 0.35rem 0.75rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .tag-item .remove-tag {
+      margin-left: 0.5rem;
+      color: #6c757d;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tag-item .remove-tag:hover {
+      color: #dc3545;
+    }
+
+    #prerequisites-list,
+    #goals-list {
+      min-height: 2.5rem;
+    }
   </style>
 </head>
 
@@ -428,23 +456,44 @@
                     <div class="section-heading mt-4">
                       <h5><i class="fa fa-check-circle"></i> Prerequisites and Goals</h5>
                     </div>
-
                     <div class="form-group mb-4">
                       <label class="form-label">Prerequisites & Skills <span class="text-danger">*</span></label>
-                      <textarea class="form-control" name="prerequisites" rows="3" required
-                        placeholder="List any prerequisites, skills or requirements for this course"></textarea>
-                      <small class="text-muted">Specify any academic prerequisites, technical requirements, or skill
-                        levels needed</small>
-                      <div class="invalid-feedback">Please specify course prerequisites and skills</div>
+                      <div id="prerequisites-container">
+                        <div class="input-group mb-2">
+                          <input type="text" class="form-control prerequisite-item"
+                            placeholder="Enter a prerequisite or skill" />
+                          <button type="button" class="btn btn-primary add-prerequisite">
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div id="prerequisites-list" class="mt-2">
+                        <!-- Prerequisites items will be displayed here as tags -->
+                      </div>
+                      <input type="hidden" name="prerequisites" id="prerequisites-hidden" required />
+                      <small class="text-muted">Add academic prerequisites, technical requirements, or skill levels
+                        needed</small>
+                      <div class="invalid-feedback">Please add at least one prerequisite or skill</div>
                     </div>
 
                     <div class="form-group mb-4">
                       <label class="form-label">Course Goals <span class="text-danger">*</span></label>
-                      <textarea class="form-control" name="goals" rows="3" required
-                        placeholder="List the learning objectives and goals of this course"></textarea>
-                      <small class="text-muted">Specify what students will achieve by completing this course</small>
-                      <div class="invalid-feedback">Please specify course goals</div>
-                    </div> <!-- Course Schedule -->
+                      <div id="goals-container">
+                        <div class="input-group mb-2">
+                          <input type="text" class="form-control goal-item" placeholder="Enter a course goal" />
+                          <button type="button" class="btn btn-primary add-goal">
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div id="goals-list" class="mt-2">
+                        <!-- Course goals will be displayed here as tags -->
+                      </div>
+                      <input type="hidden" name="goals" id="goals-hidden" required />
+                      <small class="text-muted">Add specific learning objectives students will achieve by completing
+                        this course</small>
+                      <div class="invalid-feedback">Please add at least one course goal</div>
+                    </div><!-- Course Schedule -->
                     <div class="section-heading mt-4">
                       <h5><i class="fa fa-calendar"></i> Course Schedule</h5>
                     </div>
@@ -561,11 +610,12 @@
         });
 
         return isValid;
-      };
-
-      // Handle form submission with validation
+      };      // Handle form submission with validation
       $('#coursesForm').submit(function (e) {
         e.preventDefault();
+
+        // Update hidden fields with array values before validation
+        updateHiddenFields();
 
         if (validateForm(this)) {
           // Form data collection
@@ -577,8 +627,8 @@
             roomNumber: $('input[name="roomNumber"]').val(),
             duration: $('input[name="duration"]').val(),
             maxStudents: $('input[name="maxStudents"]').val(),
-            prerequisites: $('textarea[name="prerequisites"]').val(),
-            goals: $('textarea[name="goals"]').val(),
+            prerequisites: JSON.parse($('#prerequisites-hidden').val() || '[]'),
+            goals: JSON.parse($('#goals-hidden').val() || '[]'),
             startDate: $('input[name="startDate"]').val(),
             endDate: $('input[name="endDate"]').val(),
             interviewStartDate: $('input[name="interviewStartDate"]').val(),
@@ -592,6 +642,8 @@
           // Uncomment to reset the form after successful submission
           // this.reset();
           // $('.gallery-preview').html('');
+          // $('#prerequisites-list, #goals-list').empty();
+          // updateHiddenFields();
         }
       });
 
@@ -623,14 +675,107 @@
           }
           reader.readAsDataURL(file);
         }
-      });
-
-      // Remove image from preview
+      });      // Remove image from preview
       $(document).on('click', '.remove-image', function () {
         $(this).closest('.position-relative').remove();
         // Clear the file input
         $('#courseImage').val('');
       });
+
+      // Prerequisites and Goals as arrays functionality
+      const prerequisites = [];
+      const goals = [];
+
+      // Function to update hidden fields with JSON arrays
+      function updateHiddenFields() {
+        $('#prerequisites-hidden').val(JSON.stringify(prerequisites));
+        $('#goals-hidden').val(JSON.stringify(goals));
+      }
+
+      // Add prerequisite
+      $('.add-prerequisite').on('click', function () {
+        const input = $('.prerequisite-item');
+        const value = input.val().trim();
+
+        if (value) {
+          // Add to array
+          prerequisites.push(value);
+
+          // Create tag
+          const tagHtml = `<span class="tag-item">${value} <span class="remove-tag" data-type="prerequisite" data-value="${value}">×</span></span>`;
+          $('#prerequisites-list').append(tagHtml);
+
+          // Clear input
+          input.val('');
+
+          // Update hidden field
+          updateHiddenFields();
+        }
+      });
+
+      // Add goal
+      $('.add-goal').on('click', function () {
+        const input = $('.goal-item');
+        const value = input.val().trim();
+
+        if (value) {
+          // Add to array
+          goals.push(value);
+
+          // Create tag
+          const tagHtml = `<span class="tag-item">${value} <span class="remove-tag" data-type="goal" data-value="${value}">×</span></span>`;
+          $('#goals-list').append(tagHtml);
+
+          // Clear input
+          input.val('');
+
+          // Update hidden field
+          updateHiddenFields();
+        }
+      });
+
+      // Remove tag (prerequisite or goal)
+      $(document).on('click', '.remove-tag', function () {
+        const type = $(this).data('type');
+        const value = $(this).data('value');
+
+        // Remove from array
+        if (type === 'prerequisite') {
+          const index = prerequisites.indexOf(value);
+          if (index !== -1) {
+            prerequisites.splice(index, 1);
+          }
+        } else if (type === 'goal') {
+          const index = goals.indexOf(value);
+          if (index !== -1) {
+            goals.splice(index, 1);
+          }
+        }
+
+        // Remove tag from UI
+        $(this).parent().remove();
+
+        // Update hidden field
+        updateHiddenFields();
+      });
+
+      // Allow pressing Enter to add items
+      $('.prerequisite-item').keypress(function (e) {
+        if (e.which === 13) {
+          e.preventDefault();
+          $('.add-prerequisite').click();
+        }
+      });
+
+      $('.goal-item').keypress(function (e) {
+        if (e.which === 13) {
+          e.preventDefault();
+          $('.add-goal').click();
+        }
+      });
+
+      // Initialize hidden fields
+      updateHiddenFields();
     });
   </script>
 
