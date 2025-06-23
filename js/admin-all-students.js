@@ -396,11 +396,10 @@ function performSearch() {
 function setupAddStudentModal() {
   const saveStudentBtn = document.getElementById('saveStudentBtn');
   const addStudentForm = document.getElementById('addStudentForm');
-  
-  if (saveStudentBtn && addStudentForm) {    saveStudentBtn.addEventListener('click', async function() {
+    if (saveStudentBtn && addStudentForm) {    saveStudentBtn.addEventListener('click', async function() {
       const formData = new FormData(addStudentForm);
         // Validate required fields
-      const requiredFields = ['name', 'email', 'password', 'id', 'nationalId', 'phone', 'department', 'year'];
+      const requiredFields = ['name', 'email', 'password', 'id', 'nationalId', 'department', 'year'];
       let isValid = true;
       
       for (const field of requiredFields) {
@@ -491,8 +490,7 @@ function setupAddStudentModal() {
 function setupEditStudentModal() {
   const updateStudentBtn = document.getElementById('updateStudentBtn');
   const editStudentForm = document.getElementById('editStudentForm');
-  
-  if (updateStudentBtn && editStudentForm) {    updateStudentBtn.addEventListener('click', async function() {
+    if (updateStudentBtn && editStudentForm) {    updateStudentBtn.addEventListener('click', async function() {
       const formData = new FormData(editStudentForm);      // Validate required fields
       const requiredFields = ['name', 'email', 'password', 'id', 'nationalId', 'phone', 'department', 'year'];
       let isValid = true;
